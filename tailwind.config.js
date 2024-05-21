@@ -17,6 +17,9 @@ export default {
       fontFamily: {
         'inter': ['Inter'],
         'mont': ['Montserrat'],
+        'mont_alt': ['Montserrat Alternates'],
+        'open': ['Open Sans'],
+        'manja': ['Manjari']
       },
 
       screens: {

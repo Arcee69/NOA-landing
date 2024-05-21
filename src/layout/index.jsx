@@ -10,6 +10,7 @@ const Layout = () => {
   const location  = useLocation()
   return (
     <div
+      className='overflow-x-hidden'
     >
         <div className='w-full hidden xl:block'>
             <Header />
