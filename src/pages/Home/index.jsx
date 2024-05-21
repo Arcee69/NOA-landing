@@ -134,13 +134,13 @@ const Home = () => {
         >
             <div className='w-[600px] h-[268px] flex flex-col gap-5'>
                 <p className='font-bold text-[#FFFFFF] font-mont text-[32px] leading-[36px]'>
-                    Welcome to the official website of The National Orientation Agency
+                    Welcome to the Official Website of the National Orientation Agency (NOA)
                 </p>
                 <p className='text-base text-[#FFFFFF] font-mont'>
-                    orem ipsum dolor sit amet consectetur. 
-                    Vestibulum viverra accumsan euismod fringilla urna orci. 
-                    Aliquam tincidunt mattis vitae est tincidunt cras turpis. 
-                    Sed turpis massa vitae egestas vitae. In
+                    The National Orientation Agency (NOA) is dedicated to fostering national unity and development 
+                    by enlightening and engaging citizens with accurate and timely information. 
+                    As a central institution, we drive Nigeria toward harmony and progress through 
+                    strategic public education and advocacy.
                 </p>
             </div>
             <div className='w-[280px] h-[354px] bg-[#222222] rounded-[8px] flex flex-col'>
@@ -208,12 +208,9 @@ const Home = () => {
         <div className='flex justify-between items-center p-[100px] gap-[40px]'>
             <div className='flex flex-col gap-4 w-[480px] '>
                 <img src={Chain} alt='Chain' className='w-[54px] h-[9px]'/>
-                <p className='font-mont_alt text-[#222222] text-[40px] font-bold'>Metrics</p>
+                <p className='font-mont_alt text-[#222222] text-[40px] font-bold'>Our Impact: By Verified Numbers</p>
                 <p className='text-[#5F6368] font-mont text-[20px] w-[402px]'>
-                    Lorem ipsum dolor sit amet consectetur. 
-                    Vestibulum viverra accumsan euismod fringilla urna orci. 
-                    Aliquam tincidunt mattis vitae est tincidunt cras turpis. 
-                    Sed turpis
+                    (Empowering Communities, giving them a voice)
                 </p>
             </div>
             <div className='flex flex-col gap-[30px]'>
@@ -223,7 +220,8 @@ const Home = () => {
                         <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>Member Staff</p>
                     </div>
                     <p className='text-base text-[#222222] font-mont_alt'>
-                        Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
+                        With 812 on-site offices, well positioned across all 774 LGAs, 
+                        our communities enjoy our presence and direct impact in every corner of Nigeria.
                     </p>
                 </div>
                 <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
@@ -232,7 +230,8 @@ const Home = () => {
                         <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>Engagement rate</p>
                     </div>
                     <p className='text-base text-[#fff] font-mont_alt'>
-                        Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
+                        The Nigerian public are getting more engaged and well informed. 
+                        Our commitment to excellence is clearly seen in our staggering 98% service satisfaction rate.
                     </p>
                 </div>
                 <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
@@ -241,7 +240,8 @@ const Home = () => {
                         <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>MDAs onboarded</p>
                     </div>
                     <p className='text-base text-[#222222] font-mont_alt'>
-                        Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
+                        Our streamlined operations ensures integration of information from 
+                        various ministries and departments.
                     </p>
                 </div>
 
@@ -253,18 +253,24 @@ const Home = () => {
             <div className='w-[528px] bg-[#222222] pt-[117px] pr-[96px] pl-[101px] pb-[164px] flex flex-col gap-[32px]'>
                 <p className='font-mont_alt font-bold text-[#FFFFFF] text-[40px]'>NOA Digitization Inititiatives</p>
                 <p className='font-mont text-[#FFFFFF] font-medium text-[20px]'>
-                    Lorem ipsum dolor sit amet consectetur. 
-                    Vestibulum viverra accumsan euismod fringilla urna orci. 
-                    Aliquam tincidunt mattis vitae est tincidunt cras turpis. 
-                    Sed turpis
+                    "Leveraging Technology for Enhanced National Engagement"
+                    The Curator:
+                    AI-Powered Data Management: 
+                    Using AI to maintain and continuously update demographic database, 
+                    giving capacity for well-targeted and highly effective strategies and communication.
+
                 </p>
             </div>
             <div className='bg-[#161616] w-[912px] py-[48px] pr-[100px] pl-[48px]'>
                 <div className='w-[764px] flex flex-wrap gap-[30px] py-[97px]'>
-                    <div className='bg-[#2E2E2E] w-[367px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
+                    <div className='bg-[#2E2E2E] w-[367px] overflow-auto h-[200px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
                         <p className='font-mont_alt text-[20px] font-bold text-[#00AA55]'>NOA content factory</p>
                         <p className='font-mont_alt text-base  text-[#FFFFFF]'>
-                            Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
+                            The NOA Content Factory is at the forefront of transforming how we connect 
+                            with and inform the Nigerian public. Through The NOA TV, NOA Radio, and The Explainer, 
+                            the NOA Content Factory is dedicated to creating and disseminating content that not 
+                            only informs but also inspires action and participation among all Nigerians, 
+                            building a more informed, inclusive, and engaged society.
                         </p>
                         <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
@@ -289,17 +295,21 @@ const Home = () => {
                         </p>
                         <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div> 
-                    <div className='bg-[#2E2E2E] w-[367px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
-                        <p className='font-mont_alt text-[20px] font-bold text-[#00AA55]'>Mobilizer</p>
+                    <div className='bg-[#2E2E2E] w-[367px] h-[200px] overflow-auto rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
+                        <p className='font-mont_alt text-[20px] font-bold text-[#00AA55]'>The Mobilizer App</p>
                         <p className='font-mont_alt text-base  text-[#FFFFFF]'>
-                            Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
+                            Youth Engagement With AI: Launching Virtual Hackathons and involving the younger 
+                            demographic and those in diaspora, making government policy making accessible.
                         </p>
                         <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
-                    <div className='bg-[#2E2E2E] w-[367px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
-                        <p className='font-mont_alt text-[20px] font-bold text-[#00AA55]'>Explainer</p>
+                    <div className='bg-[#2E2E2E] w-[367px] h-[200px] overflow-auto rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
+                        <p className='font-mont_alt text-[20px] font-bold text-[#00AA55]'>The Explainer by NOA</p>
                         <p className='font-mont_alt text-base  text-[#FFFFFF]'>
-                            Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
+                            The Explainer is an innovative platform designed by the National Orientation Agency to 
+                            simplify and clarify government policies and national developments for the public. 
+                            It aims to bridge the gap between government operations and citizen understanding, 
+                            ensuring transparency and fostering a well-informed populace.
                         </p>
                         <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>

@@ -24,10 +24,10 @@ const Footer = () => {
           <div className='w-[156px] flex flex-col gap-2.5'>
             <p className='font-bold text-[15px] font-manja text-[#fff]'>Emergency Numbers</p>
             <div className='flex flex-col'>
-              <p className='text-[#fff] font-mont_alt font-medium text-[11px]'>Nigeria Police: 0803-200-3913</p>
-              <p className='text-[#fff] font-mont_alt font-medium text-[11px]'>Fire Service: 112 or 08032003557</p>
-              <p className='text-[#fff] font-mont_alt font-medium text-[11px]'>FRSC: 122 or 0700 – 2255 – 3772</p>
-              <p className='text-[#fff] font-mont_alt font-medium text-[11px]'>NCDC Call: 0800 970000 10</p>
+              <p className='text-[#fff] font-mont_alt whitespace-nowrap font-medium text-[11px]'>Nigeria Police: 0803-200-3913</p>
+              <p className='text-[#fff] font-mont_alt whitespace-nowrap font-medium text-[11px]'>Fire Service: 112 or 08032003557</p>
+              <p className='text-[#fff] font-mont_alt whitespace-nowrap font-medium text-[11px]'>FRSC: 122 or 0700 – 2255 – 3772</p>
+              <p className='text-[#fff] font-mont_alt whitespace-nowrap font-medium text-[11px]'>NCDC Call: 0800 970000 10</p>
             </div>
           </div>
           <img src={Work} alt='Work' />
@@ -45,7 +45,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <p className='font-medium text-[11px] font-mont_alt text-[#fff]'>Copyrights <span className='text-[#00AA55]'> © 2020 National Orientation Agency </span> All rights reserved.</p>
+          <p className='font-medium text-[11px] font-mont_alt text-[#fff]'>Copyrights <span className='text-[#00AA55]'> © 2024 National Orientation Agency </span> All rights reserved.</p>
           <div className='flex items-center gap-5'>
             <p className='font-medium text-[11px] font-mont_alt text-[#fff]'>Privacy Policy</p>
             <p className='font-medium text-[11px] font-mont_alt text-[#fff]'>Terms of use</p>
