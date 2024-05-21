@@ -208,7 +208,7 @@ const Home = () => {
         <div className='flex justify-between items-center p-[100px] gap-[40px]'>
             <div className='flex flex-col gap-4 w-[480px] '>
                 <img src={Chain} alt='Chain' className='w-[54px] h-[9px]'/>
-                <p className='font-mont text-[#222222] text-[40px] font-bold'>Metrics</p>
+                <p className='font-mont_alt text-[#222222] text-[40px] font-bold'>Metrics</p>
                 <p className='text-[#5F6368] font-mont text-[20px] w-[402px]'>
                     Lorem ipsum dolor sit amet consectetur. 
                     Vestibulum viverra accumsan euismod fringilla urna orci. 
@@ -219,28 +219,28 @@ const Home = () => {
             <div className='flex flex-col gap-[30px]'>
                 <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <div className='flex items-center gap-5'>
-                        <p className='text-[#00AA55] font-mont text-[40px] font-bold'>5k+</p>
-                        <p className='text-[#00AA55] font-mont text-[20px] font-medium'>Member Staff</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>5k+</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>Member Staff</p>
                     </div>
-                    <p className='text-base text-[#222222] font-mont'>
+                    <p className='text-base text-[#222222] font-mont_alt'>
                         Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
                     </p>
                 </div>
                 <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <div className='flex items-center gap-5'>
-                        <p className='text-[#00AA55] font-mont text-[40px] font-bold'>12k+</p>
-                        <p className='text-[#00AA55] font-mont text-[20px] font-medium'>Engagement rate</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>12k+</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>Engagement rate</p>
                     </div>
-                    <p className='text-base text-[#fff] font-mont'>
+                    <p className='text-base text-[#fff] font-mont_alt'>
                         Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
                     </p>
                 </div>
                 <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <div className='flex items-center gap-5'>
-                        <p className='text-[#00AA55] font-mont text-[40px] font-bold'>300+</p>
-                        <p className='text-[#00AA55] font-mont text-[20px] font-medium'>MDAs onboarded</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>300+</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>MDAs onboarded</p>
                     </div>
-                    <p className='text-base text-[#222222] font-mont'>
+                    <p className='text-base text-[#222222] font-mont_alt'>
                         Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
                     </p>
                 </div>
@@ -288,6 +288,20 @@ const Home = () => {
                             Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
                         </p>
                         <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
+                    </div> 
+                    <div className='bg-[#2E2E2E] w-[367px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
+                        <p className='font-mont_alt text-[20px] font-bold text-[#00AA55]'>Mobilizer</p>
+                        <p className='font-mont_alt text-base  text-[#FFFFFF]'>
+                            Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
+                        </p>
+                        <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
+                    </div>
+                    <div className='bg-[#2E2E2E] w-[367px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
+                        <p className='font-mont_alt text-[20px] font-bold text-[#00AA55]'>Explainer</p>
+                        <p className='font-mont_alt text-base  text-[#FFFFFF]'>
+                            Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
+                        </p>
+                        <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
 
                 </div>
@@ -296,7 +310,7 @@ const Home = () => {
         </div>
 
         <div className='flex flex-col gap-3 p-[100px]'>
-            <p className='font-mont_alt text-[40px] font-bold text-[#222222]'>Latest News</p>
+            <p className='font-mont_alt text-[40px] font-bold text-[#222222]'>The explainer</p>
             <div>
                 <img src={Chain} alt='Chain' className='w-[54px] h-[9px]' />
             </div>
@@ -325,7 +339,56 @@ const Home = () => {
             <img src={Industry} alt='industry' />
         </div>
 
-        <div className='flex flex-col gap-3 p-[100px]'>
+        <div className='flex justify-between items-center p-[100px] gap-[40px]'>
+            <div className='flex flex-col gap-4 w-[480px] '>
+                <img src={Chain} alt='Chain' className='w-[54px] h-[9px]'/>
+                <p className='font-mont_alt text-[#222222] text-[40px] font-bold'>NOA National Hackathons</p>
+                <p className='text-[#5F6368] font-mont text-[20px] w-[402px]'>
+                    Lorem ipsum dolor sit amet consectetur. 
+                    Vestibulum viverra accumsan euismod fringilla urna orci. 
+                    Aliquam tincidunt mattis vitae est tincidunt cras turpis. 
+                    Sed turpis
+                </p>
+                <button
+                    className='w-[162px] h-[48px] flex items-center justify-center bg-[#00AA55]'
+                >
+                    <p className='text-[#fff] font-bold font-manja text-sm'>Learn More</p>
+                </button>
+            </div>
+            <div className='flex flex-col gap-[30px]'>
+                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
+                    <div className='flex items-center gap-5'>
+                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>5k+</p>
+                        <p className='text-[#00AA55] font-mont-alt text-[20px] font-medium'>Participants (nation wide)</p>
+                    </div>
+                    <p className='text-base text-[#222222] font-mont_alt'>
+                        Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
+                    </p>
+                </div>
+                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
+                    <div className='flex items-center gap-5'>
+                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>12k+</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>Engagement rate</p>
+                    </div>
+                    <p className='text-base text-[#fff] font-mont_alt'>
+                        Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
+                    </p>
+                </div>
+                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
+                    <div className='flex items-center gap-5'>
+                        <p className='text-[#00AA55] font-mont text-[40px] font-bold'>₦300m+</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>prizes won</p>
+                    </div>
+                    <p className='text-base text-[#222222] font-mont_alt'>
+                        Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        {/* <div className='flex flex-col gap-3 p-[100px]'>
             <div className='flex justify-between items-center'>
                 <div className='flex flex-col gap-1'>
                     <p className='font-mont_alt text-[40px] font-bold text-[#222222]'>More from the content factory</p>
@@ -361,7 +424,7 @@ const Home = () => {
 
             </div>
           
-        </div>
+        </div> */}
 
         <div
             style={{ background: `url(${Info})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"  }}
