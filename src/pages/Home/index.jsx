@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { IoCloseOutline } from 'react-icons/io5'
 import Slider from 'react-slick'
 import { AiOutlineSend } from 'react-icons/ai'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { IoIosArrowRoundForward } from 'react-icons/io';
+import Vapi from '@vapi-ai/web';
 
 
 import House from "../../assets/png/house.png"
@@ -36,7 +37,36 @@ import Time from "../../assets/svg/time.svg"
 import Mail from "../../assets/svg/mail.svg"
 
 
+
 const Home = () => {
+  const [callStatus, setCallStatus] = useState('inactive')
+  const [voxData, setVoxData] = useState([]);
+  const [loading, setLoading] = useState(false)
+
+    
+  const vapi = new Vapi('5d3d4e5d-3f85-4af4-8dae-9d6527d525fc');
+
+  const start = async () => {
+    setCallStatus("loading");
+    setLoading(true);
+    const response = await vapi.start("e9501112-b0c1-44ad-9849-b075edca90d0");
+    setLoading(false);
+    setVoxData(response)
+    console.log(response.status, "brymo")
+    return response
+  };
+
+  const stop = () => {
+    setCallStatus("loading");
+    vapi.stop();
+  };
+
+  useEffect(() => {
+    vapi.on("call-start", () => setCallStatus("active"));
+    vapi.on("call-end", () => setCallStatus('inactive'));
+    
+    return () => vapi.removeAllListeners();
+  }, [])
 
     const data = [
         {
@@ -165,7 +195,7 @@ const Home = () => {
                     </div>
                     <div className="w-full flex items-center mt-2">
                         <img src={LeftMic} alt='LeftMic' className='w-[121px] h-[62px]'/>
-                        <img src={Mic} alt='Mic' className='w-[122px] h-[122px]'/>
+                        <img src={Mic} alt='Mic' className='w-[122px] h-[122px]' onClick={() => start()}/>
                         <img src={RightMic} alt='RightMic' className='w-[121px] h-[62px]'/>
                     </div>
                 </div>
