@@ -21,7 +21,7 @@ const Footer = () => {
             </div>
           </div>
           <img src={Fellow} alt='Fellow' className='w-[204px] h-[204px]'/>
-          <div className='w-[156px] flex flex-col gap-2.5'>
+          <div className='w-[206px] flex flex-col gap-2.5'>
             <p className='font-bold text-[15px] font-manja text-[#fff]'>Emergency Numbers</p>
             <div className='flex flex-col'>
               <p className='text-[#fff] font-mont_alt whitespace-nowrap font-medium text-[11px]'>Nigeria Police: 0803-200-3913</p>
