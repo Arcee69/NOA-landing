@@ -206,49 +206,32 @@ const Home = () => {
         </div>
         <img src={Address} alt='Address'/>
 
-        <div className='flex justify-between items-center p-[100px] gap-[40px]'>
-            <div className='flex flex-col gap-4 w-[480px] '>
-                <img src={Chain} alt='Chain' className='w-[54px] h-[9px]'/>
-                <p className='font-mont_alt text-[#222222] text-[40px] font-bold'>Our Impact: By Verified Numbers</p>
-                <p className='text-[#5F6368] font-mont text-[20px] w-[402px]'>
-                    (Empowering Communities, giving them a voice)
-                </p>
+        <div className='flex flex-col gap-3 p-[100px]'>
+            <p className='font-mont_alt text-[40px] font-bold text-[#222222]'>The explainer</p>
+            <div>
+                <img src={Chain} alt='Chain' className='w-[54px] h-[9px]' />
             </div>
-            <div className='flex flex-col gap-[30px]'>
-                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
-                    <div className='flex items-center gap-5'>
-                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>5k+</p>
-                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>Member Staff</p>
-                    </div>
-                    <p className='text-base text-[#222222] font-mont_alt'>
-                        With 812 on-site offices, well positioned across all 774 LGAs, 
-                        our communities enjoy our presence and direct impact in every corner of Nigeria.
-                    </p>
-                </div>
-                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
-                    <div className='flex items-center gap-5'>
-                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>12k+</p>
-                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>Engagement rate</p>
-                    </div>
-                    <p className='text-base text-[#fff] font-mont_alt'>
-                        The Nigerian public are getting more engaged and well informed. 
-                        Our commitment to excellence is clearly seen in our staggering 98% service satisfaction rate.
-                    </p>
-                </div>
-                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
-                    <div className='flex items-center gap-5'>
-                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>300+</p>
-                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>MDAs onboarded</p>
-                    </div>
-                    <p className='text-base text-[#222222] font-mont_alt'>
-                        Our streamlined operations ensures integration of information from 
-                        various ministries and departments.
-                    </p>
-                </div>
+            <div className='w-full mt-[40px]'>
+                <Slider {...secondSettings}>
+                    {
+                        data?.map((item, index) => (
+                            <div key={index} className='flex flex-col '>
+                                <img src={item?.img} alt='Poster' className='w-[279px] h-[200px]' />
+                                <div className='flex items-center gap-1.5 mt-4'>
+                                    <img src={Folder} alt='' className='w-[10px] h-[18px]'/>
+                                    <p className='font-bold text-[#757575] font-mont'>{item?.dept}</p>
+                                </div>
+                                <p className='font-mont text-base text-[#222222] font-bold'>{item?.title}</p>
+                            </div>
+                        ))
+                    }
+
+                </Slider>
 
             </div>
 
         </div>
+
 
         <div className='w-full flex'>
             <div className='w-[528px] bg-[#222222] pt-[117px] pr-[96px] pl-[101px] pb-[164px] flex flex-col gap-[32px]'>
@@ -320,27 +303,45 @@ const Home = () => {
 
         </div>
 
-        <div className='flex flex-col gap-3 p-[100px]'>
-            <p className='font-mont_alt text-[40px] font-bold text-[#222222]'>The explainer</p>
-            <div>
-                <img src={Chain} alt='Chain' className='w-[54px] h-[9px]' />
+        <div className='flex justify-between items-center p-[100px] gap-[40px]'>
+            <div className='flex flex-col gap-4 w-[480px] '>
+                <img src={Chain} alt='Chain' className='w-[54px] h-[9px]'/>
+                <p className='font-mont_alt text-[#222222] text-[40px] font-bold'>Our Impact: By Verified Numbers</p>
+                <p className='text-[#5F6368] font-mont text-[20px] w-[402px]'>
+                    (Empowering Communities, giving them a voice)
+                </p>
             </div>
-            <div className='w-full mt-[40px]'>
-                <Slider {...secondSettings}>
-                    {
-                        data?.map((item, index) => (
-                            <div key={index} className='flex flex-col '>
-                                <img src={item?.img} alt='Poster' className='w-[279px] h-[200px]' />
-                                <div className='flex items-center gap-1.5 mt-4'>
-                                    <img src={Folder} alt='' className='w-[10px] h-[18px]'/>
-                                    <p className='font-bold text-[#757575] font-mont'>{item?.dept}</p>
-                                </div>
-                                <p className='font-mont text-base text-[#222222] font-bold'>{item?.title}</p>
-                            </div>
-                        ))
-                    }
-
-                </Slider>
+            <div className='flex flex-col gap-[30px]'>
+                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
+                    <div className='flex items-center gap-5'>
+                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>5k+</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>Member Staff</p>
+                    </div>
+                    <p className='text-base text-[#222222] font-mont_alt'>
+                        With 812 on-site offices, well positioned across all 774 LGAs, 
+                        our communities enjoy our presence and direct impact in every corner of Nigeria.
+                    </p>
+                </div>
+                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
+                    <div className='flex items-center gap-5'>
+                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>12k+</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>Engagement rate</p>
+                    </div>
+                    <p className='text-base text-[#fff] font-mont_alt'>
+                        The Nigerian public are getting more engaged and well informed. 
+                        Our commitment to excellence is clearly seen in our staggering 98% service satisfaction rate.
+                    </p>
+                </div>
+                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
+                    <div className='flex items-center gap-5'>
+                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>300+</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>MDAs onboarded</p>
+                    </div>
+                    <p className='text-base text-[#222222] font-mont_alt'>
+                        Our streamlined operations ensures integration of information from 
+                        various ministries and departments.
+                    </p>
+                </div>
 
             </div>
 
