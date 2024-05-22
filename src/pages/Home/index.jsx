@@ -26,6 +26,7 @@ import Info from "../../assets/png/info.png"
 import Suggestion from "../../assets/png/suggestion.png"
 import Industry from "../../assets/png/industry.png"
 import Call from "../../assets/png/call.png"
+import DG from "../../assets/png/dg.jpg"
 
 
 import NoaLogo from "../../assets/svg/noa_logo.svg"
@@ -463,7 +464,7 @@ const Home = () => {
                     </div>
                 </div>
 
-                <img src={Call} alt='Call' className='w-[400px] ' />
+                <img src={DG} alt='DG' className='w-[400px] h-[248px]' />
 
                 <div className='bg-[#00AA55] w-[216px] flex flex-col h-[248px]'>
                     <div className='w-full gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
