@@ -354,10 +354,8 @@ const Home = () => {
                 <img src={Chain} alt='Chain' className='w-[54px] h-[9px]'/>
                 <p className='font-mont_alt text-[#222222] text-[40px] font-bold'>NOA National Hackathons</p>
                 <p className='text-[#5F6368] font-mont text-[20px] w-[402px]'>
-                    Lorem ipsum dolor sit amet consectetur. 
-                    Vestibulum viverra accumsan euismod fringilla urna orci. 
-                    Aliquam tincidunt mattis vitae est tincidunt cras turpis. 
-                    Sed turpis
+                    Virtual Hackathons to engage young Nigerians at home and 
+                    in diaspora to foster unity among the youths
                 </p>
                 <button
                     className='w-[162px] h-[48px] flex items-center justify-center bg-[#00AA55]'
