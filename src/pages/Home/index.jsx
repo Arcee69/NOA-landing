@@ -6,10 +6,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import Vapi from '@vapi-ai/web';
-
+import { CgSpinner } from 'react-icons/cg';
 
 import House from "../../assets/png/house.png"
 import Address from "../../assets/png/address.png"
+import AddressSmall from "../../assets/png/address_small.png"
 import LeftMic from "../../assets/png/left_mic.png"
 import Mic from "../../assets/png/mic_b.png"
 import RightMic from "../../assets/png/right_mic.png"
@@ -57,6 +58,7 @@ const Home = () => {
   };
 
   const stop = () => {
+    console.log("stop")
     setCallStatus("loading");
     vapi.stop();
   };
@@ -142,7 +144,34 @@ const Home = () => {
         slidesToShow: 2,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000
+        autoplaySpeed: 2000,
+        responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: false,
+              }
+            },
+            // {
+            //   breakpoint: 600,
+            //   settings: {
+            //     slidesToShow: 2,
+            //     slidesToScroll: 2,
+            //     initialSlide: 2
+            //   }
+            // },
+            {
+              breakpoint: 320,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+              }
+            }
+          ]
     }
 
     
@@ -154,16 +183,45 @@ const Home = () => {
         slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000
+        autoplaySpeed: 2000,
+        responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: false,
+              }
+            },
+            // {
+            //   breakpoint: 600,
+            //   settings: {
+            //     slidesToShow: 2,
+            //     slidesToScroll: 2,
+            //     initialSlide: 2
+            //   }
+            // },
+            {
+              breakpoint: 320,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+              }
+            }
+          ]
+
     }
     
+    const isMobileView = window.innerWidth < 768
   return (
     <div className='w-full'>
         <div 
             style={{ background: `url(${House})`, backgroundSize:"cover", backgroundRepeat:"no-repeat" }}
-            className='h-[499px] px-[101px] flex items-center justify-between'
+            className='h-[600px] lg:h-[499px] lg:px-[101px] px-[20px] py-[100px] gap-10 lg:gap-0 flex flex-col lg:flex-row items-center justify-between'
         >
-            <div className='w-[600px] h-[268px] flex flex-col gap-5'>
+            <div className='lg:w-[600px] h-[268px] flex flex-col gap-5'>
                 <p className='font-bold text-[#FFFFFF] font-mont text-[32px] leading-[36px]'>
                     Welcome to the Official Website of the National Orientation Agency (NOA)
                 </p>
@@ -174,8 +232,8 @@ const Home = () => {
                     strategic public education and advocacy.
                 </p>
             </div>
-            <div className='w-[280px] h-[354px] bg-[#222222] rounded-[8px] flex flex-col'>
-                <div className='flex items-start justify-between p-4'>
+            <div className='w-[280px] h-[354px] lg:bg-[#222222] rounded-[8px] flex flex-col'>
+                <div className='lg:flex items-start hidden justify-between p-4'>
                     <div className='w-[117px] h-[50px] flex items-center'>
                         <img src={NoaLogo} alt='Logo' className='w-[40px] h-[40px]' />
                         <div className='flex flex-col gap-1'>
@@ -185,8 +243,18 @@ const Home = () => {
                     </div>
                     <IoCloseOutline className='text-[24px] text-[#A3B2AA]' />
                 </div>
-                <div className='bg-[#3A6152] w-full flex flex-col  h-[238px]'>
-                    <div className='flex items-center p-4'>
+                <div className='lg:bg-[#3A6152] w-full flex flex-col mt-3 lg:mt-0 items-center justify-center  h-[238px]'>
+                    <button onClick={() => {callStatus === "active" ? stop() : start()}} className='w-[150px] p-4 bg-[#00AA55] flex justify-center items-center rounded-lg'>
+                        {
+                            loading ? 
+                            <CgSpinner className='text-lg animate-spin text-[#FFF]' />
+                            :
+                            <p className='text-[#fff] text-base font-medium font-mont'>
+                                {callStatus === "active" ? "Stop" : "Speak Now"}
+                            </p>
+                        }
+                    </button>
+                    {/* <div className='flex items-center p-4'>
                         <img src={NoaLogo} alt='Logo' className='w-[18px] h-[20px]' />
                         <p className='font-mont text-xs text-[#FFFFFF]'>CLHEEAN</p>
                     </div>
@@ -197,9 +265,9 @@ const Home = () => {
                         <img src={LeftMic} alt='LeftMic' className='w-[121px] h-[62px]'/>
                         <img src={Mic} alt='Mic' className='w-[122px] h-[122px]' onClick={() => start()}/>
                         <img src={RightMic} alt='RightMic' className='w-[121px] h-[62px]'/>
-                    </div>
+                    </div> */}
                 </div>
-                <div className='flex w-[247px] justify-between items-center mx-auto py-3'>
+                {/* <div className='flex w-[247px] justify-between items-center mx-auto py-3'>
                     <input 
                         className='w-full font-mont text-xs bg-transparent' 
                         type='text'
@@ -207,24 +275,24 @@ const Home = () => {
                         placeholder='Your voice message wil appear here'
                     />
                     <AiOutlineSend className='text-[#AFADAD] text-[24px] ' />
-                </div>
+                </div> */}
             </div>
 
         </div>
         <div className='w-full flex items-center bg-[#EBEBEB] h-[72px]'>
             <div className='w-3/12 bg-[#FF0000] h-full flex justify-center items-center'>
-                <p className='font-open font-bold text-[24px] text-[#fff] font-bold'>HEADLINES</p>
+                <p className='font-open font-bold text-sm lg:text-[24px] text-[#fff] font-bold'>HEADLINES</p>
             </div>
             <div className='w-9/12'>
                 <div className='w-full'>
                     <Slider {...settings}>
                         <div className='mx-2'>
-                            <p className='font-semibold text-sm font-mont text-[#222222]'>
+                            <p className='font-semibold text-xs lg:text-sm font-mont text-[#222222]'>
                                 Pressing for Change: Ministries Unite to Address Environmental....
                             </p>
                         </div>
                         <div className='mx-2'>
-                            <h3 className='font-semibold text-sm font-mont text-[#222222]'>
+                            <h3 className='font-semibold text-xs lg:text-sm font-mont text-[#222222]'>
                                 Pressing for Change: Ministries Unite to Address Environmental....
                             </h3>
                         </div>
@@ -234,10 +302,11 @@ const Home = () => {
             </div>
 
         </div>
-        <img src={Address} alt='Address'/>
 
-        <div className='flex flex-col gap-3 p-[100px]'>
-            <p className='font-mont_alt text-[40px] font-bold text-[#222222]'>The explainer</p>
+        <img src={isMobileView ? AddressSmall : Address} alt='Address'/>
+
+        <div className='flex flex-col gap-3 p-5 lg:p-[100px]'>
+            <p className='font-mont_alt text-[24px] lg:text-[40px] font-bold text-[#222222]'>The explainer</p>
             <div>
                 <img src={Chain} alt='Chain' className='w-[54px] h-[9px]' />
             </div>
@@ -263,10 +332,10 @@ const Home = () => {
         </div>
 
 
-        <div className='w-full flex'>
-            <div className='w-[528px] bg-[#222222] pt-[117px] pr-[96px] pl-[101px] pb-[164px] flex flex-col gap-[32px]'>
-                <p className='font-mont_alt font-bold text-[#FFFFFF] text-[40px]'>NOA Digitization Inititiatives</p>
-                <p className='font-mont text-[#FFFFFF] font-medium text-[20px]'>
+        <div className='w-full flex flex-col lg:flex-row'>
+            <div className='lg:w-[528px] bg-[#222222] p-5 lg:pt-[117px] lg:pr-[96px] lg:pl-[101px] lg:pb-[164px] flex flex-col gap-[32px]'>
+                <p className='font-mont_alt font-bold text-[#FFFFFF] text-[24px] lg:text-[40px]'>NOA Digitization Inititiatives</p>
+                <p className='font-mont text-[#FFFFFF] font-medium text-sm lg:text-[20px]'>
                     "Leveraging Technology for Enhanced National Engagement"
                     The Curator:
                     AI-Powered Data Management: 
@@ -275,11 +344,11 @@ const Home = () => {
 
                 </p>
             </div>
-            <div className='bg-[#161616] w-[912px] py-[48px] pr-[100px] pl-[48px]'>
-                <div className='w-[764px] flex flex-wrap gap-[30px] py-[97px]'>
+            <div className='bg-[#161616] lg:w-[912px] p-5 lg:py-[48px] lg:pr-[100px] lg:pl-[48px]'>
+                <div className='lg:w-[764px] flex flex-wrap gap-[30px] lg:py-[97px]'>
                     <div className='bg-[#2E2E2E] w-[367px] overflow-auto h-[200px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
-                        <p className='font-mont_alt text-[20px] font-bold text-[#00AA55]'>NOA content factory</p>
-                        <p className='font-mont_alt text-base  text-[#FFFFFF]'>
+                        <p className='font-mont_alt text-[18px] lg:text-[20px] font-bold text-[#00AA55]'>NOA content factory</p>
+                        <p className='font-mont_alt text-sm lg:text-base  text-[#FFFFFF]'>
                             The NOA Content Factory is at the forefront of transforming how we connect 
                             with and inform the Nigerian public. Through The NOA TV, NOA Radio, and The Explainer, 
                             the NOA Content Factory is dedicated to creating and disseminating content that not 
@@ -289,37 +358,37 @@ const Home = () => {
                         <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
                     <div className='bg-[#2E2E2E] w-[367px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
-                        <p className='font-mont_alt text-[20px] font-bold text-[#00AA55]'>Collaboration tool for MDAs</p>
-                        <p className='font-mont_alt text-base  text-[#FFFFFF]'>
+                        <p className='font-mont_alt text-[18px] lg:text-[20px] font-bold text-[#00AA55]'>Collaboration tool for MDAs</p>
+                        <p className='font-mont_alt text-sm lg:text-base text-[#FFFFFF]'>
                             Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
                         </p>
                         <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
                     <div className='bg-[#2E2E2E] w-[367px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
-                        <p className='font-mont_alt text-[20px] font-bold text-[#00AA55]'>National hackathons</p>
-                        <p className='font-mont_alt text-base  text-[#FFFFFF]'>
+                        <p className='font-mont_alt text-[18px] lg:text-[20px]  font-bold text-[#00AA55]'>National hackathons</p>
+                        <p className='font-mont_alt text-sm lg:text-base text-[#FFFFFF]'>
                             Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
                         </p>
                         <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
                     <div className='bg-[#2E2E2E] w-[367px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
-                        <p className='font-mont_alt text-[20px] font-bold text-[#00AA55]'>Insight Data</p>
-                        <p className='font-mont_alt text-base  text-[#FFFFFF]'>
+                        <p className='font-mont_alt text-[18px] lg:text-[20px] font-bold text-[#00AA55]'>Insight Data</p>
+                        <p className='font-mont_alt text-sm lg:text-base  text-[#FFFFFF]'>
                             Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
                         </p>
                         <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div> 
                     <div className='bg-[#2E2E2E] w-[367px] h-[200px] overflow-auto rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
-                        <p className='font-mont_alt text-[20px] font-bold text-[#00AA55]'>The Mobilizer App</p>
-                        <p className='font-mont_alt text-base  text-[#FFFFFF]'>
+                        <p className='font-mont_alt text-[18px] lg:text-[20px] font-bold text-[#00AA55]'>The Mobilizer App</p>
+                        <p className='font-mont_alt text-sm lg:text-base   text-[#FFFFFF]'>
                             Youth Engagement With AI: Launching Virtual Hackathons and involving the younger 
                             demographic and those in diaspora, making government policy making accessible.
                         </p>
                         <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
                     <div className='bg-[#2E2E2E] w-[367px] h-[200px] overflow-auto rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
-                        <p className='font-mont_alt text-[20px] font-bold text-[#00AA55]'>The Explainer by NOA</p>
-                        <p className='font-mont_alt text-base  text-[#FFFFFF]'>
+                        <p className='font-mont_alt  text-[18px] lg:text-[20px] font-bold text-[#00AA55]'>The Explainer by NOA</p>
+                        <p className='font-mont_alt text-sm lg:text-base  text-[#FFFFFF]'>
                             The Explainer is an innovative platform designed by the National Orientation Agency to 
                             simplify and clarify government policies and national developments for the public. 
                             It aims to bridge the gap between government operations and citizen understanding, 
@@ -333,41 +402,41 @@ const Home = () => {
 
         </div>
 
-        <div className='flex justify-between items-center p-[100px] gap-[40px]'>
-            <div className='flex flex-col gap-4 w-[480px] '>
+        <div className='flex flex-col lg:flex-row lg:justify-between items-center p-5 lg:p-[100px] gap-[40px]'>
+            <div className='flex flex-col gap-4 lg:w-[480px] '>
                 <img src={Chain} alt='Chain' className='w-[54px] h-[9px]'/>
-                <p className='font-mont_alt text-[#222222] text-[40px] font-bold'>Our Impact: By Verified Numbers</p>
-                <p className='text-[#5F6368] font-mont text-[20px] w-[402px]'>
+                <p className='font-mont_alt text-[#222222] text-[24px] lg:text-[40px] font-bold'>Our Impact: By Verified Numbers</p>
+                <p className='text-[#5F6368] font-mont text-base lg:text-[20px] lg:w-[402px]'>
                     (Empowering Communities, giving them a voice)
                 </p>
             </div>
-            <div className='flex flex-col gap-[30px]'>
-                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
+            <div className='w-full flex flex-col gap-[30px]'>
+                <div className='w-full lg:w-[720px] lg:h-[159px] py-5  px-5 lg:px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <div className='flex items-center gap-5'>
-                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>5k+</p>
-                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>Member Staff</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[24px] lg:text-[40px] font-bold'>5k+</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[18px] lg:text-[20px] font-medium'>Member Staff</p>
                     </div>
-                    <p className='text-base text-[#222222] font-mont_alt'>
+                    <p className='text-sm lg:text-base text-[#222222] font-mont_alt'>
                         With 812 on-site offices, well positioned across all 774 LGAs, 
                         our communities enjoy our presence and direct impact in every corner of Nigeria.
                     </p>
                 </div>
-                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[720px] lg:h-[159px] px-5 py-5 lg:px-[40px] border-[12px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <div className='flex items-center gap-5'>
-                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>12k+</p>
-                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>Engagement rate</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[24px] lg:text-[40px] font-bold'>12k+</p>
+                        <p className='text-[#00AA55] font-mont_alt  text-[18px] lg:text-[20px] font-medium'>Engagement rate</p>
                     </div>
-                    <p className='text-base text-[#fff] font-mont_alt'>
+                    <p className='text-sm lg:text-base text-[#fff] font-mont_alt'>
                         The Nigerian public are getting more engaged and well informed. 
                         Our commitment to excellence is clearly seen in our staggering 98% service satisfaction rate.
                     </p>
                 </div>
-                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[720px] lg:h-[159px] py-5 px-5 lg:px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <div className='flex items-center gap-5'>
-                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>300+</p>
-                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>MDAs onboarded</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[24px] lg:text-[40px] font-bold'>300+</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[18px] lg:text-[20px] font-medium'>MDAs onboarded</p>
                     </div>
-                    <p className='text-base text-[#222222] font-mont_alt'>
+                    <p className='text-sm lg:text-base text-[#222222] font-mont_alt'>
                         Our streamlined operations ensures integration of information from 
                         various ministries and departments.
                     </p>
@@ -377,15 +446,15 @@ const Home = () => {
 
         </div>
 
-        <div>
+        <div className='hidden lg:block'>
             <img src={Industry} alt='industry' />
         </div>
 
-        <div className='flex justify-between items-center p-[100px] gap-[40px]'>
-            <div className='flex flex-col gap-4 w-[480px] '>
+        <div className='flex flex-col lg:flex-row my-5 lg:my-0 lg:justify-between items-center px-5 lg:p-[100px] gap-[40px]'>
+            <div className='flex flex-col gap-4 lg:w-[480px] '>
                 <img src={Chain} alt='Chain' className='w-[54px] h-[9px]'/>
-                <p className='font-mont_alt text-[#222222] text-[40px] font-bold'>NOA National Hackathons</p>
-                <p className='text-[#5F6368] font-mont text-[20px] w-[402px]'>
+                <p className='font-mont_alt text-[#222222] text-[24px] lg:text-[40px] font-bold'>NOA National Hackathons</p>
+                <p className='text-[#5F6368] font-mont text-[16px] lg:text-[20px] lg:w-[402px]'>
                     Virtual Hackathons to engage young Nigerians at home and 
                     in diaspora to foster unity among the youths
                 </p>
@@ -395,31 +464,31 @@ const Home = () => {
                     <p className='text-[#fff] font-bold font-manja text-sm'>Learn More</p>
                 </button>
             </div>
-            <div className='flex flex-col gap-[30px]'>
-                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
+            <div className='w-full flex flex-col gap-[30px]'>
+                <div className='w-full lg:w-[720px] lg:h-[159px] py-5 px-5 lg:px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <div className='flex items-center gap-5'>
-                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>5k+</p>
-                        <p className='text-[#00AA55] font-mont-alt text-[20px] font-medium'>Participants (nation wide)</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[24px] lg:text-[40px] font-bold'>5k+</p>
+                        <p className='text-[#00AA55] font-mont-alt text-[18px] lg:text-[20px] font-medium'>Participants (nation wide)</p>
                     </div>
-                    <p className='text-base text-[#222222] font-mont_alt'>
+                    <p className='text-sm lg:text-base text-[#222222] font-mont_alt'>
                         Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
                     </p>
                 </div>
-                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[720px] lg:h-[159px] py-5 px-5 lg:px-[40px] border-[12px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <div className='flex items-center gap-5'>
-                        <p className='text-[#00AA55] font-mont_alt text-[40px] font-bold'>12k+</p>
-                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>Engagement rate</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[24px] lg:text-[40px] font-bold'>12k+</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[18px] lg:text-[20px] font-medium'>Engagement rate</p>
                     </div>
-                    <p className='text-base text-[#fff] font-mont_alt'>
+                    <p className='text-sm lg:text-base text-[#fff] font-mont_alt'>
                         Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
                     </p>
                 </div>
-                <div className='w-[720px] h-[159px] py-5 px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='lg:w-[720px] lg:h-[159px] py-5 px-5 lg:px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <div className='flex items-center gap-5'>
-                        <p className='text-[#00AA55] font-mont text-[40px] font-bold'>₦300m+</p>
-                        <p className='text-[#00AA55] font-mont_alt text-[20px] font-medium'>prizes won</p>
+                        <p className='text-[#00AA55] font-mont text-[24px] lg:text-[40px] font-bold'>₦300m+</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[18px] lg:text-[20px] font-medium'>prizes won</p>
                     </div>
-                    <p className='text-base text-[#222222] font-mont_alt'>
+                    <p className='text-sm lg:text-base text-[#222222] font-mont_alt'>
                         Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
                     </p>
                 </div>
@@ -468,11 +537,11 @@ const Home = () => {
 
         <div
             style={{ background: `url(${Info})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"  }}
-            className='h-[512px] w-full flex items-center gap-[45px] justify-center flex-col'
+            className='lg:h-[512px] w-full py-10 lg:py-0 flex items-center gap-[20px] lg:gap-[45px] justify-center flex-col'
         >
             <p className='font-manja font-bold text-[#FFFFFF] text-[27px]'>Explore Vital Information</p>
-            <div className='flex items-center gap-[22px]'>
-                <div className='bg-[#00AA55] w-[216px] flex flex-col h-[248px]'>
+            <div className='flex flex-col px-5 lg:px-0 lg:flex-row items-center gap-[22px]'>
+                <div className='bg-[#00AA55] w-full lg:w-[216px] flex flex-col h-[248px]'>
                     <div className='w-full gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
                         <p className='text-[#fff] font-manja text-[13px] font-bold'>Peacebuilding</p>
                         <IoIosArrowRoundForward className='text-[#fff] ' />
@@ -495,9 +564,9 @@ const Home = () => {
                     </div>
                 </div>
 
-                <img src={DG} alt='DG' className='w-[400px] h-[248px]' />
+                <img src={DG} alt='DG' className='lg:w-[400px] h-[248px]' />
 
-                <div className='bg-[#00AA55] w-[216px] flex flex-col h-[248px]'>
+                <div className='bg-[#00AA55] w-full lg:w-[216px] flex flex-col h-[248px]'>
                     <div className='w-full gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
                         <p className='text-[#fff] font-manja text-[13px] font-bold'>National Cultures</p>
                         <IoIosArrowRoundForward className='text-[#fff] ' />
@@ -526,7 +595,7 @@ const Home = () => {
 
         <div
             style={{ background: `url(${Suggestion})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"  }}
-            className='h-[512px] w-full flex items-center gap-[45px] justify-center flex-col mt-[100px]'
+            className='lg:h-[512px] w-full flex py-10 lg:py-0 items-center gap-[20px] lg:gap-[45px] justify-center flex-col mt-[100px]'
         >
             <p className='font-manja font-bold text-[#222222] text-[27px]'>Suggestion and Complaints</p>
             <p className='text-center font-medium font-mont_alt text-[11px] text-[#757575] w-[337px]'>
@@ -534,7 +603,7 @@ const Home = () => {
                 should participate in driving change and development in Nigeria.
             </p>
 
-            <div className='flex items-center gap-6'>
+            <div className='flex flex-col lg:flex-row items-center gap-6'>
                 <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>
                     <img src={CallB} alt='CallB' className='w-[31px] h-[31px]'/>
                     <div className='flex flex-col items-center gap-[5px]'>
