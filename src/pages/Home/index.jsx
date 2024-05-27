@@ -13,6 +13,7 @@ import Address from "../../assets/png/address.png"
 import AddressSmall from "../../assets/png/address_small.png"
 import LeftMic from "../../assets/png/left_mic.png"
 import Mic from "../../assets/png/mic_b.png"
+import Stop from "../../assets/png/stop.png"
 import RightMic from "../../assets/png/right_mic.png"
 import Chain from "../../assets/png/chain.png"
 import PicA from "../../assets/png/picA.png"
@@ -219,7 +220,7 @@ const Home = () => {
     <div className='w-full'>
         <div 
             style={{ background: `url(${House})`, backgroundSize:"cover", backgroundRepeat:"no-repeat" }}
-            className='h-[600px] lg:h-[499px] lg:px-[101px] px-[20px] py-[100px] gap-10 lg:gap-0 flex flex-col lg:flex-row items-center justify-between'
+            className=' lg:h-[499px] lg:px-[101px] px-[20px] py-[100px] gap-10 lg:gap-0 flex flex-col lg:flex-row items-center justify-between'
         >
             <div className='lg:w-[600px] h-[268px] flex flex-col gap-5'>
                 <p className='font-bold text-[#FFFFFF] font-mont text-[32px] leading-[36px]'>
@@ -232,8 +233,8 @@ const Home = () => {
                     strategic public education and advocacy.
                 </p>
             </div>
-            <div className='w-[280px] h-[354px] lg:bg-[#222222] rounded-[8px] flex flex-col'>
-                <div className='lg:flex items-start hidden justify-between p-4'>
+            <div className='w-[280px] h-[354px] bg-[#222222] rounded-[8px] mt-28 lg:mt-0 flex flex-col'>
+                <div className='flex items-start justify-between p-4'>
                     <div className='w-[117px] h-[50px] flex items-center'>
                         <img src={NoaLogo} alt='Logo' className='w-[40px] h-[40px]' />
                         <div className='flex flex-col gap-1'>
@@ -243,8 +244,12 @@ const Home = () => {
                     </div>
                     <IoCloseOutline className='text-[24px] text-[#A3B2AA]' />
                 </div>
-                <div className='lg:bg-[#3A6152] w-full flex flex-col mt-3 lg:mt-0 items-center justify-center  h-[238px]'>
-                    <button onClick={() => {callStatus === "active" ? stop() : start()}} className='w-[150px] p-4 bg-[#00AA55] flex justify-center items-center rounded-lg'>
+                <div className='bg-[#3A6152] w-full flex flex-col mt-0 lg:mt-0 items-center justify-center  h-[238px]'>
+                    <div className='px-4 flex flex-col'>
+                        <p className='font-manja text-[#fff] text-sm font-medium'>CHLEEAN: Your Friendly AI Voice Assistant from NOA</p>
+                        <p className='font-manja text-[#fff] text-sm font-medium'>I can provide you with information on policies, programs and initiatives</p>
+                    </div>
+                    {/* <button onClick={() => {callStatus === "active" ? stop() : start()}} className='w-[150px] p-4 bg-[#00AA55] flex justify-center items-center rounded-lg'>
                         {
                             loading ? 
                             <CgSpinner className='text-lg animate-spin text-[#FFF]' />
@@ -253,29 +258,15 @@ const Home = () => {
                                 {callStatus === "active" ? "Stop" : "Speak Now"}
                             </p>
                         }
-                    </button>
-                    {/* <div className='flex items-center p-4'>
-                        <img src={NoaLogo} alt='Logo' className='w-[18px] h-[20px]' />
-                        <p className='font-mont text-xs text-[#FFFFFF]'>CLHEEAN</p>
-                    </div>
-                    <div className='bg-[#fff] p-2 w-[248px] h-[44px] rounded-xl mx-auto'>
-                        <p className='font-mont text-[10px] text-[#353D4D] w-[203px]'>Hi, how would you like me to help you today?</p>
-                    </div>
-                    <div className="w-full flex items-center mt-2">
+                    </button> */}
+
+                    <div className="w-full flex items-center lg:mt-2">
                         <img src={LeftMic} alt='LeftMic' className='w-[121px] h-[62px]'/>
-                        <img src={Mic} alt='Mic' className='w-[122px] h-[122px]' onClick={() => start()}/>
+                        <img src={callStatus === "active" ? Stop : Mic } alt='Mic' className='w-[122px] h-[122px]' onClick={() => {callStatus === "active" ? stop() : start()}} />
                         <img src={RightMic} alt='RightMic' className='w-[121px] h-[62px]'/>
-                    </div> */}
+                    </div> 
                 </div>
-                {/* <div className='flex w-[247px] justify-between items-center mx-auto py-3'>
-                    <input 
-                        className='w-full font-mont text-xs bg-transparent' 
-                        type='text'
-                        name='message'
-                        placeholder='Your voice message wil appear here'
-                    />
-                    <AiOutlineSend className='text-[#AFADAD] text-[24px] ' />
-                </div> */}
+              
             </div>
 
         </div>

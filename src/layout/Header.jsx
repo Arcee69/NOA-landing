@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
 import { Listbox, Transition} from '@headlessui/react'
+import { useNavigate } from 'react-router-dom'
 
 import Logo from "../assets/svg/logo.svg"
 
@@ -10,13 +11,21 @@ import Twitter from "../assets/png/twitter.png"
 import Instagram from "../assets/png/instagram.png"
 
 
-const solutions = [
-  { name: '', link:"#" },
+const agency = [
+  { name: 'About Us', link:"/about" },
+  { name: 'Management', link:"#" },
+  { name: 'NOA Past Chief Executives', link:"#" },
+  { name: 'State Office Addresses', link:"#" },
+  { name: 'FOI Desk', link:"#" },
  
 ]
 
+
+
 const Header = () => {
-  const [selected, setSelected] = useState(solutions[0])
+  const [selected, setSelected] = useState(agency[0])
+
+  const navigate = useNavigate()
 
   return (
     <div className='flex justify-between px-[40px] py-[22px] items-center bg-[#FFF] w-full h-[67px]'>
@@ -35,7 +44,7 @@ const Header = () => {
         <p className='text-BLACK-_100 cursor-pointer font-mont font-semibold hover:text-[#00AA55]' onClick={() => navigate("/")}>Home</p>
         <Listbox value={selected} onChange={setSelected}>
             <div className="relative">
-                <Listbox.Button className="relative w-[130px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm" onClick={() => navigate("/solutions")}>
+                <Listbox.Button className="relative w-[130px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm">
                     <span className="block truncate w-full text-[#222222] font-semibold hover:text-[#00AA55] font-mont">The Agency</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <IoIosArrowDown
@@ -51,7 +60,7 @@ const Header = () => {
                     leaveTo="opacity-0"
                 >
                     <Listbox.Options className="absolute z-10 mt-1 w-[200px] max-h-60  overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-                        {solutions.map((item, index) => (
+                        {agency.map((item, index) => (
                             <Listbox.Option
                                 key={index}
                                 className={({ active }) =>
@@ -81,7 +90,7 @@ const Header = () => {
         </Listbox>
         <Listbox value={selected} onChange={setSelected}>
             <div className="relative">
-                <Listbox.Button className="relative w-[113px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm" onClick={() => navigate("/solutions")}>
+                <Listbox.Button className="relative w-[113px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm" onClick={() => navigate("/agency")}>
                     <span className="block truncate w-full text-[#222222] font-semibold hover:text-[#00AA55] font-mont">Activities</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <IoIosArrowDown
@@ -97,7 +106,7 @@ const Header = () => {
                     leaveTo="opacity-0"
                 >
                     <Listbox.Options className="absolute z-10 mt-1 w-[200px] max-h-60  overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-                        {solutions.map((item, index) => (
+                        {agency.map((item, index) => (
                             <Listbox.Option
                                 key={index}
                                 className={({ active }) =>
@@ -128,7 +137,7 @@ const Header = () => {
         <p className='text-BLACK-_100 cursor-pointer hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/news")}>News</p>
         <Listbox value={selected} onChange={setSelected}>
             <div className="relative">
-                <Listbox.Button className="relative w-[150px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm" onClick={() => navigate("/solutions")}>
+                <Listbox.Button className="relative w-[150px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm" onClick={() => navigate("/agency")}>
                     <span className="block truncate w-full text-[#222222] font-semibold hover:text-[#00AA55] font-mont">Media Center</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <IoIosArrowDown
@@ -144,7 +153,7 @@ const Header = () => {
                     leaveTo="opacity-0"
                 >
                     <Listbox.Options className="absolute z-10 mt-1 w-[200px] max-h-60  overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-                        {solutions.map((item, index) => (
+                        {agency.map((item, index) => (
                             <Listbox.Option
                                 key={index}
                                 className={({ active }) =>
@@ -174,7 +183,7 @@ const Header = () => {
         </Listbox>
         <Listbox value={selected} onChange={setSelected}>
             <div className="relative">
-                <Listbox.Button className="relative w-[140px] cursor-default flex items-center gap-2 py-2 pl-3 pr-10 text-left outline-none sm:text-sm" onClick={() => navigate("/solutions")}>
+                <Listbox.Button className="relative w-[140px] cursor-default flex items-center gap-2 py-2 pl-3 pr-10 text-left outline-none sm:text-sm" onClick={() => navigate("/agency")}>
                     <span className="block truncate w-full text-[#222222] font-semibold hover:text-[#00AA55] font-mont">Partnership</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <IoIosArrowDown
@@ -190,7 +199,7 @@ const Header = () => {
                     leaveTo="opacity-0"
                 >
                     <Listbox.Options className="absolute z-10 mt-1 w-[200px] max-h-60  overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-                        {solutions.map((item, index) => (
+                        {agency.map((item, index) => (
                             <Listbox.Option
                                 key={index}
                                 className={({ active }) =>
