@@ -17,12 +17,20 @@ const agency = [
   { name: 'NOA Past Chief Executives', link:"#" },
   { name: 'State Office Addresses', link:"#" },
   { name: 'FOI Desk', link:"#" },
- 
 ]
+
+const activities = [
+    { name: 'Privacy policy for Mobilizer App', link:"/privacy-policy" },
+    { name: 'Voter Education', link:"#" },
+    { name: 'The Explainer', link:"#" },
+    { name: 'Naira Redesign Campaign', link:"#" },
+  ]
 
 
 
 const Header = () => {
+  const [agencySelected, setAgencySelected] = useState(agency[0])
+  const [activitiesSelected, setActivitiesSelected] = useState(activities[0])
   const [selected, setSelected] = useState(agency[0])
 
   const navigate = useNavigate()
@@ -42,7 +50,7 @@ const Header = () => {
       </div>
       <div className='flex items-center gap-[23px]'>
         <p className='text-BLACK-_100 cursor-pointer font-mont font-semibold hover:text-[#00AA55]' onClick={() => navigate("/")}>Home</p>
-        <Listbox value={selected} onChange={setSelected}>
+        <Listbox value={agencySelected} onChange={setAgencySelected}>
             <div className="relative">
                 <Listbox.Button className="relative w-[130px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm">
                     <span className="block truncate w-full text-[#222222] font-semibold hover:text-[#00AA55] font-mont">The Agency</span>
@@ -88,9 +96,9 @@ const Header = () => {
                 </Transition>
             </div>
         </Listbox>
-        <Listbox value={selected} onChange={setSelected}>
+        <Listbox value={activitiesSelected} onChange={setActivitiesSelected}>
             <div className="relative">
-                <Listbox.Button className="relative w-[113px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm" onClick={() => navigate("/agency")}>
+                <Listbox.Button className="relative w-[113px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm" onClick={() => navigate("#")}>
                     <span className="block truncate w-full text-[#222222] font-semibold hover:text-[#00AA55] font-mont">Activities</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <IoIosArrowDown
@@ -105,8 +113,8 @@ const Header = () => {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                 >
-                    <Listbox.Options className="absolute z-10 mt-1 w-[200px] max-h-60  overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-                        {agency.map((item, index) => (
+                    <Listbox.Options className="absolute z-10 mt-1 w-[275px] max-h-60 p-3  overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+                        {activities.map((item, index) => (
                             <Listbox.Option
                                 key={index}
                                 className={({ active }) =>
@@ -119,9 +127,9 @@ const Header = () => {
                             {({ selected }) => (
                                 <>
                                     <span
-                                        className={`block truncate ${
+                                        className={`block  ${
                                         selected ? 'font-medium' : 'font-normal'
-                                        } text-[#052011]`}
+                                        } text-[#052011] font-mont_alt p-3 border border-x-0 border-t-0`}
                                         onClick={() => navigate(item?.link)}
                                     >
                                         {item.name}

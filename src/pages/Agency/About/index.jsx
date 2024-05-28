@@ -2,8 +2,33 @@ import React from 'react'
 import { IoChevronForwardOutline } from 'react-icons/io5'
 
 import Chain from "../../../assets/png/chain.png"
+import ChainWhite from "../../../assets/png/chain_white.png"
 import Event from "../../../assets/png/event.png"
 import BigLogo from "../../../assets/png/big_logo.png"
+
+import Pic1 from "../../../assets/png/pic_1.png"
+import Pic2 from "../../../assets/png/pic_2.png"
+import Pic3 from "../../../assets/png/pic_3.png"
+import Pic4 from "../../../assets/png/pic_4.png"
+import Pic5 from "../../../assets/png/pic_5.png"
+import Pic6 from "../../../assets/png/pic_6.png"
+import Pic7 from "../../../assets/png/pic_7.png"
+import Pic8 from "../../../assets/png/pic_8.png"
+
+import Pic9 from "../../../assets/png/pic_9.png"
+import Pic10 from "../../../assets/png/pic_10.png"
+import Pic11 from "../../../assets/png/pic_11.png"
+import Pic12 from "../../../assets/png/pic_12.png"
+import Pic13 from "../../../assets/png/pic_13.png"
+import Pic14 from "../../../assets/png/pic_14.png"
+import Pic15 from "../../../assets/png/pic_15.png"
+import Pic16 from "../../../assets/png/pic_16.png"
+import Pic17 from "../../../assets/png/pic_17.png"
+import Suggestion from "../../../assets/png/suggestion.png"
+
+import CallB from "../../../assets/svg/call.svg"
+import Time from "../../../assets/svg/time.svg"
+import Mail from "../../../assets/svg/mail.svg"
 
 import Play from "../../../assets/svg/play.svg"
 
@@ -17,6 +42,7 @@ const About = () => {
                 <p className='text-[#222222] font-bold text-base font-manja'>About Us</p>
             </div>
         </div>
+
         <div className='bg-[#222222] px-[100px] w-full flex items-center py-[40px] justify-between'>
             <div className='w-[480px] flex flex-col gap-4 h-[497px]'>
                 <img src={Chain} alt='Chain' className='w-[54px] h-[9px]' />
@@ -67,6 +93,249 @@ const About = () => {
                     </p>
                 </div>
             </div>
+        </div>
+
+        <div className='bg-[#222222] w-full flex items-center justify-center'>
+            <div className='flex flex-col items-center py-[56px]'>
+                <div className='w-[480px] h-[305px] flex flex-col items-center gap-4'>
+                    <img src={Chain} alt='Chain'  className='w-[54px] h-[9px]' />
+                    <p className='font-mont_alt font-bold text-[40px] text-[#fff]'>Objectives</p>
+                    <p className='font-mont_alt font-medium text-[20px] text-center text-[#fff] leading-[32px]'>
+                        Lorem ipsum dolor sit amet consectetur. 
+                        Vestibulum viverra accumsan euismod fringilla urna orci. 
+                        Aliquam tincidunt mattis vitae est tincidunt cras turpis. 
+                        Sed turpis
+                    </p>
+                </div>
+
+                <div className='flex items-center justify-center flex-wrap gap-[32px]'>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                
+                </div>
+
+            </div>
+        </div>
+
+        <div className='bg-[#F5F5F5] w-full flex items-center justify-center'>
+            <div className='flex flex-col items-center py-[56px]'>
+                <div className='w-[480px] h-[305px] flex flex-col items-center gap-4'>
+                    <img src={Chain} alt='Chain'  className='w-[54px] h-[9px]' />
+                    <p className='font-mont_alt font-bold whitespace-nowrap text-[40px] text-[#222222]'>Functions of the Agency</p>
+                    <p className='font-mont_alt font-medium text-[20px] text-center text-[#222222] leading-[32px]'>
+                        Lorem ipsum dolor sit amet consectetur. 
+                        Vestibulum viverra accumsan euismod fringilla urna orci. 
+                        Aliquam tincidunt mattis vitae est tincidunt cras turpis. 
+                        Sed turpis
+                    </p>
+                </div>
+
+                <div className='flex items-center justify-center flex-wrap gap-[30px]'>
+
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
+                            Fostering Respect For Constituted Authority; And Instilling In The
+                            Citizens A Sense Of Loyalty To The Fatherland.
+                        </p>
+                    </div>
+                  
+                
+                </div>
+
+            </div>
+        </div>
+
+        <div className='flex flex-col gap-[40px] bg-[#fff] pt-[112px] pb-[72px] px-[150px] items-center'>
+            <div className='flex flex-col items-center justify-center w-[440px] mx-auto'>
+                <img src={Chain} alt='Chain'  className='w-[54px] h-[9px]' />
+                <p className='font-mont_alt font-bold text-[40px] text-[#fff]'>Collaborating MDAs</p>
+            </div>
+            <div className='flex gap-5 flex-col'>
+                <div className=' h-[142px] flex gap-5 items-center'>
+                    <img src={Pic1} alt='MDAs' className='w-[122px] h-[122px]' />
+                    <img src={Pic2} alt='MDAs' className='w-[122px] h-[122px]' />
+                    <img src={Pic3} alt='MDAs' className='w-[122px] h-[122px]' />
+                    <img src={Pic4} alt='MDAs' className='w-[122px] h-[122px]' />
+                    <img src={Pic5} alt='MDAs' className='w-[122px] h-[122px]' />
+                    <img src={Pic6} alt='MDAs' className='w-[122px] h-[122px]' />
+                    <img src={Pic7} alt='MDAs' className='w-[122px] h-[122px]' />
+                    <img src={Pic8} alt='MDAs' className='w-[122px] h-[122px]' />
+                   
+                </div>
+
+                <div className=' h-[142px] flex gap-5 items-center'>
+                    <img src={Pic9} alt='MDAs' className='w-[106px] h-[106px]' />
+                    <img src={Pic10} alt='MDAs' className='w-[106px] h-[106px]' />
+                    <img src={Pic11} alt='MDAs' className='w-[106px] h-[106px]' />
+                    <img src={Pic12} alt='MDAs' className='w-[106px] h-[106px]' />
+                    <img src={Pic13} alt='MDAs' className='w-[106px] h-[106px]' />
+                    <img src={Pic14} alt='MDAs' className='w-[106px] h-[106px]' />
+                    <img src={Pic15} alt='MDAs' className='w-[106px] h-[106px]' />
+                    <img src={Pic16} alt='MDAs' className='w-[106px] h-[106px]' />
+                    <img src={Pic17} alt='MDAs' className='w-[106px] h-[106px]' />
+                </div>
+            </div>
+
+        </div>
+
+        <div className='bg-[#00783C] flex flex-col items-center gap-[40px] justify-center pt-[40px] pb-[80px]'>
+            <img src={ChainWhite} alt='Chain' className='w-[54px] h-[9px]' />
+            <p className='font-bold w-[936px] text-center text-[40px] font-mont_alt text-[#fff]'>You should be part of the change and development in Nigeria</p>
+            <p className='font-mont_alt font-medium text-[20px] text-[#fff] leading-[32px]'>Want to promote programmes and policies?</p>
+            <button
+                className='w-[135px] h-[48px] bg-[#00AA55] rounded flex items-center justify-center'
+            >
+                <p className='font-manja text-[#fff] font-bold text-sm'>Discover how</p>
+            </button>
+        </div>
+
+        <div
+            style={{ background: `url(${Suggestion})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"  }}
+            className='lg:h-[512px] w-full flex py-10 lg:py-0 items-center gap-[20px] lg:gap-[45px] justify-center flex-col'
+        >
+            <p className='font-manja font-bold text-[#222222] text-[27px]'>Suggestion and Complaints</p>
+            <p className='text-center font-medium font-mont_alt text-[11px] text-[#757575] w-[337px]'>
+                Don't hesitate to reach us because we believe that citizens 
+                should participate in driving change and development in Nigeria.
+            </p>
+
+            <div className='flex flex-col lg:flex-row items-center gap-6'>
+                <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>
+                    <img src={CallB} alt='CallB' className='w-[31px] h-[31px]'/>
+                    <div className='flex flex-col items-center gap-[5px]'>
+                        <p className='font-manja text-[#222222] font-bold text-[13px]'>Call on</p>
+                        <p className='text-[#757575] font-manja text-[11px]'>0703 738 3444</p>
+                    </div>
+                </div>
+                <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>
+                    <img src={Mail} alt='Mail' className='w-[31px] h-[31px]'/>
+                    <div className='flex flex-col items-center gap-[5px]'>
+                        <p className='font-manja text-[#222222] font-bold text-[13px]'>Mail at</p>
+                        <p className='text-[#757575] font-manja text-[11px]'>admin@noa.gov.ng</p>
+                    </div>
+                </div>
+                <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>
+                    <img src={Time} alt='Time' className='w-[31px] h-[31px]'/>
+                    <div className='flex flex-col items-center gap-[5px]'>
+                        <p className='font-manja text-[#222222] font-bold text-[13px]'>Open hrs</p>
+                        <p className='text-[#757575] font-manja text-[11px]'>8am to 4pm</p>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
 
     </div>
