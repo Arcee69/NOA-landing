@@ -26,11 +26,17 @@ const activities = [
     { name: 'Naira Redesign Campaign', link:"#" },
   ]
 
+const media = [
+    { name:"Content Factory", link: "/content-factory" },
+    { name: "Gallery", link: "/gallery"}
+]
+
 
 
 const Header = () => {
   const [agencySelected, setAgencySelected] = useState(agency[0])
   const [activitiesSelected, setActivitiesSelected] = useState(activities[0])
+  const [mediaSelected, setMediaSelected] = useState(media[0])
   const [selected, setSelected] = useState(agency[0])
 
   const navigate = useNavigate()
@@ -145,7 +151,7 @@ const Header = () => {
         <p className='text-BLACK-_100 cursor-pointer hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/news")}>News</p>
         <Listbox value={selected} onChange={setSelected}>
             <div className="relative">
-                <Listbox.Button className="relative w-[150px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm" onClick={() => navigate("/agency")}>
+                <Listbox.Button className="relative w-[150px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm">
                     <span className="block truncate w-full text-[#222222] font-semibold hover:text-[#00AA55] font-mont">Media Center</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <IoIosArrowDown
@@ -161,7 +167,7 @@ const Header = () => {
                     leaveTo="opacity-0"
                 >
                     <Listbox.Options className="absolute z-10 mt-1 w-[200px] max-h-60  overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-                        {agency.map((item, index) => (
+                        {media.map((item, index) => (
                             <Listbox.Option
                                 key={index}
                                 className={({ active }) =>
