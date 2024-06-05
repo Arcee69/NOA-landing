@@ -19,7 +19,8 @@ export default {
         'mont': ['Montserrat'],
         'mont_alt': ['Montserrat Alternates'],
         'open': ['Open Sans'],
-        'manja': ['Manjari']
+        'manja': ['Manjari'],
+        'bebas': ["Bebas Neue"]
       },
 
       screens: {

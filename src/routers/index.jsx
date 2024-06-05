@@ -6,6 +6,8 @@ import About from '../pages/Agency/About'
 import News from '../pages/News'
 import Privacy from '../pages/Activities/Privacy'
 import ContentFactory from '../pages/Media/Content'
+import Hackathon from '../pages/Hackathon'
+import Details from '../pages/Hackathon/components/Details'
 
 
 const Routers = () => {
@@ -17,6 +19,8 @@ const Routers = () => {
         <Route path='/news' element={<News />} />
         <Route path='/privacy-policy' element={<Privacy />} />
         <Route path='/content-factory' element={<ContentFactory />} />
+        <Route path="/hackathon" element={<Hackathon />} />
+        <Route path='/hackathon/details' element={<Details />} />
       </Route>
     </Routes>
   )

@@ -102,53 +102,6 @@ const Header = () => {
                 </Transition>
             </div>
         </Listbox>
-        <Listbox value={activitiesSelected} onChange={setActivitiesSelected}>
-            <div className="relative">
-                <Listbox.Button className="relative w-[113px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm" onClick={() => navigate("#")}>
-                    <span className="block truncate w-full text-[#222222] font-semibold hover:text-[#00AA55] font-mont">Activities</span>
-                    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                        <IoIosArrowDown
-                            className="h-4 w-4 text-[#AAAAAA]"
-                            aria-hidden="true"
-                        />
-                    </span>
-                </Listbox.Button>
-                <Transition
-                    as={Fragment}
-                    leave="transition ease-in duration-100"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                >
-                    <Listbox.Options className="absolute z-10 mt-1 w-[275px] max-h-60 p-3  overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-                        {activities.map((item, index) => (
-                            <Listbox.Option
-                                key={index}
-                                className={({ active }) =>
-                                    `relative cursor-default select-none py-2 pl-4 pr-4 ${
-                                    active ? 'bg-[#E6F6F4] text-[#052011]' : 'text-[#052011]'
-                                    }`
-                                }
-                                value={item}
-                            >
-                            {({ selected }) => (
-                                <>
-                                    <span
-                                        className={`block  ${
-                                        selected ? 'font-medium' : 'font-normal'
-                                        } text-[#052011] font-mont_alt p-3 border border-x-0 border-t-0`}
-                                        onClick={() => navigate(item?.link)}
-                                    >
-                                        {item.name}
-                                    </span>
-                                </>
-                            )}
-                            </Listbox.Option>
-                        ))}
-                    </Listbox.Options>
-                </Transition>
-            </div>
-        </Listbox>
-        <p className='text-BLACK-_100 cursor-pointer hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/news")}>News</p>
         <Listbox value={selected} onChange={setSelected}>
             <div className="relative">
                 <Listbox.Button className="relative w-[150px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm">
@@ -195,10 +148,15 @@ const Header = () => {
                 </Transition>
             </div>
         </Listbox>
+
+        <p className='text-BLACK-_100 cursor-pointer hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/hackathon")}>Hackathon</p>
+        <p className='text-BLACK-_100 cursor-pointer hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/news")}>News</p>
+        <p className='text-BLACK-_100 cursor-pointer hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/contact")}>Contact Us</p>
+{/*       
         <Listbox value={selected} onChange={setSelected}>
             <div className="relative">
-                <Listbox.Button className="relative w-[140px] cursor-default flex items-center gap-2 py-2 pl-3 pr-10 text-left outline-none sm:text-sm" onClick={() => navigate("/agency")}>
-                    <span className="block truncate w-full text-[#222222] font-semibold hover:text-[#00AA55] font-mont">Partnership</span>
+                <Listbox.Button className="relative w-[140px] cursor-default flex items-center gap-2 py-2 pl-3 pr-10 text-left outline-none sm:text-sm" onClick={() => navigate("#")}>
+                    <span className="block truncate w-full text-[#222222] font-semibold hover:text-[#00AA55] font-mont">Contact Us</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <IoIosArrowDown
                             className="h-4 w-4 text-[#AAAAAA]"
@@ -240,7 +198,7 @@ const Header = () => {
                     </Listbox.Options>
                 </Transition>
             </div>
-        </Listbox>
+        </Listbox> */}
       </div>
       <div className='flex items-center gap-[6px]'>
         <img src={Facebook} alt='Facebook' className='w-6 h-6' />
