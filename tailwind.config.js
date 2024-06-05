@@ -20,7 +20,8 @@ export default {
         'mont_alt': ['Montserrat Alternates'],
         'open': ['Open Sans'],
         'manja': ['Manjari'],
-        'bebas': ["Bebas Neue"]
+        'bebas': ["Bebas Neue"],
+        'arimo': ["Arimo"]
       },
 
       screens: {

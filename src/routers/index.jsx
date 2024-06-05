@@ -8,6 +8,8 @@ import Privacy from '../pages/Activities/Privacy'
 import ContentFactory from '../pages/Media/Content'
 import Hackathon from '../pages/Hackathon'
 import Details from '../pages/Hackathon/components/Details'
+import Gallery from '../pages/Media/Gallery'
+import Contact from '../pages/Contact'
 
 
 const Routers = () => {
@@ -21,6 +23,8 @@ const Routers = () => {
         <Route path='/content-factory' element={<ContentFactory />} />
         <Route path="/hackathon" element={<Hackathon />} />
         <Route path='/hackathon/details' element={<Details />} />
+        <Route path='/gallery' element={<Gallery />} />
+        <Route path='/contact' element={<Contact />} />
       </Route>
     </Routes>
   )
