@@ -75,7 +75,7 @@ const Contact = () => {
 
                 </div>
 
-                <div className='flex flex-col gap-[29px] w-[540px]'>
+                <div className='flex flex-col gap-[29px] w-[500px]'>
                     <div className='flex flex-col gap-[11px]'>
                         <p className='font-manja text-[36px] font-bold'>We're Here to Help You</p>
                         <img src={Chain} alt='Chain' className='w-[54px] ' />

@@ -1,5 +1,6 @@
 import React from 'react'
 import { IoChevronForwardOutline } from 'react-icons/io5'
+import { useNavigate } from 'react-router-dom'
 
 import Chain from "../../../assets/png/chain.png"
 import ChainWhite from "../../../assets/png/chain_white.png"
@@ -33,6 +34,9 @@ import Mail from "../../../assets/svg/mail.svg"
 import Play from "../../../assets/svg/play.svg"
 
 const About = () => {
+
+    const navigate = useNavigate()
+
   return (
     <div className='flex flex-col'>
         <div className='bg-[#fff] px-[100px] py-[19px] flex items-center justify-between '>
@@ -75,21 +79,21 @@ const About = () => {
                 <div className='flex flex-col gap-4 w-[411px] h-[337px]'>
                     <img src={Chain} alt='Chain' className='w-[54px] h-[9px]' />
                     <p className='font-mont_alt text-[#222222] font-bold text-[40px]'>Mission</p>
-                    <p className='text-[#5F6368] font-medium text-[20px] font-mont_alt'>
-                        Lorem ipsum dolor sit amet consectetur. 
-                        Vestibulum viverra accumsan euismod fringilla urna orci. 
-                        Aliquam tincidunt mattis vitae est tincidunt cras turpis. 
-                        Sed turpis
+                    <p className='text-[#5F6368] font-medium text-[16px] font-mont_alt'>
+                        To consistently raise awareness, provide timely and credible feedback; 
+                        positively change attitudes, values and behaviours; accurately and adequately inform; 
+                        and sufficiently mobilize citizens to act in ways that promote peace, harmony; and national 
+                        development.
                     </p>
                 </div>
                 <div className='flex flex-col gap-4 w-[411px] h-[337px]'>
                     <img src={Chain} alt='Chain' className='w-[54px] h-[9px]' />
                     <p className='font-mont_alt text-[#222222] font-bold text-[40px]'>Vision</p>
-                    <p className='text-[#5F6368] font-medium text-[20px] font-mont_alt'>
-                        Lorem ipsum dolor sit amet consectetur. 
-                        Vestibulum viverra accumsan euismod fringilla urna orci. 
-                        Aliquam tincidunt mattis vitae est tincidunt cras turpis. 
-                        Sed turpis
+                    <p className='text-[#5F6368] font-medium text-[16px] font-mont_alt'>
+                        To consistently raise awareness, provide timely and credible feedback; 
+                        positively change attitudes, values and behaviours; accurately and adequately inform; 
+                        and sufficiently mobilize citizens to act in ways that promote peace, harmony; 
+                        and national development.
                     </p>
                 </div>
             </div>
@@ -101,10 +105,9 @@ const About = () => {
                     <img src={Chain} alt='Chain'  className='w-[54px] h-[9px]' />
                     <p className='font-mont_alt font-bold text-[40px] text-[#fff]'>Objectives</p>
                     <p className='font-mont_alt font-medium text-[20px] text-center text-[#fff] leading-[32px]'>
-                        Lorem ipsum dolor sit amet consectetur. 
-                        Vestibulum viverra accumsan euismod fringilla urna orci. 
-                        Aliquam tincidunt mattis vitae est tincidunt cras turpis. 
-                        Sed turpis
+                        The main objectives of the Agency, as provided in Decree 100 of 1993, 
+                        are to ensure that Government programmes and policies are better understood by 
+                        the general public and:
                     </p>
                 </div>
 
@@ -296,8 +299,9 @@ const About = () => {
             <p className='font-mont_alt font-medium text-[20px] text-[#fff] leading-[32px]'>Want to promote programmes and policies?</p>
             <button
                 className='w-[135px] h-[48px] bg-[#00AA55] rounded flex items-center justify-center'
+                onClick={() => navigate("/contact")}
             >
-                <p className='font-manja text-[#fff] font-bold text-sm'>Discover how</p>
+                <p className='font-manja text-[#fff] font-bold text-sm'>Contact Us</p>
             </button>
         </div>
 

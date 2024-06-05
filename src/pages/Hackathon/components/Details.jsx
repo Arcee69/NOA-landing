@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react'
 
 import Nigeria from "../../../assets/png/nigeria.png"
 import Origin from "../../../assets/png/origin.png"
+import ModalPop from '../../../components/modalPop';
+import Enter from './Enter';
+import Success from './Success';
 
 const Details = () => {
+    const [openEnter, setOpenEnter] = useState(false);
+    const [openSuccess, setOpenSuccess] = useState(false);
 
     const targetDate = '2024-06-31T23:59:59';
 
@@ -164,7 +169,10 @@ const Details = () => {
                             </div>
                         </div>
                         <div className='flex flex-col gap-2'>
-                            <button className='w-[310px] flex items-center justify-center h-[51px] bg-[#027315] text-[#FFFFFF] font-manja text-base font-bold rounded-lg'>
+                            <button
+                                onClick={() => setOpenEnter(true)} 
+                                className='w-[310px] flex items-center justify-center h-[51px] bg-[#027315] text-[#FFFFFF] font-manja text-base font-bold rounded-lg'
+                            >
                                 Enter Contest
                             </button>
                             <button className='bg-[#88BD91] rounded-lg w-[310px] flex items-center justify-center h-[51px] text-[#FFFFFF] font-manja text-base font-bold'>
@@ -183,6 +191,17 @@ const Details = () => {
             </div>
 
         </div>
+
+        <ModalPop isOpen={openEnter}>
+            <Enter  
+                setOpenSuccess={setOpenSuccess} 
+                handleClose={() => setOpenEnter(false)}
+            />
+        </ModalPop>
+
+        <ModalPop isOpen={openSuccess}>
+            <Success handleClose={() => setOpenSuccess(false)}/>
+        </ModalPop>
 
     </div>
   )
