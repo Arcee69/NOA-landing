@@ -14,46 +14,23 @@ const Pictures = () => {
             <img src={Chain} alt='Chain' className='w-[54px] ' />
         </div>
 
-        <div className='mt-[40px] flex flex-col'>
-            <div className='bg-[#222222] w-full justify-between flex items-center p-[40px] '>
-                <div className='flex items-start gap-4 flex-col w-[480px]'>
-                    <div className='flex gap-2 items-center'>
-                        <img src={Folder} alt='Folder' className='w-[10px] h-[18px]' />
-                        <p className='font-manja font-bold text-[#fff] text-xs'>FCT, PICTURE GALLERY</p>
-                    </div>
-                    <p className='font-mont_alt font-bold text-[24px] leading-[32px] text-[#fff]'>
-                        Fireside Chat: Role of the Youth in Peacemaking & Peace Sustenance
-                    </p>
-                    <p className='font-mont_alt text-[18px] text-[#F9F8F8]'>
-                        The main objectives of the Agency, as provided in Decree 100 of 1993, 
-                        are to ensure that government programmes and policies are better understood 
-                        by the general public.
-                    </p>
-                    <button className='bg-[#00AA55] w-[117px] h-[48px] flex items-center justify-center flex-col'>
-                        <p className='font-manja font-bold text-[14px] text-[#fff]'>Read more</p>
-                    </button>
-                </div>
-                <img src={Poster} alt='Poster' className='w-[592px] '/>
 
+        <div className='mt-[40px] flex items-center gap-20'>
+            <div className=' w-full flex flex-col items-start gap-5 '>
+                <img src={Poster} alt='Poster' className='w-[592px] h-[350px]'/>
+                <div className='flex gap-2 items-center'>
+                    <img src={Folder} alt='Folder' className='w-[10px] h-[18px]' />
+                    <p className='font-manja font-bold text-[#222] text-xs'>FCT, PICTURE GALLERY</p>
+                </div>
             </div>
-            <div className='bg-[#F5F5F5] w-full justify-between flex items-center p-[40px]'>
-                <img src={PosterB} alt='PosterB' className='w-[592px] '/>
-                <div className='flex items-start gap-4 flex-col w-[480px]'>
-                    <div className='flex gap-2 items-center'>
-                        <img src={Folder} alt='Folder' className='w-[10px] h-[18px]' />
-                        <p className='font-manja font-bold text-[#757575] text-xs'>By NOAAdmin _ Oct 14, 2018</p>
-                    </div>
-                    <p className='font-mont_alt font-bold text-[24px] leading-[32px] text-[#222222]'>
-                        SMSGAfrica FiresideChat: Role of Media in Developing Spirit of Nationalism
-                    </p>
-                    <p className='font-mont_alt text-[18px] text-[#564949]'>
-                        #SMSGAfrica Fireside chat session on the topic. The Role of Media in developing the Spirit 
-                        of Patriotism & Nationalism with Dr. Garba Abari Director General National Orientation 
-                        Agency, Nigeria (NOA) […]
-                    </p>
-                    <button className='bg-[#00AA55] w-[117px] h-[48px] flex items-center justify-center flex-col'>
-                        <p className='font-manja font-bold text-[14px] text-[#fff]'>Read more</p>
-                    </button>
+
+           
+
+            <div className=' w-full flex flex-col items-start gap-5'>
+                <img src={PosterB} alt='PosterB' className='w-[592px] h-[350px]'/>
+                <div className='flex gap-2 items-center'>
+                    <img src={Folder} alt='Folder' className='w-[10px] h-[18px]' />
+                    <p className='font-manja font-bold text-[#222] text-xs'>By NOAAdmin _ Oct 14, 2018</p>
                 </div>
             </div>
 

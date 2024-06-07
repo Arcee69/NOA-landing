@@ -41,13 +41,13 @@ const Gallery = () => {
 
         <div className='px-[100px] flex flex-col mt-[56px]'>
             <div className='w-[286px] h-[40px] flex items-center border rounded-lg'>
-                <div className={`${activeTab === "Pictures" ? "bg-[#00AA55]" : "bg-[#fff]"} w-[90px] px-4 py-[9px] flex items-center`} onClick={() => handleTabChange("Pictures")}>
+                <div className={`${activeTab === "Pictures" ? "bg-[#00AA55]" : "bg-[#fff]"} cursor-pointer w-[90px] px-4 py-[9px] flex items-center`} onClick={() => handleTabChange("Pictures")}>
                     <p className={`${activeTab === "Pictures" ? "text-[#fff]" : "text-[#344054]"} font-mont_alt font-medium text-sm`}>Pictures</p>
                 </div>
-                <div className={`${activeTab === "Videos" ? "bg-[#00AA55]" : "bg-[#fff]"} w-[90px] border border-y-0 px-4 py-[9px] flex items-center`} onClick={() => handleTabChange("Videos")}>
+                <div className={`${activeTab === "Videos" ? "bg-[#00AA55]" : "bg-[#fff]"} cursor-pointer w-[90px] border border-y-0 px-4 py-[9px] flex items-center`} onClick={() => handleTabChange("Videos")}>
                     <p className={`${activeTab === "Videos" ? "text-[#fff]" : "text-[#344054]"} font-mont_alt font-medium text-sm`}>Videos</p>
                 </div>
-                <div className={`${activeTab === "Downloads" ? "bg-[#00AA55]" : "bg-[#fff]"} w-full px-4 py-[9px] flex items-center`} onClick={() => handleTabChange("Downloads")}>
+                <div className={`${activeTab === "Downloads" ? "bg-[#00AA55]" : "bg-[#fff]"} cursor-pointer w-full px-4 py-[9px] flex items-center`} onClick={() => handleTabChange("Downloads")}>
                     <p className={`${activeTab === "Downloads" ? "text-[#fff]" : "text-[#344054]"} font-mont_alt font-medium text-sm`}>Downloads</p>
                 </div>
             </div>
