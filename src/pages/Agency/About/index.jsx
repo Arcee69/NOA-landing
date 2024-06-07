@@ -114,8 +114,17 @@ const About = () => {
                 <div className='flex items-center justify-center flex-wrap gap-[32px]'>
                     <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
                         <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
+                            Mobilize favourable public opinion for such programmes and policies
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Establish feedback channels to Government on all aspects of Nigerian national life;
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Encourage informal education through public enlightenment activities and publications
                         </p>
                     </div>
                     <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
@@ -126,11 +135,43 @@ const About = () => {
                     </div>
                     <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
                         <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
+                            Establish appropriate national framework for educating, 
+                            orientating and indoctrinating Nigerians towards attitudes, 
+                            values and culture which project individual’s national pride 
                         </p>
                     </div>
                     <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Awaken the consciousness of Nigerians to their responsibilities to the promotion of 
+                            national unity, citizens’ commitment to their human rights to build a free, 
+                            just and progressive society;
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center   py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Ensure and uphold leadership by example;
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Develop among Nigerians of all ages and sex, social and cultural values and awareness 
+                            which will inculcate the spirit of patriotism, nationalism, self-discipline and 
+                            self-reliance;
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Encourage the people to actively and freely participate in discussions and 
+                            decisions on matters affecting their general welfare;
+                        </p>
+                    </div>
+                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
+                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
+                            Promote new sets of attitudes and culture for the attainment of the goals and objectives 
+                            of a united Nigeria State;
+                        </p>
+                    </div>
+                    {/* <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
                         <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
                             Fostering Respect For Constituted Authority; And Instilling In The
                             Citizens A Sense Of Loyalty To The Fatherland.
@@ -141,49 +182,7 @@ const About = () => {
                             Fostering Respect For Constituted Authority; And Instilling In The
                             Citizens A Sense Of Loyalty To The Fatherland.
                         </p>
-                    </div>
-                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
-                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
-                        </p>
-                    </div>
-                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
-                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
-                        </p>
-                    </div>
-                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
-                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
-                        </p>
-                    </div>
-                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
-                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
-                        </p>
-                    </div>
-                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
-                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
-                        </p>
-                    </div>
-                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
-                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
-                        </p>
-                    </div>
-                    <div className='w-[604px] bg-[#2E2E2E] flex items-center justify-center  py-[8px] h-[100px] pl-[60px] pr-4 rounded-lg h-[100px] border border-y-0 border-x-[#00AA55]'>
-                        <p className='text-[#D6E3E6] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
-                        </p>
-                    </div>
+                    </div> */}
                 
                 </div>
 
@@ -196,61 +195,60 @@ const About = () => {
                     <img src={Chain} alt='Chain'  className='w-[54px] h-[9px]' />
                     <p className='font-mont_alt font-bold whitespace-nowrap text-[40px] text-[#222222]'>Functions of the Agency</p>
                     <p className='font-mont_alt font-medium text-[20px] text-center text-[#222222] leading-[32px]'>
-                        Lorem ipsum dolor sit amet consectetur. 
-                        Vestibulum viverra accumsan euismod fringilla urna orci. 
-                        Aliquam tincidunt mattis vitae est tincidunt cras turpis. 
-                        Sed turpis
+                        Specifically, the Agency performs the following functions:
                     </p>
                 </div>
 
                 <div className='flex items-center justify-center flex-wrap gap-[30px]'>
 
-                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[99px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
                         <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
+                            Enlightenment of the general public on Government policies, programmes and activities;
+                            programmes and activities;
                         </p>
                     </div>
-                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[99px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
                         <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
+                            Propagate and promote the spirit of dignity of labour, honesty and commitment to 
+                            qualitative production, promotion and consumption of home produced commodities and 
+                            services;
                         </p>
                     </div>
-                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[99px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
                         <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
+                            Mobilization of favourable public opinion and support for Government policies, 
+                            programmes and activities;
                         </p>
                     </div>
-                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[99px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
                         <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
+                            Re-orientate the populace about power, its use and proper role of Government in serving 
+                            the collective interest of Nigerians;
                         </p>
                     </div>
-                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[99px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
                         <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
+                            Collection, collation, analysis and provision of feedback from the public to 
+                            Government on its policies, programmes and activities;
                         </p>
                     </div>
-                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[99px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
                         <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
+                            Propagate the need to eschew all vices in public life including corruption, 
+                            dishonesty, electoral and census malpractice, ethnic parochial and religious bigotry;
                         </p>
                     </div>
-                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[99px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
                         <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
+                            Establish social institutions and framework for deliberate exposure of Nigerians to 
+                            democratic norms and values for a virile, peaceful, united, progressive and disciplined 
+                            society;
                         </p>
                     </div>
-                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[88px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
+                    <div className='w-[605px] bg-[#FFFFFF] flex items-center justify-center  py-[8px] h-[99px] pl-[60px] pr-4 rounded-lg border-[8px] border-y-0 border-x-[#00AA55]'>
                         <p className='text-[#222] text-base leading-[28px] font-medium font-mont_alt'>
-                            Fostering Respect For Constituted Authority; And Instilling In The
-                            Citizens A Sense Of Loyalty To The Fatherland.
+                            Arouse the consciousness of all categories of Nigerians to their rights and privileges, 
+                            responsibilities and obligations as citizens of Nigeria;
                         </p>
                     </div>
                   

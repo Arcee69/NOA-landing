@@ -14,8 +14,8 @@ import Instagram from "../assets/png/instagram.png"
 const agency = [
   { name: 'About Us', link:"/about" },
   { name: 'Management', link:"#" },
-  { name: 'NOA Past Chief Executives', link:"#" },
-  { name: 'State Office Addresses', link:"#" },
+  { name: 'NOA Past Chief Executives', link:"/noa-past-executives" },
+  { name: 'State Office Addresses', link:"/state-offices" },
   { name: 'FOI Desk', link:"#" },
 ]
 

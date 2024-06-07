@@ -13,7 +13,7 @@ const Enter = ({ setOpenSuccess, handleClose }) => {
         handleClose()
     }
 
-    const handleFileChange = (event) => {
+    const handleFileUpload = (event) => {
         const selectedFile = event.target.files[0];
         setUserImage(selectedFile)
     };

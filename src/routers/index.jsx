@@ -10,6 +10,8 @@ import Hackathon from '../pages/Hackathon'
 import Details from '../pages/Hackathon/components/Details'
 import Gallery from '../pages/Media/Gallery'
 import Contact from '../pages/Contact'
+import StateOffices from '../pages/Agency/StateOffices'
+import NoaPast from '../pages/Agency/NoaPast'
 
 
 const Routers = () => {
@@ -25,6 +27,8 @@ const Routers = () => {
         <Route path='/hackathon/details' element={<Details />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/state-offices' element={<StateOffices />} />
+        <Route path='/noa-past-executives' element={<NoaPast />} />
       </Route>
     </Routes>
   )
