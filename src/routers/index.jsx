@@ -12,6 +12,8 @@ import Gallery from '../pages/Media/Gallery'
 import Contact from '../pages/Contact'
 import StateOffices from '../pages/Agency/StateOffices'
 import NoaPast from '../pages/Agency/NoaPast'
+import Management from '../pages/Agency/Management'
+import FOI from '../pages/Agency/FOI'
 
 
 const Routers = () => {
@@ -29,6 +31,8 @@ const Routers = () => {
         <Route path='/contact' element={<Contact />} />
         <Route path='/state-offices' element={<StateOffices />} />
         <Route path='/noa-past-executives' element={<NoaPast />} />
+        <Route path="/management" element={<Management />} />
+        <Route path="/foi" element={<FOI />} />
       </Route>
     </Routes>
   )
