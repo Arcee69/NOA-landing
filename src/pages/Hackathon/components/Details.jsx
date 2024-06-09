@@ -40,19 +40,19 @@ const Details = () => {
     }, [targetDate]);
 
   return (
-    <div className='bg-[#F5F5F5] w-full px-[49px] py-[71px]'>
-        <div className='bg-[#fff] w-[90%] mx-auto px-[46px] gap-[42px] pt-[81px] pb-[115px] flex flex-col'>
+    <div className='bg-[#F5F5F5] w-full lg:px-[49px] py-[71px]'>
+        <div className='bg-[#fff] w-full  lg:w-[90%] mx-auto px-5 lg:px-[46px] gap-[42px] pt-[81px] pb-[115px] flex flex-col'>
             <div 
-                className='flex w-full rounded-lg items-center py-[14px] justify-center gap-[48px]'
+                className='flex flex-col lg:flex-row w-full rounded-lg items-center py-[14px] justify-center gap-[48px]'
                 style={{ background: "linear-gradient(84deg, #F8A401 -20.27%, #70C217 20.45%, rgba(112, 194, 23, 0.69) 75.32%, #FFF 102.87%)"}}
             >
-                <img src={Nigeria} alt='Nigeria' className='w-[256px]' />
-                <img src={Origin} alt='Origin' className='w-[501px]'/>
+                <img src={Nigeria} alt='Nigeria' className='lg:w-[256px]' />
+                <img src={Origin} alt='Origin' className='lg:w-[501px]'/>
             </div>
 
             <div className='border border-[#E6E6E6] rounded-[13px] pl-5 pt-[26px] pb-[14px] flex flex-col gap-3'>
                 <p className='text-[#027315] text-base font-manja font-bold'>PRIZES</p>
-                <div className='flex items-center gap-12'>
+                <div className='flex flex-col lg:flex-row lg:items-center gap-12'>
                     <div className='flex flex-col  gap-3'>
                         <p className='font-mont_alt text-xs text-[#686868] font-semibold'>1st Place</p>
                         <p className='font-manja text-[#DC6803] font-bold text-[23px]'>Sony DSLR Camera 360s</p>
@@ -70,8 +70,8 @@ const Details = () => {
 
             </div>
 
-            <div className='flex items-start justify-between w-full'>
-                <div className='w-[700px] flex flex-col gap-6'>
+            <div className='flex flex-col lg:flex-row gap-5 lg:gap-0 items-start justify-between w-full'>
+                <div className='lg:w-[700px] flex flex-col gap-6'>
                     <div className='flex flex-col gap-3'>
                         <p className='text-[#000000] font-mont font-bold text-[32px] capitalize'>The Origin of Nigeria Photo Contest</p>
                         <p className='text-[#5F647C] text-base font-manja font-bold'>0 participants</p>
@@ -141,7 +141,7 @@ const Details = () => {
                         </ul>
                     </div>
                 </div>
-                <div className='w-[376px] flex flex-col gap-[56px]'>
+                <div className='w-full lg:w-[376px] flex flex-col gap-[56px]'>
                     <div className='w-full h-[51px] rounded-xl bg-[#ECFDF3] flex items-center justify-center '>
                         <p className='font-manja text-base font-bold text-[#027315]'>View Submissions (0)</p>
                     </div>
@@ -181,7 +181,7 @@ const Details = () => {
                         </div>
                     </div>
 
-                    <div className='px-[19px] py-[26px] bg-[#E8F2EA] rounded-[13px] w-[375px] mx-auto flex flex-col gap-[7px]'>
+                    <div className='px-[19px] py-[26px] bg-[#E8F2EA] rounded-[13px] lg:w-[375px] mx-auto flex flex-col gap-[7px]'>
                         <p className='text-[#000000] font-manja text-[24px] font-bold'>Contact Information:</p>
                         <p className='font-mont_alt text-[#000] text-base '>For inquiries, email [contact email address] or call [contact phone number].</p>
                     </div>

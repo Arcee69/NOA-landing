@@ -4,8 +4,8 @@ import Cup from "../../../assets/png/confetti_cup.png"
 
 const Success = ({ handleClose }) => {
   return (
-    <div className='bg-[#fff] rounded-lg flex flex-col p-[64px] gap-6 mt-[50px] items-center overflow-auto w-[750px] h-[500px]'>
-        <p className='font-mont font-bold text-[32px] capitalize'>Nice!! Entry submitted</p>
+    <div className='bg-[#fff] rounded-lg flex flex-col p-5 lg:p-[64px] gap-6 mt-[50px] items-center overflow-auto lg:w-[750px] h-[650px] lg:h-[500px]'>
+        <p className='font-mont font-bold text-[24px] lg:text-[32px] capitalize'>Nice!! Entry submitted</p>
         <p className='text-[#475467] font-mont_alt text-center text-base leading-[24px]'>
             Your entry has been submitted successfully, you will be contacted with further instructions
         </p>

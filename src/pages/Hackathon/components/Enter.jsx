@@ -21,9 +21,9 @@ const Enter = ({ setOpenSuccess, handleClose }) => {
 
 
   return (
-    <div className='bg-[#fff] rounded-lg flex flex-col p-[64px] overflow-x-hidden overflow-y-auto w-[750px] h-[500px]'>
+    <div className='bg-[#fff] rounded-lg flex flex-col p-5 lg:p-[64px] overflow-x-hidden overflow-y-auto lg:w-[750px] lg:h-[500px]'>
         <div className='flex flex-col gap-4  h-[834px] '>
-            <p className='text-[#000] font-mont text-[32px] font-bold'>The Origin of Nigeria Photo Contest</p>
+            <p className='text-[#000] font-mont text-[24px] lg:text-[32px] font-bold'>The Origin of Nigeria Photo Contest</p>
             <p className='text-[#475467] font-mont_alt text-base'>
                 Enter our photo contest for a chance to showcase your creativity and win cash prizes. 
                 Submit your best photos in any category and impress our judges with your technical skills, 
