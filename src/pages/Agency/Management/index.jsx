@@ -101,7 +101,7 @@ const Management = () => {
 
   return (
     <div className='flex flex-col'>
-        <div className=' px-[100px] py-[19px] flex items-center justify-between '>
+        <div className='hidden  px-[100px] py-[19px] lg:flex items-center justify-between '>
             <div className='flex gap-1 items-center'>
                 <p className='text-[#00AA55] font-manja font-bold text-base '>National Orientation Agency</p>
                 <IoChevronForwardOutline className='mb-1'/>
@@ -109,11 +109,12 @@ const Management = () => {
             </div>
         </div>
 
-        <div className='px-[100px] flex flex-col gap-[72px]  mb-[72px] relative mt-5'>
+        <div className='lg:px-[100px] flex flex-col gap-[72px]  mb-[72px] relative mt-10 lg:mt-5'>
             <div 
                 style={{ background: `url(${BG})`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}        
-                className='flex flex-col h-[590px]'
+                className='flex flex-col h-[507px] lg:h-[590px]'
             >
+                <div className='lg:hidden flex-grow'></div>
                 <div className='flex justify-end w-full'>
                     <div className='bg-[#014322] flex flex-col w-[326px] mt-4 gap-6 p-5 h-[234px]'>
                         <div className='flex gap-3'>
@@ -136,9 +137,8 @@ const Management = () => {
                         </div>
 
                     </div>
-
                 </div>
-                <div className='flex-grow'></div> {/* This div will take up the remaining space */}
+                <div className='hidden lg:flex flex-grow'></div> {/* This div will take up the remaining space */}
                 <div
                     className='bg-[#01432233] w-full flex flex-col h-[92px] py-5 px-6'
                 >
@@ -147,67 +147,69 @@ const Management = () => {
                 </div>
             </div>
 
-            <div className='flex flex-col gap-4 w-full  p-5 border border-[#ccc] rounded-xl'>
-                <div className='flex items-center justify-between' onClick={() => handleBackgroundDropDown()}>
-                    <p className='text-[24px] font-mont_alt font-bold text-[#222]'>Professional Background</p>
-                    {openBackgroundDropdown ? <IoIosArrowUp className='text-[#ccc] text-[32px]'/> : <IoIosArrowDown className='text-[#ccc] text-[32px]' />}
+            <div className='px-3 w-full lg:px-0'>
+                <div className='flex flex-col gap-4 w-full p-5 border border-[#ccc] rounded-xl'>
+                    <div className='flex items-center justify-between' onClick={() => handleBackgroundDropDown()}>
+                        <p className='text-base lg:text-[24px] font-mont_alt font-bold text-[#222]'>Professional Background</p>
+                        {openBackgroundDropdown ? <IoIosArrowUp className='text-[#ccc] text-[32px]'/> : <IoIosArrowDown className='text-[#ccc] text-[32px]' />}
+                    </div>
+                    {openBackgroundDropdown && (
+                        <p className='font-mont_alt text-[#5F6368] text-sm lg:text-[20px]'>
+                            A specialist in strategic public communication planning, with vast experience in corporate and political communication, crisis communication, policy
+                            analysis and development issues. Did courses in Advanced Public Relations and Media Audience Research at the New York University, United States, and attended several seminars and conferences in the US and UK, including at the prestigious World Advertising Research Council (WARC) in London, UK.
+                            Associate Member of the Public Relations Society of America (PRSA) and member of the Public Relations Society of New York. A Corporate Member of
+                            the International Communications Conference (ICC) at the Baruch College, State University of New York, U.S.A. Member of Council of Nigeria Institute of
+                            Public Relations (NIPR), and an associate member of the Advertising Practitioners Council of Nigeria (APCON). Worked variously as a media
+                            relations executive and journalist and as a policy and development issues strategist, public perception analyst and communication planner in the last 33
+                            years. Joined the Comet Newspapers in Lagos as a News Editor and later Thisday Newspapers as Assistant Editor, Sunday Thisday. Resigned as Group
+                            Politics Editor, Thisday Newspapers. Worked for the World Investment News(Winne), France, for the production of a special report on Nigeria's democratization process, published in the June 1999 edition of FORBES International Business magazine.
+                        </p>
+                    )}
                 </div>
-                {openBackgroundDropdown && (
-                    <p className='font-mont_alt text-[#5F6368] text-[20px]'>
-                        A specialist in strategic public communication planning, with vast experience in corporate and political communication, crisis communication, policy
-                        analysis and development issues. Did courses in Advanced Public Relations and Media Audience Research at the New York University, United States, and attended several seminars and conferences in the US and UK, including at the prestigious World Advertising Research Council (WARC) in London, UK.
-                        Associate Member of the Public Relations Society of America (PRSA) and member of the Public Relations Society of New York. A Corporate Member of
-                        the International Communications Conference (ICC) at the Baruch College, State University of New York, U.S.A. Member of Council of Nigeria Institute of
-                        Public Relations (NIPR), and an associate member of the Advertising Practitioners Council of Nigeria (APCON). Worked variously as a media
-                        relations executive and journalist and as a policy and development issues strategist, public perception analyst and communication planner in the last 33
-                        years. Joined the Comet Newspapers in Lagos as a News Editor and later Thisday Newspapers as Assistant Editor, Sunday Thisday. Resigned as Group
-                        Politics Editor, Thisday Newspapers. Worked for the World Investment News(Winne), France, for the production of a special report on Nigeria's democratization process, published in the June 1999 edition of FORBES International Business magazine.
-                    </p>
-                )}
             </div>
 
-            <div className='flex flex-col gap-4 w-full p-5 border border-[#ccc] rounded-xl'>
-                <div className='flex items-center justify-between' onClick={() => handleEducationDropDown()}>
-                    <p className='text-[24px] font-mont_alt font-bold text-[#222]'>Education</p>
-                    {openEducationDropdown ? <IoIosArrowUp className='text-[#ccc] text-[32px]'/> : <IoIosArrowDown className='text-[#ccc] text-[32px]' />}
+            <div className='px-3 w-full lg:px-0'>
+                <div className='flex flex-col gap-4 w-full p-5 border border-[#ccc] rounded-xl'>
+                    <div className='flex items-center justify-between' onClick={() => handleEducationDropDown()}>
+                        <p className='text-base lg:text-[24px] font-mont_alt font-bold text-[#222]'>Education</p>
+                        {openEducationDropdown ? <IoIosArrowUp className='text-[#ccc] text-[32px]'/> : <IoIosArrowDown className='text-[#ccc] text-[32px]' />}
+                    </div>
+                    {openEducationDropdown && (
+                        <p className='font-mont_alt text-[#5F6368] text-sm lg:text-[20px]'>
+                        Graduated with a BSc. Mass Communication degree from the University of Lagos and 
+                        MS Certificate in Integrated Marketing Communication from West
+                        Virginia University, Virginia, U.S.A.
+                        </p>
+                    )}
                 </div>
-                {openEducationDropdown && (
-                    <p className='font-mont_alt text-[#5F6368] text-[20px]'>
-                       Graduated with a BSc. Mass Communication degree from the University of Lagos and 
-                       MS Certificate in Integrated Marketing Communication from West
-                       Virginia University, Virginia, U.S.A.
-                    </p>
-                )}
             </div>
 
-            <div 
-                className='flex flex-col gap-[40px]'
-            >
+            <div className='flex flex-col gap-[40px] px-3 lg:px-0'>
                 <div className='flex flex-col gap-2'>
-                    <p className='font-mont_alt font-bold text-[40px] text-[#222]'>Headquaters team</p>
+                    <p className='font-mont_alt font-bold text-[24px] lg:text-[40px] text-[#222]'>Headquaters team</p>
                     <img src={Chain} alt='BigChain' className='w-[54px] h-[9px]' />
                 </div>
 
-                <div className='flex gap-[40px] items-center'>
-                    <div className='flex flex-col gap-4 w-[279px] '>
+                <div className='flex flex-col lg:flex-row gap-5 lg:gap-[40px] lg:items-center'>
+                    <div className='flex flex-col gap-4 w-full lg:w-[279px] '>
                         <img src={ManagementA} alt='ManagementA' />
                         <p className='font-manja text-[#222] text-base font-bold'>David Akoji</p>
                         <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>Special duties and state operations (SDSO)</p>
                     </div>
 
-                    <div className='flex flex-col gap-4 w-[279px] '>
+                    <div className='flex flex-col gap-4 w-full lg:w-[279px] '>
                         <img src={ManagementB} alt='ManagementB' />
                         <p className='font-manja text-[#222] text-base font-bold'>Mrs Adeola Adelaja</p>
                         <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>political, ethics, civic and values (Pcev)</p>
                     </div>
 
-                    <div className='flex flex-col gap-4 w-[279px] '>
+                    <div className='flex flex-col gap-4 w-full lg:w-[279px] '>
                         <img src={ManagementC} alt='ManagementC' />
                         <p className='font-manja text-[#222] text-base font-bold'>John Doe</p>
                         <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>human resources management (hrm)</p>
                     </div>
 
-                    <div className='flex flex-col gap-4 w-[279px] '>
+                    <div className='flex flex-col gap-4 w-full lg:w-[279px] '>
                         <img src={ManagementD} alt='ManagementD' />
                         <p className='font-manja text-[#222] text-base font-bold'>Mrs Theresa Madueke</p>
                         <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>political, ethics, civic and values (Pcev)</p>
@@ -218,13 +220,11 @@ const Management = () => {
             </div>
 
             
-            <div 
-                className='flex flex-col gap-[40px]'
-            >
-                <div className='flex flex-col items-center justify-center  gap-2'>
+            <div className='flex flex-col gap-[40px]'>
+                <div className='flex flex-col lg:items-center justify-center  gap-2 px-3 lg:px-0'>
                     <img src={Chain} alt='BigChain' className='w-[54px] h-[9px]' />
-                    <p className='font-mont_alt font-bold text-[40px] text-[#222]'>Meet our State Directors</p>
-                    <p className='w-[522px] text-center text-[20px] text-[#5F6368] font-mont_alt '>
+                    <p className='font-mont_alt font-bold text-[20px] lg:text-[40px] text-[#222]'>Meet our State Directors</p>
+                    <p className='lg:w-[522px] lg:text-center text-sm lg:text-[20px] text-[#5F6368] font-mont_alt '>
                         State Directorates are responsible for implementing the Agency’s programmes 
                         at the State level. They also supervise and monitor
                         programmes implementation by the Local Government Offices.
