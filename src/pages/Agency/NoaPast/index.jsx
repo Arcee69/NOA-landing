@@ -140,7 +140,7 @@ const NoaPast = () => {
 
   return (
     <div className='flex flex-col bg-[#F5F5F5]'>
-        <div className=' px-[100px] py-[19px] flex items-center justify-between '>
+        <div className='hidden px-[100px] py-[19px] lg:flex items-center justify-between '>
             <div className='flex gap-1 items-center'>
                 <p className='text-[#00AA55] font-manja font-bold text-base '>National Orientation Agency</p>
                 <IoChevronForwardOutline className='mb-1'/>
@@ -148,21 +148,21 @@ const NoaPast = () => {
             </div>
         </div>
 
-        <div className='flex flex-col items-center justify-center gap-[17px] mt-[40px]'>
-            <p className='text-[36px] font-mont_alt  font-bold text-[#222222]'>NOA Past Chief Executives</p>
+        <div className='flex flex-col items-center justify-center gap-[17px] mt-[80px] lg:mt-[40px]'>
+            <p className='text-[24px] lg:text-[36px] font-mont_alt  font-bold text-[#222222]'>NOA Past Chief Executives</p>
             <img src={BigChain} alt='BigChain' className='w-[118px] h-[12px]' />
-            <p className='font-manja text-[#757575] text-[15px]'>PAST DIRECTORS OF MAMSER & DIRECTOR GENERALS OF THE AGENCY</p>
+            <p className='font-manja text-[#757575] text-center text-[15px]'>PAST DIRECTORS OF MAMSER & DIRECTOR GENERALS OF THE AGENCY</p>
         </div>
 
-        <div className='w-full mt-[99px] px-[100px]'>
+        <div className='w-full mt-[24px] lg:mt-[99px] px-5 lg:px-[100px]'>
             <Slider {...settings}>
                 {
                     data?.map((item) => (
                         <div className='flex flex-col items-center justify-center gap-4'>
-                            <img src={item?.pic} alt='Profile_photo' className='h-[640px]' />
-                            <p className='font-manja text-[32px] text-center mt-4 text-[#222222] font-bold'>{item?.name}</p>
-                            <p className='font-manja text-[#00AA55] text-center text-xl font-bold'>{item?.date}</p>
-                            <p className='font-manja text-[#00AA55] text-center  text-xl font-bold'>{item?.position}</p>
+                            <img src={item?.pic} alt='Profile_photo' className='lg:h-[640px] h-[340px]' />
+                            <p className='font-manja text-base lg:text-[32px] text-center mt-4 text-[#222222] font-bold'>{item?.name}</p>
+                            <p className='font-manja text-[#00AA55] text-center text-sm lg:text-xl font-bold'>{item?.date}</p>
+                            <p className='font-manja text-[#00AA55] text-center  text-sm lg:text-xl font-bold'>{item?.position}</p>
 
                         </div>
                     ))
