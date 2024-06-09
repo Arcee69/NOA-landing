@@ -149,7 +149,7 @@ const ContentFactory = () => {
 
     return (
         <div className='flex flex-col'>
-            <div className='bg-[#fff] px-[100px] py-[19px] flex items-center justify-between '>
+            <div className='bg-[#fff] px-[100px] py-[19px] hidden  lg:flex items-center justify-between '>
                 <div className='flex gap-1 items-center'>
                     <p className='text-[#00AA55] font-manja font-bold text-base '>National Orientation Agency</p>
                     <IoChevronForwardOutline className='mb-1'/>
@@ -158,17 +158,17 @@ const ContentFactory = () => {
             </div>
             <div
                 style={{ background:`url(${Media})`, backgroundSize:"cover", backgroundRepeat:"no-repeat" }}
-                className="flex items-center justify-center pb-[160px]  pt-[64px] h-[403px]"
+                className="flex items-center justify-center pb-[100px] lg:pb-[160px] pt-[100px] lg:pt-[64px] lg:h-[403px]"
             >
                 <div className="flex flex-col items-center gap-[19px]">
-                    <p className="font-manja w-[558px] font-bold text-[48px] leading-[56px] text-center text-[#fff]">Welcome to the NOA content factory</p>
-                    <p className="font-mont_alt w-[355px] text-base text-[#fff] text-center">Quality and informative content to the general citizenry is our priority</p>
+                    <p className="font-manja w-[295px] lg:w-[558px] font-bold text-[24px] lg:text-[48px] leading-[32px] lg:leading-[56px] text-center text-[#fff]">Welcome to the NOA content factory</p>
+                    <p className="font-mont_alt w-[336px] lg:w-[355px] text-base text-[#fff] text-center">Quality and informative content to the general citizenry is our priority</p>
                 </div>
             </div>
-            <div className="w-[960px] relative bottom-10 mx-auto shadow-xl flex items-center">
-                <div className="w-[864px] flex h-[80px]  bg-[#fff] p-4">
+            <div className="lg:w-[960px] relative bottom-10 mx-auto shadow-xl flex items-center">
+                <div className="lg:w-[864px] flex h-[80px]  bg-[#fff] p-4">
                     <input 
-                        className="bg-transparent outline-none font-mont_alt text-[20px] w-full"
+                        className="bg-transparent outline-none font-mont_alt text-base lg:text-[20px] w-full"
                         name="search"
                         type="text"
                         placeholder="Search any radio or video channel"
@@ -182,12 +182,12 @@ const ContentFactory = () => {
                 <img src={Industry} alt='industry' />
             </div>
 
-            <div className="mt-[80px] flex flex-col gap-[40px] px-[100px]">
+            <div className="mt-[80px] flex flex-col gap-[40px] px-5 lg:px-[100px]">
                 <div className="flex flex-col gap-2">
                     <p className="font-manja font-bold text-[27px]">Media Platforms</p>
                     <img src={Chain} alt='Chain' className='w-[54px] h-[9px]'/>
                 </div>
-                <div className="flex items-center gap-[40px]">
+                <div className="flex flex-col lg:flex-row items-center gap-[40px]">
                     <div className="flex flex-col gap-4">
                         <img src={Tv} alt="Tv" className="w-[386px] h-[240px]"/>
                         <p className="text-[20px] font-bold font-manja ">NOA TV</p>
@@ -203,16 +203,16 @@ const ContentFactory = () => {
                 </div>
             </div>
 
-            <div className="mt-[116px] flex flex-col gap-[40px] px-[100px]">
+            <div className="mt-[116px] flex flex-col gap-[40px] px-5 lg:px-[100px]">
                 <div className="flex flex-col gap-2">
                     <p className="font-manja font-bold text-[27px]">Top Videos</p>
                     <img src={Chain} alt='Chain' className='w-[54px] h-[9px]'/>
                 </div>
-                <div className="flex items-center gap-[40px]">
+                <div className="flex flex-col lg:flex-row items-center gap-[40px]">
                     {
                         secondData?.map((item, index) => (
-                            <div className='flex flex-col w-[279px]' key={index}>
-                                <img src={item?.img} alt='Poster' className='w-[279px] h-[200px]' />
+                            <div className='flex flex-col lg:w-[279px]' key={index}>
+                                <img src={item?.img} alt='Poster' className='lg:w-[279px] lg:h-[200px]' />
                                 <div className='flex flex-col mt-4'>
                                     <p className='font-bold text-[#222222] '>{item?.title}</p>
                                     <div className='flex items-center gap-1.5'>
@@ -234,7 +234,7 @@ const ContentFactory = () => {
                 </div>
             </div>
                 
-            <div className="mt-[144px] mb-[103px] flex flex-col gap-[40px] px-[100px]">
+            <div className="mt-[144px] mb-[103px] flex flex-col gap-[40px] px-5 lg:px-[100px]">
                 <div className="flex flex-col gap-2">
                     <p className="font-manja font-bold text-[27px]">Top Publications</p>
                     <img src={Chain} alt='Chain' className='w-[54px] h-[9px]'/>
@@ -244,7 +244,7 @@ const ContentFactory = () => {
                         {
                             data?.map((item, index) => (
                                 <div key={index} className='flex flex-col '>
-                                    <img src={item?.img} alt='Poster' className='w-[279px] h-[200px]' />
+                                    <img src={item?.img} alt='Poster' className='lg:w-[279px] lg:h-[200px]' />
                                     <div className='flex flex-col mt-4'>
                                         <p className='font-bold text-[#222222] '>{item?.title}</p>
                                         <div className='flex items-center gap-1.5'>

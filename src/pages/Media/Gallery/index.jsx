@@ -21,7 +21,7 @@ const Gallery = () => {
 
   return (
     <div className='flex flex-col'>
-        <div className='bg-[#fff] px-[100px] py-[19px] flex items-center justify-between '>
+        <div className='bg-[#fff] px-[100px] py-[19px] hidden lg:flex items-center justify-between '>
             <div className='flex gap-1 items-center'>
                 <p className='text-[#00AA55] font-manja font-bold text-base '>National Orientation Agency</p>
                 <IoChevronForwardOutline className='mb-1'/>
@@ -34,12 +34,12 @@ const Gallery = () => {
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
             }}
-            className='w-full h-[290px] flex items-center justify-center flex-col'
+            className='w-full h-[212px] lg:h-[290px] mt-10 lg:mt-0 flex items-center justify-center flex-col'
         >
-            <p className='w-[558px] text-center font-manja font-bold text-[48px] leading-[56px] text-[#fff]'>Welcome to the NOA Gallery</p>
+            <p className='w-[210px] lg:w-[558px] text-center font-manja font-bold text-[24px] lg:text-[48px] leading-[32px] lg:leading-[56px] text-[#fff]'>Welcome to the NOA Gallery</p>
         </div>
 
-        <div className='px-[100px] flex flex-col mt-[56px]'>
+        <div className='px-5 lg:px-[100px] flex flex-col mt-[56px]'>
             <div className='w-[286px] h-[40px] flex items-center border rounded-lg'>
                 <div className={`${activeTab === "Pictures" ? "bg-[#00AA55]" : "bg-[#fff]"} cursor-pointer w-[90px] px-4 py-[9px] flex items-center`} onClick={() => handleTabChange("Pictures")}>
                     <p className={`${activeTab === "Pictures" ? "text-[#fff]" : "text-[#344054]"} font-mont_alt font-medium text-sm`}>Pictures</p>
