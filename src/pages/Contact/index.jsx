@@ -24,21 +24,21 @@ const Contact = () => {
 
   return (
     <div className='flex flex-col'>
-        <div className='bg-[#fff] px-[100px] py-[19px] flex items-center justify-between '>
+        <div className='bg-[#fff] px-[100px] py-[19px] hidden lg:flex items-center justify-between '>
             <div className='flex gap-1 items-center'>
                 <p className='text-[#00AA55] font-manja font-bold text-base '>National Orientation Agency</p>
                 <IoChevronForwardOutline className='mb-1'/>
                 <p className='text-[#222222] font-bold text-base font-manja'>Contact</p>
             </div>
         </div>
-        <div className='bg-[#F5F5F5] mt-[40px] py-[56px] flex w-full items-center justify-center px-[100px]'>
-            <div className='bg-[#fff] w-[90%] px-[15px] py-[110px] flex justify-between relative'>
-                <div className='flex flex-col'>
+        <div className='bg-[#F5F5F5] mt-[40px] py-[56px] flex w-full items-center justify-center px-5 lg:px-[100px]'>
+            <div className='bg-[#fff] w-full lg:w-[90%] px-[15px] py-5 lg:py-[110px] flex flex-col lg:flex-row gap-5 justify-between lg:relative'>
+                <div className='hidden lg:flex flex-col'>
                     <img src={Sanitation} alt='Sanitation' className='w-[330px] h-[247px]' />
                     <img src={Radio} alt='Radio' className='w-[330px] h-[247px]' />
                 </div>
 
-                <div className='w-[300px] h-[460px] top-48 bg-[#fff] flex flex-col gap-[40px] left-44 shadow-xl absolute px-[30px] py-[40px]'>
+                <div className='w-full lg:w-[300px] h-[460px] lg:top-48 bg-[#fff] flex flex-col gap-[40px] lg:left-44 lg:shadow-xl lg:absolute lg:px-[30px] py-[40px]'>
                     <div className='flex flex-col gap-[10px]'>
                         <p className='font-arimo text-[#222222] font-bold text-[18px]'>Quick contact</p>
                         <div className='flex items-start gap-[22px]'>
@@ -75,11 +75,11 @@ const Contact = () => {
 
                 </div>
 
-                <div className='flex flex-col gap-[29px] w-[500px]'>
+                <div className='flex flex-col gap-[29px] lg:w-[500px]'>
                     <div className='flex flex-col gap-[11px]'>
-                        <p className='font-manja text-[36px] font-bold'>We're Here to Help You</p>
+                        <p className='font-manja text-[24px] lg:text-[36px] font-bold'>We're Here to Help You</p>
                         <img src={Chain} alt='Chain' className='w-[54px] ' />
-                        <p className='font-mont_alt text-[#757575] text-[15px] w-[444px]'>
+                        <p className='font-mont_alt text-[#757575] text-[15px] lg:w-[444px]'>
                             Send us a message if you have any question, we’re here to help!.
                         </p>
                     </div>
@@ -109,7 +109,7 @@ const Contact = () => {
                             values,
                         }) => (
                             <Form onSubmit={handleSubmit} className="flex flex-col ">
-                                <div className='flex flex-col gap-6  h-[47px]'>
+                                <div className='flex flex-col gap-6  '>
                         
                                     <div className="flex flex-col ">
                                         <input
