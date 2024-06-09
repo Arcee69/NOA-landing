@@ -12,7 +12,6 @@ import Suggestion from "../../../assets/png/suggestion.png"
 import CallB from "../../../assets/svg/call.svg"
 import Time from "../../../assets/svg/time.svg"
 import Mail from "../../../assets/svg/mail.svg"
-
 import Download from "../../../assets/svg/download.svg"
 
 const FOI = () => {
