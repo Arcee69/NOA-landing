@@ -18,7 +18,7 @@ const FOI = () => {
   return (
     <div className='flex flex-col'>
 
-        <div className='px-[100px] py-[19px] flex items-center justify-between '>
+        <div className='px-[100px] py-[19px] hidden lg:flex items-center justify-between '>
             <div className='flex gap-1 items-center'>
                 <p className='text-[#00AA55] font-manja font-bold text-base '>National Orientation Agency</p>
                 <IoChevronForwardOutline className='mb-1'/>
@@ -26,16 +26,17 @@ const FOI = () => {
             </div>
         </div>
 
-        <div className='flex flex-col mx-auto items-center justify-center w-[564px] mt-[62px] mb-[70px] gap-[15px] '>
-            <p className='text-[#222] font-manja text-[36px] font-bold text-center'>
+        <div className='flex flex-col lg:mx-auto items-center justify-center lg:w-[564px] mt-[62px] mb-[70px] gap-[15px] '>
+            <p className='text-[#222] font-manja text-[24px] lg:text-[36px] font-bold text-center'>
                 PUBLICISING THE FREEDOM OF INFORMATION ACT, 2011 (FOIA) AND THE NOA FoI UNIT
             </p>
             <img src={BigChain} alt='BigChain' className='w-[118px] h-[12px]' />
         </div>
 
-        <div className='flex flex-col gap-5 mb-[85px] px-[210px]'>
-            <div className='flex items-start gap-[30px]'>
-                <div className='flex flex-col gap-[15px] w-[639px]'>
+        <div className='flex flex-col gap-5 mb-[85px] px-5 lg:px-[210px]'>
+            <div className='flex flex-col lg:flex-row items-start gap-[30px]'>
+                <img src={Foi} alt='Foi' className='w-[319px] lg:hidden flex h-[425px]' />
+                <div className='flex flex-col gap-[15px] lg:w-[639px]'>
                     <p className='text-[#7A7A7A] font-medium text-[15px] font-mont_alt'>
                         Prior to the enactment of the Freedom of Information Act (FOI Act) in 2011 and
                         several months after that, not many Nigerians could authoritatively discuss the
@@ -62,12 +63,12 @@ const FOI = () => {
                     </p>
 
                 </div>
-                <img src={Foi} alt='Foi' className='w-[319px] h-[425px]' />
+                <img src={Foi} alt='Foi' className='w-[319px] hidden lg:flex h-[425px]' />
             </div>
 
-            <div className='flex items-start mt-[40px] gap-[30px]'>
+            <div className='flex flex-col lg:flex-row items-start mt-[40px] gap-[30px]'>
                 <img src={Culture} alt='Culture' className='w-[319px] h-[425px]' />
-                <div className='flex flex-col gap-[15px] w-[639px]'>
+                <div className='flex flex-col gap-[15px] lg:w-[639px]'>
                     <p className='text-[#7A7A7A] font-medium text-[15px] font-mont_alt'>
                         To achieve this, it is reasoned that it is necessary to train trainers on the
                         provisions of the Act, who would, in turn step down the training for field officers
@@ -104,10 +105,10 @@ const FOI = () => {
 
         </div>
 
-        <div className='bg-[#F5F5F5] flex flex-col py-[56px] items-center gap-3 justify-center px-[100px]'>
-            <div className='flex flex-col items-center justify-center gap-4 w-[480px] h-[217px]'>
+        <div className='bg-[#F5F5F5] flex flex-col py-[56px] items-center gap-3 justify-center px-5 lg:px-[100px]'>
+            <div className='flex flex-col items-center justify-center gap-4 lg:w-[480px] h-[217px]'>
                 <img src={Chain} alt='Chain' className='w-[54px] h-[9px]' />
-                <p className='text-[#222222] font-mont_alt font-bold text-[40px] leading-[56px] text-center'>Download resources from NOA</p>
+                <p className='text-[#222222] font-mont_alt font-bold text-[24px] lg:text-[40px] leading-[32px] lg:leading-[56px] text-center'>Download resources from NOA</p>
             </div>
             <div className='flex flex-wrap gap-[30px]'>
                 <div className='w-full lg:w-[605px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
@@ -155,26 +156,26 @@ const FOI = () => {
 
         </div>
 
-        <div className='flex flex-col gap-[40px] px-[100px] pt-[82px] pb-[52px]'>
+        <div className='flex flex-col gap-[40px] px-5 lg:px-[100px] pt-[82px] pb-[52px]'>
             <div className='flex flex-col gap-1'>
                 <p className='text-[#222] font-bold text-[27px] font-mont_alt'>Relevant information</p>
                 <img src={Chain} alt='Chain' className='w-[54px] h-[9px]' />
             </div>
-            <div className='flex items-center gap-[40px]'>
-                <div className='flex gap-6 flex-col items-center justify-center w-[386px]'>
-                    <img src={BigLogo} alt='BigLogo' className='w-[386px] h-[200px] ' />
+            <div className='flex flex-col lg:flex-row items-center gap-[40px]'>
+                <div className='flex gap-6 flex-col items-center justify-center lg:w-[386px]'>
+                    <img src={BigLogo} alt='BigLogo' className='lg:w-[386px] h-[200px] ' />
                     <p className='text-[#222] font-manja font-bold text-base'>
                         OPEN GOVERNMENT PARTNERSHIP (OGP) NAP III DOCUMENT FOR PUBLIC REVIEW: REQUEST FOR INPUTS
                     </p>
                 </div>
-                <div className='flex gap-6 flex-col items-center justify-center w-[386px]'>
-                    <img src={Opg} alt='Opg' className='w-[386px]  h-[200px]' />
+                <div className='flex gap-6 flex-col items-center justify-center lg:w-[386px]'>
+                    <img src={Opg} alt='Opg' className='lg:w-[386px]  h-[200px]' />
                     <p className='text-[#222] font-manja font-bold text-base'>
                         DOCUMENT: Draft Open Government Partnership – National Action Plan III
                     </p>
                 </div>
-                <div className='flex gap-6 flex-col items-center justify-center w-[386px]'>
-                    <img src={BigLogo} alt='BigLogo' className='w-[386px] h-[200px] ' />
+                <div className='flex gap-6 flex-col items-center justify-center lg:w-[386px]'>
+                    <img src={BigLogo} alt='BigLogo' className='lg:w-[386px] h-[200px] ' />
                     <p className='text-[#222] font-manja font-bold text-base'>
                         2021 ANNUAL REPORT (NATIONAL ORIENTATION AGENCY)
                     </p>
@@ -184,10 +185,10 @@ const FOI = () => {
 
         </div>
 
-        <div className='bg-[#222222] flex flex-col  py-[56px] items-center gap-3 justify-center px-[100px] '>
-            <div className='flex flex-col items-center justify-center gap-4 w-[480px] h-[217px]'>
+        <div className='bg-[#222222] flex flex-col  py-[56px] items-center gap-3 justify-center px-5 lg:px-[100px] '>
+            <div className='flex flex-col items-center justify-center gap-4 lg:w-[480px] h-[217px]'>
                 <img src={Chain} alt='Chain' className='w-[54px] h-[9px]' />
-                <p className='text-[#fff] font-mont_alt font-bold text-[40px] leading-[56px] text-center'>The freedom of information unit</p>
+                <p className='text-[#fff] font-mont_alt font-bold text-[27px] lg:text-[40px] leading-[32px] lg:leading-[56px] text-center'>The freedom of information unit</p>
             </div>
             <div className='flex flex-wrap gap-[30px]'>
                 <div className='w-full lg:w-[604px] lg:h-[63px] py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
@@ -235,8 +236,8 @@ const FOI = () => {
         </div>
         
         <div className='bg-[#fff] w-full py-[80px]'>
-            <div className='w-[554px] mx-auto flex flex-col items-center gap-6'>
-                <p className='font-bold text-[#222222] font-mont_alt text-[32px] leading-[40px] text-center'>
+            <div className='lg:w-[554px] mx-auto flex flex-col items-center gap-6'>
+                <p className='font-bold text-[#222222] font-mont_alt text-[24px] lg:text-[32px] leading-[40px] text-center'>
                     While some information have been proactively disclosed on this website, 
                     you can request for information
                 </p>
