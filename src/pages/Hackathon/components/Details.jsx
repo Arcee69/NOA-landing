@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom';
 
 import Nigeria from "../../../assets/png/nigeria.png"
 import Origin from "../../../assets/png/origin.png"
@@ -6,11 +7,15 @@ import ModalPop from '../../../components/modalPop';
 import Enter from './Enter';
 import Success from './Success';
 
+
 const Details = () => {
     const [openEnter, setOpenEnter] = useState(false);
     const [openSuccess, setOpenSuccess] = useState(false);
 
-    const targetDate = '2024-06-31T23:59:59';
+    const { state } = useLocation()
+    console.log(state, "asper")
+
+    const targetDate = `${state?.end_date}T23:59:59` ||  '2024-06-31T23:59:59';
 
     const calculateTimeLeft = () => {
         const difference = +new Date(targetDate) - +new Date();
@@ -46,8 +51,15 @@ const Details = () => {
                 className='flex flex-col lg:flex-row w-full rounded-lg items-center py-[14px] justify-center gap-[48px]'
                 style={{ background: "linear-gradient(84deg, #F8A401 -20.27%, #70C217 20.45%, rgba(112, 194, 23, 0.69) 75.32%, #FFF 102.87%)"}}
             >
-                <img src={Nigeria} alt='Nigeria' className='lg:w-[256px]' />
-                <img src={Origin} alt='Origin' className='lg:w-[501px]'/>
+                {
+                    !state?.flier ? 
+                    <img src={state?.flier} alt='Nigeria ' />
+                    :
+                    <>
+                        <img src={Nigeria} alt='Nigeria' className='lg:w-[256px]' />
+                        <img src={Origin} alt='Origin' className='lg:w-[501px]'/>
+                    </>
+                }
             </div>
 
             <div className='border border-[#E6E6E6] rounded-[13px] pl-5 pt-[26px] pb-[14px] flex flex-col gap-3'>
@@ -73,14 +85,15 @@ const Details = () => {
             <div className='flex flex-col lg:flex-row gap-5 lg:gap-0 items-start justify-between w-full'>
                 <div className='lg:w-[700px] flex flex-col gap-6'>
                     <div className='flex flex-col gap-3'>
-                        <p className='text-[#000000] font-mont font-bold text-[32px] capitalize'>The Origin of Nigeria Photo Contest</p>
+                        <p className='text-[#000000] font-mont font-bold text-[32px] capitalize'>{state?.title}</p>
                         <p className='text-[#5F647C] text-base font-manja font-bold'>0 participants</p>
                     </div>
                     <p className='text-[#475467] font-mont_alt text-base leading-[24px] capitalize'>
-                        Enter our photo contest for a chance to showcase your creativity and win cash prizes. 
+                        {/* Enter our photo contest for a chance to showcase your creativity and win cash prizes. 
                         Submit your best photos in any category and impress our judges with your technical skills, 
                         originality, and emotional impact. The top three winners will be featured on our website and 
-                        social media. Good luck!
+                        social media. Good luck! */}
+                        {state?.desc}
                     </p>
                     <p className='text-[#000000] font-manja text-[24px] font-bold'>Theme: <span className='text-base font-mont_alt font-normal' >“The Origin of Nigeria”</span></p>
                     <div className='flex flex-col'>
@@ -101,9 +114,10 @@ const Details = () => {
                     <div className='flex flex-col'>
                         <p className='text-[#000000] font-manja text-[24px] font-bold'>Judging Criteria:</p>
                         <ul className='list-disc ml-10'>
-                            <li className='text-base font-mont_alt font-normal'>Creativity and originality</li>
+                            <li className='text-base font-mont_alt font-normal'>{state?.criteria}</li>
+                            {/* <li className='text-base font-mont_alt font-normal'>Creativity and originality</li>
                             <li className='text-base font-mont_alt font-normal'>Relevance to the theme</li>
-                            <li className='text-base font-mont_alt font-normal'>Technical quality (composition, lighting, focus)</li>
+                            <li className='text-base font-mont_alt font-normal'>Technical quality (composition, lighting, focus)</li> */}
                         </ul>
                     </div>
                     <div className='flex flex-col'>
@@ -117,7 +131,7 @@ const Details = () => {
                     <div className='flex flex-col'>
                         <p className='text-[#000000] font-manja text-[24px] font-bold'>Submission Deadline:</p>
                         <ul className='list-disc ml-10'>
-                            <li className='text-base font-mont_alt font-normal'>All entries must be submitted by [deadline date].</li>
+                            <li className='text-base font-mont_alt font-normal'>All entries must be submitted by {state?.end_date}.</li>
                         </ul>
                     </div>
                     <div className='flex flex-col'>
@@ -175,7 +189,10 @@ const Details = () => {
                             >
                                 Enter Contest
                             </button>
-                            <button className='bg-[#88BD91] rounded-lg w-[310px] flex items-center justify-center h-[51px] text-[#FFFFFF] font-manja text-base font-bold'>
+                            <button 
+
+                                className='bg-[#88BD91] rounded-lg w-[310px] flex items-center justify-center h-[51px] text-[#FFFFFF] font-manja text-base font-bold'
+                            >
                                 Vote
                             </button>
                         </div>
@@ -196,6 +213,7 @@ const Details = () => {
             <Enter  
                 setOpenSuccess={setOpenSuccess} 
                 handleClose={() => setOpenEnter(false)}
+                data={state}
             />
         </ModalPop>
 

@@ -1,12 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Formik } from "formik"
 import { CgSpinner } from 'react-icons/cg'
+import { toast } from 'react-toastify'
+import axios from 'axios'
+import { IoClose } from "react-icons/io5";
 
 import UploadIcon from "../../../assets/png/upload_icon.png"
 
-const Enter = ({ setOpenSuccess, handleClose }) => {
+
+const Enter = ({ setOpenSuccess, handleClose, data }) => {
     const [loading, setLoading] = useState(false)
     const [userImage, setUserImage] = useState(null)
+    const [getStates, setGetStates ] = useState()
+    const [stateType, setStateType] = useState([])
+    const [lgasType, setLgasType] = useState([])
+    const [getLgas, setGetLgas] = useState()
 
     const openCloseModal = () => {
         setOpenSuccess(true)
@@ -18,12 +26,78 @@ const Enter = ({ setOpenSuccess, handleClose }) => {
         setUserImage(selectedFile)
     };
 
+    console.log(getStates, "getStates")
+    console.log(stateType, "getStates")
+    
+    const fetchStates = async () => {
+        await axios.get("https://hackathon.smhptech.com/api/state")
+        .then((res) => {
+            console.log(res, "dodo")
+            setStateType(res?.data?.data?.states)
+        })
+        .catch((err) => {
+            console.log(err, "asun")
+        })
+    }
+
+    useEffect(() => {
+        fetchStates()
+    }, [])
+
+    const fetchLgas = async () => {
+        await axios.get(`https://hackathon.smhptech.com/api/lga/state/${getStates}`)
+        .then((res) => {
+            console.log(res, "dodo")
+            setLgasType(res?.data?.data?.lgas)
+        })
+        .catch((err) => {
+            console.log(err, "asun")
+        })
+    }
+
+    useEffect(() => {
+        fetchLgas()
+    }, [getStates])
+
+
+    const submitForm = async (values) => {
+        const formData = new FormData()
+        formData.append("contest_id", `${data?.id}`)
+        formData.append("first_name", values?.firstName)
+        formData.append("last_name", values?.lastName)
+        formData.append("email", values?.email)
+        formData.append("phone_number", values?.phone)
+        formData.append("nin", values?.identification)
+        formData.append("dob", values?.dob)
+        formData.append("state_id", values?.state)
+        formData.append("lga_id", values?.lga)
+        formData.append("file", userImage)
+
+        await axios.post("https://hackathon.smhptech.com/api/entry/create", formData)
+        .then((res) => {
+            console.log(res, "fassa")
+            toast(`${res?.data?.message}`, { 
+                position: "top-right",
+                autoClose: 3500,
+                closeOnClick: true,
+            });
+            openCloseModal()
+        })
+        .catch((err) => {
+            console.log(err, "lassa")
+            toast(`${err?.response?.data?.message}`, { 
+                position: "top-right",
+                autoClose: 3500,
+                closeOnClick: true,
+            });
+        })
+    }
 
 
   return (
-    <div className='bg-[#fff] rounded-lg flex flex-col p-5 lg:p-[64px] overflow-x-hidden overflow-y-auto lg:w-[750px] lg:h-[500px]'>
+    <div className='bg-[#fff] rounded-lg flex flex-col p-5 mt-[50px] lg:p-[64px] overflow-x-hidden overflow-y-auto lg:w-[750px] lg:h-[500px]'>
         <div className='flex flex-col gap-4  h-[834px] '>
-            <p className='text-[#000] font-mont text-[24px] lg:text-[32px] font-bold'>The Origin of Nigeria Photo Contest</p>
+            <p className='text-[#000] font-mont text-[24px] lg:text-[32px] font-bold'>{data?.title}</p>
             <p className='text-[#475467] font-mont_alt text-base'>
                 Enter our photo contest for a chance to showcase your creativity and win cash prizes. 
                 Submit your best photos in any category and impress our judges with your technical skills, 
@@ -36,17 +110,18 @@ const Enter = ({ setOpenSuccess, handleClose }) => {
                         firstName: "",
                         lastName: "",
                         dob: "",
+                        phone: "",
                         email: "",
                         state: "",
-                        residence: "",
+                        lga: "",
+                        // residence: "",
                         identification: ""
                     }}
                     //   validationSchema={formValidationSchema}
                     onSubmit={(values) => {
                         window.scrollTo(0, 0)
                         console.log(values, "often")
-                        // submitForm(values)
-                        openCloseModal()
+                        submitForm(values)
                     }}
                 >
                 {({
@@ -100,7 +175,7 @@ const Enter = ({ setOpenSuccess, handleClose }) => {
                             <input
                                 name="dob"
                                 placeholder="Date of Birth"
-                                type="text" 
+                                type="date" 
                                 value={values.dob}
                                 onChange={handleChange}
                                 className="rounded-lg border-[#D0D5DD] w-full outline-none mt-1.5 h-[51px] border-solid  p-3 border"
@@ -144,7 +219,7 @@ const Enter = ({ setOpenSuccess, handleClose }) => {
 
 
                         <div className='w-full flex items-center gap-2.5'>
-                            <div className="flex flex-col w-full">
+                            {/* <div className="flex flex-col w-full">
                                 <label htmlFor='State of origin' className="font-bold font-manja text-sm text-[#101928]">State of origin</label>
                                 <input
                                     name="state"
@@ -157,9 +232,37 @@ const Enter = ({ setOpenSuccess, handleClose }) => {
                                 {errors.state && touched.state ? (
                                 <div className='text-RED-_100'>{errors.state}</div>
                                 ) : null}
+                            </div> */}
+                            <div className='flex flex-col w-full'>
+                                <label htmlFor='State of origin' className="font-bold font-manja text-sm text-[#101928]">State of origin</label>
+                                <select 
+                                    name="state"
+                                    placeholder="State of origin"
+                                    onChange={(e) => {
+                                        const selectedState = e.target.value;
+                                        setGetStates(selectedState);
+                                        setFieldValue("state", selectedState)
+                                        setGetLgas(""); // Reset sector when changing industry
+                                      }}
+                                    value={values?.state}
+                                   
+                                    className="rounded-lg border-[#D0D5DD] w-full outline-none mt-1.5 h-[51px] border-solid  p-3 border"
+                                >
+                                    <option value="">Select State</option>
+                                    {
+                                        stateType.map((item, index) => {
+                                            return (
+                                                <option key={item?.id} value={item?.id}>{item?.name}</option>
+                                            )
+                                        })
+                                    }
+                                </select>
+                                {errors.state && touched.state ? (
+                                <div className='text-RED-_100'>{errors.state}</div>
+                                ) : null}
                             </div>
 
-                            <div className="w-full flex flex-col ">
+                            {/* <div className="w-full flex flex-col ">
                                 <label htmlFor='State of residence' className="font-bold font-manja text-sm text-[#101928]">State of residence</label>
                                 <input
                                     name="residence"
@@ -172,7 +275,38 @@ const Enter = ({ setOpenSuccess, handleClose }) => {
                                 {errors.residence && touched.residence ? (
                                 <div className='text-RED-_100'>{errors.residence}</div>
                                 ) : null}
+                            </div> */}
+
+                            <div className='flex flex-col w-full'>
+                            <label htmlFor='LGA' className="font-bold font-manja text-sm text-[#101928]">LGA </label>
+                            <select 
+                                    name="lga"
+                                    placeholder="Select Lga"
+                                    onChange={(e) => {
+                                        const selectedLgas = e.target.value;
+                                        setGetLgas(selectedLgas);
+                                        setFieldValue("lga", selectedLgas)
+                                      }}
+                                    value={values?.lga}
+                                   
+                                    className="rounded-lg border-[#D0D5DD] w-full outline-none mt-1.5 h-[51px] border-solid  p-3 border"
+                                >
+                                    <option value="">Select Lgas</option>
+                                    {
+                                        lgasType.map((item, index) => {
+                                            return (
+                                                <option key={item?.id} value={item?.id}>{item?.name}</option>
+                                            )
+                                        })
+                                    }
+                                </select>
+                                    {errors.lga && touched.lga ? (
+                                    <div className="text-RED-_100 text-xs">
+                                        {errors.lga}
+                                    </div>
+                                    ) : null}
                             </div>
+
                         </div>
 
                         <div className="w-full flex flex-col ">
@@ -194,12 +328,15 @@ const Enter = ({ setOpenSuccess, handleClose }) => {
                             <div className='p-[9px] w-full cursor-pointer flex justify-center gap-[16px] '>
                                 {  
                                     userImage?.name ? 
-                                        <div className='flex flex-col gap-1'>
+                                        <div className='flex flex-col gap-1 relative'>
                                             <div className='flex items-center justify-between'>
                                                 <p className='text-[15px] font-hanken text-[#858585]'>{userImage?.name}</p>
                                                 <p className='text-[#000] text-[11px]'>Completed</p>
                                             </div>
                                             <div className='w-[266px] h-[5px] bg-[#51E38B] rounded-lg'></div>
+                                            <div className='absolute -right-24 -top-7 cursor-pointer' onClick={() => setUserImage(null)}>
+                                                <IoClose className='text-[20px] text-[#666]' />
+                                            </div>
                                         </div> 
                                         :
                                         <div className='flex flex-col items-center gap-[16px]'>
