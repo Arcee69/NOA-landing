@@ -3,6 +3,7 @@ import { IoCloseOutline } from 'react-icons/io5'
 import Slider from 'react-slick'
 import { AiOutlineSend } from 'react-icons/ai'
 import "slick-carousel/slick/slick.css";
+import { useNavigate } from 'react-router-dom';
 import "slick-carousel/slick/slick-theme.css";
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import Vapi from '@vapi-ai/web';
@@ -38,6 +39,8 @@ import CallB from "../../assets/svg/call.svg"
 import Time from "../../assets/svg/time.svg"
 import Mail from "../../assets/svg/mail.svg"
 
+import MediaChat from "../../assets/vid/media_chat.mp4"
+
 
 
 const Home = () => {
@@ -45,6 +48,7 @@ const Home = () => {
   const [voxData, setVoxData] = useState([]);
   const [loading, setLoading] = useState(false)
 
+  const navigate = useNavigate()
     
   const vapi = new Vapi('5d3d4e5d-3f85-4af4-8dae-9d6527d525fc');
 
@@ -294,7 +298,58 @@ const Home = () => {
 
         </div>
 
-        <img src={isMobileView ? AddressSmall : Address} alt='Address'/>
+        <div
+    style={{ 
+        background: "#0C3923A6", 
+        backgroundRepeat: "no-repeat", 
+        backgroundSize: "cover", 
+        position: 'relative'
+    }}
+    className='w-full h-[532px] flex lg:px-[100px] py-[52px]'
+>
+    <div className="absolute inset-0 z-0">
+        <iframe 
+            width="100%" 
+            height="100%" 
+            src="https://www.youtube.com/embed/ODmsC4ybmkA?autoplay=1&mute=0&loop=0&playlist=ODmsC4ybmkA" 
+            title="YouTube video player" 
+            frameBorder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerPolicy="strict-origin-when-cross-origin" 
+            allowFullScreen
+            style={{ 
+                position: 'absolute', 
+                top: 0, 
+                left: 0, 
+                width: '100%', 
+                height: '100%' 
+            }}
+        ></iframe>
+    </div>
+    <div className='relative z-10 w-full flex lg:flex-row flex-col gap-5 justify-between mx-auto'>
+        <p className='text-[#fff] font-bold font-mont_alt text-[24px]'>The DG's Address</p>
+        <div className='w-[395px] h-[423px] bg-[#34FFCE1A] hidden lg:flex flex-col'>
+            <div className='border border-[#fff] p-[20px] border-x-0 border-t-0'>
+                <p className='text-[#fff] font-bold font-manja text-[20px]'>Transcript</p>
+            </div>
+            <div className='py-6 px-[20px]'>
+                <p className='text-[#fff] text-sm font-mont_alt'> 
+                    To consistently raise awareness, positively change attitudes, values and behaviours; 
+                    accurately and adequately inform; and sufficiently mobilize citizens to act in ways that promote 
+                    peace, harmony.
+                    To develop a Nigerian society that is orderly, responsible and discipline, 
+                    where citizens demonstrate core values of honesty, hard work and patriotism.
+                    The main objectives of the Agency, as provided in Decree 100 of 1993, 
+                    are to ensure that Government programmes and policies are better understood by the general 
+                    public and: Mobilize favourable public opinion for such programmes and policies;
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        {/* <img src={isMobileView ? AddressSmall : Address} alt='Address'/> */}
 
         <div className='flex flex-col gap-3 p-5 lg:p-[100px]'>
             <p className='font-mont_alt text-[24px] lg:text-[40px] font-bold text-[#222222]'>The explainer</p>
@@ -323,16 +378,11 @@ const Home = () => {
         </div>
 
 
-        <div className='w-full flex flex-col lg:flex-row'>
+        <div className='w-full flex flex-col lg:flex-row '>
             <div className='lg:w-[528px] bg-[#222222] p-5 lg:pt-[117px] lg:pr-[96px] lg:pl-[101px] lg:pb-[164px] flex flex-col gap-[32px]'>
                 <p className='font-mont_alt font-bold text-[#FFFFFF] text-[24px] lg:text-[40px]'>NOA Digitization Inititiatives</p>
                 <p className='font-mont text-[#FFFFFF] font-medium text-sm lg:text-[20px]'>
                     "Leveraging Technology for Enhanced National Engagement"
-                    The Curator:
-                    AI-Powered Data Management: 
-                    Using AI to maintain and continuously update demographic database, 
-                    giving capacity for well-targeted and highly effective strategies and communication.
-
                 </p>
             </div>
             <div className='bg-[#161616] lg:w-[912px] p-5 lg:py-[48px] lg:pr-[100px] lg:pl-[48px]'>
@@ -348,17 +398,20 @@ const Home = () => {
                         </p>
                         <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
-                    <div className='bg-[#2E2E2E] w-[367px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
-                        <p className='font-mont_alt text-[18px] lg:text-[20px] font-bold text-[#00AA55]'>Collaboration tool for MDAs</p>
+                    <div className='bg-[#2E2E2E] w-[367px] overflow-auto h-[200px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
+                        <p className='font-mont_alt text-[18px] lg:text-[20px] font-bold text-[#00AA55]'>The Curator</p>
                         <p className='font-mont_alt text-sm lg:text-base text-[#FFFFFF]'>
-                            Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
+                            AI-Powered Data Management: 
+                            Using AI to maintain and continuously update demographic database, 
+                            giving capacity for well-targeted and highly effective strategies and communication.
+
                         </p>
                         <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
                     <div className='bg-[#2E2E2E] w-[367px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
                         <p className='font-mont_alt text-[18px] lg:text-[20px]  font-bold text-[#00AA55]'>National hackathons</p>
                         <p className='font-mont_alt text-sm lg:text-base text-[#FFFFFF]'>
-                            Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
+                            Virtual Hackathons to engage young Nigerians at home and in diaspora to foster unity among the youths
                         </p>
                         <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
@@ -457,31 +510,25 @@ const Home = () => {
             </div>
             <div className='w-full flex flex-col gap-[30px]'>
                 <div className='w-full lg:w-[720px] lg:h-[159px] py-5 px-5 lg:px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
-                    <div className='flex items-center gap-5'>
+                    <div className='flex flex-col items-center gap-5 lg:gap-2'>
                         <p className='text-[#00AA55] font-mont_alt text-[24px] lg:text-[40px] font-bold'>5k+</p>
-                        <p className='text-[#00AA55] font-mont-alt text-[18px] lg:text-[20px] font-medium'>Participants (nation wide)</p>
+                        <p className='text-[#00AA55] font-mont-alt text-[18px] lg:text-[30px] font-medium'>Participants (nation wide)</p>
                     </div>
-                    <p className='text-sm lg:text-base text-[#222222] font-mont_alt'>
-                        Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
-                    </p>
+                 
                 </div>
                 <div className='w-full lg:w-[720px] lg:h-[159px] py-5 px-5 lg:px-[40px] border-[12px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
-                    <div className='flex items-center gap-5'>
+                    <div className='flex flex-col items-center gap-5 lg:gap-2'>
                         <p className='text-[#00AA55] font-mont_alt text-[24px] lg:text-[40px] font-bold'>12k+</p>
-                        <p className='text-[#00AA55] font-mont_alt text-[18px] lg:text-[20px] font-medium'>Engagement rate</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[18px] lg:text-[30px] font-medium'>Engagement rate</p>
                     </div>
-                    <p className='text-sm lg:text-base text-[#fff] font-mont_alt'>
-                        Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
-                    </p>
+                 
                 </div>
                 <div className='lg:w-[720px] lg:h-[159px] py-5 px-5 lg:px-[40px] border-[12px] bg-[#F5F5F5] border-y-0 border-x-[#00AA55] rounded-lg'>
-                    <div className='flex items-center gap-5'>
+                    <div className='flex flex-col items-center gap-5 lg:gap-2'>
                         <p className='text-[#00AA55] font-mont text-[24px] lg:text-[40px] font-bold'>₦300m+</p>
-                        <p className='text-[#00AA55] font-mont_alt text-[18px] lg:text-[20px] font-medium'>prizes won</p>
+                        <p className='text-[#00AA55] font-mont_alt text-[18px] lg:text-[30px] font-medium'>prizes won</p>
                     </div>
-                    <p className='text-sm lg:text-base text-[#222222] font-mont_alt'>
-                        Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
-                    </p>
+               
                 </div>
 
             </div>
@@ -533,48 +580,55 @@ const Home = () => {
             <p className='font-manja font-bold text-[#FFFFFF] text-[27px]'>Explore Vital Information</p>
             <div className='flex flex-col px-5 lg:px-0 lg:flex-row items-center gap-[22px]'>
                 <div className='bg-[#00AA55] w-full lg:w-[216px] flex flex-col h-[248px]'>
-                    <div className='w-full gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                    <div onClick={() => navigate("https://ipcr.gov.ng/", window.open("_blank"))} className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
                         <p className='text-[#fff] font-manja text-[13px] font-bold'>Peacebuilding</p>
                         <IoIosArrowRoundForward className='text-[#fff] ' />
                     </div>
-                    <div className='w-full gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                    <div onClick={() => navigate("https://ncdc.gov.ng/", window.open("_blank"))} className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
                         <p className='text-[#fff] font-manja text-[13px] font-bold'>COVID-19</p>
                         <IoIosArrowRoundForward className='text-[#fff] ' />
                     </div>
-                    <div className='w-full gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                    <div onClick={() => navigate("https://www.nigeriarights.gov.ng/", window.open("_blank"))} className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
                         <p className='text-[#fff] font-manja text-[13px] font-bold'>Citizen Rights</p>
-                        <IoIosArrowRoundForward className='text-[#fff] ' />
+                        <IoIosArrowRoundForward className='text-[#fff] ' /> 
                     </div>
-                    <div className='w-full gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                    <div onClick={() => navigate("https://ctc.gov.ng/about-ctc/", window.open("_blank"))}  className='w-full gap-1 cursor-pointer border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
                         <p className='text-[#fff] font-manja text-[13px] font-bold'>Security</p>
                         <IoIosArrowRoundForward className='text-[#fff] ' />
                     </div>
-                    <div className='w-full gap-1  py-[14px] px-[21px] flex items-center'>
+                    <div  onClick={() => navigate("/about")} className='w-full gap-1 cursor-pointer  py-[14px] px-[21px] flex items-center'>
                         <p className='text-[#fff] font-manja text-[13px] font-bold'>National Values</p>
-                        <IoIosArrowRoundForward className='text-[#fff] ' />
+                        <IoIosArrowRoundForward className='text-[#fff] ' /> 
                     </div>
                 </div>
 
-                <img src={DG} alt='DG' className='lg:w-[400px] h-[248px]' />
+                {/* <img src={DG} alt='DG' className='lg:w-[400px] h-[248px]' /> */}
+                <video
+                    controls
+                    loop
+                    className='lg:w-[400px] h-[248px]'
+                >
+                    <source src={MediaChat} type="video/mp4"></source>
+                </video>
 
                 <div className='bg-[#00AA55] w-full lg:w-[216px] flex flex-col h-[248px]'>
-                    <div className='w-full gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                    <div onClick={() => navigate("https://www.ncac.gov.ng/", window.open("_blank"))}  className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
                         <p className='text-[#fff] font-manja text-[13px] font-bold'>National Cultures</p>
-                        <IoIosArrowRoundForward className='text-[#fff] ' />
+                        <IoIosArrowRoundForward className='text-[#fff] ' /> 
                     </div>
-                    <div className='w-full gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                    <div onClick={() => navigate("https://statehouse.gov.ng/", window.open("_blank"))} className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
                         <p className='text-[#fff] font-manja text-[13px] font-bold'>Government</p>
-                        <IoIosArrowRoundForward className='text-[#fff] ' />
+                        <IoIosArrowRoundForward className='text-[#fff] ' /> 
                     </div>
-                    <div className='w-full gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                    <div onClick={() => navigate("https://youthandsport.gov.ng/", window.open("_blank"))} className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
                         <p className='text-[#fff] font-manja text-[13px] font-bold'>Youth and Nation</p>
                         <IoIosArrowRoundForward className='text-[#fff] ' />
                     </div>
-                    <div className='w-full gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                    <div onClick={() => navigate("https://www.nassnig.org/", window.open("_blank"))} className='w-full gap-1 cursor-pointer border border-x-0 border-t-0 border-b-[#fff] py-[14px] cursor-pointer px-[21px] flex items-center'>
                         <p className='text-[#fff] font-manja text-[13px] font-bold'>Government Policies</p>
                         <IoIosArrowRoundForward className='text-[#fff] ' />
                     </div>
-                    <div className='w-full gap-1  py-[14px] px-[21px] flex items-center'>
+                    <div onClick={() => {navigate("/"); window.scrollTo(0, 0)}}  className='w-full gap-1 cursor-pointer py-[14px] px-[21px] flex items-center'>
                         <p className='text-[#fff] font-manja text-[13px] font-bold'>Raise complaints</p>
                         <IoIosArrowRoundForward className='text-[#fff] ' />
                     </div>

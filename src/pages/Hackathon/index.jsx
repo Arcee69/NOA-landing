@@ -3,6 +3,7 @@ import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import Nigeria from "../../assets/png/nigeria.png"
 import Origin from "../../assets/png/origin.png"
@@ -10,7 +11,8 @@ import OriginSmall from "../../assets/png/origin_small.png"
 import Trophy from "../../assets/png/trophy_large.png"
 import Camera from "../../assets/png/camera.png"
 import Biker from "../../assets/png/biker.png"
-import axios from 'axios';
+import HackAd from "../../assets/png/hackathon_slider.jpg"
+
 
 
 const Hackathon = () => {
@@ -173,7 +175,8 @@ const Hackathon = () => {
                     </div>
 
                 </div>
-                <div className='w-full'>
+                <div className='w-full hidden lg:flex justify-center px-8 '>
+                    {/* // <img src={HackAd} alt='HackAd' className='' /> */}
                     <div className='flex flex-col lg:flex-row items-center justify-between px-5 lg:px-[100px]'>
                         <div className='flex flex-col w-full lg:w-[501px] h-[271px] gap-[48px]'>
                             <p className='text-[#33363F] text-[40px] lg:text-[90px] font-bebas leading-[40px] lg:leading-[90px] font-medium'>All about NOA Hackathons</p>

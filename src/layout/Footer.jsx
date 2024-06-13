@@ -3,8 +3,14 @@ import Logo from "../assets/svg/noa_green.svg"
 import Fellow from "../assets/png/fellow.png"
 import Work from "../assets/png/work.png"
 import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa6'
+import { useNavigate } from 'react-router-dom'
+import ReactPlayer from 'react-player'
 
 const Footer = () => {
+
+  const navigate = useNavigate()
+
+
   return (
     <div className='bg-[#222222] w-full flex flex-col'>
       <div className='flex flex-col items-center py-[37px]'>
@@ -20,7 +26,8 @@ const Footer = () => {
               <p className='text-[#fff] font-mont_alt font-medium text-sm lg:text-[11px]'>Mon-Fri: 8am to 4pm, Sat & Sun:Closed</p>
             </div>
           </div>
-          <img src={Fellow} alt='Fellow' className='lg:w-[204px] lg:h-[204px]'/>
+          <ReactPlayer url='https://youtu.be/wcAbTmhuUBg' width={204} height={204} />
+          {/* <img src={Fellow} alt='Fellow' className='lg:w-[204px] lg:h-[204px]'/> */}
           <div className='w-full lg:w-[206px] flex flex-col gap-2.5'>
             <p className='font-bold text-xl lg:text-[15px] font-manja text-[#fff]'>Emergency Numbers</p>
             <div className='flex flex-col'>
@@ -30,7 +37,7 @@ const Footer = () => {
               <p className='text-[#fff] font-mont_alt whitespace-nowrap font-medium text-sm lg:text-[11px]'>NCDC Call: 0800 970000 10</p>
             </div>
           </div>
-          <img src={Work} alt='Work' className='w-full lg:w-[267px]' />
+          <img src={Work} alt='Work' className='w-full lg:w-[267px] cursor-pointer' onClick={() => {navigate("/gallery"); window.scrollTo(0, 0)}}/>
         </div>
       </div>
 

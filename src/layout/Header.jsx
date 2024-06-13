@@ -45,14 +45,14 @@ const Header = () => {
     <div className='flex justify-between px-[40px] py-[22px] items-center bg-[#FFF] w-full h-[67px]'>
       <div className='flex items-center gap-[30px]'>
         <img src={Logo} alt='Logo' />
-        <div className=' flex items-center border border-l p-2 border-[#0000001A] border-y-0 border-r-0'>
+        {/* <div className=' flex items-center border border-l p-2 border-[#0000001A] border-y-0 border-r-0'>
           <input 
             placeholder='Explore'
             type='text'
             className='font-mont text-base w-[70px] h-[24px]'
           />
           <img src={Search} alt='Search' className='w-3 h-3' />
-        </div>
+        </div> */}
       </div>
       <div className='flex items-center gap-[23px]'>
         <p className='text-BLACK-_100 cursor-pointer font-mont font-semibold hover:text-[#00AA55]' onClick={() => navigate("/")}>Home</p>
