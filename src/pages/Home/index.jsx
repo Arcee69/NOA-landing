@@ -327,10 +327,10 @@ const Home = () => {
         ></iframe>
     </div>
     <div className='relative z-10 w-full flex lg:flex-row flex-col gap-5 justify-between mx-auto'>
-        <p className='text-[#fff] font-bold font-mont_alt text-[24px]'>The DG's Address</p>
+        <p className='text-[#fff] font-bold font-mont_alt invisible text-[24px]'>The DG's Address</p>
         <div className='w-[395px] h-[423px] bg-[#34FFCE1A] hidden lg:flex flex-col'>
             <div className='border border-[#fff] p-[20px] border-x-0 border-t-0'>
-                <p className='text-[#fff] font-bold font-manja text-[20px]'>Transcript</p>
+                <p className='text-[#fff] font-bold font-manja text-[20px]'>Our Goal</p>
             </div>
             <div className='py-6 px-[20px]'>
                 <p className='text-[#fff] text-sm font-mont_alt'> 
@@ -580,24 +580,24 @@ const Home = () => {
             <p className='font-manja font-bold text-[#FFFFFF] text-[27px]'>Explore Vital Information</p>
             <div className='flex flex-col px-5 lg:px-0 lg:flex-row items-center gap-[22px]'>
                 <div className='bg-[#00AA55] w-full lg:w-[216px] flex flex-col h-[248px]'>
-                    <div onClick={() => navigate("https://ipcr.gov.ng/", window.open("_blank"))} className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
-                        <p className='text-[#fff] font-manja text-[13px] font-bold'>Peacebuilding</p>
+                    <div className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                        <a href='https://ipcr.gov.ng/' target='_blank' className='text-[#fff] font-manja text-[13px] font-bold'>Peacebuilding</a>
                         <IoIosArrowRoundForward className='text-[#fff] ' />
                     </div>
-                    <div onClick={() => navigate("https://ncdc.gov.ng/", window.open("_blank"))} className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
-                        <p className='text-[#fff] font-manja text-[13px] font-bold'>COVID-19</p>
+                    <div className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                        <a href='https://ncdc.gov.ng/' target='_blank' className='text-[#fff] font-manja text-[13px] font-bold'>COVID-19</a>
                         <IoIosArrowRoundForward className='text-[#fff] ' />
                     </div>
-                    <div onClick={() => navigate("https://www.nigeriarights.gov.ng/", window.open("_blank"))} className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
-                        <p className='text-[#fff] font-manja text-[13px] font-bold'>Citizen Rights</p>
+                    <div className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                        <a href='https://www.nigeriarights.gov.ng/' target='_blank' className='text-[#fff] font-manja text-[13px] font-bold'>Citizen Rights</a>
                         <IoIosArrowRoundForward className='text-[#fff] ' /> 
                     </div>
-                    <div onClick={() => navigate("https://ctc.gov.ng/about-ctc/", window.open("_blank"))}  className='w-full gap-1 cursor-pointer border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
-                        <p className='text-[#fff] font-manja text-[13px] font-bold'>Security</p>
+                    <div className='w-full gap-1 cursor-pointer border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                        <a href='https://ctc.gov.ng/about-ctc/' target='_blank' className='text-[#fff] font-manja text-[13px] font-bold'>Security</a>
                         <IoIosArrowRoundForward className='text-[#fff] ' />
                     </div>
-                    <div  onClick={() => navigate("/about")} className='w-full gap-1 cursor-pointer  py-[14px] px-[21px] flex items-center'>
-                        <p className='text-[#fff] font-manja text-[13px] font-bold'>National Values</p>
+                    <div className='w-full gap-1 cursor-pointer  py-[14px] px-[21px] flex items-center'>
+                        <a href='/about' className='text-[#fff] font-manja text-[13px] font-bold'>National Values</a>
                         <IoIosArrowRoundForward className='text-[#fff] ' /> 
                     </div>
                 </div>
@@ -612,24 +612,24 @@ const Home = () => {
                 </video>
 
                 <div className='bg-[#00AA55] w-full lg:w-[216px] flex flex-col h-[248px]'>
-                    <div onClick={() => navigate("https://www.ncac.gov.ng/", window.open("_blank"))}  className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
-                        <p className='text-[#fff] font-manja text-[13px] font-bold'>National Cultures</p>
+                    <div className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                        <a href='https://www.ncac.gov.ng/' target='_blank' className='text-[#fff] font-manja text-[13px] font-bold'>National Cultures</a>
                         <IoIosArrowRoundForward className='text-[#fff] ' /> 
                     </div>
-                    <div onClick={() => navigate("https://statehouse.gov.ng/", window.open("_blank"))} className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
-                        <p className='text-[#fff] font-manja text-[13px] font-bold'>Government</p>
+                    <div className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                        <a href='https://statehouse.gov.ng/' target='_blank' className='text-[#fff] font-manja text-[13px] font-bold'>Government</a>
                         <IoIosArrowRoundForward className='text-[#fff] ' /> 
                     </div>
-                    <div onClick={() => navigate("https://youthandsport.gov.ng/", window.open("_blank"))} className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
-                        <p className='text-[#fff] font-manja text-[13px] font-bold'>Youth and Nation</p>
+                    <div className='w-full cursor-pointer gap-1 border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
+                        <a href='https://youthandsport.gov.ng/' target="_blank"  className='text-[#fff] font-manja text-[13px] font-bold'>Youth and Nation</a>
                         <IoIosArrowRoundForward className='text-[#fff] ' />
                     </div>
-                    <div onClick={() => navigate("https://www.nassnig.org/", window.open("_blank"))} className='w-full gap-1 cursor-pointer border border-x-0 border-t-0 border-b-[#fff] py-[14px] cursor-pointer px-[21px] flex items-center'>
-                        <p className='text-[#fff] font-manja text-[13px] font-bold'>Government Policies</p>
+                    <div className='w-full gap-1 cursor-pointer border border-x-0 border-t-0 border-b-[#fff] py-[14px] cursor-pointer px-[21px] flex items-center'>
+                        <a href="https://www.nassnig.org/" target='_blank' className='text-[#fff] font-manja text-[13px] font-bold'>Government Policies</a>
                         <IoIosArrowRoundForward className='text-[#fff] ' />
                     </div>
-                    <div onClick={() => {navigate("/"); window.scrollTo(0, 0)}}  className='w-full gap-1 cursor-pointer py-[14px] px-[21px] flex items-center'>
-                        <p className='text-[#fff] font-manja text-[13px] font-bold'>Raise complaints</p>
+                    <div className='w-full gap-1 cursor-pointer py-[14px] px-[21px] flex items-center'>
+                        <a href='#' className='text-[#fff] font-manja text-[13px] font-bold'>Raise complaints</a>
                         <IoIosArrowRoundForward className='text-[#fff] ' />
                     </div>
                 </div>
