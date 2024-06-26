@@ -27,7 +27,7 @@ const activities = [
   ]
 
 const media = [
-    { name:"Content Factory", link: "/content-factory" },
+    { name:"Content Factory", link: "https://content.noa.gov.ng" },
     { name: "Gallery", link: "/gallery"}
 ]
 
@@ -136,7 +136,7 @@ const Header = () => {
                                         className={`block truncate ${
                                         selected ? 'font-medium' : 'font-normal'
                                         } text-[#052011]`}
-                                        onClick={() => navigate(item?.link)}
+                                        onClick={() => window.open(item?.link, '_blank')}
                                     >
                                         {item.name}
                                     </span>

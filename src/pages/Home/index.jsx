@@ -40,6 +40,7 @@ import Time from "../../assets/svg/time.svg"
 import Mail from "../../assets/svg/mail.svg"
 
 import MediaChat from "../../assets/vid/media_chat.mp4"
+import axios from 'axios';
 
 
 
@@ -47,6 +48,7 @@ const Home = () => {
   const [callStatus, setCallStatus] = useState('inactive')
   const [voxData, setVoxData] = useState([]);
   const [loading, setLoading] = useState(false)
+  const [allPub, setAllPub] = useState([])
 
   const navigate = useNavigate()
     
@@ -220,6 +222,24 @@ const Home = () => {
     }
     
     const isMobileView = window.innerWidth < 768
+
+    const fetchPublication = async () => {
+        await axios.get("https://api.content.noa.gov.ng/api/publication")
+        .then((res) => {
+            console.log(res, "faslo")
+            // setAllPub(res?.data?.data?.Publications)
+        })
+        .catch((err) => {
+            console.log(err, "malo")
+        })
+    }
+
+    console.log(allPub, "allPub")
+
+    useEffect(() => {
+        fetchPublication()
+    }, [])
+
   return (
     <div className='w-full'>
         <div 
@@ -356,24 +376,32 @@ const Home = () => {
             <div>
                 <img src={Chain} alt='Chain' className='w-[54px] h-[9px]' />
             </div>
-            <div className='w-full mt-[40px]'>
-                <Slider {...secondSettings}>
-                    {
-                        data?.map((item, index) => (
-                            <div key={index} className='flex flex-col '>
-                                <img src={item?.img} alt='Poster' className='w-[279px] h-[200px]' />
-                                <div className='flex items-center gap-1.5 mt-4'>
-                                    <img src={Folder} alt='' className='w-[10px] h-[18px]'/>
-                                    <p className='font-bold text-[#757575] font-mont'>{item?.dept}</p>
+            {
+                allPub?. length > 0 ?
+                <div className='w-full mt-[40px]'>
+                    <Slider {...secondSettings}>
+                        {
+                            data?.map((item, index) => (
+                                <div key={index} className='flex flex-col '>
+                                    <img src={item?.img} alt='Poster' className='w-[279px] h-[200px]' />
+                                    <div className='flex items-center gap-1.5 mt-4'>
+                                        <img src={Folder} alt='' className='w-[10px] h-[18px]'/>
+                                        <p className='font-bold text-[#757575] font-mont'>{item?.dept}</p>
+                                    </div>
+                                    <p className='font-mont text-base text-[#222222] font-bold'>{item?.title}</p>
                                 </div>
-                                <p className='font-mont text-base text-[#222222] font-bold'>{item?.title}</p>
-                            </div>
-                        ))
-                    }
+                            ))
+                        }
 
-                </Slider>
+                    </Slider>
 
-            </div>
+                </div>
+                :
+                <p className='font-mont_alt text-[14px] lg:text-[24px] font-bold mt-8 text-[#222222]'>
+                    No Publications Avaliable
+                </p>
+
+            }
 
         </div>
 
