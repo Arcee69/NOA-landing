@@ -227,7 +227,7 @@ const Home = () => {
         await axios.get("https://api.content.noa.gov.ng/api/publication")
         .then((res) => {
             console.log(res, "faslo")
-            // setAllPub(res?.data?.data?.Publications)
+            setAllPub(res?.data?.data?.Publications)
         })
         .catch((err) => {
             console.log(err, "malo")
