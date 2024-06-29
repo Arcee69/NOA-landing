@@ -424,6 +424,11 @@ const Home = () => {
                 <p className='font-mont text-[#FFFFFF] font-medium text-sm lg:text-[20px]'>
                     "Leveraging Technology for Enhanced National Engagement"
                 </p>
+                <button
+                    className='w-[162px] h-[48px] flex items-center justify-center bg-[#00AA55]'
+                >
+                    <a href='https://forms.gle/d1wgcUATWw3K7Sdz9' target='_blank' className='text-[#fff] font-bold font-manja text-sm'>Take Poll</a>
+                </button>
             </div>
             <div className='bg-[#161616] lg:w-[912px] p-5 lg:py-[48px] lg:pr-[100px] lg:pl-[48px]'>
                 <div className='lg:w-[764px] flex flex-wrap gap-[30px] lg:py-[97px]'>
