@@ -148,7 +148,7 @@ const Home = () => {
         arrows: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 2,
+        slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
@@ -226,7 +226,7 @@ const Home = () => {
     const fetchPublication = async () => {
         await axios.get("https://api.content.noa.gov.ng/api/publication")
         .then((res) => {
-            console.log(res, "faslo")
+            console.log(res, "slo")
             setAllPub(res?.data?.data?.Publications)
         })
         .catch((err) => {
@@ -301,16 +301,28 @@ const Home = () => {
             <div className='w-9/12'>
                 <div className='w-full'>
                     <Slider {...settings}>
-                        <div className='mx-2'>
-                            <p className='font-semibold text-xs lg:text-sm font-mont text-[#222222]'>
-                                Pressing for Change: Ministries Unite to Address Environmental....
-                            </p>
-                        </div>
-                        <div className='mx-2'>
-                            <h3 className='font-semibold text-xs lg:text-sm font-mont text-[#222222]'>
-                                Pressing for Change: Ministries Unite to Address Environmental....
-                            </h3>
-                        </div>
+                        {
+                            allPub?.length > 0 ? allPub?.map((item, index) => (
+                                <div className='mx-2' key={index}>
+                                    <p className='font-semibold text-xs lg:text-sm font-mont text-[#222222]'>
+                                        {item?.title}
+                                    </p>
+                                </div>
+                            ))
+                            :
+                            <>
+                                <div className='mx-2'>
+                                    <p className='font-semibold text-xs lg:text-sm font-mont text-[#222222]'>
+                                        Pressing for Change: Ministries Unite to Address Environmental....
+                                    </p>
+                                </div>
+                                <div className='mx-2'>
+                                    <h3 className='font-semibold text-xs lg:text-sm font-mont text-[#222222]'>
+                                        Pressing for Change: Ministries Unite to Address Environmental....
+                                    </h3>
+                                </div>
+                            </>
+                        }
                     </Slider>
                 </div>
 
@@ -319,54 +331,54 @@ const Home = () => {
         </div>
 
         <div
-    style={{ 
-        background: "#0C3923A6", 
-        backgroundRepeat: "no-repeat", 
-        backgroundSize: "cover", 
-        position: 'relative'
-    }}
-    className='w-full h-[532px] flex lg:px-[100px] py-[52px]'
->
-    <div className="absolute inset-0 z-0">
-        <iframe 
-            width="100%" 
-            height="100%" 
-            src="https://www.youtube.com/embed/ODmsC4ybmkA?autoplay=1&mute=0&loop=0&playlist=ODmsC4ybmkA" 
-            title="YouTube video player" 
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerPolicy="strict-origin-when-cross-origin" 
-            allowFullScreen
             style={{ 
-                position: 'absolute', 
-                top: 0, 
-                left: 0, 
-                width: '100%', 
-                height: '100%' 
+                background: "#0C3923A6", 
+                backgroundRepeat: "no-repeat", 
+                backgroundSize: "cover", 
+                position: 'relative'
             }}
-        ></iframe>
-    </div>
-    <div className='relative z-10 w-full flex lg:flex-row flex-col gap-5 justify-between mx-auto'>
-        <p className='text-[#fff] font-bold font-mont_alt invisible text-[24px]'>The DG's Address</p>
-        <div className='w-[395px] h-[423px] bg-[#34FFCE1A] hidden lg:flex flex-col'>
-            <div className='border border-[#fff] p-[20px] border-x-0 border-t-0'>
-                <p className='text-[#fff] font-bold font-manja text-[20px]'>Our Goal</p>
+            className='w-full h-[532px] flex lg:px-[100px] py-[52px]'
+        >
+            <div className="absolute inset-0 z-0">
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/ODmsC4ybmkA?autoplay=1&mute=0&loop=0&playlist=ODmsC4ybmkA" 
+                    title="YouTube video player" 
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerPolicy="strict-origin-when-cross-origin" 
+                    allowFullScreen
+                    style={{ 
+                        position: 'absolute', 
+                        top: 0, 
+                        left: 0, 
+                        width: '100%', 
+                        height: '100%' 
+                    }}
+                ></iframe>
             </div>
-            <div className='py-6 px-[20px]'>
-                <p className='text-[#fff] text-sm font-mont_alt'> 
-                    To consistently raise awareness, positively change attitudes, values and behaviours; 
-                    accurately and adequately inform; and sufficiently mobilize citizens to act in ways that promote 
-                    peace, harmony.
-                    To develop a Nigerian society that is orderly, responsible and discipline, 
-                    where citizens demonstrate core values of honesty, hard work and patriotism.
-                    The main objectives of the Agency, as provided in Decree 100 of 1993, 
-                    are to ensure that Government programmes and policies are better understood by the general 
-                    public and: Mobilize favourable public opinion for such programmes and policies;
-                </p>
+            <div className='relative z-10 w-full flex lg:flex-row flex-col gap-5 justify-between mx-auto'>
+                <p className='text-[#fff] font-bold font-mont_alt invisible text-[24px]'>The DG's Address</p>
+                <div className='w-[395px] h-[423px] bg-[#34FFCE1A] hidden lg:flex flex-col'>
+                    <div className='border border-[#fff] p-[20px] border-x-0 border-t-0'>
+                        <p className='text-[#fff] font-bold font-manja text-[20px]'>Our Goal</p>
+                    </div>
+                    <div className='py-6 px-[20px]'>
+                        <p className='text-[#fff] text-sm font-mont_alt'> 
+                            To consistently raise awareness, positively change attitudes, values and behaviours; 
+                            accurately and adequately inform; and sufficiently mobilize citizens to act in ways that promote 
+                            peace, harmony.
+                            To develop a Nigerian society that is orderly, responsible and discipline, 
+                            where citizens demonstrate core values of honesty, hard work and patriotism.
+                            The main objectives of the Agency, as provided in Decree 100 of 1993, 
+                            are to ensure that Government programmes and policies are better understood by the general 
+                            public and: Mobilize favourable public opinion for such programmes and policies;
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
 
         {/* <img src={isMobileView ? AddressSmall : Address} alt='Address'/> */}
@@ -381,12 +393,12 @@ const Home = () => {
                 <div className='w-full mt-[40px]'>
                     <Slider {...secondSettings}>
                         {
-                            data?.map((item, index) => (
+                            allPub?.map((item, index) => (
                                 <div key={index} className='flex flex-col '>
-                                    <img src={item?.img} alt='Poster' className='w-[279px] h-[200px]' />
+                                    <img src={item?.thumbnail} alt='Poster' className='w-[279px] h-[200px] rounded-lg' />
                                     <div className='flex items-center gap-1.5 mt-4'>
                                         <img src={Folder} alt='' className='w-[10px] h-[18px]'/>
-                                        <p className='font-bold text-[#757575] font-mont'>{item?.dept}</p>
+                                        <p className='font-bold text-[#757575] font-mont'>{item?.desc}</p>
                                     </div>
                                     <p className='font-mont text-base text-[#222222] font-bold'>{item?.title}</p>
                                 </div>
@@ -424,7 +436,6 @@ const Home = () => {
                             only informs but also inspires action and participation among all Nigerians, 
                             building a more informed, inclusive, and engaged society.
                         </p>
-                        <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
                     <div className='bg-[#2E2E2E] w-[367px] overflow-auto h-[200px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
                         <p className='font-mont_alt text-[18px] lg:text-[20px] font-bold text-[#00AA55]'>The Curator</p>
@@ -434,21 +445,18 @@ const Home = () => {
                             giving capacity for well-targeted and highly effective strategies and communication.
 
                         </p>
-                        <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
                     <div className='bg-[#2E2E2E] w-[367px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
                         <p className='font-mont_alt text-[18px] lg:text-[20px]  font-bold text-[#00AA55]'>National hackathons</p>
                         <p className='font-mont_alt text-sm lg:text-base text-[#FFFFFF]'>
                             Virtual Hackathons to engage young Nigerians at home and in diaspora to foster unity among the youths
                         </p>
-                        <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
                     <div className='bg-[#2E2E2E] w-[367px]  rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
                         <p className='font-mont_alt text-[18px] lg:text-[20px] font-bold text-[#00AA55]'>Insight Data</p>
                         <p className='font-mont_alt text-sm lg:text-base  text-[#FFFFFF]'>
                             Tailored to reach the highest number of Nigerians using its 3 major segmentation approach.
                         </p>
-                        <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div> 
                     <div className='bg-[#2E2E2E] w-[367px] h-[200px] overflow-auto rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
                         <p className='font-mont_alt text-[18px] lg:text-[20px] font-bold text-[#00AA55]'>The Mobilizer App</p>
@@ -456,7 +464,6 @@ const Home = () => {
                             Youth Engagement With AI: Launching Virtual Hackathons and involving the younger 
                             demographic and those in diaspora, making government policy making accessible.
                         </p>
-                        <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
                     <div className='bg-[#2E2E2E] w-[367px] h-[200px] overflow-auto rounded-lg border-[8px] border-y-0 border-x-[#00AA55] flex flex-col gap-[15px] p-5'>
                         <p className='font-mont_alt  text-[18px] lg:text-[20px] font-bold text-[#00AA55]'>The Explainer by NOA</p>
@@ -466,7 +473,6 @@ const Home = () => {
                             It aims to bridge the gap between government operations and citizen understanding, 
                             ensuring transparency and fostering a well-informed populace.
                         </p>
-                        <p className='text-[#00AA55] font-mont font-bold'>Learn more </p>
                     </div>
 
                 </div>
@@ -518,8 +524,54 @@ const Home = () => {
 
         </div>
 
-        <div className='hidden lg:block'>
-            <img src={Industry} alt='industry' />
+        <div
+            style={{ 
+                background: "#0C3923A6", 
+                backgroundRepeat: "no-repeat", 
+                backgroundSize: "cover", 
+                position: 'relative'
+            }}
+            className='w-full h-[532px] flex lg:px-[100px] py-[52px]'
+        >
+            <div className="absolute inset-0 z-0">
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/-fkp4_BGEZg?si=LKr8FjHC6VUMshzJ" 
+                    title="YouTube video player" 
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerPolicy="strict-origin-when-cross-origin" 
+                    allowFullScreen
+                    style={{ 
+                        position: 'absolute', 
+                        top: 0, 
+                        left: 0, 
+                        width: '100%', 
+                        height: '100%'  
+                    }}
+                ></iframe>
+            </div>
+            <div className='relative z-10 w-full flex lg:flex-row flex-col gap-5 justify-between mx-auto'>
+                <p className='text-[#fff] font-bold font-mont_alt invisible text-[24px]'>The DG's Address</p>
+                <div className='w-[395px] h-[423px] bg-[#fff] hidden invisible  lg:flex flex-col'> {/* bg-[#34FFCE1A] */}
+                    <div className='border border-[#000] p-[20px] border-x-0 border-t-0'>
+                        <p className='text-[#000] font-bold font-manja text-[20px]'>Our Goal</p>
+                    </div>
+                    <div className='py-6 px-[20px]'>
+                        <p className='text-[#000] text-sm font-mont_alt'> 
+                            To consistently raise awareness, positively change attitudes, values and behaviours; 
+                            accurately and adequately inform; and sufficiently mobilize citizens to act in ways that promote 
+                            peace, harmony.
+                            To develop a Nigerian society that is orderly, responsible and discipline, 
+                            where citizens demonstrate core values of honesty, hard work and patriotism.
+                            The main objectives of the Agency, as provided in Decree 100 of 1993, 
+                            are to ensure that Government programmes and policies are better understood by the general 
+                            public and: Mobilize favourable public opinion for such programmes and policies;
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div className='flex flex-col lg:flex-row my-5 lg:my-0 lg:justify-between items-center px-5 lg:p-[100px] gap-[40px]'>
@@ -532,6 +584,7 @@ const Home = () => {
                 </p>
                 <button
                     className='w-[162px] h-[48px] flex items-center justify-center bg-[#00AA55]'
+                    onClick={() => navigate("/hackathon")}
                 >
                     <p className='text-[#fff] font-bold font-manja text-sm'>Learn More</p>
                 </button>
