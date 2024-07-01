@@ -270,7 +270,7 @@ const Home = () => {
                 </div>
                 <div className='bg-[#3A6152] w-full flex flex-col mt-0 lg:mt-0 items-center justify-center  h-[238px]'>
                     <div className='px-4 flex flex-col'>
-                        <p className='font-manja text-[#fff] text-sm font-medium'>CHLEEAN: Your Friendly AI Voice Assistant from NOA</p>
+                        <p className='font-manja text-[#fff] text-sm font-medium'>CLHEEAN: Your Friendly AI Voice Assistant from NOA</p>
                         <p className='font-manja text-[#fff] text-sm font-medium'>I can provide you with information on policies, programs and initiatives</p>
                     </div>
                     {/* <button onClick={() => {callStatus === "active" ? stop() : start()}} className='w-[150px] p-4 bg-[#00AA55] flex justify-center items-center rounded-lg'>

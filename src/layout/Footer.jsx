@@ -61,6 +61,11 @@ const Footer = () => {
 
       </div>
 
+      <div className='bg-[#1d1d1d] w-full flex justify-center mb-2'>
+        <p className='text-[#fff] text-sm font-mont_alt text-center font-semibold'>Powered by Cihan</p>
+      </div>
+
+
     </div>
   )
 }
