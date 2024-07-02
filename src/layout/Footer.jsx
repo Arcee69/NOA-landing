@@ -2,7 +2,7 @@ import React from 'react'
 import Logo from "../assets/svg/noa_green.svg"
 import Fellow from "../assets/png/fellow.png"
 import Work from "../assets/png/work.png"
-import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa6'
+import { FaFacebookF, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa6'
 import { useNavigate } from 'react-router-dom'
 import ReactPlayer from 'react-player'
 
@@ -46,9 +46,10 @@ const Footer = () => {
           <div className='flex items-center  gap-2.5'>
             <p className='text-[#DDDDDD] font-medium text-base lg:text-[11px]'>Connect with:</p>
             <div className='flex items-center gap-2.5'>
-              <FaFacebookF className='text-[#fff] text-sm lg:text-[10px]' />
-              <FaTwitter className='text-[#fff] text-sm lg:text-[10px]' />
-              <FaInstagram className='text-[#fff] text-sm lg:text-[10px]'  />
+              <a href='https://www.facebook.com/nationalorientationagency/' target='_blank' className='cursor-pointer'><FaFacebookF className='text-[#fff] text-sm lg:text-[10px]'/></a>
+              <a href='https://x.com/NOA_Nigeria' target='_blank' className='cursor-pointer'><FaTwitter className='text-[#fff] text-sm lg:text-[10px]' /></a>
+              <a href='https://www.instagram.com/noa_nigeria/?hl=en' target='_blank' className='cursor-pointer'><FaInstagram className='text-[#fff] text-sm lg:text-[10px]'  /></a>
+              <a href='https://www.linkedin.com/in/national-orientation-agency-71435b2a2/' target='_blank' className='cursor-pointer'><FaLinkedin className='text-[#fff] text-sm lg:text-[10px]'  /></a>
             </div>
           </div>
 
