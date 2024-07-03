@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { IoChevronForwardOutline } from 'react-icons/io5';
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 import Slider from 'react-slick'
@@ -15,6 +15,7 @@ import DgSeven from "../../../assets/png/dg_7.png"
 import DgEight from "../../../assets/png/dg_8.png"
 import DgNine from "../../../assets/png/dg_9.png"
 import DgTen from "../../../assets/png/dg_10.png"
+import DgEleven from "../../../assets/png/dg_11.png"
 import BigChain from "../../../assets/png/big_chain.png"
 import Suggestion from "../../../assets/png/suggestion.png"
 
@@ -26,76 +27,93 @@ import Mail from "../../../assets/svg/mail.svg"
 
 const NoaPast = () => {
 
+    const sliderRef = useRef(null);
+
+    const handlePrev = () => {
+        sliderRef.current.slickPrev();
+    };
+
+    const handleNext = () => {
+        sliderRef.current.slickNext();
+    };
+
     const data = [
         {
             id: 1,
-            pic: DgTen,
-            name: "Ngozi Ekeoba mni (Acting DG)",
-            date: "15TH FEB, 2016 - 25th may, 2016", 
-            position: "10th DG"
+            pic: DgEleven,
+            name: "Dr. Garba Abari",
+            date: "May 2016- October 2023", 
+            position: "Director General"
         },
         {
             id: 2,
-            pic: DgNine,
-            name: "Ngozi Ekeoba mni (Acting DG)",
-            date: "January 2012 - 15th February 2016",
-            position: "9th DG"
+            pic: DgTen,
+            name: "Mrs. Ngozi Ekeoba",
+            date: "February 2016- May 2016", 
+            position: "Acting Director General"
         },
         {
             id: 3,
-            pic: DgEight,
-            name: "Dr Mike Omeri",
-            date: "June 2003 - 17th January 2012",
-            position: "8th DG"
+            pic: DgNine,
+            name: "Mr. Mike Omeri",
+            date: "January 2012 - February 2016",
+            position: "Director General"
         },
         {
             id: 4,
-            pic: DgSeven,
-            name: "Alh. Idi M. Faruk",
-            date: "15TH FEB, 2016- 25th May, 2016",
-            position: "7th DG"
+            pic: DgEight,
+            name: "Alhaji Idi M. Faruk",
+            date: "June 2003 - January 2012",
+            position: "Director General"
         },
         {
             id: 5,
-            pic: DgSix,
-            name: "Dr Toni Iredia",
-            date: "July 2001 - March 2002",
-            position: "6th DG"
+            pic: DgSeven,
+            name: "Dr. Tonnie Ireadia ",
+            date: "April 2002- June 2003",
+            position: "Director General"
         },
         {
             id: 6,
-            pic: DgFive,
-            name: "Dr Ifeanyi Chukwuka",
-            date: "June 2000 - July 2001",
-            position: "5th DG"
+            pic: DgSix,
+            name: "Dr. Ifeanyi Chukwuka ",
+            date: "July 2001 - March 2002",
+            position: "Director General"
         },
         {
             id: 7,
-            pic: DgFour,
-            name: "Prof Aloy Ejiogu",
-            date: "August 1993 - November 1999",
-            position: "4th DG"
+            pic: DgFive,
+            name: "Professor Aloy Ejiogu ",
+            date: "June 2000 - July 2001",
+            position: "Director General"
         },
         {
             id: 8,
-            pic: DgThree,
-            name: "Prof Elochukwu C. Amucheazi",
-            date: "Jan 1993 - Aug 1993",
-            position: "3rd DG"
+            pic: DgFour,
+            name: "Professor Elochuku C. Amucheazi ",
+            date: "August 1993 - November 1999",
+            position: "Director General"
         },
         {
             id: 9,
-            pic: DgTwo,
-            name: "Prof Tunde Adeniran",
-            date: "April 1992 - Jan 1993",
-            position: "2nd DG"
+            pic: DgThree,
+            name: "Professor Tunde Adeniran ",
+            date: "January 1993- August 1993",
+            position: "Chairman"
         },
         {
             id: 10,
+            pic: DgTwo,
+            name: "Alhaji Mohammed Gambo Jimeta",
+            date: "April 1992- January 1993",
+            position: "Chairman"
+        },
+        {
+            id: 11,
             pic: DgOne,
-            name: "Alh Mohammed Gambo Jimeta",
-            date: "September 1987 - April 1992",
-            position: " 1st DG"
+            name: "Professor Jerry Gana",
+            date: "September 1987- April 1992",
+            position: "Chairman"
         },
 
     ]
@@ -154,12 +172,12 @@ const NoaPast = () => {
             <p className='font-manja text-[#757575] text-center text-[15px]'>PAST DIRECTORS OF MAMSER & DIRECTOR GENERALS OF THE AGENCY</p>
         </div>
 
-        <div className='w-full mt-[24px] lg:mt-[99px] px-5 lg:px-[100px]'>
-            <Slider {...settings}>
+        <div className='w-full mt-[24px] lg:mt-[66px] px-5 lg:px-[100px]'>
+            <Slider ref={sliderRef} {...settings}>
                 {
                     data?.map((item) => (
-                        <div className='flex flex-col items-center justify-center gap-4'>
-                            <img src={item?.pic} alt='Profile_photo' className='lg:h-[640px] h-[340px]' />
+                        <div className='flex flex-col items-center justify-center gap-5'>
+                            <img src={item?.pic} alt='Profile_photo' className='lg:h-[340px] mx-auto h-[340px]' />
                             <p className='font-manja text-base lg:text-[32px] text-center mt-4 text-[#222222] font-bold'>{item?.name}</p>
                             <p className='font-manja text-[#00AA55] text-center text-sm lg:text-xl font-bold'>{item?.date}</p>
                             <p className='font-manja text-[#00AA55] text-center  text-sm lg:text-xl font-bold'>{item?.position}</p>
@@ -170,12 +188,12 @@ const NoaPast = () => {
 
             </Slider>
         </div>
-        <div className='flex items-center justify-between px-[100px] w-full mt-[56px]'>
-            <div className='flex items-center gap-2'>
+        <div className='flex items-center justify-center gap-[200px] px-[100px] w-full mt-[56px]'>
+            <div className='flex items-center gap-2 cursor-pointer' onClick={handlePrev}>
                 <FaArrowLeftLong className='text-[#00AA55]  text-sm' />
                 <p className='uppercase font-manja text-[#00AA55] mt-1.5 text-sm'>Prev</p>
             </div>
-            <div className='flex items-center gap-2'>
+            <div className='flex items-center gap-2 cursor-pointer' onClick={handleNext}>
                 <p className='uppercase font-manja text-[#00AA55] mt-1.5 text-sm'>Next</p>
                 <FaArrowRightLong className='text-[#00AA55] text-sm' />
             </div>

@@ -303,25 +303,19 @@ const Home = () => {
                     <Slider {...settings}>
                         {
                             allPub?.length > 0 ? allPub?.map((item, index) => (
-                                <div className='mx-2' key={index}>
+                                <div className='mx-2 cursor-pointer' key={index} onClick={() => window.open(`https://content.noa.gov.ng/publication/${item?.id}`, "_blank")}>
                                     <p className='font-semibold text-xs lg:text-sm font-mont text-[#222222]'>
                                         {item?.title}
                                     </p>
                                 </div>
                             ))
                             :
-                            <>
-                                <div className='mx-2'>
-                                    <p className='font-semibold text-xs lg:text-sm font-mont text-[#222222]'>
-                                        Pressing for Change: Ministries Unite to Address Environmental....
-                                    </p>
-                                </div>
-                                <div className='mx-2'>
-                                    <h3 className='font-semibold text-xs lg:text-sm font-mont text-[#222222]'>
-                                        Pressing for Change: Ministries Unite to Address Environmental....
-                                    </h3>
-                                </div>
-                            </>
+                            <div className='mx-2'>
+                                <p className='font-semibold text-xs lg:text-sm font-mont text-[#222222]'>
+                                    No New Updates
+                                </p>
+                            </div>
+                           
                         }
                     </Slider>
                 </div>
@@ -394,7 +388,7 @@ const Home = () => {
                     <Slider {...secondSettings}>
                         {
                             allPub?.map((item, index) => (
-                                <div key={index} className='flex flex-col '>
+                                <div key={index} className='flex flex-col cursor-pointer' onClick={() => window.open(`https://content.noa.gov.ng/publication/${item?.id}`, "_blank")}>
                                     <img src={item?.thumbnail} alt='Poster' className='w-[279px] h-[200px] rounded-lg' />
                                     <div className='flex items-center gap-1.5 mt-4'>
                                         <img src={Folder} alt='' className='w-[10px] h-[18px]'/>
