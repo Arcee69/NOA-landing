@@ -452,40 +452,42 @@ const Management = () => {
         </div>
 
         <div className='lg:px-[100px] flex flex-col gap-[72px]  mb-[72px] relative mt-10 lg:mt-5'>
-            <div 
-                style={{ background: `url(${BG}) no-repeat center center`,  backgroundSize: "100% 100%",   }}        
-                className='flex flex-col h-[507px] lg:h-[590px] w-full'
-            >
-                <div className='lg:hidden flex-grow'></div>
-                <div className='flex justify-end w-full'>
-                    <div className='bg-[#014322] flex flex-col w-[326px] mt-4 gap-6 p-5 h-[234px]'>
-                        <div className='flex gap-3'>
-                            <IoLocationOutline className='text-[#fff] w-[32px] h-[32px]' />
-                            <p className='font-mont_alt font-medium w-[242px] text-[#fff] text-[18px]'>
-                                Block B, Fed Secretariat Complex, Area !, Garki Abuja, Nigeria. PMB 7
-                            </p>
-                        </div>
-                        <div className='flex items-center gap-3'>
-                            <IoMailOutline className='text-[#fff] w-[32px] h-[32px]' />
-                            <p className='font-mont_alt font-medium w-[242px] text-[#fff] text-[18px]'>
-                                DG@mail.com
-                            </p>
-                        </div>
-                        <div className='flex gap-3'>
-                            <FiPhone  className='text-[#fff] w-[32px] h-[32px]' />
-                            <p className='font-mont_alt font-medium w-[242px] text-[#fff] text-[18px]'>
-                                07034567744
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-                <div className='hidden lg:flex flex-grow'></div> {/* This div will take up the remaining space */}
-                <div
-                    className='bg-[#01432233] w-full flex flex-col h-[92px] py-5 px-6'
+            <div className="bg-[#00000033]">
+                <div 
+                    style={{ background: `url(${BG}) no-repeat center center`,  backgroundSize: "contain"}}        
+                    className='flex flex-col h-[507px] lg:h-[590px] w-full'
                 >
-                    <p className='font-mont_alt font-bold text-[20px] text-[#fff]'>Lanre Issa-Onilu</p>
-                    <p className='font-mont_alt font-medium text-[18px] text-[#fff]'>Director General</p>
+                    <div className='lg:hidden flex-grow'></div>
+                    <div className='flex justify-end w-full'>
+                        <div className='bg-[#014322] flex flex-col w-[326px] mt-4 gap-6 p-5 h-[234px]'>
+                            <div className='flex gap-3'>
+                                <IoLocationOutline className='text-[#fff] w-[32px] h-[32px]' />
+                                <p className='font-mont_alt font-medium w-[242px] text-[#fff] text-[18px]'>
+                                    Block B, Fed Secretariat Complex, Area !, Garki Abuja, Nigeria. PMB 7
+                                </p>
+                            </div>
+                            <div className='flex items-center gap-3'>
+                                <IoMailOutline className='text-[#fff] w-[32px] h-[32px]' />
+                                <p className='font-mont_alt font-medium w-[242px] text-[#fff] text-[18px]'>
+                                    DG@mail.com
+                                </p>
+                            </div>
+                            <div className='flex gap-3'>
+                                <FiPhone  className='text-[#fff] w-[32px] h-[32px]' />
+                                <p className='font-mont_alt font-medium w-[242px] text-[#fff] text-[18px]'>
+                                    07034567744
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div className='hidden lg:flex flex-grow'></div> {/* This div will take up the remaining space */}
+                    <div
+                        className='bg-[#01432233] w-full flex flex-col h-[92px] py-5 px-6'
+                    >
+                        <p className='font-mont_alt font-bold text-[20px] text-[#fff]'>Lanre Issa-Onilu</p>
+                        <p className='font-mont_alt font-medium text-[18px] text-[#fff]'>Director General</p>
+                    </div>
                 </div>
             </div>
 
