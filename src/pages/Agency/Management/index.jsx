@@ -34,6 +34,15 @@ import DirectorQ from "../../../assets/png/director_q.png"
 import DirectorR from "../../../assets/png/director_r.png"
 import DirectorS from "../../../assets/png/director_s.png"
 import DirectorT from "../../../assets/png/director_t.png"
+import DirectorU from "../../../assets/png/director_t.png"
+import DirectorZ from "../../../assets/png/director_t.png"
+
+import DirectorTwo from "../../../assets/png/director_2.png"
+import DirectorThree from "../../../assets/png/director_3.png"
+import DirectorFour from "../../../assets/png/director_4.png"
+import DirectorFive from "../../../assets/png/director_5.png"
+import DirectorSix from "../../../assets/png/director_6.png"
+import DirectorTen from "../../../assets/png/director_10.png"
 
 import Suggestion from "../../../assets/png/suggestion.png"
 
@@ -209,7 +218,7 @@ const Management = () => {
         },
         {
             id: 20,
-            pic: DirectorT,
+            pic: DirectorU,
             name: "Tukur Adedeji Mustafa",
             state: "Lagos State",
             phone: "08080700003"
@@ -237,7 +246,7 @@ const Management = () => {
         },
         {
             id: 24,
-            pic: DirectorT,
+            pic: DirectorZ,
             name: "Garba Salisu",
             state: "Kano State",
             phone: "08034104904"
@@ -251,35 +260,35 @@ const Management = () => {
         },
         {
             id: 26,
-            pic: DirectorT,
+            pic: DirectorTwo,
             name: "Gondo Aluo Priscilla",
             state: "Nasarawa State",
             phone: "08035894322"
         },
         {
             id: 27,
-            pic: DirectorT,
+            pic: DirectorThree,
             name: "Theresa Omaga",
             state: "Bauchi State",
             phone: "08035466704"
         },
         {
             id: 28,
-            pic: DirectorT,
+            pic: DirectorFour,
             name: "Ali Audu",
             state: "Yobe State",
             phone: "08036150794"
         },
         {
             id: 29,
-            pic: DirectorT,
+            pic: DirectorFive,
             name: "Abdulganiyu Dare",
             state: "Kogi State",
             phone: "08061223921"
         },
         {
             id: 30,
-            pic: DirectorT,
+            pic: DirectorSix,
             name: "Gbongbo Ibrahim Yahaya Takum",
             state: "Niger State",
             phone: "08063740598"
@@ -307,7 +316,7 @@ const Management = () => {
         },
         {
             id: 34,
-            pic: DirectorT,
+            pic: DirectorTen,
             name: "Ayo Tamuno Young",
             state: "Rivers State",
             phone: "08035536896"

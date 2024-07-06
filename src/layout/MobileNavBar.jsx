@@ -61,7 +61,7 @@ const MobileNavBar = ({ handleClose }) => {
                   {
                     openMediaDropdown && (
                       <div className='flex flex-col gap-3 mt-3 px-3'>
-                          <p onClick={() => {navigate("/content-factory"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">Content Factory</p>
+                          <p onClick={() => {window.open("https://content.noa.gov.ng"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">Content Factory</p>
                           <p onClick={() => {navigate("/gallery"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">Gallery</p>
                       </div>
                     )

@@ -14,6 +14,7 @@ import StateOffices from '../pages/Agency/StateOffices'
 import NoaPast from '../pages/Agency/NoaPast'
 import Management from '../pages/Agency/Management'
 import FOI from '../pages/Agency/FOI'
+import NewsDetails from '../pages/News/components/NewsDetails'
 
 
 const Routers = () => {
@@ -23,6 +24,7 @@ const Routers = () => {
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/news' element={<News />} />
+        <Route path='/news/:id' element={<NewsDetails />} />
         <Route path='/privacy-policy' element={<Privacy />} />
         <Route path='/content-factory' element={<ContentFactory />} />
         <Route path="/hackathon" element={<Hackathon />} />

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoChevronForwardOutline } from 'react-icons/io5'
 
 import PicA from "../../assets/png/picA.png"
@@ -12,54 +12,78 @@ import Suggestion from "../../assets/png/suggestion.png"
 import CallB from "../../assets/svg/call.svg"
 import Time from "../../assets/svg/time.svg"
 import Mail from "../../assets/svg/mail.svg"
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 
 
 const News = () => {
+    const [newsData, setNewsData] = useState([])
+    const [loading, setLoading] = useState(false)
+
+    const navigate = useNavigate()
+
+    const fetchNews = async () => {
+        setLoading(true)
+        await axios.get("https://api.admin.noa.gov.ng/api/post")
+        .then((res) => {
+            console.log(res, "vibes")
+            setLoading(false)
+            setNewsData(res?.data?.data?.posts)
+        })
+        .catch((err) => {
+            setLoading(false)
+            console.log(err, "err")
+        })
+    }
+
+    useEffect(() => {
+        fetchNews()
+    }, [])
 
 
-    const data = [
-        {
-            id: 1,
-            img: PicA,
-            dept: "HEADQUARTERS",
-            name: "Deji Oyeleke",
-            date: "08.05.2024",
-            views: "23 views",
-            comment: "4 comments",
-            title: "Pressing for Change: Ministries Unite to Address Environmental Crises"
-        },
-        {
-            id: 2,
-            img: PicB,
-            dept: "HEADQUARTERS",
-            name: "Deji Oyeleke",
-            date: "08.05.2024",
-            views: "23 views",
-            comment: "4 comments",
-            title: "Pressing for Change: Ministries Unite to Address Environmental Crises"
-        },
-        {
-            id: 3,
-            img: PicC,
-            dept: "HEADQUARTERS",
-            name: "Deji Oyeleke",
-            date: "08.05.2024",
-            views: "23 views",
-            comment: "4 comments",
-            title: "Pressing for Change: Ministries Unite to Address Environmental Crises"
-        },
-        {
-            id: 4,
-            img: PicD,
-            dept: "HEADQUARTERS",
-            name: "Deji Oyeleke",
-            date: "08.05.2024",
-            views: "23 views",
-            comment: "4 comments",
-            title: "Pressing for Change: Ministries Unite to Address Environmental Crises"
-        },
-    ]
+    // const data = [
+    //     {
+    //         id: 1,
+    //         img: PicA,
+    //         dept: "HEADQUARTERS",
+    //         name: "Deji Oyeleke",
+    //         date: "08.05.2024",
+    //         views: "23 views",
+    //         comment: "4 comments",
+    //         title: "Pressing for Change: Ministries Unite to Address Environmental Crises"
+    //     },
+    //     {
+    //         id: 2,
+    //         img: PicB,
+    //         dept: "HEADQUARTERS",
+    //         name: "Deji Oyeleke",
+    //         date: "08.05.2024",
+    //         views: "23 views",
+    //         comment: "4 comments",
+    //         title: "Pressing for Change: Ministries Unite to Address Environmental Crises"
+    //     },
+    //     {
+    //         id: 3,
+    //         img: PicC,
+    //         dept: "HEADQUARTERS",
+    //         name: "Deji Oyeleke",
+    //         date: "08.05.2024",
+    //         views: "23 views",
+    //         comment: "4 comments",
+    //         title: "Pressing for Change: Ministries Unite to Address Environmental Crises"
+    //     },
+    //     {
+    //         id: 4,
+    //         img: PicD,
+    //         dept: "HEADQUARTERS",
+    //         name: "Deji Oyeleke",
+    //         date: "08.05.2024",
+    //         views: "23 views",
+    //         comment: "4 comments",
+    //         title: "Pressing for Change: Ministries Unite to Address Environmental Crises"
+    //     },
+    // ]
 
   return (
     <div className='flex flex-col'>
@@ -75,54 +99,37 @@ const News = () => {
                 <p className='text-[#222222] font-mont_alt font-bold text-[24px] lg:text-[40px]'>NOA NEWS</p>
                 <img src={Chain} alt='Chain' className='w-[54px] ' />
             </div>
-
-            <div className='flex flex-col lg:flex-row gap-5  items-center mt-[40px]'>
-                {
-                    data?.map((item, index) => (
-                        <div key={index} className='flex flex-col '>
-                            <img src={item?.img} alt='Poster' className='lg:w-[279px] lg:h-[200px]' />
-                            <div className='flex flex-col mt-4'>
-                                <p className='font-bold text-[#222222] '>{item?.title}</p>
-                                <div className='flex items-center gap-1.5'>
-                                    <p className='text-[#928B8B] font-bold text-xs'>{item?.views}</p>
-                                    <p className='text-[#928B8B] font-bold text-xs'>{item?.comment}</p>
+            {
+               loading 
+               ?
+               <p  className='text-2xl text-[#000] text-center font-semibold'>Loading...</p>
+               :
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-[40px]'>
+                    {
+                        newsData?.length > 0 ? newsData?.map((item, index) => (
+                            <div key={index} className='flex flex-col cursor-pointer' onClick={() => navigate(`/news/${item?.id}`, { state: item})}>
+                                <img src={item?.image} alt='Poster' className='lg:w-[279px] lg:h-[200px]' />
+                                <div className='flex flex-col mt-4 w-64'>
+                                    <p className='font-bold text-[#222222] '>{item?.title}</p>
+                                    {/* <div className='flex items-center gap-1.5'>
+                                        <p className='text-[#928B8B] font-bold text-xs'>{item?.views}</p>
+                                        <p className='text-[#928B8B] font-bold text-xs'>{item?.comment}</p>
+                                    </div> */}
                                 </div>
+                                {/* <div className='flex items-center mt-[8px] gap-[11px]'>
+                                    <img src={User} alt='User' className='w-[37px] h-[37px]' />
+                                    <div className='flex flex-col gap-1'>
+                                        <p className='font-mont font-bold text-[#585353]'>{item?.name}</p>
+                                        <p className='text-xs text-[#757575] font-mont'>{item?.date}</p>
+                                    </div>
+                                </div> */}
                             </div>
-                            <div className='flex items-center mt-[8px] gap-[11px]'>
-                                <img src={User} alt='User' className='w-[37px] h-[37px]' />
-                                <div className='flex flex-col gap-1'>
-                                    <p className='font-mont font-bold text-[#585353]'>{item?.name}</p>
-                                    <p className='text-xs text-[#757575] font-mont'>{item?.date}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>
-
-            <div className='flex flex-col lg:flex-row gap-5 items-center mt-[40px]'>
-                {
-                    data?.map((item, index) => (
-                        <div key={index} className='flex flex-col '>
-                            <img src={item?.img} alt='Poster' className='lg:w-[279px] lg:h-[200px]' />
-                            <div className='flex flex-col mt-4'>
-                                <p className='font-bold text-[#222222] '>{item?.title}</p>
-                                <div className='flex items-center gap-1.5'>
-                                    <p className='text-[#928B8B] font-bold text-xs'>{item?.views}</p>
-                                    <p className='text-[#928B8B] font-bold text-xs'>{item?.comment}</p>
-                                </div>
-                            </div>
-                            <div className='flex items-center mt-[8px] gap-[11px]'>
-                                <img src={User} alt='User' className='w-[37px] h-[37px]' />
-                                <div className='flex flex-col gap-1'>
-                                    <p className='font-mont font-bold text-[#585353]'>{item?.name}</p>
-                                    <p className='text-xs text-[#757575] font-mont'>{item?.date}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>
+                        )) 
+                        :
+                        <p className='text-2xl text-[#000] text-center font-semibold'>No News Available</p>
+                    }
+                </div>
+            }
 
         </div>
 
