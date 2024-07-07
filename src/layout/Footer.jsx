@@ -7,9 +7,11 @@ import { useNavigate } from 'react-router-dom'
 import ReactPlayer from 'react-player'
 import ModalPop from '../components/modalPop'
 import Privacy from './Privacy'
+import Terms from './Terms'
 
 const Footer = () => {
   const [openPrivacy, setOpenPrivacy] = useState(false)
+  const [openTerms, setOpenTerms] = useState(false)
 
   const navigate = useNavigate()
 
@@ -59,7 +61,7 @@ const Footer = () => {
           <p className='font-medium text-base lg:text-[11px] font-mont_alt text-[#fff]'>Copyrights <span className='text-[#00AA55]'> © 2024 National Orientation Agency </span> All rights reserved.</p>
           <div className='flex items-center gap-5'>
             <p className='font-medium text-base lg:text-[11px]  font-mont_alt text-[#fff]' onClick={() => setOpenPrivacy(true)}>Privacy Policy</p>
-            <p className='font-medium text-base lg:text-[11px]  font-mont_alt text-[#fff]'>Terms of use</p>
+            <p className='font-medium text-base lg:text-[11px]  font-mont_alt text-[#fff]'  onClick={() => setOpenTerms(true)}>Terms of use</p>
           </div>
         </div>
 
@@ -72,6 +74,10 @@ const Footer = () => {
       </div>
       <ModalPop isOpen={openPrivacy}>
         <Privacy handleClose={() => setOpenPrivacy(false)} />
+      </ModalPop>
+
+      <ModalPop isOpen={openTerms}>
+        <Terms handleClose={() => setOpenTerms(false)} />
       </ModalPop>
 
     </div>
