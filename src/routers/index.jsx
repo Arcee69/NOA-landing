@@ -15,6 +15,7 @@ import NoaPast from '../pages/Agency/NoaPast'
 import Management from '../pages/Agency/Management'
 import FOI from '../pages/Agency/FOI'
 import NewsDetails from '../pages/News/components/NewsDetails'
+import Quiz from '../pages/Hackathon/components/Quiz'
 
 
 const Routers = () => {
@@ -35,6 +36,7 @@ const Routers = () => {
         <Route path='/noa-past-executives' element={<NoaPast />} />
         <Route path="/management" element={<Management />} />
         <Route path="/foi" element={<FOI />} />
+        <Route path="/quiz" element={<Quiz />} />
       </Route>
     </Routes>
   )

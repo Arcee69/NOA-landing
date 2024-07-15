@@ -44,7 +44,7 @@ const Header = () => {
   return (
     <div className='flex justify-between px-[40px] py-[22px] items-center bg-[#FFF] w-full h-[67px]'>
       <div className='flex items-center gap-[30px]'>
-        <img src={Logo} alt='Logo' />
+        <img src={Logo} alt='Logo' className='cursor-pointer' onClick={() => navigate('/')} />
         {/* <div className=' flex items-center border border-l p-2 border-[#0000001A] border-y-0 border-r-0'>
           <input 
             placeholder='Explore'
@@ -55,11 +55,11 @@ const Header = () => {
         </div> */}
       </div>
       <div className='flex items-center gap-[23px]'>
-        <p className='text-BLACK-_100 cursor-pointer font-mont font-semibold hover:text-[#00AA55]' onClick={() => navigate("/")}>Home</p>
+        <p className='text-[#222222] cursor-pointer text-sm font-mont font-semibold hover:text-[#00AA55]' onClick={() => navigate("/")}>Home</p>
         <Listbox value={agencySelected} onChange={setAgencySelected}>
             <div className="relative">
                 <Listbox.Button className="relative w-[130px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm">
-                    <span className="block truncate w-full text-[#222222] font-semibold hover:text-[#00AA55] font-mont">The Agency</span>
+                    <span className="block truncate w-full text-sm text-[#222222] font-semibold hover:text-[#00AA55] font-mont">The Agency</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <IoIosArrowDown
                             className="h-4 w-4 text-[#AAAAAA]"
@@ -87,7 +87,7 @@ const Header = () => {
                             {({ selected }) => (
                                 <>
                                     <span
-                                        className={`block truncate ${
+                                        className={`block truncate text-sm ${
                                         selected ? 'font-medium' : 'font-normal'
                                         } text-[#052011]`}
                                         onClick={() => navigate(item?.link)}
@@ -133,10 +133,10 @@ const Header = () => {
                             {({ selected }) => (
                                 <>
                                     <span
-                                        className={`block truncate ${
+                                        className={`block truncate text-sm ${
                                         selected ? 'font-medium' : 'font-normal'
                                         } text-[#052011]`}
-                                        onClick={() => window.open(item?.link, '_blank')}
+                                        onClick={() => window.open(item?.link, "_blank")}
                                     >
                                         {item.name}
                                     </span>
@@ -149,9 +149,9 @@ const Header = () => {
             </div>
         </Listbox>
 
-        <p className='text-BLACK-_100 cursor-pointer hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/hackathon")}>Hackathon</p>
-        <p className='text-BLACK-_100 cursor-pointer hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/news")}>News</p>
-        <p className='text-BLACK-_100 cursor-pointer hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/contact")}>Contact Us</p>
+        <p className='text-[#222222] cursor-pointer text-sm hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/hackathon")}>Hackathon</p>
+        <p className='text-[#222222] cursor-pointer text-sm hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/news")}>News</p>
+        <p className='text-[#222222] cursor-pointer text-sm hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/contact")}>Contact Us</p>
 {/*       
         <Listbox value={selected} onChange={setSelected}>
             <div className="relative">

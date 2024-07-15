@@ -13,6 +13,7 @@ import CallB from "../../../assets/svg/call.svg"
 import Time from "../../../assets/svg/time.svg"
 import Mail from "../../../assets/svg/mail.svg"
 import { useLocation, useNavigate } from 'react-router-dom'
+import DOMPurify from 'dompurify';
 
 const NewsDetails = () => {
 
@@ -20,6 +21,8 @@ const NewsDetails = () => {
     console.log(state, 'alubarika')
 
     const navigate = useNavigate()
+
+    const sanitizedContent = DOMPurify.sanitize(state?.body);
 
   return (
     <div className='flex flex-col'>
@@ -43,7 +46,11 @@ const NewsDetails = () => {
                 <img src={state?.image} alt='News Image' className='w-[400px]'/>
                 <div className='flex flex-col gap-5'>
                     <p className='text-[#222222] font-mont_alt font-bold text-[24px]'>{state?.title}</p>
-                    <p className='text-[#222222] font-mont_alt font-medium text-[16px]'>{state?.body}</p>
+                    <div
+                        className="text-[#222222] font-mont_alt font-medium text-[16px]"
+                        dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+                    />
+                    {/* <p className='text-[#222222] font-mont_alt font-medium text-[16px]'>{state?.body}</p> */}
                 </div>
             </div>
         </div>

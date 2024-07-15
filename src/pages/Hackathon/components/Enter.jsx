@@ -96,7 +96,7 @@ const Enter = ({ setOpenSuccess, handleClose, data }) => {
 
   return (
     <div className='bg-[#fff] rounded-lg flex flex-col p-5 mt-[50px] lg:p-[64px] overflow-x-hidden overflow-y-auto lg:w-[750px] lg:h-[500px]'>
-        <div className='flex flex-col gap-4  h-[834px] '>
+        <div className='flex flex-col gap-4  h-[834px]'>
             <p className='text-[#000] font-mont text-[24px] lg:text-[32px] font-bold'>{data?.title}</p>
             <p className='text-[#475467] font-mont_alt text-base'>
                 Enter our photo contest for a chance to showcase your creativity and win cash prizes. 
