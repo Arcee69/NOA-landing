@@ -9,124 +9,160 @@ import Prize from './Prize'
 import Start from './Start'
 import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { IoChevronForwardOutline } from 'react-icons/io5'
 
 const Quiz = () => {
-    const [text, setText] = useState("")
-    const [openPrize, setOpenPrize] = useState(false)
-    const [openStart, setOpenStart] = useState(false)
-    const [quizDetails, setQuizDetails] = useState([])
-    const [touched, setTouched] = useState(false)
+    const [text, setText] = useState('');
+    const [openPrize, setOpenPrize] = useState(false);
+    const [openStart, setOpenStart] = useState(false);
+    const [quizDetails, setQuizDetails] = useState(null);
+    const [touched, setTouched] = useState(false);
+    const [userData, setUserData] = useState([]);
+    const [quizLeaderboard, setQuizLeaderboard] = useState([]);
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
     const [isCorrect, setIsCorrect] = useState(null);
     const [userAnswers, setUserAnswers] = useState([]);
 
-    const navigate = useNavigate()
+    // Timer states
+    const [remainingTime, setRemainingTime] = useState(3600); // 1 hour in seconds
+    const [timeSpent, setTimeSpent] = useState(0);
+    const [userMinutes, setUserMinutes] = useState(0)
+
+    const navigate = useNavigate();
+
+    const filled = localStorage.getItem('filled');
 
     const checkTouched = () => {
-        if (!touched) {
-            setOpenStart(true)
+        if (!filled) {
+            setOpenStart(true);
         } else {
-            return null
+            setOpenStart(false);
         }
-    }
+    };
 
     useEffect(() => {
-        checkTouched()
-    }, [touched])
+        checkTouched();
+    }, [filled]);
 
-    const { state } = useLocation()
-    console.log(state, "apamu")
+    const { state } = useLocation();
+    console.log(state, 'apamu');
 
     const getQuiz = async () => {
         try {
-            const res = await axios.get(`https://api.hackathon.noa.gov.ng/api/quizzes/${state?.id}`)
-            console.log(res, "Somb")
-            setQuizDetails(res?.data?.data)
+            const res = await axios.get(`https://api.hackathon.noa.gov.ng/api/quizzes/${state?.id}`);
+            console.log(res, 'Somb');
+            setQuizDetails(res?.data?.data);
         } catch (err) {
-          console.log(err, "Massive")
+            console.log(err, 'Massive');
         }
-    }
+    };
 
     useEffect(() => {
-        getQuiz()
-      }, [state?.id])
-
-      const questions = quizDetails?.questions;
-      console.log(questions, "mask")
-    
-        // Ensure questions is defined and not empty
-        if (!questions || questions.length === 0) {
-          return <div>Loading...</div>;
+        if (state?.id) {
+            getQuiz();
+            getQuizLeaderboard();
         }
-    
-    
-      const currentQuestion = questions[currentQuestionIndex];
-      const isLastQuestion = currentQuestionIndex === questions?.length - 1;
-    
-      const handleSkip = () => {
+    }, [state?.id]);
+
+    const getQuizLeaderboard = async () => {
+        try {
+            const res = await axios.get(`https://api.hackathon.noa.gov.ng/api/questions/participants/${state?.id}`);
+            console.log(res, 'bala');
+            setQuizLeaderboard(res?.data?.data);
+        } catch (err) {
+            console.log(err, 'Massive');
+        }
+    };
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setRemainingTime((prevTime) => {
+                if (prevTime > 0) {
+                    setTimeSpent((prevSpent) => prevSpent + 1);
+                    return prevTime - 1;
+                } else {
+                    clearInterval(timer);
+                    return 0;
+                }
+            });
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, []);
+
+
+    if (!quizDetails || !quizDetails.questions || quizDetails.questions.length === 0) {
+        return <div className='text-center font-mont font-medium text-4xl my-5'>Loading...</div>;
+    }
+
+    const sortedLeaderboard = quizLeaderboard.sort((a, b) => {
+        if (b.score === a.score) {
+            return parseInt(a.time_spent) - parseInt(b.time_spent);
+        }
+        return b.score - a.score;
+    });
+
+   
+
+    const questions = quizDetails?.questions;
+    const currentQuestion = questions[currentQuestionIndex];
+    const isLastQuestion = currentQuestionIndex === questions.length - 1;
+
+    const handleSkip = () => {
         setSelectedOption(null);
         setIsCorrect(null);
-        setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions?.length);
-      };
-    
-      const handleOptionSelect = (option) => {
+        setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
+    };
+
+    const handleOptionSelect = (option) => {
         setSelectedOption(option.id);
         setIsCorrect(option.answer === 1);
         const updatedAnswers = [...userAnswers];
         updatedAnswers[currentQuestionIndex] = option.answer === 1;
         setUserAnswers(updatedAnswers);
-      };
+    };
+
+    const handleNext = () => {
+        if (isLastQuestion) {
+            setOpenPrize(true);
+        } else {
+            setSelectedOption(null);
+            setIsCorrect(null);
+            setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+        }
+    };
+
+    const totalCorrectAnswers = userAnswers.filter((answer) => answer).length;
+
+    const formatTime = (seconds) => {
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return {
+            minutes: minutes.toString().padStart(2, '0'),
+            seconds: secs.toString().padStart(2, '0')
+        };
+    };
+
+    const { minutes, seconds } = formatTime(remainingTime);
     
-      const handleNext = () => {
-       if (isLastQuestion) {
-      setOpenPrize(true);
-    } else {
-      setSelectedOption(null);
-      setIsCorrect(null);
-      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-    }
-      };
-
-
-  const totalCorrectAnswers = userAnswers.filter((answer) => answer).length;
-
-    //   const targetDate = '2024-06-31T23:59:59';
-
-
-    //   const calculateTimeLeft = () => {
-    //     const difference = +new Date(targetDate) - +new Date();
-    //     let timeLeft = {};
-
-    //     if (difference > 0) {
-    //         timeLeft = {
-    //             days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-    //             hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-    //             minutes: Math.floor((difference / 1000 / 60) % 60),
-    //             seconds: Math.floor((difference / 1000) % 60),
-    //         };
-    //     }
-
-    //     return timeLeft;
-    // };
-
-    // const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
-
-    // useEffect(() => {
-    //     const timer = setInterval(() => {
-    //         setTimeLeft(calculateTimeLeft());
-    //     }, 1000);
-
-    //     return () => clearInterval(timer);
-    // }, [targetDate]);
-
   return (
     <div className='flex flex-col mt-[32px] mb-[47px] bg-[#fff]'>
+        <div className='bg-[#fff] px-[100px] py-[19px] hidden lg:flex items-center justify-between '>
+            <div className='flex gap-1 items-center'>
+                <p className='text-[#00AA55] font-manja font-bold text-base cursor-pointer' onClick={() => navigate("/")}>National Orientation Agency</p>
+                <IoChevronForwardOutline className='mb-1'/>
+                <p className='text-[#222222] font-bold text-base font-manja' onClick={() => navigate("/hackathon")}>Hackathon</p>
+                <IoChevronForwardOutline className='mb-1'/>
+                <p className='text-[#222222] font-bold text-base font-manja'>Quizzes</p>
+            </div>
+        </div>
+        
+        
         <div className='flex items-center justify-between mt-10 lg:mt-0 mb-4 px-5 lg:px-[100px]'>
-            <p className='text-[#222] hidden lg:flex font-manja text-[32px]' onClick={() => navigate("/hackathon")}>Hackathon</p>
-            <div className='rounded-lg w-full lg:w-[330px] flex items-center h-[48px] border border-[#AAAAAAAA] rounded-[4px]'>
+            <p className='text-[#222] hidden cursor-pointer lg:flex font-manja text-[32px]' onClick={() => navigate("/hackathon")}>Quiz</p>
+            <div className='rounded-lg w-full lg:w-[330px] hidden flex items-center h-[48px] border border-[#AAAAAAAA] rounded-[4px]'>
                 <input 
                     type='text'
                     value={text}
@@ -140,7 +176,7 @@ const Quiz = () => {
                     </svg>
                 </div>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" className='hidden lg:flex'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" className='hidden'>
                 <path d="M7.02343 13.0001C7.02176 11.8146 7.25466 10.6405 7.70871 9.54534C8.16276 8.45021 8.82899 7.45573 9.66903 6.61918C10.5091 5.78263 11.5063 5.12054 12.6033 4.67105C13.7003 4.22156 14.8754 3.99354 16.0609 4.00014C21.0109 4.03764 24.9734 8.15014 24.9734 13.1126V14.0001C24.9734 18.4751 25.9109 21.0751 26.7359 22.5001C26.8235 22.6519 26.8698 22.824 26.8699 22.9993C26.8701 23.1745 26.8242 23.3467 26.7368 23.4986C26.6495 23.6505 26.5237 23.7768 26.3722 23.8648C26.2207 23.9529 26.0487 23.9995 25.8734 24.0001H6.12343C5.94819 23.9995 5.77619 23.9529 5.62467 23.8648C5.47314 23.7768 5.3474 23.6505 5.26005 23.4986C5.1727 23.3467 5.1268 23.1745 5.12695 22.9993C5.12711 22.824 5.17331 22.6519 5.26093 22.5001C6.08593 21.0751 7.02343 18.4751 7.02343 14.0001V13.0001Z" stroke="#344054" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M12 24V25C12 26.0609 12.4214 27.0783 13.1716 27.8284C13.9217 28.5786 14.9391 29 16 29C17.0609 29 18.0783 28.5786 18.8284 27.8284C19.5786 27.0783 20 26.0609 20 25V24" stroke="#344054" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
                 <circle cx="23.9996" cy="8.0001" r="5.6" fill="#F04438" stroke="white" stroke-width="1.6"/>
@@ -164,12 +200,6 @@ const Quiz = () => {
                         </div>
                         <p className='font-mont_alt text-[#475467] text-base '>
                             {quizDetails?.desc}
-                            {/* Test your knowledge of Nigeria in this exciting quiz! Answer 16 questions about our great nation for a chance to win free airtime. 
-                            From geography and history to culture and current events, 
-                            this quiz will challenge your understanding of Nigeria's rich heritage and modern developments. <br />
-                            Are you up to date with the latest news about Nigeria? 
-                            Can you recall important facts about our country's diverse regions, peoples, and achievements? Put your knowledge to the test and you might just walk away with a valuable prize!
-                            Get ready to showcase your Nigerian know-how. Good luck! */}
                         </p>
                     </div>
                 </div>
@@ -208,7 +238,7 @@ const Quiz = () => {
                                 {isCorrect ? (
                                     <p className='text-[#00AA55] font-manja text-[19px]'>Correct!</p>
                                 ) : (
-                                    <p className='text-[#D32F2F] font-manja text-[19px]'>Incorrect. Please try again.</p>
+                                    <p className='text-[#D32F2F] font-manja text-[19px]'>Incorrect.</p>
                                 )}
                                 </div>
                             )}
@@ -235,146 +265,54 @@ const Quiz = () => {
                         </div>
                     </div>
 
-                    {/* <div className='w-8/12 flex flex-col gap-4'>
-                        <div className='flex items-center gap-6'>
-                            <div className='w-[57px] h-[19px] bg-[#00AA55] rounded-[30px]'></div>
-                            <div className='w-[57px] h-[19px] bg-[#C4C4C4] rounded-[30px]'></div>
-                            <div className='w-[57px] h-[19px] bg-[#C4C4C4] rounded-[30px]'></div>
-                            <div className='w-[57px] h-[19px] bg-[#C4C4C4] rounded-[30px]'></div>
-                            <div className='w-[57px] h-[19px] bg-[#C4C4C4] rounded-[30px]'></div>
-                            <div className='w-[57px] h-[19px] bg-[#C4C4C4] rounded-[30px]'></div>
-                            <div className='w-[57px] h-[19px] bg-[#C4C4C4] rounded-[30px]'></div>
-                            <div className='w-[57px] h-[19px] bg-[#C4C4C4] rounded-[30px]'></div>
-                            <div className='w-[57px] h-[19px] bg-[#C4C4C4] rounded-[30px]'></div>
-                            <div className='w-[57px] h-[19px] bg-[#C4C4C4] rounded-[30px]'></div>
-                        </div>
-                        <div className='bg-[#FAFAFA] w-full rounded-lg flex flex-col py-4 px-5'>
-                            <p className='flex justify-end underline font-mont_alt text-[#00AA55] text-[20px] font-semibold'>Skip</p>
-                            <div className='flex justify-center items-center flex-col'>
-                                <p className='font-manja text-[#4A4A4A] font-semibold'>Question 1</p>
-                                <p className='text-[#4A4A4A] font-manja text-[19px] mt-[51px] mb-10'>
-                                    You see a non-familiar face in the access-controlled areas of our office, 
-                                    the person does not have the MGL ID/Visitor/Staff/Vendor tag with him. 
-                                    What would you do?
-                                </p>
-                                <div className='flex flex-col gap-6 w-full'>
-                                    <div className='border-[#1935CA] w-full  rounded-lg border p-5 flex items-center bg-[#FBF9F9] hover:bg-[#00AA55] group hover:border-[#6FD181]'>
-                                        <p className='text-[#4A4A4A] font-manja text-[19px] group-hover:text-[#fff]'>None of my business, let some body else take care of it</p>
-                                    </div>
-                                    <div className='border-[#1935CA] w-full  rounded-lg border p-5 flex items-center bg-[#FBF9F9] group hover:bg-[#00AA55] hover:border-[#6FD181]'>
-                                        <p className='text-[#4A4A4A] font-manja text-[19px] group-hover:text-[#fff]'>Ask the person to leave the facility</p>
-                                    </div>
-                                    <div className='border-[#1935CA] w-full  rounded-lg border p-5 flex items-center bg-[#FBF9F9] group hover:bg-[#00AA55] hover:border-[#6FD181]'>
-                                        <p className='text-[#4A4A4A] font-manja text-[19px] group-hover:text-[#fff]'>Escort the person to the security and raise a security incident</p>
-                                    </div>
-                                    <div className='border-[#1935CA] w-full  rounded-lg border p-5 flex items-center bg-[#FBF9F9] group hover:bg-[#00AA55] hover:border-[#6FD181]'>
-                                        <p className='text-[#4A4A4A] font-manja text-[19px] group-hover:text-[#fff]'>Raise a security incident and go back doing your work</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className='flex items-center justify-between my-[32px] '>
-                                <div className='flex items-center w-[130px] cursor-pointer h-[69px] rounded-lg p-3 gap-2 bg-[#D1FAE5]'>
-                                    <FaArrowLeftLong className="text-[#00AA55] text-[20px]" />
-                                    <p className='font-poppins text-[#00AA55] font-semibold text-[20px] '>Previous</p>
-                                </div>
-                                <div onClick={() => setOpenPrize(true)} className='flex cursor-pointer w-[130px] h-[69px] justify-center items-center gap-2 p-3 rounded-lg bg-[#00AA55]'>
-                                    <p className='font-poppins text-[#fff] font-semibold text-[20px] '>Next</p>
-                                    <FaArrowRightLong className="text-[#fff] text-[20px]" />
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div> */}
-
                     <div className='flex flex-col w-4/12'>
                         <div className='bg-gradient-to-r from-[#027315] gap-3 p-6 to-[#04D928] to-[#6FD181] flex flex-col rounded-lg'>
                             <p className='text-[#fff]'>Quiz ending in</p>
                             <div className='flex items-center gap-2'>
                                 <div className='bg-[#ECF9EE70] w-[123px] rounded-lg h-[52px] flex justify-center items-center'>
-                                    <p className='font-extrabold text-[23px] font-mont_alt text-[#fff]'>{0}</p>
-                                </div>
-                                <div className='bg-[#ECF9EE70] w-[123px] rounded-lg h-[52px] flex justify-center items-center'>
-                                    <p className='font-extrabold text-[23px] font-mont_alt text-[#fff]'>{0}</p>
-                                </div>
-                                <div className='bg-[#ECF9EE70] w-[123px] rounded-lg h-[52px] flex justify-center items-center'>
                                     <p className='font-extrabold text-[23px] font-mont_alt text-[#fff]'>00</p>
+                                </div>
+                                <div className='bg-[#ECF9EE70] w-[123px] rounded-lg h-[52px] flex justify-center items-center'>
+                                    <p className='font-extrabold text-[23px] font-mont_alt text-[#fff]'>{minutes}</p>
+                                </div>
+                                <div className='bg-[#ECF9EE70] w-[123px] rounded-lg h-[52px] flex justify-center items-center'>
+                                    <p className='font-extrabold text-[23px] font-mont_alt text-[#fff]'>{seconds}</p>
                                 </div>
                             </div>
                         </div>
-
+                        <p className='mt-5 text-center font-mont_alt font-medium text-xl'>Quiz Leaderboard</p>
                         <div className='bg-gradient-to-b from-[#FFFFFF] p-[28px] to-[#ECF9EE] rounded-xl flex flex-col'>
-                            {
-                                <p className='text-xl text-[#222] font-mont font-semibold'>No Leaderboard Available</p>
-                            }
-                            <div className='flex items-center hidden justify-between'>
-                                <div className='flex flex-col mt-14 gap-[22px]'>
-                                    <img src={Two} alt='Two' className='w-[74px] h-[74px]' />
-                                    <p className='text-[#FFBA49] font-bold font-mont_alt text-sm'>Meghan Jes...</p>
-                                </div>
-                                <div className='flex flex-col gap-[22px]'>
-                                    <img src={One} alt='One' className='w-[84px] h-[84px]' />
-                                    <p className='text-[#00AA55] font-bold font-mont_alt text-sm'>Bryan Wolf</p>
-                                </div>
-                                <div className='flex flex-col mt-14 gap-[22px]'>
-                                    <img src={Three} alt='Three' className='w-[74px] h-[74px]' />
-                                    <p className='text-[#DC6803] font-bold font-mont_alt text-sm'>Alex Turner</p>
-                                </div>
-                            </div>
-                            <div className='flex flex-col hidden bg-[#fff] mt-5 py-6 px-4 gap-[8px]'>
-                                <div className='flex justify-between group h-[48px] bg-[#ECF9EE] hover:bg-[#00AA55] rounded-xl items-center p-4'>
-                                    <p className='text-sm text-[#00AA55] font-mont_alt font-bold group-hover:text-[#fff]'>4  Marsha Fisher</p>
+                            {sortedLeaderboard.length > 0 ? (
                                     <div className='flex flex-col'>
-                                        <p className='font-manja font-bold text-sm text-[#00AA55] group-hover:text-[#fff]'>35 pts</p>
-                                        <p className='font-manja text-[#00AA55] text-[9px] group-hover:text-[#fff]'>2:00 mins</p>
+                                        <div className='flex items-center justify-between'>
+                                            <div className='flex flex-col mt-14 gap-[22px]'>
+                                                <img src={Two} alt='Two' className='w-[74px] h-[74px]' />
+                                                <p className='text-[#FFBA49] font-bold font-mont_alt text-sm'>{sortedLeaderboard[1]?.name || 'User 2'}</p>
+                                            </div>
+                                            <div className='flex flex-col gap-[22px]'>
+                                                <img src={One} alt='One' className='w-[84px] h-[84px]' />
+                                                <p className='text-[#00AA55] font-bold font-mont_alt text-sm'>{sortedLeaderboard[0]?.name || 'User 1'}</p>
+                                            </div>
+                                            <div className='flex flex-col mt-14 gap-[22px]'>
+                                                <img src={Three} alt='Three' className='w-[74px] h-[74px]' />
+                                                <p className='text-[#DC6803] font-bold font-mont_alt text-sm'>{sortedLeaderboard[2]?.name || 'User 3'}</p>
+                                            </div>
+                                        </div>
+                                        <div className='flex flex-col bg-[#fff] mt-5 py-6 px-4 gap-[8px]'>
+                                            {sortedLeaderboard.map((user, index) => (
+                                                <div key={user.id} className='flex justify-between group h-[48px] bg-[#ECF9EE] hover:bg-[#00AA55] rounded-xl items-center p-4'>
+                                                    <p className='text-sm text-[#00AA55] font-mont_alt font-bold group-hover:text-[#fff]'>{index + 1} {user.name}</p>
+                                                    <div className='flex flex-col'>
+                                                        <p className='font-manja font-bold text-sm text-[#00AA55] group-hover:text-[#fff]'>{user.score} pts</p>
+                                                        <p className='font-manja text-[#00AA55] text-[9px] group-hover:text-[#fff]'>{Math.round(parseInt(user.time_spent) / 60)} mins</p>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
-                                <div className='flex justify-between group h-[48px] bg-[#ECF9EE] hover:bg-[#00AA55] rounded-xl items-center p-4'>
-                                    <p className='text-sm text-[#00AA55] font-mont_alt font-bold group-hover:text-[#fff]'>5 Juanita Cormier</p>
-                                    <div className='flex flex-col'>
-                                        <p className='font-manja font-bold text-sm text-[#00AA55] group-hover:text-[#fff]'>35 pts</p>
-                                        <p className='font-manja text-[#00AA55] text-[9px] group-hover:text-[#fff]'>2:00 mins</p>
-                                    </div>
-                                </div>
-                                <div className='flex justify-between group h-[48px] bg-[#ECF9EE] hover:bg-[#00AA55] rounded-xl items-center p-4'>
-                                    <p className='text-sm text-[#00AA55] font-mont_alt font-bold group-hover:text-[#fff]'>6 You</p>
-                                    <div className='flex flex-col'>
-                                        <p className='font-manja font-bold text-sm text-[#00AA55] group-hover:text-[#fff]'>35 pts</p>
-                                        <p className='font-manja text-[#00AA55] text-sm text-[9px] group-hover:text-[#fff]'>2:00 mins</p>
-                                    </div>
-                                </div>
-                                <div className='flex justify-between group h-[48px] bg-[#ECF9EE] hover:bg-[#00AA55] rounded-xl items-center p-4'>
-                                    <p className='text-sm text-[#00AA55] font-mont_alt font-bold group-hover:text-[#fff]'>7 Tamara Schmidt</p>
-                                    <div className='flex flex-col'>
-                                        <p className='font-manja font-bold text-sm text-[#00AA55] group-hover:text-[#fff]'>35 pts</p>
-                                        <p className='font-manja text-[#00AA55] text-sm text-[9px] group-hover:text-[#fff]'>2:00 mins</p>
-                                    </div>
-                                </div>
-                                <div className='flex justify-between group bg-[#ECF9EE] h-[48px] hover:bg-[#00AA55] rounded-xl items-center p-4'>
-                                    <p className='text-sm text-[#00AA55] font-mont_alt font-bold group-hover:text-[#fff]'>8 Ricardo Veum</p>
-                                    <div className='flex flex-col'>
-                                        <p className='font-manja font-bold text-sm text-[#00AA55] group-hover:text-[#fff]'>35 pts</p>
-                                        <p className='font-manja text-[#00AA55] text-sm text-[9px] group-hover:text-[#fff]'>2:00 mins</p>
-                                    </div>
-                                </div>
-                                <div className='flex justify-between group bg-[#ECF9EE] h-[48px] hover:bg-[#00AA55] rounded-xl items-center p-4'>
-                                    <p className='text-sm text-[#00AA55] font-mont_alt font-bold group-hover:text-[#fff]'>9 Gary Sanford</p>
-                                    <div className='flex flex-col'>
-                                        <p className='font-manja font-bold text-sm text-[#00AA55] group-hover:text-[#fff]'>35 pts</p>
-                                        <p className='font-manja text-[#00AA55] text-sm text-[9px] group-hover:text-[#fff]'>2:00 mins</p>
-                                    </div>
-                                </div>
-                                <div className='flex justify-between group h-[48px] bg-[#ECF9EE] hover:bg-[#00AA55] rounded-xl items-center p-4'>
-                                    <p className='text-sm text-[#00AA55] font-mont_alt font-bold group-hover:text-[#fff]'>10 Becky Bartell</p>
-                                    <div className='flex flex-col'>
-                                        <p className='font-manja font-bold text-sm text-[#00AA55] group-hover:text-[#fff]'>35 pts</p>
-                                        <p className='font-manja text-[#00AA55] text-sm text-[9px] group-hover:text-[#fff]'>2:00 mins</p>
-                                    </div>
-                                </div>
-
-                            </div>
-
+                                ) : (
+                                    <p className='text-xl text-[#222] font-mont font-semibold'>No Leaderboard Available</p>
+                                )}
                         </div>
 
 
@@ -384,16 +322,26 @@ const Quiz = () => {
             </div>
 
         </div>
+          
+        
         <ModalPop isOpen={openPrize}>
             <Prize 
                 handleClose={() => setOpenPrize(false)} 
                 totalCorrectAnswers={totalCorrectAnswers}
                 questions={questions} 
+                userData={userData}
+                state={state}
+                timeSpent={formatTime(timeSpent)}
             />
         </ModalPop>
 
         <ModalPop isOpen={openStart}>
-            <Start handleClose={() => setOpenStart(false)} setTouched={() => setTouched(true)} />
+            <Start 
+                handleClose={() => setOpenStart(false)} 
+                setTouched={() => setTouched(true)} 
+                setUserData={setUserData}
+                quizDetails={quizDetails}
+            />
         </ModalPop>
         
     </div>

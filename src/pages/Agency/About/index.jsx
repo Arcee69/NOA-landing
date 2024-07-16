@@ -41,7 +41,7 @@ const About = () => {
     <div className='flex flex-col'>
         <div className='bg-[#fff] px-[100px] py-[19px] hidden lg:flex items-center justify-between '>
             <div className='flex gap-1 items-center'>
-                <p className='text-[#00AA55] font-manja font-bold text-base '>National Orientation Agency</p>
+                <p className='text-[#00AA55] font-manja font-bold text-base cursor-pointer' onClick={() => navigate("/")}>National Orientation Agency</p>
                 <IoChevronForwardOutline className='mb-1'/>
                 <p className='text-[#222222] font-bold text-base font-manja'>About Us</p>
             </div>

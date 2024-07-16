@@ -4,8 +4,11 @@ import { CgSpinner } from 'react-icons/cg'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
+import * as Yup from "yup"
 
-const Start = ({ handleClose, setTouched }) => {
+import CloseIcon from "../../../assets/svg/closeIcon.svg"
+
+const Start = ({ handleClose, setTouched, setUserData, quizDetails }) => {
     const [loading, setLoading] = useState(false)
     const [userImage, setUserImage] = useState(null)
     const [getStates, setGetStates ] = useState()
@@ -13,6 +16,11 @@ const Start = ({ handleClose, setTouched }) => {
     const [lgasType, setLgasType] = useState([])
     const [getLgas, setGetLgas] = useState()
 
+    const formValidationSchema = Yup.object().shape({
+        fullName: Yup.string().required("Required"),
+        email: Yup.string().email().required("Required"),
+        state: Yup.string().required("Required"),
+    })
 
     const fetchStates = async () => {
         await axios.get("https://hackathon.smhptech.com/api/state")
@@ -30,56 +38,41 @@ const Start = ({ handleClose, setTouched }) => {
     }, [])
 
     const submitForm = async (values) => {
-        const formData = new FormData()
-        // formData.append("contest_id", `${data?.id}`)
-        formData.append("first_name", values?.firstName)
-        formData.append("last_name", values?.lastName)
-        formData.append("state_id", values?.state)
-      
-        await axios.post("https://hackathon.smhptech.com/api/entry/create", formData)
-        .then((res) => {
-            console.log(res, "fassa")
-            toast(`${res?.data?.message}`, { 
-                position: "top-right",
-                autoClose: 3500,
-                closeOnClick: true,
-            });
-        })
-        .catch((err) => {
-            console.log(err, "lassa")
-            toast(`${err?.response?.data?.message}`, { 
-                position: "top-right",
-                autoClose: 3500,
-                closeOnClick: true,
-            });
-        })
+        localStorage.setItem("filled", true)
+        setUserData(values)
+        handleClose()
     }
 
   return (
     <div className='bg-[#fff] rounded-lg flex flex-col p-5 mt-[50px] lg:p-[64px] overflow-x-hidden overflow-y-auto lg:w-[750px] lg:h-[500px]'>
+         <button className="flex justify-end mb-5 items-center"  onClick={() => handleClose()}> 
+                <img src={CloseIcon} alt='close' />
+            </button>
           <div className='flex flex-col gap-4  h-[834px]'>
-            <p className='text-[#000] font-mont text-[24px] lg:text-[32px] font-bold'>How Well Do You Know Nigeria?</p>
+            <p className='text-[#000] font-mont text-[24px] lg:text-[32px] font-bold'>{quizDetails?.title}</p>
             <p className='text-[#475467] font-mont_alt text-base'>
-                Are you up to date with the latest news about Nigeria? 
+                {quizDetails?.desc}
+                {/* Are you up to date with the latest news about Nigeria? 
                 Can you recall important facts about our country's diverse regions, peoples, and achievements? 
                 Put your knowledge to the test and you might just walk away with a valuable prize!
-                Get ready to showcase your Nigerian know-how. Good luck!
+                Get ready to showcase your Nigerian know-how. Good luck! */}
             </p>
             <div className='mt-2 '>
                 <Formik
                     initialValues={{
                         fullName: "",
-                        phone: "",
+                        // phone: "",
+                        email: "",
                         state: "",
        
                     }}
-                    //   validationSchema={formValidationSchema}
+                    validationSchema={formValidationSchema}
                     onSubmit={(values) => {
                         window.scrollTo(0, 0)
                         console.log(values, "often")
-                        // submitForm(values)
+                        submitForm(values)
                         setTouched()
-                        handleClose()
+           
                     }}
                 >
                 {({
@@ -109,6 +102,21 @@ const Start = ({ handleClose, setTouched }) => {
                             />
                             {errors.fullName && touched.fullName ? (
                             <div className='text-RED-_100'>{errors.fullName}</div>
+                            ) : null}
+                        </div>
+
+                        <div className="flex flex-col w-full">
+                            <label htmlFor='email' className="font-bold font-manja text-sm text-[#101928]">Email</label>
+                            <input
+                                name="email"
+                                placeholder="example@mail.com"
+                                type="text" 
+                                value={values.email}
+                                onChange={handleChange}
+                                className="rounded-lg border-[#D0D5DD] w-full outline-none mt-1.5 h-[51px] border-solid  p-3 border"
+                            />
+                            {errors.email && touched.email ? (
+                            <div className='text-RED-_100'>{errors.email}</div>
                             ) : null}
                         </div>
 

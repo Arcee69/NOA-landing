@@ -14,10 +14,13 @@ import Biker from "../../assets/png/biker.png"
 import Zones from "../../assets/png/zones.png"
 import Leaf from "../../assets/png/leaf.png"
 import QuizCup from "../../assets/png/quiz_cup.png"
+import City from "../../assets/png/city.png"
+import Group from "../../assets/png/group.png"
 
 import User from "../../assets/svg/user_fill.svg"
 
 import HackAd from "../../assets/png/hackathon_slider.jpg"
+import { IoChevronForwardOutline } from 'react-icons/io5';
 
 
 
@@ -50,6 +53,7 @@ const Hackathon = () => {
     };
 
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
 
 
     useEffect(() => {
@@ -138,9 +142,16 @@ const Hackathon = () => {
 
   return (
     <div className='flex flex-col mt-[32px] mb-[47px]'>
+         <div className='bg-[#fff] px-[100px] py-[19px] hidden lg:flex items-center justify-between '>
+            <div className='flex gap-1 items-center'>
+                <p className='text-[#00AA55] font-manja font-bold text-base cursor-pointer' onClick={() => navigate("/")}>National Orientation Agency</p>
+                <IoChevronForwardOutline className='mb-1'/>
+                <p className='text-[#222222] font-bold text-base font-manja cursor-pointer'>Hackathon</p>
+            </div>
+        </div>
         <div className='flex items-center justify-between mt-10 lg:mt-0 px-5 lg:px-[100px]'>
             <p className='text-[#222] hidden lg:flex font-manja text-[32px]'>Hackathon</p>
-            <div className='rounded-lg w-full lg:w-[330px] flex items-center h-[48px] border border-[#AAAAAAAA] rounded-[4px]'>
+            <div className='rounded-lg hidden w-full lg:w-[330px] flex items-center h-[48px] border border-[#AAAAAAAA] rounded-[4px]'>
                 <input 
                     type='text'
                     value={text}
@@ -154,14 +165,14 @@ const Hackathon = () => {
                     </svg>
                 </div>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" className='hidden lg:flex'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" className='hidden'>
                 <path d="M7.02343 13.0001C7.02176 11.8146 7.25466 10.6405 7.70871 9.54534C8.16276 8.45021 8.82899 7.45573 9.66903 6.61918C10.5091 5.78263 11.5063 5.12054 12.6033 4.67105C13.7003 4.22156 14.8754 3.99354 16.0609 4.00014C21.0109 4.03764 24.9734 8.15014 24.9734 13.1126V14.0001C24.9734 18.4751 25.9109 21.0751 26.7359 22.5001C26.8235 22.6519 26.8698 22.824 26.8699 22.9993C26.8701 23.1745 26.8242 23.3467 26.7368 23.4986C26.6495 23.6505 26.5237 23.7768 26.3722 23.8648C26.2207 23.9529 26.0487 23.9995 25.8734 24.0001H6.12343C5.94819 23.9995 5.77619 23.9529 5.62467 23.8648C5.47314 23.7768 5.3474 23.6505 5.26005 23.4986C5.1727 23.3467 5.1268 23.1745 5.12695 22.9993C5.12711 22.824 5.17331 22.6519 5.26093 22.5001C6.08593 21.0751 7.02343 18.4751 7.02343 14.0001V13.0001Z" stroke="#344054" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M12 24V25C12 26.0609 12.4214 27.0783 13.1716 27.8284C13.9217 28.5786 14.9391 29 16 29C17.0609 29 18.0783 28.5786 18.8284 27.8284C19.5786 27.0783 20 26.0609 20 25V24" stroke="#344054" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
                 <circle cx="23.9996" cy="8.0001" r="5.6" fill="#F04438" stroke="white" stroke-width="1.6"/>
             </svg>
         </div>
 
-        <div className='w-full py-[108px]'>
+        <div className='w-full pb-[108px]'>
             <Slider {...settings}>
                 <div className='w-full'>
                     <div className='flex flex-col lg:flex-row items-center lg:justify-between px-5 lg:px-[100px]'>
@@ -200,16 +211,19 @@ const Hackathon = () => {
                     </div>
 
                 </div>
-                <div className='w-full hidden lg:flex justify-center px-8 '>
-                    {/* // <img src={HackAd} alt='HackAd' className='' /> */}
-                    <div className='flex flex-col lg:flex-row items-center justify-between px-5 lg:px-[100px]'>
+                <div 
+                    className='w-full hidden relative lg:flex  h-[552px]'
+                >
+                    <img src={Group} alt='Background' className='absolute top-0 left-0 w-full h-full object-cover -z-50' />
+                    <div className='absolute top-0 left-0 w-full h-full bg-gray-500 opacity-50 -z-40'></div>
+                    <div className='flex flex-col lg:flex-row items-center py-14 px-5 lg:px-[100px] '>
                         <div className='flex flex-col w-full lg:w-[501px] h-[271px] gap-[48px]'>
-                            <p className='text-[#33363F] text-[40px] lg:text-[80px] font-bebas leading-[40px] lg:leading-[90px] font-medium'>All about NOA Hackathons And Quizzes</p>
-                            <button className='rounded-lg bg-[#027315] w-[310px] h-[43px] p-3 flex items-center justify-center text-[#fff]'>
+                            <p className='text-[#fff] text-[40px] lg:text-[80px] font-bebas leading-[40px] lg:leading-[90px] font-medium'>All about NOA Hackathons And Quizzes</p>
+                            <button className='rounded-lg invisible bg-[#027315] w-[310px] h-[43px] p-3 flex items-center justify-center text-[#fff]'>
                                 Read Article
                             </button>
                         </div>
-                        <img src={Trophy} alt='Trophy' className='lg:w-[500px] lg:h-[500px]' />
+           
                     </div>
 
                 </div>
@@ -219,7 +233,7 @@ const Hackathon = () => {
         <div className='flex flex-col gap-[32px] px-5 lg:px-[100px]'>
             <div className='flex justify-between items-center'>
                 <p className='font-mont_alt font-bold text-[24px] text-[#070807]'>Categories</p>
-                <p className='font-mont_alt font-bold text-sm text-[#00AA55]'>Browse Hackathons</p>
+                <p className='font-mont_alt font-bold hidden text-sm text-[#00AA55]'>Browse Hackathons</p>
             </div>
             <div className='flex flex-col lg:flex-row gap-4 lg:gap-0 items-center justify-between'>
                 <div className='flex flex-col gap-3'>
@@ -250,7 +264,7 @@ const Hackathon = () => {
                     </div>
                     <p className='text-[#5D5959] text-[20px] font-medium font-mont_alt'>Essay Hackathon</p>
                 </div>
-                <div className='flex flex-col gap-3'>
+                <div className='flex flex-col gap-3 cursor-pointer' onClick={() => navigate("/quiz/view")}>
                     <div className='bg-[#004D40] w-[258px] h-[120px] rounded-[12px] flex items-center justify-center'>
                         <img src={QuizCup} alt="QuizCup" className='w-[71px] h-[70px]' />
                     </div>
@@ -263,8 +277,8 @@ const Hackathon = () => {
 
         <div className='flex flex-col gap-6 mt-[72px]  px-5 lg:px-[100px]'>
             <div className='flex justify-between items-center'>
-                <p className='font-mont_alt font-bold text-[24px] text-[#070807]'>Ongoing</p>
-                <p className='font-mont_alt font-bold text-[14px] text-[#00AA55]'>See more</p>
+                <p className='font-mont_alt font-bold text-[24px] text-[#070807]'>Hackathons</p>
+                <p className='font-mont_alt font-bold text-[14px] text-[#00AA55] cursor-pointer' onClick={() => navigate("/hackathon/view/all")}>See more</p>
             </div>
             <div className='flex flex-col lg:flex-row gap-10 items-center'>
                 {
@@ -329,7 +343,7 @@ const Hackathon = () => {
             </div>
         </div>
 
-        <div className='flex flex-col gap-6 mt-[72px] px-5 lg:px-[100px]'>
+        <div className='flex flex-col hidden gap-6 mt-[72px] px-5 lg:px-[100px]'>
             <div className='flex justify-between items-center'>
                 <p className='font-mont_alt font-bold text-[24px] text-[#070807]'>Recent Hackathons</p>
                 <p className='font-mont_alt font-bold text-[14px] text-[#00AA55]'>Browse all</p>
@@ -539,7 +553,7 @@ const Hackathon = () => {
         <div className='flex flex-col gap-6 mt-[72px]  px-5 lg:px-[100px]'>
             <div className='flex justify-between items-center'>
                 <p className='font-mont_alt font-bold text-[24px] text-[#070807]'>Quizzes</p>
-                <p className='font-mont_alt font-bold text-[14px] text-[#00AA55]'>Browse all</p>
+                <p className='font-mont_alt font-bold text-[14px] text-[#00AA55]' onClick={() => navigate("/quiz/view/all")}>See more</p>
             </div>
           
             <div  className='flex flex-col lg:flex-row items-center gap-5 '>
@@ -551,7 +565,7 @@ const Hackathon = () => {
                     allQuizzes?.slice(0, 3).map((item, index) => (
                         <div key={item?.id} className='lg:w-[370px] bg-[#fff] h-auto p-2 flex flex-col border border-[#E8F2EA] rounded-tl-xl rounded-tr-xl'>
                             <div className='bg-[#add8e6] p-2 flex items-center justify-center'>
-                                <img src={`${item?.image}`} alt='Zones' className='h-[211px]'/>
+                                <img src={`${Zones || item?.image}`} alt='Zones' className='h-[211px]'/>
                             </div>
                             <div className='flex items-center relative -top-4 left-1 gap-4'>
 
@@ -587,11 +601,11 @@ const Hackathon = () => {
                         </div>
                     )) 
                     :
-                    <p className='text-xs font-mont text-[#000] text-center font-semibold text-5xl'>No Quiz Available</p>
+                    <p className='font-mont_alt font-bold text-[24px] text-[#070807]'>No Quiz Available</p>
                 }
 
 
-                <div className='lg:w-[370px] h-[425px] flex flex-col relative border border-[#E8F2EA] rounded-tl-xl rounded-tr-xl '>
+                {/* <div className='lg:w-[370px] h-[425px] flex flex-col relative border border-[#E8F2EA] rounded-tl-xl rounded-tr-xl '>
                     <div className='absolute top-0 left-0 w-full z-50 h-full bg-[#222222A6] rounded-xl flex items-center justify-center'>
                         <button className='bg-[#00AA55] rounded-[8px] w-[292px] border py-2 px-4 border-[#0A5]'>
                             <p className='font-mont_alt font-semibold text-[#fff] text-sm '>Coming Soon</p>
@@ -629,7 +643,7 @@ const Hackathon = () => {
 
                     </div>
 
-                </div>
+                </div> */}
 
                 
 
@@ -637,6 +651,26 @@ const Hackathon = () => {
 
           
             
+        </div>
+
+        <div
+            style={{
+                background: `url(${City})`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover"
+            }}
+            className='flex items-center justify-center h-[400px] mt-[128px]'
+        >
+            <div className='flex flex-col w-[453px] h-[208px] gap-[8px]'>
+                <p className='font-bold font-manja text-[32px] text-[#fff] text-center'>Informative content tailored to your preferences</p>
+                <p className='font-mont_alt font-semibold text-base text-[#fff] text-center'>
+                    Quality and informative content to the general citizenry is our priority
+                </p>
+                <button className='bg-[#00AA55] rounded flex items-center h-[48px] p-2 w-[162px] mx-auto justify-center'>
+                    <p className='text-[#fff] font-manja font-bold text-sm'>Browse programs</p>
+                </button>
+            </div>
+
         </div>
 
 

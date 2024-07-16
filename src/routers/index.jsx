@@ -16,6 +16,9 @@ import Management from '../pages/Agency/Management'
 import FOI from '../pages/Agency/FOI'
 import NewsDetails from '../pages/News/components/NewsDetails'
 import Quiz from '../pages/Hackathon/components/Quiz'
+import ViewQuiz from '../pages/Hackathon/ViewQuiz'
+import QuizViewAll from '../pages/Hackathon/QuizViewAll'
+import HackathonViewAll from '../pages/Hackathon/HackathonViewAll'
 
 
 const Routers = () => {
@@ -30,6 +33,7 @@ const Routers = () => {
         <Route path='/content-factory' element={<ContentFactory />} />
         <Route path="/hackathon" element={<Hackathon />} />
         <Route path='/hackathon/details' element={<Details />} />
+        <Route path="/hackathon/view/all" element={<HackathonViewAll />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/state-offices' element={<StateOffices />} />
@@ -37,6 +41,9 @@ const Routers = () => {
         <Route path="/management" element={<Management />} />
         <Route path="/foi" element={<FOI />} />
         <Route path="/quiz" element={<Quiz />} />
+        <Route path="/quiz/view" element={<ViewQuiz />} />
+        <Route path="/quiz/view/all" element={<QuizViewAll />} />
+        
       </Route>
     </Routes>
   )
