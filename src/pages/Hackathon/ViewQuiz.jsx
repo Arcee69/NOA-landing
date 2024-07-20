@@ -95,7 +95,7 @@ const ViewQuiz = () => {
                     <p className='text-[#fff] text-[40px] lg:text-[80px] font-bebas leading-[40px] lg:leading-[90px] font-medium'>WELCOME TO NOA QUIZ</p>
                     <p className='font-manja text-[20px] font-bold text-[#fff]'>
                         This engaging and informative quiz is designed to test your knowledge while at the same time 
-                        educating you on the activities, policies and programmes og Nigerian government.
+                        educating you on the activities, policies and programmes of Nigerian government.
                     </p>
                     <button className='rounded-lg invisible lg:flex-row bg-[#027315] w-[310px] h-[43px] p-3 flex items-center justify-center text-[#fff]'>
                         Take Quiz

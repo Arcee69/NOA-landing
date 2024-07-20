@@ -110,46 +110,46 @@ const FOI = () => {
                 <img src={Chain} alt='Chain' className='w-[54px] h-[9px]' />
                 <p className='text-[#222222] font-mont_alt font-bold text-[24px] lg:text-[40px] leading-[32px] lg:leading-[56px] text-center'>Download resources from NOA</p>
             </div>
-            <div className='flex flex-wrap gap-[30px]'>
-                <div className='w-full lg:w-[605px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
+            <div className='flex flex-wrap lg:grid lg:grid-cols-2 gap-[30px]'>
+                <div className='w-full lg:w-[550px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#222] font-mont_alt text-base '>NOA 2023 Budget</p>
-                    <img src={Download} alt='Download' className='w-6 h-6' /> 
+                    <img src={Download} alt='Download' className='w-6 h-6 cursor-pointer' /> 
                 </div>
-                <div className='w-full lg:w-[605px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#222] font-mont_alt text-base '>Capital Project Release 2022</p>
-                    <img src={Download} alt='Download' className='w-6 h-6' /> 
+                    <img src={Download} alt='Download' className='w-6 h-6 cursor-pointer' /> 
                 </div>
-                <div className='w-full lg:w-[605px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#222] font-mont_alt text-base '>2022 FOI Annual Budget</p>
-                    <img src={Download} alt='Download' className='w-6 h-6' /> 
+                    <img src={Download} alt='Download' className='w-6 h-6 cursor-pointer' /> 
                 </div>
-                <div className='w-full lg:w-[605px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#222] font-mont_alt text-base '>2022 Procurement Plan</p>
-                    <img src={Download} alt='Download' className='w-6 h-6' /> 
+                    <img src={Download} alt='Download' className='w-6 h-6 cursor-pointer' /> 
                 </div>
-                <div className='w-full lg:w-[605px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#222] font-mont_alt text-base '>2021 Procurement Plan</p>
-                    <img src={Download} alt='Download' className='w-6 h-6' /> 
+                    <img src={Download} alt='Download' className='w-6 h-6 cursor-pointer' /> 
                 </div>
-                <div className='w-full lg:w-[605px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#222] font-mont_alt text-base '>MGt Report on Finanacial Sidelines 2028</p>
-                    <img src={Download} alt='Download' className='w-6 h-6' /> 
+                    <img src={Download} alt='Download' className='w-6 h-6 cursor-pointer' /> 
                 </div>
-                <div className='w-full lg:w-[605px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#222] font-mont_alt text-base '>2023 Procurement Plan</p>
-                    <img src={Download} alt='Download' className='w-6 h-6' /> 
+                    <img src={Download} alt='Download' className='w-6 h-6 cursor-pointer' /> 
                 </div>
-                <div className='w-full lg:w-[605px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#222] font-mont_alt text-base '>Voter Education towards the 2023 General Election</p>
-                    <img src={Download} alt='Download' className='w-6 h-6' /> 
+                    <img src={Download} alt='Download' className='w-6 h-6 cursor-pointer' /> 
                 </div>
-                <div className='w-full lg:w-[605px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#222] font-mont_alt text-base '>Summary of 2021 Contract Awards</p>
-                    <img src={Download} alt='Download' className='w-6 h-6' /> 
+                    <img src={Download} alt='Download' className='w-6 h-6 cursor-pointer' /> 
                 </div>
-                <div className='w-full lg:w-[605px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[64px] py-5 px-5 lg:px-[40px] flex items-center justify-between border-[8px] bg-[#FFFFFF] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#222] font-mont_alt text-base '>Financial Statements for 2018</p>
-                    <img src={Download} alt='Download' className='w-6 h-6' /> 
+                    <img src={Download} alt='Download' className='w-6 h-6 cursor-pointer' /> 
                 </div>
 
             </div>
@@ -190,44 +190,44 @@ const FOI = () => {
                 <img src={Chain} alt='Chain' className='w-[54px] h-[9px]' />
                 <p className='text-[#fff] font-mont_alt font-bold text-[27px] lg:text-[40px] leading-[32px] lg:leading-[56px] text-center'>The freedom of information unit</p>
             </div>
-            <div className='flex flex-wrap gap-[30px]'>
-                <div className='w-full lg:w-[604px] lg:h-[63px] py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
+            <div className='flex flex-wrap lg:grid lg:grid-cols-2  gap-[30px]'>
+                <div className='w-full lg:w-[550px] lg:h-[63px] py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#fff] font-manja font-bold text-base '>Umoru Ibrahim</p>
                     <p className='text-[#00AA55] font-manja text-sm font-bold'>08039676638</p> 
                 </div>
-                <div className='w-full lg:w-[604px] lg:h-[63px] py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[63px] py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#fff] font-manja font-bold text-base '>JESSICA AKIGA</p>
                     <p className='text-[#00AA55] font-manja text-sm font-bold'>08114566777</p> 
                 </div>
-                <div className='w-full lg:w-[604px] lg:h-[63px]  py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[63px]  py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#fff] font-manja font-bold text-base '>Tope Adewunmi</p>
                     <p className='text-[#00AA55] font-manja text-sm font-bold'>08036444820</p> 
                 </div>
-                <div className='w-full lg:w-[604px] lg:h-[63px]  py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[63px]  py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#fff] font-manja font-bold text-base '>Marcellinus Ekwebelam</p>
                     <p className='text-[#00AA55] font-manja text-sm font-bold'>08138968795, 08074295714</p> 
                 </div>
-                <div className='w-full lg:w-[604px] lg:h-[63px]  py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[63px]  py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#fff] font-manja font-bold text-base '>Obiageli Kechere</p>
                     <p className='text-[#00AA55] font-manja text-sm font-bold'>08033392369</p> 
                 </div>
-                <div className='w-full lg:w-[604px] lg:h-[63px]  py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[63px]  py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#fff] font-manja font-bold text-base '>Henry Obisesan (Secretary)</p>
                     <p className='text-[#00AA55] font-manja text-sm font-bold'>07066667880</p> 
                 </div>
-                <div className='w-full lg:w-[604px] lg:h-[63px]  py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[63px]  py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#fff] font-manja font-bold text-base '>Umaru Ibrahim</p>
                     <p className='text-[#00AA55] font-manja text-sm font-bold'>08039676638</p> 
                 </div>
-                <div className='w-full lg:w-[604px] lg:h-[63px] py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[63px] py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#fff] font-manja font-bold text-base '>Helen Babalola</p>
                     <p className='text-[#00AA55] font-manja text-sm font-bold'>08065420252</p> 
                 </div>
-                <div className='w-full lg:w-[604px] lg:h-[63px] py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[63px] py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#fff] font-manja font-bold text-base '>David Ofurum</p>
                     <p className='text-[#00AA55] font-manja text-sm font-bold'>08038767991, 08038767991</p> 
                 </div>
-                <div className='w-full lg:w-[604px] lg:h-[63px] py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
+                <div className='w-full lg:w-[550px] lg:h-[63px] py-[8px] px-5 lg:px-[40px] flex flex-col border-[8px] bg-[#2E2E2E] border-y-0 border-x-[#00AA55] rounded-lg'>
                     <p className='text-[#fff] font-manja font-bold text-base '>Abiodun Olayeni-Alli</p>
                     <p className='text-[#00AA55] font-manja text-sm font-bold'>08036280194</p> 
                 </div>

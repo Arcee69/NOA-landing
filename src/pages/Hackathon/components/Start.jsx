@@ -7,6 +7,7 @@ import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
 import * as Yup from "yup"
 
 import CloseIcon from "../../../assets/svg/closeIcon.svg"
+import { useNavigate } from 'react-router-dom'
 
 const Start = ({ handleClose, setTouched, setUserData, quizDetails }) => {
     const [loading, setLoading] = useState(false)
@@ -21,6 +22,8 @@ const Start = ({ handleClose, setTouched, setUserData, quizDetails }) => {
         email: Yup.string().email().required("Required"),
         state: Yup.string().required("Required"),
     })
+
+    const navigate = useNavigate()
 
     const fetchStates = async () => {
         await axios.get("https://hackathon.smhptech.com/api/state")
@@ -43,9 +46,14 @@ const Start = ({ handleClose, setTouched, setUserData, quizDetails }) => {
         handleClose()
     }
 
+    const closeModal = () => {
+        navigate("/hackathon")
+        handleClose()
+    }
+
   return (
     <div className='bg-[#fff] rounded-lg flex flex-col p-5 mt-[50px] lg:p-[64px] overflow-x-hidden overflow-y-auto lg:w-[750px] lg:h-[500px]'>
-         <button className="flex justify-end mb-5 items-center"  onClick={() => handleClose()}> 
+         <button className="flex justify-end mb-5 items-center"  onClick={() => closeModal()}> 
                 <img src={CloseIcon} alt='close' />
             </button>
           <div className='flex flex-col gap-4  h-[834px]'>

@@ -16,66 +16,56 @@ const Quiz = () => {
     const [openPrize, setOpenPrize] = useState(false);
     const [openStart, setOpenStart] = useState(false);
     const [quizDetails, setQuizDetails] = useState(null);
-    const [touched, setTouched] = useState(false);
     const [userData, setUserData] = useState([]);
     const [quizLeaderboard, setQuizLeaderboard] = useState([]);
-
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
     const [isCorrect, setIsCorrect] = useState(null);
-    const [userAnswers, setUserAnswers] = useState([]);
-
-    // Timer states
-    const [remainingTime, setRemainingTime] = useState(3600); // 1 hour in seconds
+    const [correctOptionId, setCorrectOptionId] = useState(null);
+    const [remainingTime, setRemainingTime] = useState(0); // Initialize with 0
     const [timeSpent, setTimeSpent] = useState(0);
-    const [userMinutes, setUserMinutes] = useState(0)
-
-    const navigate = useNavigate();
-
-    const filled = localStorage.getItem('filled');
-
-    const checkTouched = () => {
-        if (!filled) {
-            setOpenStart(true);
-        } else {
-            setOpenStart(false);
-        }
-    };
-
-    useEffect(() => {
-        checkTouched();
-    }, [filled]);
-
+    const [userMinutes, setUserMinutes] = useState(0);
+    const [userAnswers, setUserAnswers] = useState([]);
+    
     const { state } = useLocation();
-    console.log(state, 'apamu');
-
-    const getQuiz = async () => {
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        if (state?.duration_of_quiz) {
+            setRemainingTime(state?.duration_of_quiz * 60); // Set remaining time
+        }
+        if (state?.id) {
+            getQuiz(state.id);
+            getQuizLeaderboard(state.id);
+        }
+    }, [state]);
+    
+    useEffect(() => {
+        const filled = localStorage.getItem('filled');
+        setOpenStart(!filled);
+    }, []);
+    
+    const getQuiz = async (id) => {
         try {
-            const res = await axios.get(`https://api.hackathon.noa.gov.ng/api/quizzes/${state?.id}`);
-            console.log(res, 'Somb');
+            const res = await axios.get(`https://api.hackathon.noa.gov.ng/api/quizzes/${id}`);
             setQuizDetails(res?.data?.data);
+            if (res?.data?.data?.questions) {
+                setUserAnswers(Array(res.data.data.questions.length).fill(null));
+            }
         } catch (err) {
-            console.log(err, 'Massive');
+            console.log(err, 'Error fetching quiz details');
         }
     };
-
-    useEffect(() => {
-        if (state?.id) {
-            getQuiz();
-            getQuizLeaderboard();
-        }
-    }, [state?.id]);
-
-    const getQuizLeaderboard = async () => {
+    
+    const getQuizLeaderboard = async (id) => {
         try {
-            const res = await axios.get(`https://api.hackathon.noa.gov.ng/api/questions/participants/${state?.id}`);
-            console.log(res, 'bala');
+            const res = await axios.get(`https://api.hackathon.noa.gov.ng/api/questions/participants/${id}`);
             setQuizLeaderboard(res?.data?.data);
         } catch (err) {
-            console.log(err, 'Massive');
+            console.log(err, 'Error fetching leaderboard');
         }
     };
-
+    
     useEffect(() => {
         const timer = setInterval(() => {
             setRemainingTime((prevTime) => {
@@ -88,54 +78,53 @@ const Quiz = () => {
                 }
             });
         }, 1000);
-
         return () => clearInterval(timer);
     }, []);
-
-
+    
+    const handleOptionSelect = (option) => {
+        setSelectedOption(option.id);
+        const correctOption = currentQuestion.options.find(opt => opt.answer === 1);
+        setCorrectOptionId(correctOption.id);
+        const isAnswerCorrect = option.answer === 1;
+        setIsCorrect(isAnswerCorrect);
+        const updatedAnswers = [...userAnswers];
+        updatedAnswers[currentQuestionIndex] = isAnswerCorrect;
+        setUserAnswers(updatedAnswers);
+        setTimeout(() => {
+            if (isLastQuestion) {
+                setOpenPrize(true);
+            } else {
+                setSelectedOption(null);
+                setIsCorrect(null);
+                setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+            }
+        }, 1000);
+    };
+    
     if (!quizDetails || !quizDetails.questions || quizDetails.questions.length === 0) {
         return <div className='text-center font-mont font-medium text-4xl my-5'>Loading...</div>;
     }
-
+    
     const sortedLeaderboard = quizLeaderboard.sort((a, b) => {
         if (b.score === a.score) {
             return parseInt(a.time_spent) - parseInt(b.time_spent);
         }
         return b.score - a.score;
     });
-
-   
-
+    
     const questions = quizDetails?.questions;
     const currentQuestion = questions[currentQuestionIndex];
     const isLastQuestion = currentQuestionIndex === questions.length - 1;
-
+    
     const handleSkip = () => {
         setSelectedOption(null);
         setIsCorrect(null);
+        setCorrectOptionId(null);
         setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
     };
 
-    const handleOptionSelect = (option) => {
-        setSelectedOption(option.id);
-        setIsCorrect(option.answer === 1);
-        const updatedAnswers = [...userAnswers];
-        updatedAnswers[currentQuestionIndex] = option.answer === 1;
-        setUserAnswers(updatedAnswers);
-    };
-
-    const handleNext = () => {
-        if (isLastQuestion) {
-            setOpenPrize(true);
-        } else {
-            setSelectedOption(null);
-            setIsCorrect(null);
-            setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-        }
-    };
-
-    const totalCorrectAnswers = userAnswers.filter((answer) => answer).length;
-
+    const totalCorrectAnswers = userAnswers?.filter((answer) => answer).length;
+    
     const formatTime = (seconds) => {
         const minutes = Math.floor(seconds / 60);
         const secs = seconds % 60;
@@ -144,26 +133,121 @@ const Quiz = () => {
             seconds: secs.toString().padStart(2, '0')
         };
     };
-
+    
     const { minutes, seconds } = formatTime(remainingTime);
     
-  return (
-    <div className='flex flex-col mt-[32px] mb-[47px] bg-[#fff]'>
-        <div className='bg-[#fff] px-[100px] py-[19px] hidden lg:flex items-center justify-between '>
-            <div className='flex gap-1 items-center'>
-                <p className='text-[#00AA55] font-manja font-bold text-base cursor-pointer' onClick={() => navigate("/")}>National Orientation Agency</p>
-                <IoChevronForwardOutline className='mb-1'/>
-                <p className='text-[#222222] font-bold text-base font-manja' onClick={() => navigate("/hackathon")}>Hackathon</p>
-                <IoChevronForwardOutline className='mb-1'/>
-                <p className='text-[#222222] font-bold text-base font-manja'>Quizzes</p>
-            </div>
-        </div>
+    return (
+        // <div className='flex flex-col mt-[32px] mb-[47px] bg-[#fff]'>
+        //     <div className='bg-[#fff] px-[100px] py-[19px] hidden lg:flex items-center justify-between '>
+        //         <div className='flex gap-1 items-center'>
+        //             <p className='text-[#00AA55] font-manja font-bold text-base cursor-pointer' onClick={() => navigate("/")}>National Orientation Agency</p>
+        //             <IoChevronForwardOutline className='mb-1'/>
+        //             <p className='text-[#222222] font-bold text-base font-manja' onClick={() => navigate("/hackathon")}>Hackathon</p>
+        //             <IoChevronForwardOutline className='mb-1'/>
+        //             <p className='text-[#222222] font-bold text-base font-manja'>Quizzes</p>
+        //         </div>
+        //     </div>
+            
+        //     <div className='flex items-center justify-between mt-10 lg:mt-0 mb-4 px-5 lg:px-[100px]'>
+        //         <p className='text-[#222] hidden cursor-pointer lg:flex font-manja text-[32px]' onClick={() => navigate("/hackathon")}>Quiz</p>
+        //         <div className='rounded-lg w-full lg:w-[330px] hidden flex items-center h-[48px] border border-[#AAAAAAAA] rounded-[4px]'>
+        //             <input 
+        //                 type='text'
+        //                 value={text}
+        //                 className='bg-transparent px-[32px] w-full'
+        //                 onChange={(e) => setText(e.target.value)}
+        //                 placeholder='Search Contests Or categories '
+        //             />
+        //             <div className='bg-[#00AA55] w-[48px] h-[48px] rounded-tr-lg rounded-br-lg flex items-center justify-center p-3'>
+        //                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+        //                     <path d="M16 14H15.21L14.93 13.73C15.9439 12.554 16.5011 11.0527 16.5 9.5C16.5 8.21442 16.1188 6.95772 15.4046 5.8888C14.6903 4.81988 13.6752 3.98676 12.4874 3.49479C11.2997 3.00282 9.99279 2.87409 8.73192 3.1249C7.47104 3.3757 6.31285 3.99477 5.40381 4.90381C4.49477 5.81285 3.8757 6.97104 3.6249 8.23192C3.37409 9.49279 3.50282 10.7997 3.99479 11.9874C4.48676 13.1752 5.31988 14.1903 6.3888 14.9046C7.45772 15.6188 8.71442 16 10 16C11.61 16 13.09 15.41 14.23 14.43L14.5 14.71V15.5L19.5 20.49L20.99 19L16 14ZM10 14C7.51 14 5.5 11.99 5.5 9.5C5.5 7.01 7.51 5 10 5C12.49 5 14.5 7.01 14.5 9.5C14.5 11.99 12.49 14 10 14Z" fill="white" />
+        //                 </svg>
+        //             </div>
+        //         </div>
+        //     </div>
+            
+        //     {openStart && (
+        //         <div className='px-10 lg:px-[120px] mt-10 flex flex-col items-center justify-center'>
+        //             <p className='text-center text-[24px] font-bold text-[#222222] font-manja'>Quiz</p>
+        //             <p className='font-medium text-center text-base lg:text-[24px] leading-6 lg:leading-[36px] text-[#222222]'>Select the correct answer from the options below</p>
+        //             <img src={Zone} alt="zone" className='mt-[32px] mb-[68px] rounded-[8px]' />
+        //             <div className='flex flex-col items-center gap-[32px]'>
+        //                 <button 
+        //                     onClick={() => setOpenStart(false)}
+        //                     className='rounded-[8px] w-[200px] lg:w-[280px] h-[40px] lg:h-[64px] bg-[#00AA55] text-[#ffffff] font-manja font-bold text-[18px] lg:text-[24px]'
+        //                 >
+        //                     Start
+        //                 </button>
+        //             </div>
+        //         </div>
+        //     )}
+            
+        //     {!openStart && (
+        //         <div className='flex flex-col items-center'>
+        //             <div className='flex flex-col items-center gap-6 px-5 lg:px-[100px]'>
+        //                 <div className='flex gap-3'>
+        //                     <p className='text-[#222] font-manja font-bold text-[20px] lg:text-[32px]'>Question {currentQuestionIndex + 1}:</p>
+        //                     <p className='text-[#222] font-manja text-[20px] lg:text-[32px]'>{currentQuestion?.question}</p>
+        //                 </div>
+        //                 <div className='flex flex-col items-center gap-6'>
+        //                     {currentQuestion?.options?.map((option) => (
+        //                         <button
+        //                             key={option.id}
+        //                             onClick={() => handleOptionSelect(option)}
+        //                             className={`w-[200px] lg:w-[500px] h-[40px] lg:h-[64px] text-[16px] lg:text-[24px] rounded-[8px] font-manja font-bold ${
+        //                                 selectedOption === option.id
+        //                                     ? isCorrect
+        //                                         ? 'bg-[#00AA55] text-white'
+        //                                         : 'bg-[#DA1414] text-white'
+        //                                     : 'bg-[#CCCCCC] text-[#222222]'
+        //                             }`}
+        //                         >
+        //                             {option.option}
+        //                         </button>
+        //                     ))}
+        //                 </div>
+        //                 <button 
+        //                     onClick={handleSkip}
+        //                     className='rounded-[8px] w-[100px] lg:w-[200px] h-[30px] lg:h-[40px] bg-[#CCCCCC] text-[#222222] font-manja font-bold text-[16px] lg:text-[20px]'
+        //                 >
+        //                     Skip
+        //                 </button>
+        //                 <p className='text-[#222] font-manja font-bold text-[20px] lg:text-[32px]'>
+        //                     Time Remaining: {minutes}:{seconds}
+        //                 </p>
+        //             </div>
+                    
+        //             {openPrize && (
+        //                 <div className='flex flex-col items-center mt-10'>
+        //                     <p className='text-[#222] font-manja font-bold text-[24px] lg:text-[32px]'>Congratulations!</p>
+        //                     <p className='text-[#222] font-manja font-bold text-[18px] lg:text-[24px]'>You have completed the quiz.</p>
+        //                     <button
+        //                         onClick={() => navigate('/leaderboard')}
+        //                         className='rounded-[8px] w-[200px] lg:w-[280px] h-[40px] lg:h-[64px] bg-[#00AA55] text-[#ffffff] font-manja font-bold text-[18px] lg:text-[24px] mt-5'
+        //                     >
+        //                         View Leaderboard
+        //                     </button>
+        //                 </div>
+        //             )}
+        //         </div>
+        //     )}
+        // </div>
+        <div className='flex flex-col mt-[32px] mb-[47px] bg-[#fff]'>
+         <div className='bg-[#fff] px-[100px] py-[19px] hidden lg:flex items-center justify-between '>
+             <div className='flex gap-1 items-center'>
+                 <p className='text-[#00AA55] font-manja font-bold text-base cursor-pointer' onClick={() => navigate("/")}>National Orientation Agency</p>
+                 <IoChevronForwardOutline className='mb-1'/>
+                 <p className='text-[#222222] font-bold text-base font-manja' onClick={() => navigate("/hackathon")}>Hackathon</p>
+                 <IoChevronForwardOutline className='mb-1'/>
+                 <p className='text-[#222222] font-bold text-base font-manja'>Quizzes</p>
+             </div>
+         </div>
         
         
-        <div className='flex items-center justify-between mt-10 lg:mt-0 mb-4 px-5 lg:px-[100px]'>
-            <p className='text-[#222] hidden cursor-pointer lg:flex font-manja text-[32px]' onClick={() => navigate("/hackathon")}>Quiz</p>
-            <div className='rounded-lg w-full lg:w-[330px] hidden flex items-center h-[48px] border border-[#AAAAAAAA] rounded-[4px]'>
-                <input 
+         <div className='flex items-center justify-between mt-10 lg:mt-0 mb-4 px-5 lg:px-[100px]'>
+             <p className='text-[#222] hidden cursor-pointer lg:flex font-manja text-[32px]' onClick={() => navigate("/hackathon")}>Quiz</p>
+             <div className='rounded-lg w-full lg:w-[330px] hidden flex items-center h-[48px] border border-[#AAAAAAAA] rounded-[4px]'>
+                 <input 
                     type='text'
                     value={text}
                     className='bg-transparent px-[32px] w-full'
@@ -186,7 +270,7 @@ const Quiz = () => {
             <div className='bg-[#fff] w-full flex flex-col py-[32px] px-[28px] mb-[200px]'>
                 <div className='flex items-start gap-[34px] w-full mb-[47px]'>
                     <div className='relative w-5/12 h-[377px]'>
-                        <img src={Zone || quizDetails?.image} alt='Quiz Image' className='w-full h-full object-cover' />
+                        <img src={quizDetails?.image} alt='Quiz Image' className='w-full h-full object-cover' />
                     </div>
                     <div className='flex flex-col gap-6 w-8/12'>
                         <div className='flex flex-col gap-1'>
@@ -207,63 +291,60 @@ const Quiz = () => {
                 <div className='flex w-full items-start mt-[44px] gap-5'>
                     <div className='w-8/12 flex flex-col gap-4'>
                         <div className='flex items-center gap-6'>
-                        {questions?.map((_, index) => (
-                            <div
-                            key={index}
-                            className={`w-[57px] h-[19px] rounded-[30px] ${index <= currentQuestionIndex ? 'bg-[#00AA55]' : 'bg-[#C4C4C4]'}`}
-                            ></div>
-                        ))}
+                            {questions?.map((_, index) => (
+                                <div
+                                    key={index}
+                                    className={`w-[57px] h-[19px] rounded-[30px] ${index <= currentQuestionIndex ? 'bg-[#00AA55]' : 'bg-[#C4C4C4]'}`}
+                                ></div>
+                            ))}
                         </div>
                         <div className='bg-[#FAFAFA] w-full rounded-lg flex flex-col py-4 px-5'>
-                        <p onClick={handleSkip} className='flex justify-end underline font-mont_alt text-[#00AA55] text-[20px] font-semibold cursor-pointer'>Skip</p>
-                        <div className='flex justify-center items-center flex-col'>
-                            <p className='font-manja text-[#4A4A4A] font-semibold'>Question {currentQuestionIndex + 1}</p>
-                            <p className='text-[#4A4A4A] font-manja text-[19px] mt-[51px] mb-10'>{currentQuestion.body}</p>
-                            <div className='flex flex-col gap-6 w-full'>
-                            {currentQuestion.options.map((option) => (
-                                <div
-                                key={option.id}
-                                onClick={() => handleOptionSelect(option)}
-                                className={`border-[#1935CA] w-full rounded-lg border p-5 flex items-center bg-[#FBF9F9] group hover:bg-[#00AA55] hover:border-[#6FD181] cursor-pointer ${
-                                    selectedOption === option.id ? (isCorrect ? 'bg-[#D1FAE5]' : 'bg-[#FFCDD2]') : ''
-                                }`}
-                                >
-                                <p className={`text-[#4A4A4A] font-manja text-[19px] group-hover:text-[#fff] ${selectedOption === option.id ? (isCorrect ? 'text-[#00AA55]' : 'text-[#D32F2F]') : ''}`}>
-                                    {option.body}
-                                </p>
+                            <p onClick={handleSkip} className='flex justify-end underline font-mont_alt text-[#00AA55] text-[20px] font-semibold cursor-pointer'>Skip</p>
+                            <div className='flex justify-center items-center flex-col'>
+                                <p className='font-manja text-[#4A4A4A] font-semibold'>Question {currentQuestionIndex + 1}</p>
+                                <p className='text-[#4A4A4A] font-manja text-[19px] mt-[51px] mb-10'>{currentQuestion.body}</p>
+                                <div className='flex flex-col gap-6 w-full'>
+                                    {currentQuestion.options.map((option) => (
+                                        <div
+                                            key={option.id}
+                                            onClick={() => handleOptionSelect(option)}
+                                            className={`border-[#1935CA] w-full rounded-lg border p-5 flex items-center bg-[#FBF9F9] group hover:bg-[#00AA55] hover:border-[#6FD181] cursor-pointer ${
+                                                selectedOption === option.id ? (isCorrect ? 'bg-[#D1FAE5]' : 'bg-[#FFCDD2]') : ''
+                                            } ${
+                                                !isCorrect && correctOptionId === option.id ? 'bg-[#0f0]' : ''
+                                            }`}
+                                        >
+                                            <p className={`text-[#4A4A4A] font-manja text-[19px] group-hover:text-[#fff] ${selectedOption === option.id ? (isCorrect ? 'text-[#00AA55] ' : 'text-[#D32F2F]') : ''} ${
+                                                !isCorrect && correctOptionId === option.id ? 'text-[#00AA55]' : ''
+                                            }`}>
+                                                {option.body}
+                                            </p>
+                                        </div>
+                                    ))}
+                                    {selectedOption && (
+                                        <div className='mt-4'>
+                                            {isCorrect ? (
+                                                <p className='text-[#00AA55] font-manja text-[19px]'>Correct!</p>
+                                            ) : (
+                                                <p className='text-[#D32F2F] font-manja text-[19px]'>Incorrect. The correct answer is highlighted in green.</p>
+                                            )}
+                                        </div>
+                                    )}
                                 </div>
-                            ))}
-                            {selectedOption && (
-                                <div className='mt-4'>
-                                {isCorrect ? (
-                                    <p className='text-[#00AA55] font-manja text-[19px]'>Correct!</p>
-                                ) : (
-                                    <p className='text-[#D32F2F] font-manja text-[19px]'>Incorrect.</p>
-                                )}
+                            </div>
+                            {isLastQuestion && (
+                                <div className='flex items-center justify-center my-[32px]'>
+                                    <div
+                                        onClick={() => setOpenPrize(true)}
+                                        className='flex cursor-pointer w-[130px] h-[69px] justify-center items-center gap-2 p-3 rounded-lg bg-[#00AA55]'
+                                    >
+                                        <p className='font-poppins text-[#fff] font-semibold text-[20px]'>Finish</p>
+                                    </div>
                                 </div>
                             )}
-                            </div>
-                        </div>
-                        <div className='flex items-center justify-between my-[32px]'>
-                            {currentQuestionIndex > 0 && (
-                            <div
-                                onClick={() => setCurrentQuestionIndex((prevIndex) => Math.max(prevIndex - 1, 0))}
-                                className='flex items-center w-[130px] cursor-pointer h-[69px] rounded-lg p-3 gap-2 bg-[#D1FAE5]'
-                            >
-                                <FaArrowLeftLong className='text-[#00AA55] text-[20px]' />
-                                <p className='font-poppins text-[#00AA55] font-semibold text-[20px]'>Previous</p>
-                            </div>
-                            )}
-                            <div
-                            onClick={handleNext}
-                            className='flex cursor-pointer w-[130px] h-[69px] justify-center items-center gap-2 p-3 rounded-lg bg-[#00AA55]'
-                            >
-                            <p className='font-poppins text-[#fff] font-semibold text-[20px]'>{isLastQuestion ? 'Finish' : 'Next'}</p>
-                            <FaArrowRightLong className='text-[#fff] text-[20px]' /> 
-                            </div>
-                        </div>
                         </div>
                     </div>
+
 
                     <div className='flex flex-col w-4/12'>
                         <div className='bg-gradient-to-r from-[#027315] gap-3 p-6 to-[#04D928] to-[#6FD181] flex flex-col rounded-lg'>
@@ -299,7 +380,7 @@ const Quiz = () => {
                                             </div>
                                         </div>
                                         <div className='flex flex-col bg-[#fff] mt-5 py-6 px-4 gap-[8px]'>
-                                            {sortedLeaderboard.map((user, index) => (
+                                            {sortedLeaderboard?.slice(0, 10)?.map((user, index) => (
                                                 <div key={user.id} className='flex justify-between group h-[48px] bg-[#ECF9EE] hover:bg-[#00AA55] rounded-xl items-center p-4'>
                                                     <p className='text-sm text-[#00AA55] font-mont_alt font-bold group-hover:text-[#fff]'>{index + 1} {user.name}</p>
                                                     <div className='flex flex-col'>
@@ -345,7 +426,7 @@ const Quiz = () => {
         </ModalPop>
         
     </div>
-  )
-}
+    );
+};
 
-export default Quiz
+export default Quiz;

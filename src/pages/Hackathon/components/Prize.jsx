@@ -14,10 +14,10 @@ import { CgSpinner } from 'react-icons/cg'
 
 const airtimeOption = [
     { name: '' },
-    { name: "Glo" },
+    { name: "GLO" },
     { name: 'MTN' },
-    { name: '9mobile' },
-    { name: "Airtel" },
+    { name: '9MOBILE' },
+    { name: "AIRTEL" },
   ]
 
 const Prize = ({ handleClose, totalCorrectAnswers, questions, userData, state, timeSpent }) => {
@@ -41,7 +41,7 @@ const Prize = ({ handleClose, totalCorrectAnswers, questions, userData, state, t
         phone: Yup.number().required("Required"),
     })
 
-    const amountWon = totalCorrectAnswers * 50
+    const amountWon = totalCorrectAnswers * 25
 
     const submitForm = async (values, actions) => {
         setLoading(true)
@@ -53,7 +53,8 @@ const Prize = ({ handleClose, totalCorrectAnswers, questions, userData, state, t
             "email": userData?.email,
             "score": totalCorrectAnswers,
             "amount_won": amountWon,
-            "time_spent": totalSeconds
+            "time_spent": totalSeconds,
+            "network": values?.airtime
         }
         // console.log(data, "xzna")
         // handleClose()
@@ -79,7 +80,9 @@ const Prize = ({ handleClose, totalCorrectAnswers, questions, userData, state, t
                 autoClose: 5000,
                 closeOnClick: true,
             })
+            localStorage.removeItem("filled")
             handleClose()
+            navigate("/hackathon")
         })
     }
     

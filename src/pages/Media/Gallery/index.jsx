@@ -11,6 +11,7 @@ import Mail from "../../../assets/svg/mail.svg"
 import Pictures from './components/Pictures'
 import Videos from './components/Videos'
 import Downloads from './components/Downloads'
+import { useNavigate } from 'react-router-dom'
 
 const Gallery = () => {
     const [activeTab, setActiveTab] = useState("Pictures")
@@ -19,11 +20,13 @@ const Gallery = () => {
         setActiveTab(value)
     }
 
+    const navigate = useNavigate()
+
   return (
     <div className='flex flex-col'>
         <div className='bg-[#fff] px-[100px] py-[19px] hidden lg:flex items-center justify-between '>
             <div className='flex gap-1 items-center'>
-                <p className='text-[#00AA55] font-manja font-bold text-base '>National Orientation Agency</p>
+                <p className='text-[#00AA55] font-manja font-bold text-base cursor-pointer' onClick={() => navigate("/")}>National Orientation Agency</p>
                 <IoChevronForwardOutline className='mb-1'/>
                 <p className='text-[#222222] font-bold text-base font-manja'>Gallery</p>
             </div>

@@ -286,7 +286,7 @@ const Home = () => {
 
                     <div className="w-full flex items-center lg:mt-2">
                         <img src={LeftMic} alt='LeftMic' className='w-[121px] h-[62px]'/>
-                        <img src={callStatus === "active" ? Stop : Mic } alt='Mic' className='w-[122px] h-[122px]' onClick={() => {callStatus === "active" ? stop() : start()}} />
+                        <img src={callStatus === "active" ? Stop : Mic } alt='Mic' className='w-[122px] h-[122px] cursor-pointer' onClick={() => {callStatus === "active" ? stop() : start()}} />
                         <img src={RightMic} alt='RightMic' className='w-[121px] h-[62px]'/>
                     </div> 
                 </div>

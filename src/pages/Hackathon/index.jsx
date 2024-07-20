@@ -16,6 +16,7 @@ import Leaf from "../../assets/png/leaf.png"
 import QuizCup from "../../assets/png/quiz_cup.png"
 import City from "../../assets/png/city.png"
 import Group from "../../assets/png/group.png"
+import People from "../../assets/png/people.png"
 
 import User from "../../assets/svg/user_fill.svg"
 
@@ -150,7 +151,7 @@ const Hackathon = () => {
             </div>
         </div>
         <div className='flex items-center justify-between mt-10 lg:mt-0 px-5 lg:px-[100px]'>
-            <p className='text-[#222] hidden lg:flex font-manja text-[32px]'>Hackathon</p>
+            {/* <p className='text-[#222] hidden lg:flex font-manja text-[32px]'>Hackathon</p> */}
             <div className='rounded-lg hidden w-full lg:w-[330px] flex items-center h-[48px] border border-[#AAAAAAAA] rounded-[4px]'>
                 <input 
                     type='text'
@@ -172,9 +173,9 @@ const Hackathon = () => {
             </svg>
         </div>
 
-        <div className='w-full pb-[108px]'>
+        <div className='w-full pb-[20px]'>
             <Slider {...settings}>
-                <div className='w-full'>
+                {/* <div className='w-full'>
                     <div className='flex flex-col lg:flex-row items-center lg:justify-between px-5 lg:px-[100px]'>
                         <div className='flex flex-col lg:flex-row items-center gap-[42px]'>
                             <img src={Nigeria} alt='Nigeria' className='w-[256px] h-[249px]' />
@@ -210,10 +211,36 @@ const Hackathon = () => {
                         </div>
                     </div>
 
+                </div> */}
+                <div className='w-full hidden relative lg:flex  h-[552px]'>
+                    <img src={People} alt='Background' className='absolute top-0 left-0 w-full h-full object-cover -z-50' />
+                    <div className='absolute top-0 left-0 w-full h-full bg-gray-500 opacity-50 -z-40'></div>
+                    <div className='flex flex-col w-full lg:w-[501px] py-14 h-[271px] lg:px-[100px] gap-5'>
+                        <p className='text-[#fff] text-[40px] lg:text-[80px] font-bebas leading-[40px] lg:leading-[90px] font-medium'>WELCOME TO NOA QUIZ AND HACKATHON</p>
+                        {/* <p className='font-manja text-[16px] font-bold text-[#fff]'>
+                            This engaging and informative quiz is designed to test your knowledge while at the same time 
+                            educating you on the activities, policies and programmes of Nigerian government.
+                        </p> */}
+                        <button className='rounded-lg invisible lg:flex-row bg-[#027315] w-[310px] h-[43px] p-3 flex items-center justify-center text-[#fff]'>
+                            Take Quiz
+                        </button>
+                    </div>
+
+                    {/* <div className='flex flex-col  py-14 px-5 lg:px-[100px] '  style={{ position: 'relative', zIndex: 2 }}>
+                        <div className='flex flex-col w-full lg:w-[501px] h-[271px] gap-5'>
+                            <p className='text-[#fff] text-[40px] lg:text-[80px] font-bebas leading-[40px] lg:leading-[90px] font-medium'>WELCOME TO NOA QUIZ AND HACKATHON</p>
+                            <p className='font-manja text-[20px] font-bold text-[#fff]'>
+                                This engaging and informative quiz is designed to test your knowledge while at the same time 
+                                educating you on the activities, policies and programmes of Nigerian government.
+                            </p>
+                            <button className='rounded-lg invisible lg:flex-row bg-[#027315] w-[310px] h-[43px] p-3 flex items-center justify-center text-[#fff]'>
+                                Take Quiz
+                            </button>
+                        </div>
+                    </div> */}
+
                 </div>
-                <div 
-                    className='w-full hidden relative lg:flex  h-[552px]'
-                >
+                <div className='w-full hidden relative lg:flex  h-[552px]'>
                     <img src={Group} alt='Background' className='absolute top-0 left-0 w-full h-full object-cover -z-50' />
                     <div className='absolute top-0 left-0 w-full h-full bg-gray-500 opacity-50 -z-40'></div>
                     <div className='flex flex-col lg:flex-row items-center py-14 px-5 lg:px-[100px] '>
@@ -264,7 +291,7 @@ const Hackathon = () => {
                     </div>
                     <p className='text-[#5D5959] text-[20px] font-medium font-mont_alt'>Essay Hackathon</p>
                 </div>
-                <div className='flex flex-col gap-3 cursor-pointer' onClick={() => navigate("/quiz/view")}>
+                <div className='flex flex-col gap-3 cursor-pointer' onClick={() => {navigate("/quiz/view"); window.scroll(0, 0)}}>
                     <div className='bg-[#004D40] w-[258px] h-[120px] rounded-[12px] flex items-center justify-center'>
                         <img src={QuizCup} alt="QuizCup" className='w-[71px] h-[70px]' />
                     </div>
@@ -553,7 +580,7 @@ const Hackathon = () => {
         <div className='flex flex-col gap-6 mt-[72px]  px-5 lg:px-[100px]'>
             <div className='flex justify-between items-center'>
                 <p className='font-mont_alt font-bold text-[24px] text-[#070807]'>Quizzes</p>
-                <p className='font-mont_alt font-bold text-[14px] text-[#00AA55]' onClick={() => navigate("/quiz/view/all")}>See more</p>
+                <p className='font-mont_alt font-bold text-[14px] text-[#00AA55] cursor-pointer' onClick={() => navigate("/quiz/view/all")}>See more</p>
             </div>
           
             <div  className='flex flex-col lg:flex-row items-center gap-5 '>
@@ -563,9 +590,9 @@ const Hackathon = () => {
                     // :
                     allQuizzes?.length > 0 ?
                     allQuizzes?.slice(0, 3).map((item, index) => (
-                        <div key={item?.id} className='lg:w-[370px] bg-[#fff] h-auto p-2 flex flex-col border border-[#E8F2EA] rounded-tl-xl rounded-tr-xl'>
+                        <div key={item?.id} className='lg:w-[370px] bg-[#fff] h-[480px]  p-2 flex flex-col border border-[#E8F2EA] rounded-tl-xl rounded-tr-xl'>
                             <div className='bg-[#add8e6] p-2 flex items-center justify-center'>
-                                <img src={`${Zones || item?.image}`} alt='Zones' className='h-[211px]'/>
+                                <img src={`${item?.image}`} alt='Zones' className='h-[211px]'/>
                             </div>
                             <div className='flex items-center relative -top-4 left-1 gap-4'>
 
@@ -589,9 +616,9 @@ const Hackathon = () => {
                                 <p className='opacity-40 text-[#000] font-mont_alt font-medium text-sm'>
                                     {item?.desc?.slice(0, 20)}
                                 </p>
-                                <div className='bg-[#f8a4012e] w-[128px] p-2.5 flex items-center justify-center rounded-xl'>
+                                {/* <div className='bg-[#f8a4012e] w-[128px] p-2.5 flex items-center justify-center rounded-xl'>
                                     <p className='text-[#DC6803] text-xs font-mont'>Personality</p>
-                                </div>
+                                </div> */}
                                 <button type='button' onClick={() => {navigate("/quiz", {state: item}); window.scrollTo(0, 0)}} className='bg-[#027315] rounded-[8px] border w-[124px] py-2 px-[15px] border-[#00AA55]'>
                                     <p className='font-mont_alt font-semibold text-[#fff] text-sm '>View Details</p>
                                 </button>

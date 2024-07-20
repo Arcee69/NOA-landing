@@ -89,16 +89,16 @@ const News = () => {
     <div className='flex flex-col'>
         <div className='bg-[#fff] px-[100px] py-[19px] hidden lg:flex items-center justify-between '>
             <div className='flex gap-1 items-center'>
-                <p className='text-[#00AA55] font-manja font-bold text-base '>National Orientation Agency</p>
+                <p className='text-[#00AA55] font-manja font-bold text-base cursor-pointer' onClick={() => navigate("/")}>National Orientation Agency</p>
                 <IoChevronForwardOutline className='mb-1'/>
                 <p className='text-[#222222] font-bold text-base font-manja'>News</p>
             </div>
         </div>
         <div className='flex flex-col gap-1 px-5 mt-20 lg:mt-0 lg:px-[100px]'>
-            <div className='flex flex-col gap-1'>
+            {/* <div className='flex flex-col gap-1'>
                 <p className='text-[#222222] font-mont_alt font-bold text-[24px] lg:text-[40px]'>NOA NEWS</p>
                 <img src={Chain} alt='Chain' className='w-[54px] ' />
-            </div>
+            </div> */}
             {
                loading 
                ?
