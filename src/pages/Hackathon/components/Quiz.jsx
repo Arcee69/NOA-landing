@@ -27,6 +27,7 @@ const Quiz = () => {
     const [userMinutes, setUserMinutes] = useState(0);
     const [userAnswers, setUserAnswers] = useState([]);
     
+    
     const { state } = useLocation();
     const navigate = useNavigate();
     
@@ -98,7 +99,7 @@ const Quiz = () => {
                 setIsCorrect(null);
                 setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
             }
-        }, 1000);
+        }, 10000);
     };
     
     if (!quizDetails || !quizDetails.questions || quizDetails.questions.length === 0) {
@@ -122,6 +123,17 @@ const Quiz = () => {
         setCorrectOptionId(null);
         setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
     };
+
+    const handleNext = () => {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        setSelectedOption(null);
+        setIsCorrect(null);
+        setCorrectOptionId(null);
+    };
+
+    const handleFinish = () => {
+        setOpenPrize(true)
+    }
 
     const totalCorrectAnswers = userAnswers?.filter((answer) => answer).length;
     
@@ -266,13 +278,13 @@ const Quiz = () => {
                 <circle cx="23.9996" cy="8.0001" r="5.6" fill="#F04438" stroke="white" stroke-width="1.6"/>
             </svg>
         </div>
-        <div className='px-[49px] pt-[74px] bg-[#f6f6f6]'>
+        <div className='lg:px-[49px] pt-[74px] bg-[#f6f6f6]'>
             <div className='bg-[#fff] w-full flex flex-col py-[32px] px-[28px] mb-[200px]'>
-                <div className='flex items-start gap-[34px] w-full mb-[47px]'>
-                    <div className='relative w-5/12 h-[377px]'>
+                <div className='flex flex-col lg:flex-row items-start gap-[34px] w-full mb-[47px]'>
+                    <div className='relative w-full lg:w-5/12 h-[377px]'>
                         <img src={quizDetails?.image} alt='Quiz Image' className='w-full h-full object-cover' />
                     </div>
-                    <div className='flex flex-col gap-6 w-8/12'>
+                    <div className='flex flex-col gap-6 w-full lg:w-8/12'>
                         <div className='flex flex-col gap-1'>
                             <p className='font-mont font-bold text-[32px] text-[#000]'>{quizDetails?.title}</p>
                             <div className='flex items-center gap-2'>
@@ -288,13 +300,27 @@ const Quiz = () => {
                     </div>
                 </div>
                 <hr />
-                <div className='flex w-full items-start mt-[44px] gap-5'>
-                    <div className='w-8/12 flex flex-col gap-4'>
-                        <div className='flex items-center gap-6'>
+                <div className='flex flex-col lg:flex-row w-full items-start mt-[44px] gap-5'>
+                    <div className='w-full bg-gradient-to-r from-[#027315] gap-3 p-6 to-[#04D928] to-[#6FD181] lg:hidden flex flex-col rounded-lg'>
+                        <p className='text-[#fff]'>Quiz ending in</p>
+                        <div className='flex items-center gap-2'>
+                            <div className='bg-[#ECF9EE70] w-[123px] rounded-lg h-[52px] flex justify-center items-center'>
+                                <p className='font-extrabold text-[23px] font-mont_alt text-[#fff]'>00</p>
+                            </div>
+                            <div className='bg-[#ECF9EE70] w-[123px] rounded-lg h-[52px] flex justify-center items-center'>
+                                <p className='font-extrabold text-[23px] font-mont_alt text-[#fff]'>{minutes}</p>
+                            </div>
+                            <div className='bg-[#ECF9EE70] w-[123px] rounded-lg h-[52px] flex justify-center items-center'>
+                                <p className='font-extrabold text-[23px] font-mont_alt text-[#fff]'>{seconds}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='w-full lg:w-8/12 flex flex-col gap-4'>
+                        <div className='flex items-center gap-[9px] lg:gap-6'>
                             {questions?.map((_, index) => (
                                 <div
                                     key={index}
-                                    className={`w-[57px] h-[19px] rounded-[30px] ${index <= currentQuestionIndex ? 'bg-[#00AA55]' : 'bg-[#C4C4C4]'}`}
+                                    className={`w-[29px] h-[10px] lg:w-[57px] lg:h-[19px] rounded-[30px] ${index <= currentQuestionIndex ? 'bg-[#00AA55]' : 'bg-[#C4C4C4]'}`}
                                 ></div>
                             ))}
                         </div>
@@ -302,16 +328,16 @@ const Quiz = () => {
                             <p onClick={handleSkip} className='flex justify-end underline font-mont_alt text-[#00AA55] text-[20px] font-semibold cursor-pointer'>Skip</p>
                             <div className='flex justify-center items-center flex-col'>
                                 <p className='font-manja text-[#4A4A4A] font-semibold'>Question {currentQuestionIndex + 1}</p>
-                                <p className='text-[#4A4A4A] font-manja text-[19px] mt-[51px] mb-10'>{currentQuestion.body}</p>
+                                <p className='text-[#4A4A4A] font-manja text-[19px] mt-[51px] mb-10'>{currentQuestion?.body}</p>
                                 <div className='flex flex-col gap-6 w-full'>
-                                    {currentQuestion.options.map((option) => (
+                                    {currentQuestion?.options?.map((option) => (
                                         <div
                                             key={option.id}
                                             onClick={() => handleOptionSelect(option)}
                                             className={`border-[#1935CA] w-full rounded-lg border p-5 flex items-center bg-[#FBF9F9] group hover:bg-[#00AA55] hover:border-[#6FD181] cursor-pointer ${
                                                 selectedOption === option.id ? (isCorrect ? 'bg-[#D1FAE5]' : 'bg-[#FFCDD2]') : ''
                                             } ${
-                                                !isCorrect && correctOptionId === option.id ? 'bg-[#0f0]' : ''
+                                                !isCorrect && correctOptionId === option.id ? 'bg-[#39ff14]' : ''
                                             }`}
                                         >
                                             <p className={`text-[#4A4A4A] font-manja text-[19px] group-hover:text-[#fff] ${selectedOption === option.id ? (isCorrect ? 'text-[#00AA55] ' : 'text-[#D32F2F]') : ''} ${
@@ -321,6 +347,7 @@ const Quiz = () => {
                                             </p>
                                         </div>
                                     ))}
+                                
                                     {selectedOption && (
                                         <div className='mt-4'>
                                             {isCorrect ? (
@@ -330,9 +357,18 @@ const Quiz = () => {
                                             )}
                                         </div>
                                     )}
+                                 
                                 </div>
                             </div>
-                            {isLastQuestion && (
+                            <div className='flex items-center justify-end my-[32px]'>
+                                <div
+                                    onClick={isLastQuestion ? handleFinish : handleNext}
+                                    className='flex cursor-pointer w-[130px] h-[69px] justify-center items-center gap-2 p-3 rounded-lg bg-[#00AA55]'
+                                >
+                                    <p className='font-poppins text-[#fff] font-semibold text-[20px]'>{isLastQuestion ? 'Finish' : 'Next'}</p>
+                                </div>
+                            </div>
+                            {/* {isLastQuestion && (
                                 <div className='flex items-center justify-center my-[32px]'>
                                     <div
                                         onClick={() => setOpenPrize(true)}
@@ -341,12 +377,12 @@ const Quiz = () => {
                                         <p className='font-poppins text-[#fff] font-semibold text-[20px]'>Finish</p>
                                     </div>
                                 </div>
-                            )}
+                            )} */}
                         </div>
                     </div>
 
 
-                    <div className='flex flex-col w-4/12'>
+                    <div className='hidden lg:flex flex-col w-4/12'>
                         <div className='bg-gradient-to-r from-[#027315] gap-3 p-6 to-[#04D928] to-[#6FD181] flex flex-col rounded-lg'>
                             <p className='text-[#fff]'>Quiz ending in</p>
                             <div className='flex items-center gap-2'>
