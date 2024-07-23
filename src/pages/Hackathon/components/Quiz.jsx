@@ -22,7 +22,7 @@ const Quiz = () => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [isCorrect, setIsCorrect] = useState(null);
     const [correctOptionId, setCorrectOptionId] = useState(null);
-    const [remainingTime, setRemainingTime] = useState(0); // Initialize with 0
+    const [remainingTime, setRemainingTime] = useState(600); // Initialize with 0 || Example: 10 minutes countdown
     const [timeSpent, setTimeSpent] = useState(0);
     const [userMinutes, setUserMinutes] = useState(0);
     const [userAnswers, setUserAnswers] = useState([]);
@@ -40,7 +40,8 @@ const Quiz = () => {
             getQuizLeaderboard(state.id);
         }
     }, [state]);
-    
+
+   
     useEffect(() => {
         const filled = localStorage.getItem('filled');
         setOpenStart(!filled);
@@ -67,41 +68,42 @@ const Quiz = () => {
         }
     };
     
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setRemainingTime((prevTime) => {
-                if (prevTime > 0) {
-                    setTimeSpent((prevSpent) => prevSpent + 1);
-                    return prevTime - 1;
-                } else {
-                    clearInterval(timer);
-                    return 0;
-                }
-            });
-        }, 1000);
-        return () => clearInterval(timer);
-    }, []);
-    
-    // const handleOptionSelect = (option) => {
-    //     setSelectedOption(option.id);
-    //     const correctOption = currentQuestion.options.find(opt => opt.answer === 1);
-    //     setCorrectOptionId(correctOption.id);
-    //     const isAnswerCorrect = option.answer === 1;
-    //     setIsCorrect(isAnswerCorrect);
-    //     const updatedAnswers = [...userAnswers];
-    //     updatedAnswers[currentQuestionIndex] = isAnswerCorrect;
-    //     setUserAnswers(updatedAnswers);
+    // useEffect(() => {
+    //     const timer = setInterval(() => {
+    //         setRemainingTime((prevTime) => {
+    //             if (prevTime > 0) {
+    //                 setTimeSpent((prevSpent) => prevSpent + 1);
+    //                 return prevTime - 1;
+    //             } else {
+    //                 clearInterval(timer);
+    //                 return 0;
+    //             }
+    //         });
+    //     }, 1000);
+    //     return () => clearInterval(timer);
+    // }, []);
+
      
-    //     if (isLastQuestion) {
-    //         setOpenPrize(true);
-    //     } 
-  
-    // };
+    const handleTimeEnd = () => {
+        setOpenPrize(true);
+        setTimeSpent(600 - remainingTime); // Total time spent
+    };
+    
+    useEffect(() => {
+        if (remainingTime > 0) {
+            const timerId = setInterval(() => {
+                setRemainingTime(prev => prev - 1);
+            }, 1000);
+            return () => clearInterval(timerId);
+        } else {
+            handleTimeEnd();
+        }
+    }, [remainingTime]);    
 
        
     const formatTime = (seconds) => {
         const minutes = Math.floor(seconds / 60);
-        const secs = seconds % 60;
+        const secs =  seconds % 60;
         return {
             minutes: minutes.toString().padStart(2, '0'),
             seconds: secs.toString().padStart(2, '0')
@@ -121,8 +123,9 @@ const Quiz = () => {
         updatedAnswers[currentQuestionIndex] = isAnswerCorrect;
         setUserAnswers(updatedAnswers);
 
-        if ((isLastQuestion) || (minutes && seconds === 0)) {
+        if (isLastQuestion) {
             setOpenPrize(true);
+            setTimeSpent(600 - remainingTime); // Total time spent
         } 
     };
     
@@ -463,15 +466,15 @@ const Quiz = () => {
                             {sortedLeaderboard.length > 0 ? (
                                     <div className='flex flex-col'>
                                         <div className='flex items-center justify-between'>
-                                            <div className='flex flex-col mt-14 gap-[22px]'>
+                                            <div className='flex flex-col items-center mt-14 gap-[22px]'>
                                                 <img src={Two} alt='Two' className='w-[74px] h-[74px]' />
                                                 <p className='text-[#FFBA49] font-bold font-mont_alt text-sm'>{sortedLeaderboard[1]?.name || 'User 2'}</p>
                                             </div>
-                                            <div className='flex flex-col gap-[22px]'>
+                                            <div className='flex flex-col items-center gap-[22px]'>
                                                 <img src={One} alt='One' className='w-[84px] h-[84px]' />
                                                 <p className='text-[#00AA55] font-bold font-mont_alt text-sm'>{sortedLeaderboard[0]?.name || 'User 1'}</p>
                                             </div>
-                                            <div className='flex flex-col mt-14 gap-[22px]'>
+                                            <div className='flex flex-col items-center mt-14 gap-[22px]'>
                                                 <img src={Three} alt='Three' className='w-[74px] h-[74px]' />
                                                 <p className='text-[#DC6803] font-bold font-mont_alt text-sm'>{sortedLeaderboard[2]?.name || 'User 3'}</p>
                                             </div>
