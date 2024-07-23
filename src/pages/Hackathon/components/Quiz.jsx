@@ -82,6 +82,35 @@ const Quiz = () => {
         return () => clearInterval(timer);
     }, []);
     
+    // const handleOptionSelect = (option) => {
+    //     setSelectedOption(option.id);
+    //     const correctOption = currentQuestion.options.find(opt => opt.answer === 1);
+    //     setCorrectOptionId(correctOption.id);
+    //     const isAnswerCorrect = option.answer === 1;
+    //     setIsCorrect(isAnswerCorrect);
+    //     const updatedAnswers = [...userAnswers];
+    //     updatedAnswers[currentQuestionIndex] = isAnswerCorrect;
+    //     setUserAnswers(updatedAnswers);
+     
+    //     if (isLastQuestion) {
+    //         setOpenPrize(true);
+    //     } 
+  
+    // };
+
+       
+    const formatTime = (seconds) => {
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return {
+            minutes: minutes.toString().padStart(2, '0'),
+            seconds: secs.toString().padStart(2, '0')
+        };
+    };
+    
+    const { minutes, seconds } = formatTime(remainingTime);
+
+
     const handleOptionSelect = (option) => {
         setSelectedOption(option.id);
         const correctOption = currentQuestion.options.find(opt => opt.answer === 1);
@@ -91,15 +120,10 @@ const Quiz = () => {
         const updatedAnswers = [...userAnswers];
         updatedAnswers[currentQuestionIndex] = isAnswerCorrect;
         setUserAnswers(updatedAnswers);
-        setTimeout(() => {
-            if (isLastQuestion) {
-                setOpenPrize(true);
-            } else {
-                setSelectedOption(null);
-                setIsCorrect(null);
-                setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-            }
-        }, 10000);
+
+        if ((isLastQuestion) || (minutes && seconds === 0)) {
+            setOpenPrize(true);
+        } 
     };
     
     if (!quizDetails || !quizDetails.questions || quizDetails.questions.length === 0) {
@@ -136,17 +160,7 @@ const Quiz = () => {
     }
 
     const totalCorrectAnswers = userAnswers?.filter((answer) => answer).length;
-    
-    const formatTime = (seconds) => {
-        const minutes = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        return {
-            minutes: minutes.toString().padStart(2, '0'),
-            seconds: secs.toString().padStart(2, '0')
-        };
-    };
-    
-    const { minutes, seconds } = formatTime(remainingTime);
+ 
     
     return (
         // <div className='flex flex-col mt-[32px] mb-[47px] bg-[#fff]'>
@@ -244,6 +258,7 @@ const Quiz = () => {
         //         </div>
         //     )}
         // </div>
+
         <div className='flex flex-col mt-[32px] mb-[47px] bg-[#fff]'>
          <div className='bg-[#fff] px-[100px] py-[19px] hidden lg:flex items-center justify-between '>
              <div className='flex gap-1 items-center'>
@@ -315,7 +330,7 @@ const Quiz = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='w-full lg:w-8/12 flex flex-col gap-4'>
+                    {/* <div className='w-full lg:w-8/12 flex flex-col gap-4'>
                         <div className='flex items-center gap-[9px] lg:gap-6'>
                             {questions?.map((_, index) => (
                                 <div
@@ -368,18 +383,64 @@ const Quiz = () => {
                                     <p className='font-poppins text-[#fff] font-semibold text-[20px]'>{isLastQuestion ? 'Finish' : 'Next'}</p>
                                 </div>
                             </div>
-                            {/* {isLastQuestion && (
-                                <div className='flex items-center justify-center my-[32px]'>
-                                    <div
-                                        onClick={() => setOpenPrize(true)}
-                                        className='flex cursor-pointer w-[130px] h-[69px] justify-center items-center gap-2 p-3 rounded-lg bg-[#00AA55]'
-                                    >
-                                        <p className='font-poppins text-[#fff] font-semibold text-[20px]'>Finish</p>
-                                    </div>
+                        </div>
+                    </div> */}
+                    <div className='w-full lg:w-8/12 flex flex-col gap-4'>
+                        <div className='flex items-center gap-[9px] lg:gap-6'>
+                            {questions?.map((_, index) => (
+                                <div
+                                    key={index}
+                                    className={`w-[29px] h-[10px] lg:w-[57px] lg:h-[19px] rounded-[30px] ${index <= currentQuestionIndex ? 'bg-[#00AA55]' : 'bg-[#C4C4C4]'}`}
+                                ></div>
+                            ))}
+                        </div>
+                        <div className='bg-[#FAFAFA] w-full rounded-lg flex flex-col py-4 px-5'>
+                            <p onClick={handleSkip} className='flex justify-end underline font-mont_alt text-[#00AA55] text-[20px] font-semibold cursor-pointer'>Skip</p>
+                            <div className='flex justify-center items-center flex-col'>
+                                <p className='font-manja text-[#4A4A4A] font-semibold'>Question {currentQuestionIndex + 1}</p>
+                                <p className='text-[#4A4A4A] font-manja text-[19px] mt-[51px] mb-10'>{currentQuestion?.body}</p>
+                                <div className='flex flex-col gap-6 w-full'>
+                                    {currentQuestion?.options?.map((option) => (
+                                        <div
+                                            key={option.id}
+                                            onClick={() => !selectedOption && handleOptionSelect(option)}
+                                            className={`border-[#1935CA] w-full rounded-lg border p-5 flex items-center bg-[#FBF9F9] group hover:bg-[#00AA55] hover:border-[#6FD181] cursor-pointer ${
+                                                selectedOption === option.id ? (isCorrect ? 'bg-[#D1FAE5]' : 'bg-[#FFCDD2]') : ''
+                                            } ${
+                                                selectedOption && !isCorrect && correctOptionId === option.id ? 'bg-[#0f0]' : ''
+                                            }`}
+                                        >
+                                            <p className={`text-[#4A4A4A] font-manja text-[19px] group-hover:text-[#fff] ${selectedOption === option.id ? (isCorrect ? 'text-[#00AA55] ' : 'text-[#D32F2F]') : ''} ${
+                                                selectedOption && !isCorrect && correctOptionId === option.id ? 'text-[#00AA55]' : ''
+                                            }`}>
+                                                {option.body}
+                                            </p>
+                                        </div>
+                                    ))}
+                                
+                                    {selectedOption && (
+                                        <div className='mt-4'>
+                                            {isCorrect ? (
+                                                <p className='text-[#00AA55] font-manja text-[19px]'>Correct!</p>
+                                            ) : (
+                                                <p className='text-[#D32F2F] font-manja text-[19px]'>Incorrect. The correct answer is highlighted in green.</p>
+                                            )}
+                                        </div>
+                                    )}
+                                
                                 </div>
-                            )} */}
+                            </div>
+                            <div className='flex items-center justify-end my-[32px]'>
+                                <div
+                                    onClick={isLastQuestion ? handleFinish : handleNext}
+                                    className='flex cursor-pointer w-[130px] h-[69px] justify-center items-center gap-2 p-3 rounded-lg bg-[#00AA55]'
+                                >
+                                    <p className='font-poppins text-[#fff] font-semibold text-[20px]'>{isLastQuestion ? 'Finish' : 'Next'}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
 
 
                     <div className='hidden lg:flex flex-col w-4/12'>
