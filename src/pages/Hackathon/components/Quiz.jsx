@@ -285,8 +285,8 @@ const Quiz = () => {
         <div className='lg:px-[49px] pt-[74px] bg-[#f6f6f6]'>
             <div className='bg-[#fff] w-full flex flex-col py-[32px] px-[28px] mb-[200px]'>
                 <div className='flex flex-col lg:flex-row items-start gap-[34px] w-full mb-[47px]'>
-                    <div className='relative w-full lg:w-5/12 h-[377px]'>
-                        <img src={quizDetails?.image} alt='Quiz Image' className='w-full h-full object-cover' />
+                    <div className='relative w-full  lg:w-5/12 h-[377px]'>
+                        <img src={quizDetails?.image} alt='Quiz Image' className='w-full h-full object-contain' />
                     </div>
                     <div className='flex flex-col gap-6 w-full lg:w-8/12'>
                         <div className='flex flex-col gap-1'>

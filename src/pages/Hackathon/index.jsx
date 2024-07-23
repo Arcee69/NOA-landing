@@ -544,7 +544,7 @@ const Hackathon = () => {
                 <p className='font-mont_alt font-bold text-[14px] text-[#00AA55] cursor-pointer' onClick={() => navigate("/quiz/view/all")}>See more</p>
             </div>
           
-            <div  className='flex flex-col lg:flex-row items-center gap-5 '>
+            <div  className='grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-5 '>
                 {
                     // loading ?
                     // <Skeleton variant="rectangular" width={window.innerWidth < 786 ? 200 : 286} height={350} style={{ backgroundColor: 'rgba(0,0,0, 0.06)' }} />
