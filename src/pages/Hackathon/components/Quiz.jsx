@@ -410,7 +410,7 @@ const Quiz = () => {
                                             className={`border-[#1935CA] w-full rounded-lg border p-5 flex items-center bg-[#FBF9F9] group hover:bg-[#00AA55] hover:border-[#6FD181] cursor-pointer ${
                                                 selectedOption === option.id ? (isCorrect ? 'bg-[#D1FAE5]' : 'bg-[#FFCDD2]') : ''
                                             } ${
-                                                selectedOption && !isCorrect && correctOptionId === option.id ? 'bg-[#0f0]' : ''
+                                                selectedOption && !isCorrect && correctOptionId === option.id ? 'bg-[#0f0]' : ' '
                                             }`}
                                         >
                                             <p className={`text-[#4A4A4A] font-manja text-[19px] group-hover:text-[#fff] ${selectedOption === option.id ? (isCorrect ? 'text-[#00AA55] ' : 'text-[#D32F2F]') : ''} ${
