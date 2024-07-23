@@ -114,6 +114,7 @@ const Quiz = () => {
 
 
     const handleOptionSelect = (option) => {
+        // console.log(option, "cadoas")
         setSelectedOption(option.id);
         const correctOption = currentQuestion.options.find(opt => opt.answer === 1);
         setCorrectOptionId(correctOption.id);
@@ -407,8 +408,8 @@ const Quiz = () => {
                                         <div
                                             key={option.id}
                                             onClick={() => !selectedOption && handleOptionSelect(option)}
-                                            className={`border-[#1935CA] w-full rounded-lg border p-5 flex items-center bg-[#FBF9F9] group hover:bg-[#00AA55] hover:border-[#6FD181] cursor-pointer ${
-                                                selectedOption === option.id ? (isCorrect ? 'bg-[#D1FAE5]' : 'bg-[#FFCDD2]') : ''
+                                            className={`border-[#1935CA] w-full rounded-lg border p-5 flex items-center bg-[#FBF9F9] group  hover:border-[#6FD181] cursor-pointer ${
+                                                selectedOption === option.id ? (isCorrect ? 'bg-[#0f0]' : 'bg-[#F00]') : '' // hover:bg-[#00AA55]
                                             } ${
                                                 selectedOption && !isCorrect && correctOptionId === option.id ? 'bg-[#0f0]' : ' '
                                             }`}
