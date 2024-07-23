@@ -68,21 +68,6 @@ const Quiz = () => {
         }
     };
     
-    // useEffect(() => {
-    //     const timer = setInterval(() => {
-    //         setRemainingTime((prevTime) => {
-    //             if (prevTime > 0) {
-    //                 setTimeSpent((prevSpent) => prevSpent + 1);
-    //                 return prevTime - 1;
-    //             } else {
-    //                 clearInterval(timer);
-    //                 return 0;
-    //             }
-    //         });
-    //     }, 1000);
-    //     return () => clearInterval(timer);
-    // }, []);
-
      
     const handleTimeEnd = () => {
         setOpenPrize(true);
@@ -114,11 +99,11 @@ const Quiz = () => {
 
 
     const handleOptionSelect = (option) => {
-        // console.log(option, "cadoas")
-        setSelectedOption(option.id);
-        const correctOption = currentQuestion.options.find(opt => opt.answer === 1);
-        setCorrectOptionId(correctOption.id);
-        const isAnswerCorrect = option.answer === 1;
+        // console.log(option, "cadoas") 
+        setSelectedOption(option?.id);
+        const correctOption = currentQuestion?.options?.find(opt => opt.answer === 1);
+        setCorrectOptionId(correctOption?.id);
+        const isAnswerCorrect = option?.answer === 1;
         setIsCorrect(isAnswerCorrect);
         const updatedAnswers = [...userAnswers];
         updatedAnswers[currentQuestionIndex] = isAnswerCorrect;
@@ -134,7 +119,7 @@ const Quiz = () => {
         return <div className='text-center font-mont font-medium text-4xl my-5'>Loading...</div>;
     }
     
-    const sortedLeaderboard = quizLeaderboard.sort((a, b) => {
+    const sortedLeaderboard = quizLeaderboard?.sort((a, b) => {
         if (b.score === a.score) {
             return parseInt(a.time_spent) - parseInt(b.time_spent);
         }
@@ -414,7 +399,7 @@ const Quiz = () => {
                                                 selectedOption && !isCorrect && correctOptionId === option.id ? 'bg-[#0f0]' : ' '
                                             }`}
                                         >
-                                            <p className={`text-[#4A4A4A] font-manja text-[19px] group-hover:text-[#fff] ${selectedOption === option.id ? (isCorrect ? 'text-[#00AA55] ' : 'text-[#D32F2F]') : ''} ${
+                                            <p className={`text-[#4A4A4A] font-manja text-[19px]  ${selectedOption === option.id ? (isCorrect ? '' : 'text-[#fff]') : ''} ${
                                                 selectedOption && !isCorrect && correctOptionId === option.id ? 'text-[#00AA55]' : ''
                                             }`}>
                                                 {option.body}
