@@ -56,7 +56,7 @@ const HackathonViewAll = () => {
                     // <Skeleton variant="rectangular" width={window.innerWidth < 786 ? 200 : 286} height={350} style={{ backgroundColor: 'rgba(0,0,0, 0.06)' }} />
                     <p className='text-center font-mont font-medium text-4xl'>Loading....</p>
                     :
-                    allHackathons?.length > 0  ? allHackathons?.slice(0, 3)?.map((item, index) => (
+                    allHackathons?.length > 0  ? allHackathons?.map((item, index) => (
                         <div className='lg:w-[370px] h-[425px] flex flex-col border border-[#E8F2EA] ' key={index}>
                             <img src={Camera || item?.flier} alt='Flier' />
                             <div className='flex items-center relative -top-4 left-1 gap-4'>

@@ -227,7 +227,7 @@ const Hackathon = () => {
             </div>
             <div className='flex flex-col lg:flex-row gap-4 lg:gap-[30px] '>
                 <div className='flex flex-col gap-[40px] lg:gap-[60px] relative items-center'>
-                    <div className='w-full h-[255px] lg:w-[470px] lg:h-[352px] rounded-xl bg-[#FFF5E6] py-[40px] px-[30px] flex flex-col gap-1'>
+                    <div className='w-full h-[255px] lg:w-[470px] lg:h-[352px] rounded-xl bg-[#FFF5E6] py-[40px] px-[30px] flex flex-col cursor-pointer gap-1' onClick={() => {navigate("/quiz/view/all"), window.scrollTo(0, 0)}}>
                         <img src={GreenTrophy} alt='GreenTrophy' className='w-[60px] h-[60px]' />
                         <p className='text-xl text-[#5D5959] font-medium font-mont_alt'>Quizzes</p>
                         <p className='font-manja text-[#004D40] text-base'>Sky was cloudless and of a deep dark blue spectacle before us was indeed </p>
@@ -240,7 +240,7 @@ const Hackathon = () => {
                     <img src={Wheel} alt='Wheel' className='w-[201px] h-[202px] absolute hidden lg:flex -bottom-5 -left-20' />
                 </div>
                 <div className='flex flex-col gap-[40px] relative lg:gap-[60px] mt-[40px] lg:mt-[96px] items-center'>
-                    <div className='w-full lg:w-[370px] rounded-xl bg-[#FFF5E6] gap-2 h-[255px] lg:h-[352px] flex flex-col py-[42px] px-4'>
+                    <div className='w-full lg:w-[370px] rounded-xl bg-[#FFF5E6] gap-2 h-[255px] lg:h-[352px] flex flex-col py-[42px] px-4 cursor-pointer' onClick={() => {navigate("/hackathon/view/all"), window.scrollTo(0, 0)}}>
                         <img src={Radio} alt='Radio' className='w-[46px] h-[49px]' />
                         <p className='font-mont_alt font-medium text-[#5D5959] text-[20px]'>Photo Hackathon</p>
                         <p className='font-manja text-[#004D40] text-base'>Even the all-powerful Pointing has no control about the blind texts.</p>
@@ -258,13 +258,13 @@ const Hackathon = () => {
             </div>
 
         </div>
-
+{/* 
         <div className='flex flex-col mt-[77px] gap-[64px] gap-[0px] lg:mt-[133px] items-center justify-center'>
             <img src={Medal} alt='Medal' className='' />
             <p className='font-mont font-bold text-center text-[32px] lg:text-[48px] text-[#00AA55]'>Let’s get started and have fun !!!!!</p>
-        </div>
+        </div> */}
 
-        <div className='flex flex-col gap-6 mt-[72px]  px-5 lg:px-[100px]'>
+        {/* <div className='flex flex-col gap-6 mt-[72px]  px-5 lg:px-[100px]'>
             <div className='flex justify-between items-center'>
                 <p className='font-mont_alt font-bold text-[24px] text-[#070807]'>Hackathons</p>
                 <p className='font-mont_alt font-bold text-[14px] text-[#00AA55] cursor-pointer' onClick={() => navigate("/hackathon/view/all")}>See more</p>
@@ -330,10 +330,10 @@ const Hackathon = () => {
                     <p className='font-mont_alt font-bold text-[24px] text-[#070807]'>No Contest Available</p>  
                 }
             </div>
-        </div>
+        </div> */}
 
         <div className='flex flex-col hidden gap-6 mt-[72px] px-5 lg:px-[100px]'>
-            <div className='flex justify-between items-center'>
+            {/* <div className='flex justify-between items-center'>
                 <p className='font-mont_alt font-bold text-[24px] text-[#070807]'>Recent Hackathons</p>
                 <p className='font-mont_alt font-bold text-[14px] text-[#00AA55]'>Browse all</p>
             </div>
@@ -397,7 +397,7 @@ const Hackathon = () => {
                     :
                     <p className='font-mont_alt font-bold text-[24px] text-[#070807]'>No Contest Available</p>
                 }
-            </div>
+            </div> */}
             {/* <div className='flex flex-col lg:flex-row items-center gap-5 lg:gap-0 justify-between'>
                 <div className='lg:w-[370px] h-[425px] flex flex-col border border-[#E8F2EA] '>
                     <img src={Camera} alt='Camera' />
@@ -539,10 +539,10 @@ const Hackathon = () => {
             </div> */}
         </div>
 
-        <div className='flex flex-col gap-6 mt-[72px]  px-5 lg:px-[100px]'>
+        {/* <div className='flex flex-col gap-6 mt-[72px]  px-5 lg:px-[100px]'>
             <div className='flex justify-between items-center'>
                 <p className='font-mont_alt font-bold text-[24px] text-[#070807]'>Quizzes</p>
-                <p className='font-mont_alt font-bold text-[14px] text-[#00AA55] cursor-pointer' onClick={() => navigate("/quiz/view/all")}>See more</p>
+                <p className='font-mont_alt font-bold text-[14px] text-[#00AA55] cursor-pointer' onClick={() => {navigate("/quiz/view/all"), window.scrollTo(0, 0)}}>See more</p>
             </div>
 
             <div className='grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-5'>
@@ -627,7 +627,7 @@ const Hackathon = () => {
                 }
             </div>
             
-        </div>
+        </div> */}
 
         <div
             style={{
@@ -635,7 +635,7 @@ const Hackathon = () => {
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover"
             }}
-            className='flex items-center justify-center h-[400px] mt-[128px]'
+            className='flex items-center justify-center h-[400px] mt-[208px]'
         >
             <div className='flex flex-col w-[453px] h-[208px] gap-[8px]'>
                 <p className='font-bold font-manja text-[32px] text-[#fff] text-center'>Informative content tailored to your preferences</p>
