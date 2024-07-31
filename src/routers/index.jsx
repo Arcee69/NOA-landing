@@ -21,6 +21,7 @@ import QuizViewAll from '../pages/Hackathon/QuizViewAll'
 import HackathonViewAll from '../pages/Hackathon/HackathonViewAll'
 
 
+
 const Routers = () => {
   return (
     <Routes>
@@ -43,7 +44,6 @@ const Routers = () => {
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/quiz/view" element={<ViewQuiz />} />
         <Route path="/quiz/view/all" element={<QuizViewAll />} />
-        
       </Route>
     </Routes>
   )

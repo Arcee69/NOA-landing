@@ -229,26 +229,26 @@ const Hackathon = () => {
                 <div className='flex flex-col gap-[40px] lg:gap-[60px] relative items-center'>
                     <div className='w-full h-[255px] lg:w-[470px] lg:h-[352px] rounded-xl bg-[#FFF5E6] py-[40px] px-[30px] flex flex-col cursor-pointer gap-1' onClick={() => {navigate("/quiz/view/all"), window.scrollTo(0, 0)}}>
                         <img src={GreenTrophy} alt='GreenTrophy' className='w-[60px] h-[60px]' />
-                        <p className='text-xl text-[#5D5959] font-medium font-mont_alt'>Quizzes</p>
-                        <p className='font-manja text-[#004D40] text-base'>Sky was cloudless and of a deep dark blue spectacle before us was indeed </p>
+                        <p className='text-xl text-[#5D5959] font-medium font-mont_alt'>NOA Quizzes</p>
+                        <p className='font-manja text-[#004D40] text-base'>Test your knowledge, collaborate with government, and win prizes. Explore key topics and deepen your understanding of government initiatives</p>
                     </div>
                     <div className='w-full h-[255px] lg:w-[470px] lg:h-[352px] rounded-xl bg-[#FFF5E6] py-[40px] px-[30px] flex flex-col gap-1'>
                         <img src={Waves} alt='Waves' className='w-[60px] h-[60px]' />
-                        <p className='text-xl text-[#5D5959] font-medium font-mont_alt'>Essay Hackathon</p>
-                        <p className='font-manja text-[#004D40] text-base'>Even the all-powerful Pointing has no control about the blind texts.</p>
+                        <p className='text-xl text-[#5D5959] font-medium font-mont_alt'>NOA Essay Hackathon</p>
+                        <p className='font-manja text-[#004D40] text-base'>Collaborate, learn & win by writing about government projects & initiatives. Explore key topics & enhance public communication</p>
                     </div>
                     <img src={Wheel} alt='Wheel' className='w-[201px] h-[202px] absolute hidden lg:flex -bottom-5 -left-20' />
                 </div>
                 <div className='flex flex-col gap-[40px] relative lg:gap-[60px] mt-[40px] lg:mt-[96px] items-center'>
                     <div className='w-full lg:w-[370px] rounded-xl bg-[#FFF5E6] gap-2 h-[255px] lg:h-[352px] flex flex-col py-[42px] px-4 cursor-pointer' onClick={() => {navigate("/hackathon/view/all"), window.scrollTo(0, 0)}}>
                         <img src={Radio} alt='Radio' className='w-[46px] h-[49px]' />
-                        <p className='font-mont_alt font-medium text-[#5D5959] text-[20px]'>Photo Hackathon</p>
-                        <p className='font-manja text-[#004D40] text-base'>Even the all-powerful Pointing has no control about the blind texts.</p>
+                        <p className='font-mont_alt font-medium text-[#5D5959] text-[20px]'>NOA Photo Hackathon</p>
+                        <p className='font-manja text-[#004D40] text-base'>Engage, learn, and win prizes by exploring government projects and initiatives through photography. Deepen your understanding of key topics like infrastructure, environment, education, and more.</p>
                     </div>
                     <div className='w-full lg:w-[370px] rounded-xl bg-[#FFF5E6] gap-2 h-[255px] lg:h-[352px] flex flex-col py-[42px] px-4'>
                         <img src={Tv} alt='Tv' className='w-[46px] h-[49px]' />
-                        <p className='font-mont_alt font-medium text-[#5D5959] text-[20px]'>Video Hackathons</p>
-                        <p className='font-manja text-[#004D40] text-base'>Even the all-powerful Pointing has no control about the blind texts.</p>
+                        <p className='font-mont_alt font-medium text-[#5D5959] text-[20px]'>NOA Video Hackathons</p>
+                        <p className='font-manja text-[#004D40] text-base'>Collaborate, learn, and win prizes by exploring government projects and initiatives through video storytelling. Deepen your understanding of government efforts in key areas and enhance public communication.</p>
                     </div>
                     <img src={Wheel} alt='Wheel' className='w-[100px] h-[101px] absolute lg:hidden flex -bottom-14 -left-5' />
                     <img src={OrangeStar} alt='OrangeStar' className='right-0 w-[61px] h-[61px] absolute lg:hidden flex -bottom-9 -z-10' /> 
