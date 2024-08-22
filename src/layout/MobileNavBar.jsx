@@ -12,6 +12,7 @@ const MobileNavBar = ({ handleClose }) => {
     const [userName, setUserName] = useState("")
     const [openAgencyDropdown, setOpenAgencyDropdown] = useState(false)
     const [openMediaDropdown, setOpenMediaDropdown] = useState(false)
+    const [openContentFactoryDropdown, setOpenContentFactoryDropdown] = useState(false)
 
     const navigate = useNavigate()
 
@@ -21,6 +22,10 @@ const MobileNavBar = ({ handleClose }) => {
 
     const handleMedia = () => {
       setOpenMediaDropdown(prev => !prev)
+    }
+
+    const handleContentFactory = () => {
+      setOpenContentFactoryDropdown(prev => !prev)
     }
 
 
@@ -60,8 +65,21 @@ const MobileNavBar = ({ handleClose }) => {
                   </div>
                   {
                     openMediaDropdown && (
-                      <div className='flex flex-col gap-3 mt-3 px-3'>
-                          <p onClick={() => {window.open("https://content.noa.gov.ng"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">Content Factory</p>
+                      <div className='flex flex-col gap-3 mt-3 '>
+                        <div className='flex items-center justify-between' onClick={() => handleContentFactory()} >
+                          <p className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">Content Factory</p>
+                          {openContentFactoryDropdown ? <IoIosArrowUp className='text-[#ccc] text-[24px]'/> : <IoIosArrowDown className='text-[#ccc] text-[24px]' />}
+                        </div>
+                          {
+                            openContentFactoryDropdown && (
+                              <div className='flex flex-col gap-3 mt-2 px-3'>
+                                <p onClick={() =>  {window.open("https://content.noa.gov.ng/live"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">Live videos</p>
+                                <p onClick={() => { window.open("https://content.noa.gov.ng/noa-tv"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">NOA TV</p>
+                                <p onClick={() => { window.open("https://content.noa.gov.ng/noa-radio"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">NOA RADIO</p>
+                                <p onClick={() => { window.open("https://content.noa.gov.ng/explainer"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">EXPLAINER</p>
+                              </div>
+                            )
+                          }
                           <p onClick={() => {navigate("/gallery"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">Gallery</p>
                       </div>
                     )

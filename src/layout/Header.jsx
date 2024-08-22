@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react'
-import { IoIosArrowDown } from 'react-icons/io'
+import { IoIosArrowDown, IoIosArrowForward, IoMdArrowDropright } from 'react-icons/io'
 import { Listbox, Transition} from '@headlessui/react'
 import { useNavigate } from 'react-router-dom'
 
@@ -9,6 +9,8 @@ import Search from "../assets/png/search.png"
 import Facebook from "../assets/png/facebook.png"
 import Twitter from "../assets/png/twitter.png"
 import Instagram from "../assets/png/instagram.png"
+import LoginHeaderNavComponent from '../components/LoginHeaderNavComponent'
+import { Dropdown, DropdownMenuItem, DropdownNestedMenuItem } from '../components/Dropdown'
 
 
 const agency = [
@@ -26,18 +28,86 @@ const activities = [
     { name: 'Naira Redesign Campaign', link:"#" },
   ]
 
-const media = [
-    { name:"Content Factory", link: "https://content.noa.gov.ng" },
-    { name: "Gallery", link: "/gallery"}
-]
+// const media = [
+//     { name:"Content Factory", link: "https://content.noa.gov.ng" },
+//     { name: "Gallery", link: "/gallery"}
+// ]
+
+// const media = [
+//     {
+//         name: "Content Factory",
+//         link: "#",
+//         subNav: [
+//             { name: "Live TV", link: "https://content.noa.gov.ng/live" },
+//             { name: "NOA TV", link: "https://content.noa.gov.ng/noa-tv" },
+//             { name: "NOA Radio", link: "https://content.noa.gov.ng/noa-radio" },
+//             { name: "Explainer", link: "https://content.noa.gov.ng/explainer" }
+//         ]
+//     },
+//     { name: "Gallery", link: "/gallery" }
+// ];
+
+const redirect = (body) => {
+    window.location.href = body;
+  };
+
+let array = [
+    {
+      name: (
+        <LoginHeaderNavComponent
+          // image={WarehouseSVGImage}
+          text2="Media Center"
+          // text2="Management"
+        />
+      ),
+      children: [
+        {
+          name: "Content Factory",
+          link: "",
+          children: [
+            {
+              name: "Live videos",
+              // link: "#",
+              link: "https://content.noa.gov.ng/live",
+            },
+            {
+              name: "NOA TV",
+              link: "https://content.noa.gov.ng/noa-tv",
+            },
+
+            {
+              name: "NOA RADIO",
+              link: "https://content.noa.gov.ng/noa-radio",
+            },
+            {
+              name: "EXPLAINER",
+              link: "https://content.noa.gov.ng/explainer",
+            },
+          ],
+        },
+        {
+          name: "Gallery",
+          link: "/gallery" ,
+        },
+
+      ],
+    },
+  ];
 
 
 
 const Header = () => {
   const [agencySelected, setAgencySelected] = useState(agency[0])
   const [activitiesSelected, setActivitiesSelected] = useState(activities[0])
-  const [mediaSelected, setMediaSelected] = useState(media[0])
+//   const [mediaSelected, setMediaSelected] = useState(media[0])
   const [selected, setSelected] = useState(agency[0])
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const open = Boolean(anchorEl);
 
   const navigate = useNavigate()
 
@@ -45,14 +115,6 @@ const Header = () => {
     <div className='flex justify-between px-[40px] py-[22px] items-center bg-[#FFF] w-full h-[67px]'>
       <div className='flex items-center gap-[30px]'>
         <img src={Logo} alt='Logo' className='cursor-pointer' onClick={() => navigate('/')} />
-        {/* <div className=' flex items-center border border-l p-2 border-[#0000001A] border-y-0 border-r-0'>
-          <input 
-            placeholder='Explore'
-            type='text'
-            className='font-mont text-base w-[70px] h-[24px]'
-          />
-          <img src={Search} alt='Search' className='w-3 h-3' />
-        </div> */}
       </div>
       <div className='flex items-center gap-[23px]'>
         <p className='text-[#222222] cursor-pointer text-sm font-mont font-semibold hover:text-[#00AA55]' onClick={() => navigate("/")}>Home</p>
@@ -102,7 +164,69 @@ const Header = () => {
                 </Transition>
             </div>
         </Listbox>
-        <Listbox value={selected} onChange={setSelected}>
+
+        <div
+              class="flex gap-[4px] items-center justify-center bg-white font-bold cursor-pointer hover:text-[#00AA55] text-[16px]"
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              // onClick={handleClick}
+            >
+              {/* Create New */}
+              {array?.map((item) =>
+                item?.children?.length ? (
+                  <Dropdown
+                    trigger={
+                      <p className="bg-white text-[#222222] cursor-pointer text-sm font-semibold hover:text-[#00AA55] font-mont">
+                        {item?.name}
+                      </p>
+                    }
+                    menu={item?.children.map((nestedItem) =>
+                      nestedItem?.children?.length ? (
+                        <DropdownNestedMenuItem
+                          label={nestedItem?.name}
+                          rightIcon={<IoMdArrowDropright />}
+                          menu={
+                            nestedItem?.children && [
+                              ...nestedItem?.children.map((thirdStep) => (
+                                <DropdownMenuItem
+                                  onClick={
+                                    () => redirect(thirdStep.link)
+                                    // console.log(thirdStep.link);
+                                    // history(thirdStep.link);
+                                  }
+                                >
+                                  {thirdStep?.name}
+                                </DropdownMenuItem>
+                              )),
+
+                          
+                            ]
+                          }
+                          
+                        />
+                      ) : (
+                        <DropdownMenuItem
+                          onClick={() => {
+                            redirect(nestedItem.link);
+                          }}
+                        >
+                          {nestedItem?.name}
+                        </DropdownMenuItem>
+                      )
+                    )}
+                  />
+                ) : (
+                  ""
+                 
+                )
+              )}
+
+              <IoIosArrowDown  />
+            </div>
+
+        {/* <Listbox value={selected} onChange={setSelected}>
             <div className="relative">
                 <Listbox.Button className="relative w-[150px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm">
                     <span className="block truncate w-full text-[#222222] font-semibold hover:text-[#00AA55] font-mont">Media Center</span>
@@ -147,11 +271,27 @@ const Header = () => {
                     </Listbox.Options>
                 </Transition>
             </div>
-        </Listbox>
+        </Listbox>  */}
 
         <p className='text-[#222222] cursor-pointer text-sm hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/hackathon")}>Hackathon</p>
         <p className='text-[#222222] cursor-pointer text-sm hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/news")}>News</p>
         <p className='text-[#222222] cursor-pointer text-sm hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/contact")}>Contact Us</p>
+
+      </div>
+      <div className='flex items-center gap-[6px]'>
+        <img src={Facebook} alt='Facebook' className='w-6 h-6' />
+        <img src={Twitter} alt='Twitter' className='w-6 h-6' />
+        <img src={Instagram} alt='Instagram' className='w-6 h-6' />
+
+      </div>
+
+    </div>
+  )
+}
+
+export default Header
+
+
 {/*       
         <Listbox value={selected} onChange={setSelected}>
             <div className="relative">
@@ -199,16 +339,3 @@ const Header = () => {
                 </Transition>
             </div>
         </Listbox> */}
-      </div>
-      <div className='flex items-center gap-[6px]'>
-        <img src={Facebook} alt='Facebook' className='w-6 h-6' />
-        <img src={Twitter} alt='Twitter' className='w-6 h-6' />
-        <img src={Instagram} alt='Instagram' className='w-6 h-6' />
-
-      </div>
-
-    </div>
-  )
-}
-
-export default Header
