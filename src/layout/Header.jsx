@@ -55,9 +55,7 @@ let array = [
     {
       name: (
         <LoginHeaderNavComponent
-          // image={WarehouseSVGImage}
           text2="Media Center"
-          // text2="Management"
         />
       ),
       children: [
@@ -209,7 +207,7 @@ const Header = () => {
                       ) : (
                         <DropdownMenuItem
                           onClick={() => {
-                            redirect(nestedItem.link);
+                            navigate(nestedItem.link);
                           }}
                         >
                           {nestedItem?.name}
