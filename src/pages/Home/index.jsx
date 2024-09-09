@@ -52,12 +52,12 @@ const Home = () => {
 
   const navigate = useNavigate()
     
-  const vapi = new Vapi('3c29d01a-c441-4f67-9d70-64780abc6ecb'); //5d3d4e5d-3f85-4af4-8dae-9d6527d525fc Public_key
+  const vapi = new Vapi('1ca3f817-12e2-42a0-b8ab-f5a76e226baa'); // Public_key
 
   const start = async () => {
     setCallStatus("loading");
     setLoading(true);
-    const response = await vapi.start("087308a4-2066-47b6-9b3a-ba92b654d040"); //e9501112-b0c1-44ad-9849-b075edca90d0 Assitant_id
+    const response = await vapi.start("e9501112-b0c1-44ad-9849-b075edca90d0"); // Assitant_id
     setLoading(false);
     setVoxData(response)
     console.log(response.status, "brymo")

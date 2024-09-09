@@ -73,6 +73,7 @@ const MobileNavBar = ({ handleClose }) => {
                           {
                             openContentFactoryDropdown && (
                               <div className='flex flex-col gap-3 mt-2 px-3'>
+                                <p onClick={() =>  {window.open("https://content.noa.gov.ng"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">Home</p>
                                 <p onClick={() =>  {window.open("https://content.noa.gov.ng/live"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">Live videos</p>
                                 <p onClick={() => { window.open("https://content.noa.gov.ng/noa-tv"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">NOA TV</p>
                                 <p onClick={() => { window.open("https://content.noa.gov.ng/noa-radio"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">NOA RADIO</p>
