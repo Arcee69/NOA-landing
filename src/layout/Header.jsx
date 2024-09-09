@@ -281,9 +281,9 @@ const Header = () => {
 
       </div>
       <div className='flex items-center gap-[6px]'>
-        <img onClick={() => navigate("https://www.facebook.com/nationalorientationagency/")} src={Facebook} alt='Facebook' className='w-6 cursor-pointer h-6' />
-        <img onClick={() => navigate("https://x.com/NOA_Nigeria")} src={Twitter} alt='Twitter' className='w-6 h-6 cursor-pointer' />
-        <img onClick={() => navigate("https://www.instagram.com/noa_nigeria/?hl=en")} src={Instagram} alt='Instagram' className='w-6 h-6 cursor-pointer' />
+        <img onClick={() => window.open("https://www.facebook.com/nationalorientationagency/")} src={Facebook} alt='Facebook' className='w-6 cursor-pointer h-6' />
+        <img onClick={() => window.open("https://x.com/NOA_Nigeria")} src={Twitter} alt='Twitter' className='w-6 h-6 cursor-pointer' />
+        <img onClick={() => window.open("https://www.instagram.com/noa_nigeria/?hl=en")} src={Instagram} alt='Instagram' className='w-6 h-6 cursor-pointer' />
 
       </div>
 
