@@ -49,12 +49,12 @@ const Prize = ({ handleClose, totalCorrectAnswers, questions, userData, state, t
             "quiz_id": state?.id,
             "state_id": userData?.state,
             "name": userData?.fullName,
-            "phone": `+234${values?.phone}`,
+            "phone": `${values?.phone}`,
             "email": userData?.email,
             "score": totalCorrectAnswers,
             "amount_won": amountWon,
             "time_spent": totalSeconds,
-            "network": values?.airtime
+            "network": values?.airtime === "MTN" ? "mtn_custom" : values?.airtime === "AIRTEL" ? "airtel_custom" : values?.airtime === "GLO" ? "glo_custom" : values?.airtime === "9MOBILE" ? "9mobile_custom" : ""
         }
         // console.log(data, "xzna")
         // handleClose()
