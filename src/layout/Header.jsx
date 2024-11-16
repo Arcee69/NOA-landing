@@ -91,6 +91,10 @@ let array = [
           name: "Gallery",
           link: "/gallery" ,
         },
+        {
+          name: "Presidential Speeches",
+          link: "/presidential-speeches" ,
+        },
 
       ],
     },

@@ -19,6 +19,7 @@ import Quiz from '../pages/Hackathon/components/Quiz'
 import ViewQuiz from '../pages/Hackathon/ViewQuiz'
 import QuizViewAll from '../pages/Hackathon/QuizViewAll'
 import HackathonViewAll from '../pages/Hackathon/HackathonViewAll'
+import Speeches from '../pages/Media/Speeches'
 
 
 
@@ -44,6 +45,7 @@ const Routers = () => {
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/quiz/view" element={<ViewQuiz />} />
         <Route path="/quiz/view/all" element={<QuizViewAll />} />
+        <Route path="/presidential-speeches" element={<Speeches />} />
       </Route>
     </Routes>
   )
