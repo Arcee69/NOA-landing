@@ -45,7 +45,7 @@ const Routers = () => {
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/quiz/view" element={<ViewQuiz />} />
         <Route path="/quiz/view/all" element={<QuizViewAll />} />
-        <Route path="/presidential-speeches" element={<Speeches />} />
+        <Route path="/speeches" element={<Speeches />} />
       </Route>
     </Routes>
   )

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoChevronForwardOutline } from 'react-icons/io5'
 
 import Speech from "../../../assets/png/speech-banner.png"
@@ -9,18 +9,58 @@ import CallB from "../../../assets/svg/call.svg"
 import Time from "../../../assets/svg/time.svg"
 import Mail from "../../../assets/svg/mail.svg"
 import Search from "../../../assets/svg/search_big.svg"
-import IndependenceDay from './components/IndependenceDay'
-import DemocracyDay from './components/DemocracyDay'
-import InauguralAddress from './components/InauguralAddress'
+import Presidential from './components/Presidential'
+import Minister from './components/Minister'
+import DG from './components/DG'
 import More from './components/More'
+import axios from 'axios'
 
 
 const Speeches = () => {
-    const [activeTab, setActiveTab] = useState("Independence day")
+    const [activeTab, setActiveTab] = useState("Presidential")
+    const [speechData, setSpeechData] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [search, setSearch] = useState("")
 
     const handleChangeTab = (value) => {
         setActiveTab(value)
     }
+
+
+    const getSpeeches = async () => {
+        setLoading(true);
+        try {
+            const res = await axios.get("https://api.admin.noa.gov.ng/api/speech");
+            setSpeechData(res?.data?.data || []);
+        } catch (err) {
+            console.error("Error fetching speeches:", err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const filteredSpeechData = speechData?.filter((item) => item.name.toLowerCase().includes(search.toLowerCase() || ""))
+
+    useEffect(() => {
+        getSpeeches();
+    }, [search]);
+
+    // Filter speeches by category
+    const getFilteredData = () => {
+        switch (activeTab) {
+            case "Presidential":
+                return filteredSpeechData?.filter((speech) => speech.category === "President");
+            case "Minister":
+                return filteredSpeechData?.filter((speech) => speech.category === "Minister");
+            case "DG":
+                return filteredSpeechData?.filter((speech) => speech.category === "Director-General");
+            default:
+                return [];
+        }
+    };
+
+    const filteredData = getFilteredData();
+
 
   return (
     <div className='flex flex-col'>
@@ -46,6 +86,8 @@ const Speeches = () => {
                 <input 
                     className="bg-transparent outline-none font-mont_alt text-base lg:text-[20px] w-full"
                     name="search"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
                     type="text"
                     placeholder="Search any national address or presidential speech"
                 />
@@ -63,39 +105,40 @@ const Speeches = () => {
 
             <div className='flex items-center mt-1 lg:mt-0 gap-5'>
                 <p 
-                    className={`${activeTab === "Independence day" ? "text-[#00AA55] font-bold" : "font-semibold text-[#455448]"} font-mont_alt whitespace-nowrap  text-sm cursor-pointer`}
-                    onClick={() => handleChangeTab("Independence day")}
+                    className={`${activeTab === "Presidential" ? "text-[#00AA55] font-bold" : "font-semibold text-[#455448]"} font-mont_alt whitespace-nowrap  text-sm cursor-pointer`}
+                    onClick={() => handleChangeTab("Presidential")}
                 >
-                    Independence day
+                    Presidential
                 </p>
                 <p 
-                    className={`${activeTab === "Democracy day" ? "text-[#00AA55] font-bold" : "font-semibold text-[#455448]"} font-mont_alt whitespace-nowrap  text-sm cursor-pointer`}
-                    onClick={() => handleChangeTab("Democracy day")}
+                    className={`${activeTab === "Minister" ? "text-[#00AA55] font-bold" : "font-semibold text-[#455448]"} font-mont_alt whitespace-nowrap  text-sm cursor-pointer`}
+                    onClick={() => handleChangeTab("Minister")}
                 >
-                    Democracy day
+                    Minister
                 </p>
                 <p 
-                    className={`${activeTab === "Inaugural address" ? "text-[#00AA55] font-bold" : "font-semibold text-[#455448]"} font-mont_alt whitespace-nowrap  text-sm cursor-pointer`}
-                    onClick={() => handleChangeTab("Inaugural address")}
+                    className={`${activeTab === "DG" ? "text-[#00AA55] font-bold" : "font-semibold text-[#455448]"} font-mont_alt whitespace-nowrap  text-sm cursor-pointer`}
+                    onClick={() => handleChangeTab("DG")}
                 >
-                    Inaugural address
+                    DG
                 </p>
-                <p 
+                {/* <p 
                     className={`${activeTab === "More" ? "text-[#00AA55] font-bold" : "font-semibold text-[#455448]"} font-mont_alt whitespace-nowrap  text-sm cursor-pointer`}
                     onClick={() => handleChangeTab("More")}
                 >
                     See more
-                </p>
+                </p> */}
 
             </div>
 
         </div>
 
-        <div className=' px-5 lg:px-[100px] mt-[32px]'>
-            {activeTab === "Independence day" && <IndependenceDay />}
-            {activeTab === "Democracy day" && <DemocracyDay />}
-            {activeTab === "Inaugural address" && <InauguralAddress />}
-            {activeTab === "More" && <More />}
+        <div className='px-5 lg:px-[100px] mt-[32px]'>
+
+            {activeTab === "Presidential" && <Presidential data={filteredData} />}
+            {activeTab === "Minister" && <Minister data={filteredData} />}
+            {activeTab === "DG" && <DG  data={filteredData} />}
+            {/* {activeTab === "More" && <More />} */}
 
         </div>
      

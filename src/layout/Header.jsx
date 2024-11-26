@@ -92,8 +92,8 @@ let array = [
           link: "/gallery" ,
         },
         {
-          name: "Presidential Speeches",
-          link: "/presidential-speeches" ,
+          name: "Speeches",
+          link: "/speeches" ,
         },
 
       ],
