@@ -89,7 +89,7 @@ const Speeches = () => {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     type="text"
-                    placeholder="Search any national address or presidential speech"
+                    placeholder="Search any national address or president's speech"
                 />
             </div>
             <div className="bg-[#00AA55] w-[96px] h-[80px] p-4 flex items-center justify-center">
@@ -108,19 +108,19 @@ const Speeches = () => {
                     className={`${activeTab === "Presidential" ? "text-[#00AA55] font-bold" : "font-semibold text-[#455448]"} font-mont_alt whitespace-nowrap  text-sm cursor-pointer`}
                     onClick={() => handleChangeTab("Presidential")}
                 >
-                    Presidential
+                    President
                 </p>
                 <p 
                     className={`${activeTab === "Minister" ? "text-[#00AA55] font-bold" : "font-semibold text-[#455448]"} font-mont_alt whitespace-nowrap  text-sm cursor-pointer`}
                     onClick={() => handleChangeTab("Minister")}
                 >
-                    Minister
+                    Minister of Information
                 </p>
                 <p 
                     className={`${activeTab === "DG" ? "text-[#00AA55] font-bold" : "font-semibold text-[#455448]"} font-mont_alt whitespace-nowrap  text-sm cursor-pointer`}
                     onClick={() => handleChangeTab("DG")}
                 >
-                    DG
+                    Director General
                 </p>
                 {/* <p 
                     className={`${activeTab === "More" ? "text-[#00AA55] font-bold" : "font-semibold text-[#455448]"} font-mont_alt whitespace-nowrap  text-sm cursor-pointer`}

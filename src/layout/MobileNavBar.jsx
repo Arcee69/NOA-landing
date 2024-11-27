@@ -82,7 +82,7 @@ const MobileNavBar = ({ handleClose }) => {
                             )
                           }
                           <p onClick={() => {navigate("/gallery"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">Gallery</p>
-                          <p onClick={() => {navigate("/presidential-speeches"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">Presidential Speeches</p>
+                          <p onClick={() => {navigate("/speeches"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-sm  text-[#00141B]">Speeches</p>
                       </div>
                     )
                   } 
