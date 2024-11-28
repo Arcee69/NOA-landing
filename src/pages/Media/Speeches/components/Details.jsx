@@ -21,16 +21,16 @@ const Details = ({ presData, handleClose }) => {
 
 
   return (
-    <div className='bg-[#fff] rounded-xl  lg:w-[650px] h-[500px] mt-[100px] overflow-y-auto flex flex-col gap-[34px]'>
+    <div className='bg-[#fff] rounded-xl  lg:w-[650px] h-[500px] mt-[50px] overflow-y-auto flex flex-col gap-[34px]'>
         <div className='flex items-center w-full ' >
-            <div className='bg-[#F2F4F8] hidden w-4/12 h-[193px] md:flex items-center flex-col justify-center p-2'>
+            <div className='bg-[#F2F4F8] hidden w-4/12 h-[233px] md:flex items-center flex-col justify-center p-2'>
                 <img src={AudioThumb} alt='AudioThumb' className='' />
             </div>
-            <div className='flex flex-col w-full lg:w-8/12 h-[193px] bg-[#052915] p-[32px] gap-2'>
+            <div className='flex flex-col w-full lg:w-8/12 h-auto lg:h-[233px] bg-[#052915] p-[32px] gap-2'>
                 <p className='font-mont_alt text-[#fff] font-bold text-sm'>{presData.name}</p>
                 <p className='font-manja text-base text-[#E4E2E2]'>{new Date(presData.created_at).toLocaleDateString()}</p>
-                <audio controls >
-                    <source  src={presData.audio} type="audio/wav"  />
+                <audio controls>
+                    <source src={presData.audio} type="audio/wav"  />
                 </audio>
             </div>
         </div>
