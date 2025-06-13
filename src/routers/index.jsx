@@ -38,7 +38,7 @@ const Routers = () => {
         <Route path="/hackathon/view/all" element={<HackathonViewAll />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/state-offices' element={<StateOffices />} />
+        <Route path='/zonal-and-state-offices' element={<StateOffices />} />
         <Route path='/noa-past-executives' element={<NoaPast />} />
         <Route path="/management" element={<Management />} />
         <Route path="/foi" element={<FOI />} />

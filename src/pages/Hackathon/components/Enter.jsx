@@ -30,7 +30,7 @@ const Enter = ({ setOpenSuccess, handleClose, data }) => {
     console.log(stateType, "getStates")
     
     const fetchStates = async () => {
-        await axios.get("https://hackathon.smhptech.com/api/state")
+        await axios.get("https://api.hackathon.noa.gov.ng/api/state")      //("https://hackathon.smhptech.com/api/state")
         .then((res) => {
             console.log(res, "dodo")
             setStateType(res?.data?.data?.states)
@@ -45,7 +45,7 @@ const Enter = ({ setOpenSuccess, handleClose, data }) => {
     }, [])
 
     const fetchLgas = async () => {
-        await axios.get(`https://hackathon.smhptech.com/api/lga/state/${getStates}`)
+        await axios.get(`https://api.hackathon.noa.gov.ng/api/lga/state/${getStates}`)
         .then((res) => {
             console.log(res, "dodo")
             setLgasType(res?.data?.data?.lgas)
@@ -73,7 +73,7 @@ const Enter = ({ setOpenSuccess, handleClose, data }) => {
         formData.append("lga_id", values?.lga)
         formData.append("file", userImage)
 
-        await axios.post("https://hackathon.smhptech.com/api/entry/create", formData)
+        await axios.post("https://api.hackathon.noa.gov.ng/api/entry/create", formData)
         .then((res) => {
             console.log(res, "fassa")
             toast(`${res?.data?.message}`, { 

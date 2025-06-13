@@ -14,35 +14,52 @@ import ManagementB from "../../../assets/png/management_pic_b.png"
 import ManagementC from "../../../assets/png/management_pic_c.png"
 import ManagementD from "../../../assets/png/management_pic_d.png"
 
+import ZonalA from "../../../assets/png/zonal_a.jpg"
+import ZonalB from "../../../assets/png/zonal_b.jpg"
+import ZonalC from "../../../assets/png/zonal_c.jpg"
+import ZonalD from "../../../assets/png/zonal_d.jpg"
+import ZonalE from "../../../assets/png/zonal_e.jpg"
+import ZonalF from "../../../assets/png/zonal_f.jpg"
+
 import DirectorA from "../../../assets/png/director_a.png"
-import DirectorB from "../../../assets/png/director_b.png"
-import DirectorC from "../../../assets/png/director_c.png"
+import DirectorB from "../../../assets/png/director_b.jpg"
+import DirectorC from "../../../assets/png/director_c.jpg"
 import DirectorD from "../../../assets/png/director_d.png"
-import DirectorE from "../../../assets/png/director_e.png"
+import DirectorE from "../../../assets/png/director_e.jpg"
 import DirectorF from "../../../assets/png/director_f.png"
-import DirectorG from "../../../assets/png/director_g.png"
+import DirectorG from "../../../assets/png/director_g.jpg"
 import DirectorH from "../../../assets/png/director_h.png"
 import DirectorI from "../../../assets/png/director_i.png"
-import DirectorJ from "../../../assets/png/director_j.png"
+import DirectorJ from "../../../assets/png/director_j.jpg"
 import DirectorK from "../../../assets/png/director_k.png"
 import DirectorL from "../../../assets/png/director_l.png"
 import DirectorM from "../../../assets/png/director_m.png"
 import DirectorN from "../../../assets/png/director_n.png"
 import DirectorO from "../../../assets/png/director_o.png"
 import DirectorP from "../../../assets/png/director_p.png"
-import DirectorQ from "../../../assets/png/director_q.png"
+import DirectorQ from "../../../assets/png/director_q.jpg"
 import DirectorR from "../../../assets/png/director_r.png"
-import DirectorS from "../../../assets/png/director_s.png"
+import DirectorS from "../../../assets/png/director_s.jpg"
 import DirectorT from "../../../assets/png/director_t.png"
-import DirectorU from "../../../assets/png/director_t.png"
-import DirectorZ from "../../../assets/png/director_t.png"
+import DirectorU from "../../../assets/png/director_u.png"
+import DirectorV from "../../../assets/png/director_v.jpg"
+import DirectorW from "../../../assets/png/director_w.jpg"
+import DirectorZ from "../../../assets/png/director_z.jpg"
 
-import DirectorTwo from "../../../assets/png/director_2.png"
-import DirectorThree from "../../../assets/png/director_3.png"
-import DirectorFour from "../../../assets/png/director_4.png"
-import DirectorFive from "../../../assets/png/director_5.png"
+import DirectorTwo from "../../../assets/png/director_2.jpg"
+import DirectorThree from "../../../assets/png/director_3.jpg"
+import DirectorFour from "../../../assets/png/director_4.jpg"
+import DirectorFive from "../../../assets/png/director_5.jpg"
 import DirectorSix from "../../../assets/png/director_6.png"
-import DirectorTen from "../../../assets/png/director_10.png"
+import DirectorTen from "../../../assets/png/director_10.jpg"
+import DirectorEleven from "../../../assets/png/director_11.jpg"
+import DirectorTwelve from "../../../assets/png/director_12.jpg"
+import DirectorThirteen from "../../../assets/png/director_13.jpg"
+import DirectorFourteen from "../../../assets/png/director_14.jpg"
+import DirectorFifteen from "../../../assets/png/director_15.jpg"
+import DirectorSixteen from "../../../assets/png/director_16.jpg"
+import DirectorSeventeen from "../../../assets/png/director_17.jpg"
+import DirectorEighteen from "../../../assets/png/director_18.jpg"
 
 import Suggestion from "../../../assets/png/suggestion.png"
 
@@ -58,6 +75,11 @@ import TeamI from "../../../assets/png/team_i.png"
 import TeamJ from "../../../assets/png/team_j.png"
 import TeamK from "../../../assets/png/team_k.png"
 import TeamL from "../../../assets/png/team_l.png"
+import TeamM from "../../../assets/png/team_m.jpg"
+import TeamN from "../../../assets/png/team_n.jpg"
+import TeamO from "../../../assets/png/team_o.jpg"
+import TeamP from "../../../assets/png/team_p.jpg"
+import TeamQ from "../../../assets/png/team_q.jpg"
 
 import CallB from "../../../assets/svg/call.svg"
 import Time from "../../../assets/svg/time.svg"
@@ -79,35 +101,35 @@ const Management = () => {
         {
             id: 1,
             pic: DirectorA,
-            name: "Tracy Ikolomi",
+            name: "Mrs Tracy Omamode Basil-Ikolomi",
             state: "Delta State",
             phone: "07034220750"
         },
         {
             id: 2,
             pic: DirectorB,
-            name: "Audu Bitrus Idoko",
+            name: "Mr. Dewua Mark Ucha",
             state: "Benue State",
-            phone: "08133363143"
+            phone: "08080836612"
         },
         {
             id: 3,
             pic: DirectorC,
-            name: "Salako Olufunke Fransisca",
+            name: "Mrs. Osinfowokan Adeola Olufunke",
             state: "Ogun State",
-            phone: "08067369770"
+            phone: "07068123477"
         },
         {
             id: 4,
             pic: DirectorD,
-            name: "Theophilus Nwokpor",
+            name: "Mr. Nwokpor Theophilus Nwafor",
             state: "Ebonyi State",
             phone: "08033614522"
         },
         {
             id: 5,
             pic: DirectorE,
-            name: "Dr Banigo Edward",
+            name: "Mrs. Olobio Grace Ebiakpo",
             state: "Bayelsa State",
             phone: "08022546092"
         },
@@ -121,220 +143,221 @@ const Management = () => {
         {
             id: 7,
             pic: DirectorG,
-            name: "Akin Adeyemi",
+            name: "Mrs. Akomolede Funmilayo Oluwakemi",
             state: "Ekiti State",
-            phone: "08077441547"
+            phone: "08039409190"
         },
         {
             id: 8,
             pic: DirectorH,
-            name: "Adefolalu Adelayo",
+            name: "Mr. Adekunle James Ajayi",
             state: "Ondo State",
-            phone: "08034719169"
+            phone: "08034956789"
         },
         {
             id: 9,
             pic: DirectorI,
-            name: "Maureen Oparaji",
+            name: "Ms. Stellamaris Demian-Igwe",
             state: "Imo State",
-            phone: "08037760450"
+            phone: "08033160751"
         },
         {
             id: 9,
             pic: DirectorJ,
-            name: "Adeyemi Olusegun",
+            name: "Mr. Dare, Abdulganiyu Olurotimi",
             state: "Kwara State",
-            phone: "08036667682"
+            phone: "08061223921"
         },
         {
             id: 10,
             pic: DirectorK,
-            name: "Adaline Waye",
+            name: "Ms. Adaline Waye Patari",
             state: "Gombe State",
-            phone: "08023747546"
+            phone: "08038262341, 08023747546"
         },
         {
             id: 11,
             pic: DirectorL,
-            name: "Ahmed Tijani Ibrahim",
+            name: "Mr. Ahmed Tijani Ibrahim",
             state: "Jigawa State",
-            phone: "08038387561"
+            phone: "08038387561, 07088829639"
         },
         {
             id: 12,
             pic: DirectorM,
             name: "Kenang Tabitha Pamhworo",
             state: "Plateau State",
-            phone: "08064270708"
+            phone: "08064270708, 08052633616"
         },
         {
             id: 13,
             pic: DirectorN,
             name: "Mkpouto Mkpouto Ufot",
-            state: "Akwaibom State",
+            state: "Akwa ibom State",
             phone: "08136286409"
         },
         {
             id: 14,
             pic: DirectorO,
-            name: "Richard Dangari",
+            name: "Mr. Richard Bala Dangari",
             state: "Adamawa State",
-            phone: "08136286409"
+            phone: "08025711516"
         },
         {
             id: 15,
             pic: DirectorP,
-            name: "Zakari Muhammad",
+            name: "Mr. Zakari Muhammad Kasimu",
             state: "Taraba State",
-            phone: "07063547963"
+            phone: "07063547963, 08024124340"
         },
         {
             id: 16,
             pic: DirectorQ,
-            name: "Ijeoma Agbanusi",
+            name: "Mrs. Acharu Opaluwa",
             state: "FCT",
-            phone: "08033012380"
+            phone: "08037861237"
         },
         {
             id: 17,
             pic: DirectorR,
-            name: "Clara Nwachukwu",
+            name: "Mrs. Nwachukwu Chinyere Clara",
             state: "Enugu State",
-            phone: "08055262679"
+            phone: "08055262679, 08135594221"
         },
         {
             id: 18,
             pic: DirectorS,
-            name: "Hamisu Abubakra",
+            name: "Mr. Danjuma Makama",
             state: "Kaduna State",
-            phone: "08034527431"
+            phone: "08023355620"
         },
         {
             id: 19,
-            pic: DirectorT,
+            pic: DirectorV,
             name: "Ibrahim Aminu",
             state: "Zamfara State",
-            phone: "08102966516"
+            phone: "08102966516, 08025728091"
         },
         {
             id: 20,
             pic: DirectorU,
-            name: "Tukur Adedeji Mustafa",
+            name: "Dr. Tukur Adedeji Mustafa",
             state: "Lagos State",
             phone: "08080700003"
         },
         {
             id: 21,
-            pic: DirectorT,
-            name: "Ibor Ibor Otu",
+            pic: DirectorThirteen,
+            name: "Mr. Asanye, John Mfon",
             state: "Cross-River State",
-            phone: "08134149822"
+            phone: " 08035818141, 08055830056"
         },
         {
             id: 22,
-            pic: DirectorT,
-            name: "Joseph Yaro Machika",
+            pic: DirectorEighteen,
+            name: "Mr. Mohammed Nasir Karofi",
             state: "Kebbi State",
-            phone: "08025701046"
+            phone: "08031511930, 08056044744"
         },
         {
             id: 23,
-            pic: DirectorT,
-            name: "Olukemi Afolayan",
+            pic: DirectorSeventeen,
+            name: "Mr Aderogba Akanbi",
             state: "Oyo State",
-            phone: "08135607164"
+            phone: "08033587532"
         },
         {
             id: 24,
             pic: DirectorZ,
-            name: "Garba Salisu",
+            name: "Mr. Rabiu Ado",
             state: "Kano State",
-            phone: "08034104904"
+            phone: "08066433301"
         },
         {
             id: 25,
-            pic: DirectorT,
-            name: "Zainab Muhammed Jiddah",
+            pic: DirectorFifteen,
+            name: "Mr. Michael Daniel Bdliya",
             state: "Borno State",
-            phone: "08038568365"
+            phone: "07032220001, 08027790071"
         },
         {
             id: 26,
             pic: DirectorTwo,
-            name: "Gondo Aluo Priscilla",
+            name: "Mr. Augustine Akwe",
             state: "Nasarawa State",
-            phone: "08035894322"
+            phone: "08138647953"
         },
         {
             id: 27,
             pic: DirectorThree,
-            name: "Theresa Omaga",
+            name: "Mr. Muhammad Nasiru Mahe",
             state: "Bauchi State",
-            phone: "08035466704"
+            phone: "08065486676"
         },
         {
             id: 28,
             pic: DirectorFour,
-            name: "Ali Audu",
+            name: "Mr. Mohd Ali Tikau",
             state: "Yobe State",
             phone: "08036150794"
         },
         {
             id: 29,
             pic: DirectorFive,
-            name: "Abdulganiyu Dare",
+            name: "Mr. Edogbanya Patrick Yusuf",
             state: "Kogi State",
-            phone: "08061223921"
+            phone: " 08035880711"
         },
         {
             id: 30,
             pic: DirectorSix,
-            name: "Gbongbo Ibrahim Yahaya Takum",
+            name: "Mr Yahaya Ibrahim Gbongbo",
             state: "Niger State",
             phone: "08063740598"
         },
         {
             id: 31,
-            pic: DirectorT,
-            name: "Muktar Tsagem",
+            pic: DirectorEleven,
+            name: "Mr. Muntari Lawal Tsagem",
             state: "Katsina State",
             phone: "08036225610"
         },
         {
             id: 32,
-            pic: DirectorT,
-            name: "Bola Morgan",
+            pic: DirectorFourteen,
+            name: "Mr. Adebiyi Stephen Adefarasin",
             state: "Osun State",
-            phone: "09123191568"
+            phone: "09057838299, 08035638191"
         },
         {
             id: 33,
-            pic: DirectorT,
-            name: "Edozie Ajaegbu",
+            pic: DirectorSixteen,
+            name: "Mr. Ajaegbu Edozie Sunday ",
             state: "Anambra State",
             phone: "07034953894"
         },
         {
             id: 34,
             pic: DirectorTen,
-            name: "Ayo Tamuno Young",
+            name: "Dr. Edward Amonia Banigo",
             state: "Rivers State",
-            phone: "08035536896"
+            phone: "08032634749"
         },
         {
             id: 35,
-            pic: DirectorT,
-            name: "Osahon Woghiren",
+            pic: DirectorTwelve,
+            name: "Barr. Osahon B. Woghiren",
             state: "Edo State",
             phone: "08056114012"
         },
         {
             id: 36,
-            pic: DirectorT,
-            name: "Regina Iroha",
+            pic: DirectorW,
+            name: "Mr. Orji, Victor Onyeanwuna",
             state: "Abia State",
-            phone: "08038749734"
+            phone: "08068403377"
         },
+       
     ]
 
     const headquarterData = [
@@ -342,7 +365,7 @@ const Management = () => {
             id: 1,
             pic: TeamA,
             name: "Tessy Nnalue",
-            duty: "Director, Orientation & Behaviour Modification (OBM)"
+            duty: "Director, Community Safety Awareness and Compliance"
         },
         {
             id: 2,
@@ -354,61 +377,131 @@ const Management = () => {
             id: 3,
             pic: TeamC,
             name: "Mrs. Theresa Maduekwe",
-            duty: "Director, Public-Education/Mass Mobilization (PEMM)"
+            duty: "Director, Abuse Rights and Narcotics"
         },
         {
             id: 4,
             pic: TeamD,
             name: "David Akoji",
-            duty: "Director, Special Duties & State Operations (SDSO)"
+            duty: "Director, Special Duties and Zonal Operations"
         },
         {
             id: 5,
-            pic: TeamE,
-            name: "Mrs. Adeola Adelaja",
-            duty: "Director, Political, Civic, Ethics and Values (PCEV)"
-        },
-        {
-            id: 6,
             pic: TeamF,
             name: "Williams Dogo",
             duty: "Director, Legal"
         },
         {
             id: 7,
-            pic: TeamG,
-            name: "John Bala Asata",
-            duty: "Director, Documentation, Translation & Publication (DTP)"
-        },
-        {
-            id: 8,
             pic: TeamH,
             name: "Sule Haruna",
             duty: "Director, Finance & Accounts (F&A)"
         },
         {
-            id: 9,
+            id: 8,
             pic: TeamI,
             name: "Mrs. Rebecca Nasamu",
             duty: "Director, General Services (GS)"
         },
         {
-            id: 10,
+            id: 9,
             pic: TeamJ,
             name: "Mrs. Ayisola Olowoyo",
             duty: "Director, Human Resources Management (HRM)"
         },
         {
-            id: 11,
+            id: 10,
             pic: TeamK,
             name: "Mrs, Olubukola Olorunfemi",
-            duty: "Director, Reform, Coordination and Service Improvement (RCSI)"
+            duty: "Director, Community Outreach and Development"
         },
         {
-            id: 12,
+            id: 11,
             pic: TeamL,
             name: "Mr. Nura Kobi",
             duty: "Director, Planning, Research & Strategy (PRS)"
+        },
+        {
+            id: 12,
+            pic: TeamG,
+            name: "Mr. John Bala Asate",
+            duty: "Director, Reform Coordination and Service"
+        },
+        {
+            id: 13,
+            pic: TeamM,
+            name: "Dr. Ayoola Abiodun Olufemi",
+            duty: "Director, Health and Social Care"
+        },
+        {
+            id: 14,
+            pic: TeamN,
+            name: "Mrs Blessing Oyem",
+            duty: "Director, Youth Engagement and Inclusion"
+        },
+        {
+            id: 15,
+            pic: TeamO,
+            name: "Mrs. Olukemi Afolayan Ph.D",
+            duty: "Director, Civic Values and Democracy"
+        },
+        {
+            id: 16,
+            pic: TeamP,
+            name: "Mr. Bala Musa",
+            duty: "Director, Communications and Media"
+        },
+        {
+            id: 17,
+            pic: TeamQ,
+            name: "Mr. Emeka Egbugara",
+            duty: "Director, Environment Climate and Energy"
+        },
+        
+    ]
+
+    const zonalData = [
+        {
+            id: 1,
+            pic: ZonalA,
+            name: "Mr. Ali Audu",
+            zone: "Director North-East",
+            phone: "08036150794"
+        },
+        {
+            id: 2,
+            pic: ZonalB,
+            name: "Mrs. Iroha Regina Oyidiya",
+            zone: "Director South-East",
+            phone: "08038749734"
+        },
+        {
+            id: 3,
+            pic: ZonalC,
+            name: "Mrs Priscilla Mrumun Gondoaluor",
+            zone: "Director North-Central",
+            phone: "08035894322"
+        },
+        {
+            id: 4,
+            pic: ZonalD,
+            name: "Mr. Hamisu Abubakar",
+            zone: "Director North-West",
+            phone: "08034527431"
+        },
+        {
+            id: 5,
+            pic: ZonalE,
+            name: "Mr. Ibor I.",
+            zone: "Director South-South",
+            phone: " 08134149822"
+        },
+        {
+            id: 6,
+            pic: ZonalF,
+            name: "Mrs. Salako Olufunke Fransisca",
+            zone: "Director South-West",
+            phone: "08067369770"
         },
     ]
 
@@ -549,7 +642,7 @@ const Management = () => {
                             headquarterData?.map((item, index) => (
                                 <div className='mx-5' key={item?.id}>
                                     <div className='flex flex-col gap-2 w-[279px] '>
-                                        <img src={item?.pic} alt="State Director" />
+                                        <img src={item?.pic} alt="State Director" className="h-[300px]" />
                                         <p className='font-manja text-[#222] text-base font-bold'>{item?.name}</p>
                                         <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>{item?.duty}</p>
                                     </div>
@@ -591,6 +684,33 @@ const Management = () => {
 
             </div>
 
+             <div className='flex flex-col gap-[40px]'>
+                <div className='flex flex-col gap-2 px-3 lg:px-0'>
+                    <img src={Chain} alt='BigChain' className='w-[54px] h-[9px]' />
+                    <p className='font-mont_alt font-bold text-[20px] lg:text-[40px] text-[#222]'>Zonal Directors</p>
+                </div>
+
+                <div className='w-full'>
+                    <Slider {...settings}>
+                        {
+                            zonalData?.map((item, index) => (
+                                <div className='mx-5' key={item?.id}>
+                                    <div className='flex flex-col gap-2 w-[279px] '>
+                                        <img src={item?.pic} alt="Zonal Director" className="h-[300px]"  />
+                                        <p className='font-manja text-[#222] text-base font-bold'>{item?.name}</p>
+                                        <p className='font-manja text-[#00AA55] text-base font-bold'>{item?.zone}</p>
+                                        <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>{item?.phone}</p>
+                                    </div>
+
+                                </div>
+                            ))
+                        }
+
+                    </Slider>
+
+                </div>
+            </div>
+
             
             <div className='flex flex-col gap-[40px]'>
                 <div className='flex flex-col gap-2 px-3 lg:px-0'>
@@ -609,7 +729,7 @@ const Management = () => {
                             data?.map((item, index) => (
                                 <div className='mx-5' key={item?.id}>
                                     <div className='flex flex-col gap-2 w-[279px] '>
-                                        <img src={item?.pic} alt="State Director" />
+                                        <img src={item?.pic} alt="State Director" className="h-[300px]" />
                                         <p className='font-manja text-[#222] text-base font-bold'>{item?.name}</p>
                                         <p className='font-manja text-[#00AA55] text-base font-bold'>{item?.state}</p>
                                         <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>{item?.phone}</p>

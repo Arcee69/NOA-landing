@@ -2,6 +2,7 @@ import React from 'react'
 import { IoChevronForwardOutline } from 'react-icons/io5'
 
 import Address from "../../../assets/png/addresses.png"
+import Zone from "../../../assets/png/zone.png"
 import Suggestion from "../../../assets/png/suggestion.png"
 
 import CallB from "../../../assets/svg/call.svg"
@@ -17,6 +18,14 @@ const StateOffices = () => {
                 <IoChevronForwardOutline className='mb-1'/>
                 <p className='text-[#222222] font-bold text-base font-manja'>State Office Addresses</p>
             </div>
+        </div>
+        <div
+            className='bg-[#222222] h-[80px] mt-[80px] lg:mt-0 flex items-center justify-center'
+        >
+            <p className='font-mont_alt font-semibold text-[#00AA55] text-base lg:text-[24px]'>ZONAL OFFICES AND ADDRESSES</p>
+        </div>
+        <div className='mt-[65px] mb-[96px] mx-5 lg:mx-0'>
+            <img src={Zone} alt='Address' className='w-full lg:w-[575px] mx-auto' />
         </div>
         <div
             className='bg-[#222222] h-[80px] mt-[80px] lg:mt-0 flex items-center justify-center'

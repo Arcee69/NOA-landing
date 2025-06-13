@@ -17,7 +17,7 @@ const agency = [
   { name: 'About Us', link:"/about" },
   { name: 'Management', link:"/management" },
   { name: 'NOA Past Chief Executives', link:"/noa-past-executives" },
-  { name: 'State Office Addresses', link:"/state-offices" },
+  { name: 'Zonal & State Offices', link:"/zonal-and-state-offices" },
   { name: 'FOI Desk', link:"/foi" },
 ]
 
