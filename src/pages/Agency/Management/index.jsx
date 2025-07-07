@@ -69,7 +69,7 @@ import TeamC from "../../../assets/png/team_c.png"
 import TeamD from "../../../assets/png/team_d.png"
 import TeamE from "../../../assets/png/team_e.png"
 import TeamF from "../../../assets/png/team_f.png"
-import TeamG from "../../../assets/png/team_g.png"
+import TeamG from "../../../assets/png/team_g.jpg"
 import TeamH from "../../../assets/png/team_h.png"
 import TeamI from "../../../assets/png/team_i.png"
 import TeamJ from "../../../assets/png/team_j.png"
@@ -192,7 +192,7 @@ const Management = () => {
         {
             id: 13,
             pic: DirectorN,
-            name: "Mkpouto Mkpouto Ufot",
+            name: "Mkpoutom Ufot Mkpoutom ",
             state: "Akwa ibom State",
             phone: "08136286409"
         },
@@ -364,13 +364,13 @@ const Management = () => {
         {
             id: 1,
             pic: TeamA,
-            name: "Tessy Nnalue",
+            name: "Mrs. Thessy Nnalue",
             duty: "Director, Community Safety Awareness and Compliance"
         },
         {
             id: 2,
             pic: TeamB,
-            name: "Kenneth Onyejepu",
+            name: "Mr. Kenneth Onyejepu",
             duty: "Director, Procurement"
         },
         {
@@ -382,19 +382,19 @@ const Management = () => {
         {
             id: 4,
             pic: TeamD,
-            name: "David Akoji",
+            name: "Mr. David Akoji",
             duty: "Director, Special Duties and Zonal Operations"
         },
         {
             id: 5,
             pic: TeamF,
-            name: "Williams Dogo",
+            name: "Barr. Williams Dogo",
             duty: "Director, Legal"
         },
         {
             id: 7,
             pic: TeamH,
-            name: "Sule Haruna",
+            name: "Mr. Sule Haruna",
             duty: "Director, Finance & Accounts (F&A)"
         },
         {
@@ -412,7 +412,7 @@ const Management = () => {
         {
             id: 10,
             pic: TeamK,
-            name: "Mrs, Olubukola Olorunfemi",
+            name: "Mrs. Olubukola Olorunfemi",
             duty: "Director, Community Outreach and Development"
         },
         {
@@ -507,12 +507,12 @@ const Management = () => {
 
     const settings = {
         dots: false,
-        arrows: false,
+        arrows: true,
         infinite: true,
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 4000,
         responsive: [
             {
