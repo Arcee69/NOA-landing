@@ -9,10 +9,10 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 
 const MobileNavBar = ({ handleClose }) => {
-    const [userName, setUserName] = useState("")
     const [openAgencyDropdown, setOpenAgencyDropdown] = useState(false)
     const [openMediaDropdown, setOpenMediaDropdown] = useState(false)
     const [openContentFactoryDropdown, setOpenContentFactoryDropdown] = useState(false)
+    const [openContestDropdown, setOpenContestDropdown] = useState(false)
 
     const navigate = useNavigate()
 
@@ -26,6 +26,10 @@ const MobileNavBar = ({ handleClose }) => {
 
     const handleContentFactory = () => {
       setOpenContentFactoryDropdown(prev => !prev)
+    }
+
+    const handleContest = () => {
+      setOpenContestDropdown(prev => !prev)
     }
 
 
@@ -87,21 +91,26 @@ const MobileNavBar = ({ handleClose }) => {
                     )
                   } 
                 </div>
-                <p onClick={() => {navigate("/hackathon"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-[17px]  text-[#00141B]">Hackathon</p>
-                <p onClick={() => {window.open("https://clheean.noa.gov.ng/debate-voting"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-[17px]  text-[#00141B]">Debate Voting</p>
+                <div className='flex flex-col gap-2'>
+                  <div className='flex items-center justify-between' onClick={() => handleContest()}>
+                    <p className="font-mont  cursor-pointer font-semibold text-[17px]  text-[#00141B]">Contest</p>
+                    {openContestDropdown ? <IoIosArrowUp className='text-[#ccc] text-[24px]'/> : <IoIosArrowDown className='text-[#ccc] text-[24px]' />}
+                  </div> 
+                  {
+                    openContestDropdown && (
+                      <div className='flex flex-col gap-3 mt-3 px-3'>
+                        <p onClick={() => {navigate("/hackathon"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-[17px]  text-[#00141B]">Hackathon</p>
+                        <p onClick={() => {window.open("https://clheean.noa.gov.ng/debate-voting"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-[17px]  text-[#00141B]">Debate</p>
+                      </div>
+                    )
+                  }
+                </div>
+
                 <p onClick={() => {navigate("/news"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-[17px]  text-[#00141B]">News</p>
                 <p onClick={() => {navigate("/contact"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-[17px]  text-[#00141B]">Contact</p>
                
             </div>
-          
-            {/* <button type='button' className='bg-[#FF6600] cursor-pointer rounded-lg w-full mt-4 border border-[#000] p-2 flex items-center justify-center h-[67px]' onClick={start}>
-              {
-                loading ? 
-                  <CgSpinner className='animate-spin text-2xl text-[#fff]' /> 
-                  : 
-                  <p className='text-[#FFF] font-poppins text-[20px] font-medium'>{voxData?.type === "webCall" ? "Conversation Started" : "Try For Free" }</p>
-              }
-            </button> */}
+
         </div>
     </div>
   )
