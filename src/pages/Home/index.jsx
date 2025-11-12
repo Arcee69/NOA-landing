@@ -533,7 +533,7 @@ const Home = () => {
 
             </div>
 
-            <div className="relative w-full h-[400px]">
+            {/* <div className="relative w-full h-[400px]">
                 {iframeLoading && (
                     <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
                         <CgSpinner className="animate-spin text-2xl text-[#00AA55]" />
@@ -569,7 +569,7 @@ const Home = () => {
                         setIframeError(true);
                     }}
                 />
-            </div>
+            </div> */}
 
             <div
                 style={{ background: `url(${Info})`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}

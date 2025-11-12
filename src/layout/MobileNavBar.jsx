@@ -88,6 +88,7 @@ const MobileNavBar = ({ handleClose }) => {
                   } 
                 </div>
                 <p onClick={() => {navigate("/hackathon"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-[17px]  text-[#00141B]">Hackathon</p>
+                <p onClick={() => {window.open("https://clheean.noa.gov.ng/debate-voting"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-[17px]  text-[#00141B]">Debate Voting</p>
                 <p onClick={() => {navigate("/news"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-[17px]  text-[#00141B]">News</p>
                 <p onClick={() => {navigate("/contact"); window.scrollTo(0,0); handleClose()}} className="font-mont  cursor-pointer font-semibold text-[17px]  text-[#00141B]">Contact</p>
                

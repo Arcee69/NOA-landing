@@ -19,6 +19,11 @@ const agency = [
   { name: 'NOA Past Chief Executives', link:"/noa-past-executives" },
   { name: 'Zonal & State Offices', link:"/zonal-and-state-offices" },
   { name: 'FOI Desk', link:"/foi" },
+];
+
+const contest = [
+  { name: 'Hackathon', link:"/hackathon" },
+  { name: 'Debate', link:"https://clheean.noa.gov.ng/debate-voting" },
 ]
 
 const activities = [
@@ -107,6 +112,7 @@ const Header = () => {
   const [activitiesSelected, setActivitiesSelected] = useState(activities[0])
 //   const [mediaSelected, setMediaSelected] = useState(media[0])
   const [selected, setSelected] = useState(agency[0])
+  const [contestSelected, setContestSelected] = useState(contest[0])
 
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => {
@@ -122,6 +128,7 @@ const Header = () => {
       <div className='flex items-center gap-[30px]'>
         <img src={Logo} alt='Logo' className='cursor-pointer' onClick={() => navigate('/')} />
       </div>
+
       <div className='flex items-center gap-[23px]'>
         <p className='text-[#222222] cursor-pointer text-sm font-mont font-semibold hover:text-[#00AA55]' onClick={() => navigate("/")}>Home</p>
         <Listbox value={agencySelected} onChange={setAgencySelected}>
@@ -172,70 +179,70 @@ const Header = () => {
         </Listbox>
 
         <div
-              class="flex gap-[4px] items-center justify-center bg-white font-bold cursor-pointer hover:text-[#00AA55] text-[16px]"
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              // onClick={handleClick}
-            >
-              {/* Create New */}
-              {array?.map((item) =>
-                item?.children?.length ? (
-                  <Dropdown
-                    trigger={
-                      <p className="bg-white text-[#222222] cursor-pointer text-sm font-semibold hover:text-[#00AA55] font-mont">
-                        {item?.name}
-                      </p>
-                    }
-                    menu={item?.children.map((nestedItem) =>
-                      nestedItem?.children?.length ? (
-                        <DropdownNestedMenuItem
-                          label={nestedItem?.name}
-                          rightIcon={<IoMdArrowDropright />}
-                          menu={
-                            nestedItem?.children && [
-                              ...nestedItem?.children.map((thirdStep) => (
-                                <DropdownMenuItem
-                                  onClick={
-                                    () => redirect(thirdStep.link)
-                                    // console.log(thirdStep.link);
-                                    // history(thirdStep.link);
-                                  }
-                                >
-                                  {thirdStep?.name}
-                                </DropdownMenuItem>
-                              )),
+          class="flex gap-[4px] items-center justify-center bg-white font-bold cursor-pointer hover:text-[#00AA55] text-[16px]"
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+        // onClick={handleClick}
+        >
+          {/* Create New */}
+          {array?.map((item) =>
+            item?.children?.length ? (
+              <Dropdown
+                trigger={
+                  <p className="bg-white text-[#222222] cursor-pointer text-sm font-semibold hover:text-[#00AA55] font-mont">
+                    {item?.name}
+                  </p>
+                }
+                menu={item?.children.map((nestedItem) =>
+                  nestedItem?.children?.length ? (
+                    <DropdownNestedMenuItem
+                      label={nestedItem?.name}
+                      rightIcon={<IoMdArrowDropright />}
+                      menu={
+                        nestedItem?.children && [
+                          ...nestedItem?.children.map((thirdStep) => (
+                            <DropdownMenuItem
+                              onClick={
+                                () => redirect(thirdStep.link)
+                                // console.log(thirdStep.link);
+                                // history(thirdStep.link);
+                              }
+                            >
+                              {thirdStep?.name}
+                            </DropdownMenuItem>
+                          )),
 
-                          
-                            ]
-                          }
-                          
-                        />
-                      ) : (
-                        <DropdownMenuItem
-                          onClick={() => {
-                            navigate(nestedItem.link);
-                          }}
-                        >
-                          {nestedItem?.name}
-                        </DropdownMenuItem>
-                      )
-                    )}
-                  />
-                ) : (
-                  ""
-                 
-                )
-              )}
 
-              <IoIosArrowDown  />
-            </div>
+                        ]
+                      }
 
-        {/* <Listbox value={selected} onChange={setSelected}>
+                    />
+                  ) : (
+                    <DropdownMenuItem
+                      onClick={() => {
+                        navigate(nestedItem.link);
+                      }}
+                    >
+                      {nestedItem?.name}
+                    </DropdownMenuItem>
+                  )
+                )}
+              />
+            ) : (
+              ""
+
+            )
+          )}
+
+          <IoIosArrowDown />
+        </div>
+
+        <Listbox value={contestSelected} onChange={setContestSelected}>
             <div className="relative">
-                <Listbox.Button className="relative w-[150px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm">
-                    <span className="block truncate w-full text-[#222222] font-semibold hover:text-[#00AA55] font-mont">Media Center</span>
+                <Listbox.Button className="relative w-[130px] cursor-default flex items-center gap-2 py-2 pl-3 pr-5 text-left outline-none sm:text-sm">
+                    <span className="block truncate w-full text-sm text-[#222222] font-semibold hover:text-[#00AA55] font-mont">Contest</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <IoIosArrowDown
                             className="h-4 w-4 text-[#AAAAAA]"
@@ -250,7 +257,7 @@ const Header = () => {
                     leaveTo="opacity-0"
                 >
                     <Listbox.Options className="absolute z-10 mt-1 w-[200px] max-h-60  overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-                        {media.map((item, index) => (
+                        {contest.map((item, index) => (
                             <Listbox.Option
                                 key={index}
                                 className={({ active }) =>
@@ -266,7 +273,7 @@ const Header = () => {
                                         className={`block truncate text-sm ${
                                         selected ? 'font-medium' : 'font-normal'
                                         } text-[#052011]`}
-                                        onClick={() => window.open(item?.link, "_blank")}
+                                        onClick={() => {item?.link === "/hackathon" ? navigate(item?.link) : window.open(item?.link)}}
                                     >
                                         {item.name}
                                     </span>
@@ -277,9 +284,9 @@ const Header = () => {
                     </Listbox.Options>
                 </Transition>
             </div>
-        </Listbox>  */}
+        </Listbox>
 
-        <p className='text-[#222222] cursor-pointer text-sm hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/hackathon")}>Hackathon</p>
+        {/* <p className='text-[#222222] cursor-pointer text-sm hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/hackathon")}>Hackathon</p> */}
         <p className='text-[#222222] cursor-pointer text-sm hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/news")}>News</p>
         <p className='text-[#222222] cursor-pointer text-sm hover:text-[#00AA55] font-semibold font-mont' onClick={() => navigate("/contact")}>Contact Us</p>
 
