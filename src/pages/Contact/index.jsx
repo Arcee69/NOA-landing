@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoChevronForwardOutline } from 'react-icons/io5'
 import { CgSpinner } from 'react-icons/cg'
 import { Form, Formik} from "formik"
@@ -14,12 +14,35 @@ import MapBig from "../../assets/png/map_big.png"
 import Landline from "../../assets/svg/landline.svg"
 import Email from "../../assets/svg/email.svg"
 import Map from "../../assets/svg/map.svg"
-i
+
 import SuggestionAndComplaints from '../../components/SuggestionAndComplaints'
+import axios from 'axios'
 
 
 const Contact = () => {
     const [loading, setLoading] = useState(false)
+    const [contact, setContact] = useState()
+    const [contactLoading, setContactLoading] = useState(false)
+
+    const fetchContact = async (url = "https://api.admin.noa.gov.ng/api/contact") => {
+        setContactLoading(true)
+        try {
+            const res = await axios.get(url);
+            const data = res.data;
+
+            setContact(data?.data || []);
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setContactLoading(false);
+        }
+    };
+
+    console.log(contact, "contact")
+
+    useEffect(() => {
+        fetchContact();
+    }, []);
 
     const navigate = useNavigate()
 
@@ -46,7 +69,7 @@ const Contact = () => {
                             <img src={Landline} alt='Landline' className='w-[40px] h-[40px]' />
                             <div className='flex flex-col gap-1.5'>
                                 <p className='font-manja text-[#757575] text-[15px]'>Call on</p>
-                                <p className='font-manja text-[#757575] text-[15px]'>+2348069714003</p>
+                                <p className='font-manja text-[#757575] text-[15px]'>{contact?.contact_phone}</p>
                             </div>
                         </div>
                     </div>
@@ -57,7 +80,7 @@ const Contact = () => {
                             <img src={Email} alt='Email' className='w-[40px] h-[40px]' />
                             <div className='flex flex-col gap-1.5'>
                                 <p className='font-manja text-[#757575] text-[15px]'>Mail to</p>
-                                <p className='font-manja text-[#757575] text-[15px]'>admin@noa.gov.ng</p>
+                                <p className='font-manja text-[#757575] text-[15px]'>{contact?.contact_mail}</p>
                             </div>
                         </div>
                     </div>
@@ -68,7 +91,7 @@ const Contact = () => {
                             <img src={Map} alt='Map' className='w-[40px] h-[40px]' />
                             <div className='flex flex-col gap-1.5'>
                                 <p className='font-manja text-[#757575] text-[15px]'>
-                                    Block B, Fed Secretariat Complex, Area 1, Garki Abuja, Nigeria. PMB 27
+                                    {contact?.contact_address}
                                 </p>
                             </div>
                         </div>

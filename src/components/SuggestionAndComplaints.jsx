@@ -1,13 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Suggestion from "../assets/png/suggestion.png"
 
 import CallB from "../assets/svg/call.svg"
 import Time from "../assets/svg/time.svg"
 import Mail from "../assets/svg/mail.svg"
+import axios from 'axios'
 
 
 const SuggestionAndComplaints = () => {
+    const [contact, setContact] = useState()
+    const [loading, setLoading] = useState(false)
+
+    const fetchContact = async (url = "https://api.admin.noa.gov.ng/api/contact") => {
+        setLoading(true)
+        try {
+            const res = await axios.get(url);
+            const data = res.data;
+
+            setContact(data?.data || []);
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    console.log(contact, "contact")
+
+    useEffect(() => {
+        fetchContact();
+    }, []);
+
     return (
         <div
             style={{ background: `url(${Suggestion})`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}
@@ -24,14 +48,14 @@ const SuggestionAndComplaints = () => {
                     <img src={CallB} alt='CallB' className='w-[31px] h-[31px]' />
                     <div className='flex flex-col items-center gap-[5px]'>
                         <p className='font-manja text-[#222222] font-bold text-[13px]'>Call on</p>
-                        <p className='text-[#757575] font-manja text-[11px]'>0904 290 0024</p>
+                        <p className='text-[#757575] font-manja text-[11px]'>{contact?.contact_phone}</p>
                     </div>
                 </div>
                 <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>
                     <img src={Mail} alt='Mail' className='w-[31px] h-[31px]' />
                     <div className='flex flex-col items-center gap-[5px]'>
                         <p className='font-manja text-[#222222] font-bold text-[13px]'>Mail at</p>
-                        <p className='text-[#757575] font-manja text-[11px]'>admin@noa.gov.ng</p>
+                        <p className='text-[#757575] font-manja text-[11px]'>{contact?.contact_mail}</p>
                     </div>
                 </div>
                 <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoChevronForwardOutline, IoLocationOutline, IoMailOutline } from 'react-icons/io5'
 import { FiPhone } from 'react-icons/fi'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
@@ -77,10 +77,65 @@ import TeamP from "../../../assets/png/team_p.jpg"
 import TeamQ from "../../../assets/png/team_q.jpg"
 
 import SuggestionAndComplaints from '../../../components/SuggestionAndComplaints'
+import axios from 'axios'
+
+// Loading Skeleton Component
+const SkeletonCard = () => (
+    <div className='flex flex-col gap-2 w-[279px]'>
+        <div className='h-[300px] bg-gray-300 rounded'></div>
+        <div className='h-4 bg-gray-300 rounded w-3/4'></div>
+        <div className='h-3 bg-gray-300 rounded w-1/2'></div>
+    </div>
+)
+
+const DGSkeleton = () => (
+    <div className="bg-[#00000033]">
+        <div className='flex flex-col h-[507px] lg:h-[590px] w-full bg-gray-300'>
+            <div className='lg:hidden flex-grow'></div>
+            <div className='flex justify-end w-full'>
+                <div className='bg-[#014322] flex flex-col w-[326px] mt-4 gap-6 p-5 h-[234px]'>
+                    <div className='flex gap-3'>
+                        <div className='w-[32px] h-[32px] bg-gray-400 rounded'></div>
+                        <div className='h-4 bg-gray-400 rounded w-[200px]'></div>
+                    </div>
+                    <div className='flex gap-3'>
+                        <div className='w-[32px] h-[32px] bg-gray-400 rounded'></div>
+                        <div className='h-4 bg-gray-400 rounded w-[180px]'></div>
+                    </div>
+                    <div className='flex gap-3'>
+                        <div className='w-[32px] h-[32px] bg-gray-400 rounded'></div>
+                        <div className='h-4 bg-gray-400 rounded w-[150px]'></div>
+                    </div>
+                </div>
+            </div>
+            <div className='hidden lg:flex flex-grow'></div>
+            <div className='bg-[#01432233] w-full flex flex-col h-[92px] py-5 px-6'>
+                <div className='h-5 bg-gray-400 rounded w-[200px] mb-2'></div>
+                <div className='h-4 bg-gray-400 rounded w-[150px]'></div>
+            </div>
+        </div>
+    </div>
+)
+
+const SliderSkeleton = () => (
+    <div className='flex gap-4 overflow-hidden'>
+        {[1, 2, 3, 4].map((item) => (
+            <SkeletonCard key={item} />
+        ))}
+    </div>
+)
+
+const NoDataMessage = ({ message = "No Data Available" }) => (
+    <div className='flex items-center justify-center py-10'>
+        <p className='text-gray-500 font-mont_alt text-lg'>{message}</p>
+    </div>
+)
 
 const Management = () => {
     const [openBackgroundDropdown, setOpenBackgroundDropdown] = useState(false);
     const [openEducationDropdown, setOpenEducationDropdown] = useState(false);
+    const [teams, setTeams] = useState([]);
+    const [loading, setLoading] = useState(false)
 
     const handleBackgroundDropDown = () => {
         setOpenBackgroundDropdown(prev => !prev)
@@ -90,413 +145,440 @@ const Management = () => {
         setOpenEducationDropdown(prev => !prev)
     }
 
-    const stateData = [
-        {
-            id: 1,
-            pic: DirectorA,
-            name: "Mrs Tracy Omamode Basil-Ikolomi",
-            state: "Delta State",
-            phone: "07034220750"
-        },
-        {
-            id: 2,
-            pic: DirectorB,
-            name: "Mr. Dewua Mark Ucha",
-            state: "Benue State",
-            phone: "08080836612"
-        },
-        {
-            id: 3,
-            pic: DirectorC,
-            name: "Mrs. Osinfowokan Adeola Olufunke",
-            state: "Ogun State",
-            phone: "07068123477"
-        },
-        {
-            id: 4,
-            pic: DirectorD,
-            name: "Mr. Nwokpor Theophilus Nwafor",
-            state: "Ebonyi State",
-            phone: "08033614522"
-        },
-        {
-            id: 5,
-            pic: DirectorE,
-            name: "Mrs. Olobio Grace Ebiakpo",
-            state: "Bayelsa State",
-            phone: "08022546092"
-        },
-        {
-            id: 6,
-            pic: DirectorF,
-            name: "Babangida Kurfi",
-            state: "Sokoto State",
-            phone: "07066857906"
-        },
-        {
-            id: 7,
-            pic: DirectorG,
-            name: "Mrs. Akomolede Funmilayo Oluwakemi",
-            state: "Ekiti State",
-            phone: "08039409190"
-        },
-        {
-            id: 8,
-            pic: DirectorH,
-            name: "Mr. Adekunle James Ajayi",
-            state: "Ondo State",
-            phone: "08034956789"
-        },
-        {
-            id: 9,
-            pic: DirectorI,
-            name: "Ms. Stellamaris Demian-Igwe",
-            state: "Imo State",
-            phone: "08033160751"
-        },
-        {
-            id: 9,
-            pic: DirectorJ,
-            name: "Mr. Dare, Abdulganiyu Olurotimi",
-            state: "Kwara State",
-            phone: "08061223921"
-        },
-        {
-            id: 10,
-            pic: DirectorK,
-            name: "Ms. Adaline Waye Patari",
-            state: "Gombe State",
-            phone: "08038262341, 08023747546"
-        },
-        {
-            id: 11,
-            pic: DirectorL,
-            name: "Mr. Ahmed Tijani Ibrahim",
-            state: "Jigawa State",
-            phone: "08038387561, 07088829639"
-        },
-        {
-            id: 12,
-            pic: DirectorM,
-            name: "Kenang Tabitha Pamhworo",
-            state: "Plateau State",
-            phone: "08064270708, 08052633616"
-        },
-        {
-            id: 13,
-            pic: DirectorN,
-            name: "Mkpoutom Ufot Mkpoutom ",
-            state: "Akwa ibom State",
-            phone: "08136286409"
-        },
-        {
-            id: 14,
-            pic: DirectorO,
-            name: "Mr. Richard Bala Dangari",
-            state: "Adamawa State",
-            phone: "08025711516"
-        },
-        {
-            id: 15,
-            pic: DirectorP,
-            name: "Mr. Zakari Muhammad Kasimu",
-            state: "Taraba State",
-            phone: "07063547963, 08024124340"
-        },
-        {
-            id: 16,
-            pic: DirectorQ,
-            name: "Mrs. Acharu Opaluwa",
-            state: "FCT",
-            phone: "08037861237"
-        },
-        {
-            id: 17,
-            pic: DirectorR,
-            name: "Mrs. Nwachukwu Chinyere Clara",
-            state: "Enugu State",
-            phone: "08055262679, 08135594221"
-        },
-        {
-            id: 18,
-            pic: DirectorS,
-            name: "Mr. Danjuma Makama",
-            state: "Kaduna State",
-            phone: "08023355620"
-        },
-        {
-            id: 19,
-            pic: DirectorV,
-            name: "Ibrahim Aminu",
-            state: "Zamfara State",
-            phone: "08102966516, 08025728091"
-        },
-        {
-            id: 20,
-            pic: DirectorU,
-            name: "Dr. Tukur Adedeji Mustafa",
-            state: "Lagos State",
-            phone: "08080700003"
-        },
-        {
-            id: 21,
-            pic: DirectorThirteen,
-            name: "Mr. Asanye, John Mfon",
-            state: "Cross-River State",
-            phone: " 08035818141, 08055830056"
-        },
-        {
-            id: 22,
-            pic: DirectorEighteen,
-            name: "Mr. Mohammed Nasir Karofi",
-            state: "Kebbi State",
-            phone: "08031511930, 08056044744"
-        },
-        {
-            id: 23,
-            pic: DirectorSeventeen,
-            name: "Mr Aderogba Akanbi",
-            state: "Oyo State",
-            phone: "08033587532"
-        },
-        {
-            id: 24,
-            pic: DirectorZ,
-            name: "Mr. Rabiu Ado",
-            state: "Kano State",
-            phone: "08066433301"
-        },
-        {
-            id: 25,
-            pic: DirectorFifteen,
-            name: "Mr. Michael Daniel Bdliya",
-            state: "Borno State",
-            phone: "07032220001, 08027790071"
-        },
-        {
-            id: 26,
-            pic: DirectorTwo,
-            name: "Mr. Augustine Akwe",
-            state: "Nasarawa State",
-            phone: "08138647953"
-        },
-        {
-            id: 27,
-            pic: DirectorThree,
-            name: "Mr. Muhammad Nasiru Mahe",
-            state: "Bauchi State",
-            phone: "08065486676"
-        },
-        {
-            id: 28,
-            pic: DirectorFour,
-            name: "Mr. Mohd Ali Tikau",
-            state: "Yobe State",
-            phone: "08036150794"
-        },
-        {
-            id: 29,
-            pic: DirectorFive,
-            name: "Mr. Edogbanya Patrick Yusuf",
-            state: "Kogi State",
-            phone: " 08035880711"
-        },
-        {
-            id: 30,
-            pic: DirectorSix,
-            name: "Mr Yahaya Ibrahim Gbongbo",
-            state: "Niger State",
-            phone: "08063740598"
-        },
-        {
-            id: 31,
-            pic: DirectorEleven,
-            name: "Mr. Muntari Lawal Tsagem",
-            state: "Katsina State",
-            phone: "08036225610"
-        },
-        {
-            id: 32,
-            pic: DirectorFourteen,
-            name: "Mr. Adebiyi Stephen Adefarasin",
-            state: "Osun State",
-            phone: "09057838299, 08035638191"
-        },
-        {
-            id: 33,
-            pic: DirectorSixteen,
-            name: "Mr. Ajaegbu Edozie Sunday ",
-            state: "Anambra State",
-            phone: "07034953894"
-        },
-        {
-            id: 34,
-            pic: DirectorTen,
-            name: "Dr. Edward Amonia Banigo",
-            state: "Rivers State",
-            phone: "08032634749"
-        },
-        {
-            id: 35,
-            pic: DirectorTwelve,
-            name: "Barr. Osahon B. Woghiren",
-            state: "Edo State",
-            phone: "08056114012"
-        },
-        {
-            id: 36,
-            pic: DirectorW,
-            name: "Mr. Orji, Victor Onyeanwuna",
-            state: "Abia State",
-            phone: "08068403377"
-        },
+    const fetchTeams = async (url = "https://api.admin.noa.gov.ng/api/team") => {
+        setLoading(true)
+        try {
+            const res = await axios.get(url);
+            const data = res.data;
+
+            setTeams(data?.data || []);
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchTeams();
+    }, []);
+
+    console.log(teams, "teams")
+
+    const hqTeams = teams?.filter(team => team.level === "hq")
+    const stateTeams = teams?.filter(team => team.level === "state")
+    const zonalTeams = teams?.filter(team => team.level === "zone")
+
+    const dgData = hqTeams?.find(team => team.position === "Director General") || {}
+
+
+    // const stateData = [
+    //     {
+    //         id: 1,
+    //         pic: DirectorA,
+    //         name: "Mrs Tracy Omamode Basil-Ikolomi",
+    //         state: "Delta State",
+    //         phone: "07034220750"
+    //     },
+    //     {
+    //         id: 2,
+    //         pic: DirectorB,
+    //         name: "Mr. Dewua Mark Ucha",
+    //         state: "Benue State",
+    //         phone: "08080836612"
+    //     },
+    //     {
+    //         id: 3,
+    //         pic: DirectorC,
+    //         name: "Mrs. Osinfowokan Adeola Olufunke",
+    //         state: "Ogun State",
+    //         phone: "07068123477"
+    //     },
+    //     {
+    //         id: 4,
+    //         pic: DirectorD,
+    //         name: "Mr. Nwokpor Theophilus Nwafor",
+    //         state: "Ebonyi State",
+    //         phone: "08033614522"
+    //     },
+    //     {
+    //         id: 5,
+    //         pic: DirectorE,
+    //         name: "Mrs. Olobio Grace Ebiakpo",
+    //         state: "Bayelsa State",
+    //         phone: "08022546092"
+    //     },
+    //     {
+    //         id: 6,
+    //         pic: DirectorF,
+    //         name: "Babangida Kurfi",
+    //         state: "Sokoto State",
+    //         phone: "07066857906"
+    //     },
+    //     {
+    //         id: 7,
+    //         pic: DirectorG,
+    //         name: "Mrs. Akomolede Funmilayo Oluwakemi",
+    //         state: "Ekiti State",
+    //         phone: "08039409190"
+    //     },
+    //     {
+    //         id: 8,
+    //         pic: DirectorH,
+    //         name: "Mr. Adekunle James Ajayi",
+    //         state: "Ondo State",
+    //         phone: "08034956789"
+    //     },
+    //     {
+    //         id: 9,
+    //         pic: DirectorI,
+    //         name: "Ms. Stellamaris Demian-Igwe",
+    //         state: "Imo State",
+    //         phone: "08033160751"
+    //     },
+    //     {
+    //         id: 9,
+    //         pic: DirectorJ,
+    //         name: "Mr. Dare, Abdulganiyu Olurotimi",
+    //         state: "Kwara State",
+    //         phone: "08061223921"
+    //     },
+    //     {
+    //         id: 10,
+    //         pic: DirectorK,
+    //         name: "Ms. Adaline Waye Patari",
+    //         state: "Gombe State",
+    //         phone: "08038262341, 08023747546"
+    //     },
+    //     {
+    //         id: 11,
+    //         pic: DirectorL,
+    //         name: "Mr. Ahmed Tijani Ibrahim",
+    //         state: "Jigawa State",
+    //         phone: "08038387561, 07088829639"
+    //     },
+    //     {
+    //         id: 12,
+    //         pic: DirectorM,
+    //         name: "Kenang Tabitha Pamhworo",
+    //         state: "Plateau State",
+    //         phone: "08064270708, 08052633616"
+    //     },
+    //     {
+    //         id: 13,
+    //         pic: DirectorN,
+    //         name: "Mkpoutom Ufot Mkpoutom ",
+    //         state: "Akwa ibom State",
+    //         phone: "08136286409"
+    //     },
+    //     {
+    //         id: 14,
+    //         pic: DirectorO,
+    //         name: "Mr. Richard Bala Dangari",
+    //         state: "Adamawa State",
+    //         phone: "08025711516"
+    //     },
+    //     {
+    //         id: 15,
+    //         pic: DirectorP,
+    //         name: "Mr. Zakari Muhammad Kasimu",
+    //         state: "Taraba State",
+    //         phone: "07063547963, 08024124340"
+    //     },
+    //     {
+    //         id: 16,
+    //         pic: DirectorQ,
+    //         name: "Mrs. Acharu Opaluwa",
+    //         state: "FCT",
+    //         phone: "08037861237"
+    //     },
+    //     {
+    //         id: 17,
+    //         pic: DirectorR,
+    //         name: "Mrs. Nwachukwu Chinyere Clara",
+    //         state: "Enugu State",
+    //         phone: "08055262679, 08135594221"
+    //     },
+    //     {
+    //         id: 18,
+    //         pic: DirectorS,
+    //         name: "Mr. Danjuma Makama",
+    //         state: "Kaduna State",
+    //         phone: "08023355620"
+    //     },
+    //     {
+    //         id: 19,
+    //         pic: DirectorV,
+    //         name: "Ibrahim Aminu",
+    //         state: "Zamfara State",
+    //         phone: "08102966516, 08025728091"
+    //     },
+    //     {
+    //         id: 20,
+    //         pic: DirectorU,
+    //         name: "Dr. Tukur Adedeji Mustafa",
+    //         state: "Lagos State",
+    //         phone: "08080700003"
+    //     },
+    //     {
+    //         id: 21,
+    //         pic: DirectorThirteen,
+    //         name: "Mr. Asanye, John Mfon",
+    //         state: "Cross-River State",
+    //         phone: " 08035818141, 08055830056"
+    //     },
+    //     {
+    //         id: 22,
+    //         pic: DirectorEighteen,
+    //         name: "Mr. Mohammed Nasir Karofi",
+    //         state: "Kebbi State",
+    //         phone: "08031511930, 08056044744"
+    //     },
+    //     {
+    //         id: 23,
+    //         pic: DirectorSeventeen,
+    //         name: "Mr Aderogba Akanbi",
+    //         state: "Oyo State",
+    //         phone: "08033587532"
+    //     },
+    //     {
+    //         id: 24,
+    //         pic: DirectorZ,
+    //         name: "Mr. Rabiu Ado",
+    //         state: "Kano State",
+    //         phone: "08066433301"
+    //     },
+    //     {
+    //         id: 25,
+    //         pic: DirectorFifteen,
+    //         name: "Mr. Michael Daniel Bdliya",
+    //         state: "Borno State",
+    //         phone: "07032220001, 08027790071"
+    //     },
+    //     {
+    //         id: 26,
+    //         pic: DirectorTwo,
+    //         name: "Mr. Augustine Akwe",
+    //         state: "Nasarawa State",
+    //         phone: "08138647953"
+    //     },
+    //     {
+    //         id: 27,
+    //         pic: DirectorThree,
+    //         name: "Mr. Muhammad Nasiru Mahe",
+    //         state: "Bauchi State",
+    //         phone: "08065486676"
+    //     },
+    //     {
+    //         id: 28,
+    //         pic: DirectorFour,
+    //         name: "Mr. Mohd Ali Tikau",
+    //         state: "Yobe State",
+    //         phone: "08036150794"
+    //     },
+    //     {
+    //         id: 29,
+    //         pic: DirectorFive,
+    //         name: "Mr. Edogbanya Patrick Yusuf",
+    //         state: "Kogi State",
+    //         phone: " 08035880711"
+    //     },
+    //     {
+    //         id: 30,
+    //         pic: DirectorSix,
+    //         name: "Mr Yahaya Ibrahim Gbongbo",
+    //         state: "Niger State",
+    //         phone: "08063740598"
+    //     },
+    //     {
+    //         id: 31,
+    //         pic: DirectorEleven,
+    //         name: "Mr. Muntari Lawal Tsagem",
+    //         state: "Katsina State",
+    //         phone: "08036225610"
+    //     },
+    //     {
+    //         id: 32,
+    //         pic: DirectorFourteen,
+    //         name: "Mr. Adebiyi Stephen Adefarasin",
+    //         state: "Osun State",
+    //         phone: "09057838299, 08035638191"
+    //     },
+    //     {
+    //         id: 33,
+    //         pic: DirectorSixteen,
+    //         name: "Mr. Ajaegbu Edozie Sunday ",
+    //         state: "Anambra State",
+    //         phone: "07034953894"
+    //     },
+    //     {
+    //         id: 34,
+    //         pic: DirectorTen,
+    //         name: "Dr. Edward Amonia Banigo",
+    //         state: "Rivers State",
+    //         phone: "08032634749"
+    //     },
+    //     {
+    //         id: 35,
+    //         pic: DirectorTwelve,
+    //         name: "Barr. Osahon B. Woghiren",
+    //         state: "Edo State",
+    //         phone: "08056114012"
+    //     },
+    //     {
+    //         id: 36,
+    //         pic: DirectorW,
+    //         name: "Mr. Orji, Victor Onyeanwuna",
+    //         state: "Abia State",
+    //         phone: "08068403377"
+    //     },
        
-    ]
+    // ]
 
-    const headquarterData = [
-        {
-            id: 1,
-            pic: TeamA,
-            name: "Mrs. Thessy Nnalue",
-            duty: "Director, Community Safety Awareness and Compliance"
-        },
-        {
-            id: 2,
-            pic: TeamB,
-            name: "Mr. Kenneth Onyejepu",
-            duty: "Director, Procurement"
-        },
-        {
-            id: 3,
-            pic: TeamC,
-            name: "Mrs. Theresa Maduekwe",
-            duty: "Director, Abuse Rights and Narcotics"
-        },
-        {
-            id: 4,
-            pic: TeamD,
-            name: "Mr. David Akoji",
-            duty: "Director, Special Duties and Zonal Operations"
-        },
-        {
-            id: 5,
-            pic: TeamF,
-            name: "Barr. Williams Dogo",
-            duty: "Director, Legal"
-        },
-        {
-            id: 7,
-            pic: TeamH,
-            name: "Mr. Sule Haruna",
-            duty: "Director, Finance & Accounts (F&A)"
-        },
-        {
-            id: 8,
-            pic: TeamI,
-            name: "Mrs. Rebecca Nasamu",
-            duty: "Director, General Services (GS)"
-        },
-        {
-            id: 9,
-            pic: TeamJ,
-            name: "Mrs. Ayisola Olowoyo",
-            duty: "Director, Human Resources Management (HRM)"
-        },
-        {
-            id: 10,
-            pic: TeamK,
-            name: "Mrs. Olubukola Olorunfemi",
-            duty: "Director, Community Outreach and Development"
-        },
-        {
-            id: 11,
-            pic: TeamL,
-            name: "Mr. Nura Kobi",
-            duty: "Director, Planning, Research & Strategy (PRS)"
-        },
-        {
-            id: 12,
-            pic: TeamG,
-            name: "Mr. John Bala Asate",
-            duty: "Director, Reform Coordination and Service"
-        },
-        {
-            id: 13,
-            pic: TeamM,
-            name: "Dr. Ayoola Abiodun Olufemi",
-            duty: "Director, Health and Social Care"
-        },
-        {
-            id: 14,
-            pic: TeamN,
-            name: "Mrs Blessing Oyem",
-            duty: "Director, Youth Engagement and Inclusion"
-        },
-        {
-            id: 15,
-            pic: TeamO,
-            name: "Mrs. Olukemi Afolayan Ph.D",
-            duty: "Director, Civic Values and Democracy"
-        },
-        {
-            id: 16,
-            pic: TeamP,
-            name: "Mr. Bala Musa",
-            duty: "Director, Communications and Media"
-        },
-        {
-            id: 17,
-            pic: TeamQ,
-            name: "Mr. Emeka Egbugara",
-            duty: "Director, Environment Climate and Energy"
-        },
+    // const headquarterData = [
+    //     {
+    //         id: 1,
+    //         pic: TeamA,
+    //         name: "Mrs. Thessy Nnalue",
+    //         duty: "Director, Community Safety Awareness and Compliance"
+    //     },
+    //     {
+    //         id: 2,
+    //         pic: TeamB,
+    //         name: "Mr. Kenneth Onyejepu",
+    //         duty: "Director, Procurement"
+    //     },
+    //     {
+    //         id: 3,
+    //         pic: TeamC,
+    //         name: "Mrs. Theresa Maduekwe",
+    //         duty: "Director, Abuse Rights and Narcotics"
+    //     },
+    //     {
+    //         id: 4,
+    //         pic: TeamD,
+    //         name: "Mr. David Akoji",
+    //         duty: "Director, Special Duties and Zonal Operations"
+    //     },
+    //     {
+    //         id: 5,
+    //         pic: TeamF,
+    //         name: "Barr. Williams Dogo",
+    //         duty: "Director, Legal"
+    //     },
+    //     {
+    //         id: 7,
+    //         pic: TeamH,
+    //         name: "Mr. Sule Haruna",
+    //         duty: "Director, Finance & Accounts (F&A)"
+    //     },
+    //     {
+    //         id: 8,
+    //         pic: TeamI,
+    //         name: "Mrs. Rebecca Nasamu",
+    //         duty: "Director, General Services (GS)"
+    //     },
+    //     {
+    //         id: 9,
+    //         pic: TeamJ,
+    //         name: "Mrs. Ayisola Olowoyo",
+    //         duty: "Director, Human Resources Management (HRM)"
+    //     },
+    //     {
+    //         id: 10,
+    //         pic: TeamK,
+    //         name: "Mrs. Olubukola Olorunfemi",
+    //         duty: "Director, Community Outreach and Development"
+    //     },
+    //     {
+    //         id: 11,
+    //         pic: TeamL,
+    //         name: "Mr. Nura Kobi",
+    //         duty: "Director, Planning, Research & Strategy (PRS)"
+    //     },
+    //     {
+    //         id: 12,
+    //         pic: TeamG,
+    //         name: "Mr. John Bala Asate",
+    //         duty: "Director, Reform Coordination and Service"
+    //     },
+    //     {
+    //         id: 13,
+    //         pic: TeamM,
+    //         name: "Dr. Ayoola Abiodun Olufemi",
+    //         duty: "Director, Health and Social Care"
+    //     },
+    //     {
+    //         id: 14,
+    //         pic: TeamN,
+    //         name: "Mrs Blessing Oyem",
+    //         duty: "Director, Youth Engagement and Inclusion"
+    //     },
+    //     {
+    //         id: 15,
+    //         pic: TeamO,
+    //         name: "Mrs. Olukemi Afolayan Ph.D",
+    //         duty: "Director, Civic Values and Democracy"
+    //     },
+    //     {
+    //         id: 16,
+    //         pic: TeamP,
+    //         name: "Mr. Bala Musa",
+    //         duty: "Director, Communications and Media"
+    //     },
+    //     {
+    //         id: 17,
+    //         pic: TeamQ,
+    //         name: "Mr. Emeka Egbugara",
+    //         duty: "Director, Environment Climate and Energy"
+    //     },
         
-    ]
+    // ]
 
-    const zonalData = [
-        {
-            id: 1,
-            pic: ZonalA,
-            name: "Mr. Ali Audu",
-            zone: "Director North-East",
-            phone: "08036150794"
-        },
-        {
-            id: 2,
-            pic: ZonalB,
-            name: "Mrs. Iroha Regina Oyidiya",
-            zone: "Director South-East",
-            phone: "08038749734"
-        },
-        {
-            id: 3,
-            pic: ZonalC,
-            name: "Mrs Priscilla Mrumun Gondoaluor",
-            zone: "Director North-Central",
-            phone: "08035894322"
-        },
-        {
-            id: 4,
-            pic: ZonalD,
-            name: "Mr. Hamisu Abubakar",
-            zone: "Director North-West",
-            phone: "08034527431"
-        },
-        {
-            id: 5,
-            pic: ZonalE,
-            name: "Mr. Ibor I.",
-            zone: "Director South-South",
-            phone: " 08134149822"
-        },
-        {
-            id: 6,
-            pic: ZonalF,
-            name: "Mrs. Salako Olufunke Fransisca",
-            zone: "Director South-West",
-            phone: "08067369770"
-        },
-    ]
+    // const zonalData = [
+    //     {
+    //         id: 1,
+    //         pic: ZonalA,
+    //         name: "Mr. Ali Audu",
+    //         zone: "Director North-East",
+    //         phone: "08036150794"
+    //     },
+    //     {
+    //         id: 2,
+    //         pic: ZonalB,
+    //         name: "Mrs. Iroha Regina Oyidiya",
+    //         zone: "Director South-East",
+    //         phone: "08038749734"
+    //     },
+    //     {
+    //         id: 3,
+    //         pic: ZonalC,
+    //         name: "Mrs Priscilla Mrumun Gondoaluor",
+    //         zone: "Director North-Central",
+    //         phone: "08035894322"
+    //     },
+    //     {
+    //         id: 4,
+    //         pic: ZonalD,
+    //         name: "Mr. Hamisu Abubakar",
+    //         zone: "Director North-West",
+    //         phone: "08034527431"
+    //     },
+    //     {
+    //         id: 5,
+    //         pic: ZonalE,
+    //         name: "Mr. Ibor I.",
+    //         zone: "Director South-South",
+    //         phone: " 08134149822"
+    //     },
+    //     {
+    //         id: 6,
+    //         pic: ZonalF,
+    //         name: "Mrs. Salako Olufunke Fransisca",
+    //         zone: "Director South-West",
+    //         phone: "08067369770"
+    //     },
+    // ]
 
     const settings = {
         dots: false,
@@ -547,44 +629,50 @@ const Management = () => {
         </div>
 
         <div className='lg:px-[100px] flex flex-col gap-[72px]  mb-[72px] relative mt-10 lg:mt-5'>
-            <div className="bg-[#00000033]">
-                <div 
-                    style={{ background: `url(${BG}) no-repeat center center`,  backgroundSize: "contain"}}        
-                    className='flex flex-col h-[507px] lg:h-[590px] w-full'
-                >
-                    <div className='lg:hidden flex-grow'></div>
-                    <div className='flex justify-end w-full'>
-                        <div className='bg-[#014322] flex flex-col w-[326px] mt-4 gap-6 p-5 h-[234px]'>
-                            <div className='flex gap-3'>
-                                <IoLocationOutline className='text-[#fff] w-[32px] h-[32px]' />
-                                <p className='font-mont_alt font-medium w-[242px] text-[#fff] text-[18px]'>
-                                    Block B, Fed Secretariat Complex, Area !, Garki Abuja, Nigeria. PMB 7
-                                </p>
-                            </div>
-                            <div className='flex items-center gap-3'>
-                                <IoMailOutline className='text-[#fff] w-[32px] h-[32px]' />
-                                <p className='font-mont_alt font-medium w-[242px] text-[#fff] text-[18px]'>
-                                    DG@mail.com
-                                </p>
-                            </div>
-                            <div className='flex gap-3'>
-                                <FiPhone  className='text-[#fff] w-[32px] h-[32px]' />
-                                <p className='font-mont_alt font-medium w-[242px] text-[#fff] text-[18px]'>
-                                    07034567744
-                                </p>
-                            </div>
+            {loading ? (
+                <DGSkeleton />
+            ) : !dgData?.name ? (
+                <NoDataMessage message="Director General information not available" />
+            ) : (
+                <div className="bg-[#00000033]">
+                    <div 
+                        style={{ background: `url(${dgData?.image}) no-repeat center center`,  backgroundSize: "contain"}}        
+                        className='flex flex-col h-[507px] lg:h-[590px] w-full'
+                    >
+                        <div className='lg:hidden flex-grow'></div>
+                        <div className='flex justify-end w-full'>
+                            <div className='bg-[#014322] flex flex-col w-[326px] mt-4 gap-6 p-5 h-[234px]'>
+                                <div className='flex gap-3'>
+                                    <IoLocationOutline className='text-[#fff] w-[32px] h-[32px]' />
+                                    <p className='font-mont_alt font-medium w-[242px] text-[#fff] text-[18px]'>
+                                       {dgData?.address || " "}
+                                    </p>
+                                </div>
+                                <div className='flex items-center gap-3'>
+                                    <IoMailOutline className='text-[#fff] w-[32px] h-[32px]' />
+                                    <p className='font-mont_alt font-medium w-[242px] text-[#fff] text-[18px]'>
+                                        {dgData?.email || " "}
+                                    </p>
+                                </div>
+                                <div className='flex gap-3'>
+                                    <FiPhone  className='text-[#fff] w-[32px] h-[32px]' />
+                                    <p className='font-mont_alt font-medium w-[242px] text-[#fff] text-[18px]'>
+                                        {dgData?.phone || " "}
+                                    </p>
+                                </div>
 
+                            </div>
+                        </div>
+                        <div className='hidden lg:flex flex-grow'></div> {/* This div will take up the remaining space */}
+                        <div
+                            className='bg-[#01432233] w-full flex flex-col h-[92px] py-5 px-6'
+                        >
+                            <p className='font-mont_alt font-bold text-[20px] text-[#fff]'>{dgData?.name || " "}</p>
+                            <p className='font-mont_alt font-medium text-[18px] text-[#fff]'>{dgData?.position || " "}</p>
                         </div>
                     </div>
-                    <div className='hidden lg:flex flex-grow'></div> {/* This div will take up the remaining space */}
-                    <div
-                        className='bg-[#01432233] w-full flex flex-col h-[92px] py-5 px-6'
-                    >
-                        <p className='font-mont_alt font-bold text-[20px] text-[#fff]'>Lanre Issa-Onilu</p>
-                        <p className='font-mont_alt font-medium text-[18px] text-[#fff]'>Director General</p>
-                    </div>
                 </div>
-            </div>
+            )}
 
             <div className='px-3 w-full lg:px-0'>
                 <div className='flex flex-col gap-4 w-full p-5 border border-[#ccc] rounded-xl'>
@@ -594,14 +682,7 @@ const Management = () => {
                     </div>
                     {openBackgroundDropdown && (
                         <p className='font-mont_alt text-[#5F6368] text-sm lg:text-[20px]'>
-                            A specialist in strategic public communication planning, with vast experience in corporate and political communication, crisis communication, policy
-                            analysis and development issues. Did courses in Advanced Public Relations and Media Audience Research at the New York University, United States, and attended several seminars and conferences in the US and UK, including at the prestigious World Advertising Research Council (WARC) in London, UK.
-                            Associate Member of the Public Relations Society of America (PRSA) and member of the Public Relations Society of New York. A Corporate Member of
-                            the International Communications Conference (ICC) at the Baruch College, State University of New York, U.S.A. Member of Council of Nigeria Institute of
-                            Public Relations (NIPR), and an associate member of the Advertising Practitioners Council of Nigeria (APCON). Worked variously as a media
-                            relations executive and journalist and as a policy and development issues strategist, public perception analyst and communication planner in the last 33
-                            years. Joined the Comet Newspapers in Lagos as a News Editor and later Thisday Newspapers as Assistant Editor, Sunday Thisday. Resigned as Group
-                            Politics Editor, Thisday Newspapers. Worked for the World Investment News(Winne), France, for the production of a special report on Nigeria's democratization process, published in the June 1999 edition of FORBES International Business magazine.
+                            {dgData?.profile}
                         </p>
                     )}
                 </div>
@@ -615,9 +696,7 @@ const Management = () => {
                     </div>
                     {openEducationDropdown && (
                         <p className='font-mont_alt text-[#5F6368] text-sm lg:text-[20px]'>
-                        Graduated with a BSc. Mass Communication degree from the University of Lagos and 
-                        MS Certificate in Integrated Marketing Communication from West
-                        Virginia University, Virginia, U.S.A.
+                        {dgData?.education}
                         </p>
                     )}
                 </div>
@@ -630,21 +709,27 @@ const Management = () => {
                 </div>
 
                 <div className='w-full'>
-                    <Slider {...settings}>
-                        {
-                            headquarterData?.map((item, index) => (
-                                <div className='mx-5' key={item?.id}>
-                                    <div className='flex flex-col gap-2 w-[279px] '>
-                                        <img src={item?.pic} alt="State Director" className="h-[300px]" />
-                                        <p className='font-manja text-[#222] text-base font-bold'>{item?.name}</p>
-                                        <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>{item?.duty}</p>
+                    {loading ? (
+                        <SliderSkeleton />
+                    ) : hqTeams?.length === 0 ? (
+                        <NoDataMessage message="No Headquarters team data available" />
+                    ) : (
+                        <Slider {...settings}>
+                            {
+                                hqTeams?.map((item, index) => (
+                                    <div className='mx-5' key={item?.id}>
+                                        <div className='flex flex-col gap-2 w-[279px] '>
+                                            <img src={item?.image} alt="State Director" className="h-[300px]" />
+                                            <p className='font-manja text-[#222] text-base font-bold'>{item?.name}</p>
+                                            <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>{item?.position}</p>
+                                        </div>
+
                                     </div>
+                                ))
+                            }
 
-                                </div>
-                            ))
-                        }
-
-                    </Slider>
+                        </Slider>
+                    )}
 
                 </div>
 
@@ -657,22 +742,28 @@ const Management = () => {
                 </div>
 
                 <div className='w-full'>
-                    <Slider {...settings}>
-                        {
-                            zonalData?.map((item, index) => (
-                                <div className='mx-5' key={item?.id}>
-                                    <div className='flex flex-col gap-2 w-[279px] '>
-                                        <img src={item?.pic} alt="Zonal Director" className="h-[300px]"  />
-                                        <p className='font-manja text-[#222] text-base font-bold'>{item?.name}</p>
-                                        <p className='font-manja text-[#00AA55] text-base font-bold'>{item?.zone}</p>
-                                        <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>{item?.phone}</p>
+                    {loading ? (
+                        <SliderSkeleton />
+                    ) : zonalTeams?.length === 0 ? (
+                        <NoDataMessage message="No Zonal Directors data available" />
+                    ) : (
+                        <Slider {...settings}>
+                            {
+                                zonalTeams?.map((item, index) => (
+                                    <div className='mx-5' key={item?.id}>
+                                        <div className='flex flex-col gap-2 w-[279px] '>
+                                            <img src={item?.image} alt="Zonal Director" className="h-[300px]"  />
+                                            <p className='font-manja text-[#222] text-base font-bold'>{item?.name}</p>
+                                            <p className='font-manja text-[#00AA55] text-base font-bold'>{item?.position}</p>
+                                            <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>{item?.phone}</p>
+                                        </div>
+
                                     </div>
+                                ))
+                            }
 
-                                </div>
-                            ))
-                        }
-
-                    </Slider>
+                        </Slider>
+                    )}
 
                 </div>
             </div>
@@ -690,22 +781,28 @@ const Management = () => {
                 </div>
 
                 <div className='w-full'>
-                    <Slider {...settings}>
-                        {
-                            stateData?.map((item, index) => (
-                                <div className='mx-5' key={item?.id}>
-                                    <div className='flex flex-col gap-2 w-[279px] '>
-                                        <img src={item?.pic} alt="State Director" className="h-[300px]" />
-                                        <p className='font-manja text-[#222] text-base font-bold'>{item?.name}</p>
-                                        <p className='font-manja text-[#00AA55] text-base font-bold'>{item?.state}</p>
-                                        <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>{item?.phone}</p>
+                    {loading ? (
+                        <SliderSkeleton />
+                    ) : stateTeams?.length === 0 ? (
+                        <NoDataMessage message="No State Directors data available" />
+                    ) : (
+                        <Slider {...settings}>
+                            {
+                                stateTeams?.map((item, index) => (
+                                    <div className='mx-5' key={item?.id}>
+                                        <div className='flex flex-col gap-2 w-[279px] '>
+                                            <img src={item?.image} alt="State Director" className="h-[300px]" />
+                                            <p className='font-manja text-[#222] text-base font-bold'>{item?.name}</p>
+                                            <p className='font-manja text-[#00AA55] text-base font-bold'>{item?.position}</p>
+                                            <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>{item?.phone}</p>
+                                        </div>
+
                                     </div>
+                                ))
+                            }
 
-                                </div>
-                            ))
-                        }
-
-                    </Slider>
+                        </Slider>
+                    )}
 
                 </div>
             </div>
