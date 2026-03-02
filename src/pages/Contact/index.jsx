@@ -192,7 +192,7 @@ const Contact = () => {
                     <img src={CallB} alt='CallB' className='w-[31px] h-[31px]'/>
                     <div className='flex flex-col items-center gap-[5px]'>
                         <p className='font-manja text-[#222222] font-bold text-[13px]'>Call on</p>
-                        <p className='text-[#757575] font-manja text-[11px]'>0703 738 3444</p>
+                        <p className='text-[#757575] font-manja text-[11px]'>0904 290 0024</p>
                     </div>
                 </div>
                 <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>

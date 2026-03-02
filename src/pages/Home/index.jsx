@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { IoCloseOutline } from 'react-icons/io5'
 import Slider from 'react-slick'
 import { AiOutlineSend } from 'react-icons/ai'
@@ -43,6 +43,18 @@ const Home = () => {
     const [allPub, setAllPub] = useState([])
     const [iframeLoading, setIframeLoading] = useState(true);
     const [iframeError, setIframeError] = useState(false);
+    const iframeRef = useRef(null); // Optional ref for advanced debugging if needed
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            if (iframeLoading) {
+                setIframeLoading(false);
+                setIframeError(true);
+            }
+        }, 10000); // 10 seconds timeout - adjust as needed
+
+        return () => clearTimeout(timer);
+    }, [iframeLoading]);
 
     const navigate = useNavigate()
 
@@ -533,7 +545,7 @@ const Home = () => {
 
             </div>
 
-            {/* <div className="relative w-full h-[400px]">
+            <div className="relative w-full hidden h-[400px]">
                 {iframeLoading && (
                     <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
                         <CgSpinner className="animate-spin text-2xl text-[#00AA55]" />
@@ -554,13 +566,14 @@ const Home = () => {
                     </div>
                 )}
                 <iframe
+                    ref={iframeRef}
                     src="https://clheean.noa.gov.ng/debate-voting"
                     width="100%"
-                    height="400"
+                    height="100%"
                     frameBorder="0"
                     style={{
                         border: "none",
-                        borderRadius: "8px"
+                        borderRadius: "8px",
                     }}
                     title="NOA Debate Widget"
                     onLoad={() => setIframeLoading(false)}
@@ -568,8 +581,8 @@ const Home = () => {
                         setIframeLoading(false);
                         setIframeError(true);
                     }}
-                />
-            </div> */}
+                ></iframe>
+            </div>
 
             <div
                 style={{ background: `url(${Info})`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}
@@ -650,7 +663,7 @@ const Home = () => {
                         <img src={CallB} alt='CallB' className='w-[31px] h-[31px]' />
                         <div className='flex flex-col items-center gap-[5px]'>
                             <p className='font-manja text-[#222222] font-bold text-[13px]'>Call on</p>
-                            <p className='text-[#757575] font-manja text-[11px]'>0703 738 3444</p>
+                            <p className='text-[#757575] font-manja text-[11px]'>0904 290 0024</p>
                         </div>
                     </div>
                     <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>

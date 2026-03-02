@@ -9,10 +9,6 @@ import "slick-carousel/slick/slick-theme.css";
 // import BG from "../../../assets/png/dg_full_pic.png"
 import BG from "../../../assets/png/dg.jpg"
 import Chain from "../../../assets/png/chain.png"
-import ManagementA from "../../../assets/png/management_pic_a.png"
-import ManagementB from "../../../assets/png/management_pic_b.png"
-import ManagementC from "../../../assets/png/management_pic_c.png"
-import ManagementD from "../../../assets/png/management_pic_d.png"
 
 import ZonalA from "../../../assets/png/zonal_a.jpg"
 import ZonalB from "../../../assets/png/zonal_b.jpg"
@@ -97,7 +93,7 @@ const Management = () => {
         setOpenEducationDropdown(prev => !prev)
     }
 
-    const data = [
+    const stateData = [
         {
             id: 1,
             pic: DirectorA,
@@ -655,33 +651,6 @@ const Management = () => {
 
                 </div>
 
-                {/* <div className='flex flex-col lg:flex-row gap-5 lg:gap-[40px] lg:items-center'>
-                    <div className='flex flex-col gap-4 w-full lg:w-[279px] '>
-                        <img src={ManagementA} alt='ManagementA' />
-                        <p className='font-manja text-[#222] text-base font-bold'>David Akoji</p>
-                        <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>Special duties and state operations (SDSO)</p>
-                    </div>
-
-                    <div className='flex flex-col gap-4 w-full lg:w-[279px] '>
-                        <img src={ManagementB} alt='ManagementB' />
-                        <p className='font-manja text-[#222] text-base font-bold'>Mrs Adeola Adelaja</p>
-                        <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>political, ethics, civic and values (Pcev)</p>
-                    </div>
-
-                    <div className='flex flex-col gap-4 w-full lg:w-[279px] '>
-                        <img src={ManagementC} alt='ManagementC' />
-                        <p className='font-manja text-[#222] text-base font-bold'>John Doe</p>
-                        <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>human resources management (hrm)</p>
-                    </div>
-
-                    <div className='flex flex-col gap-4 w-full lg:w-[279px] '>
-                        <img src={ManagementD} alt='ManagementD' />
-                        <p className='font-manja text-[#222] text-base font-bold'>Mrs Theresa Madueke</p>
-                        <p className='w-[250px] text-[#00AA55] font-manja font-bold text-sm uppercase'>political, ethics, civic and values (Pcev)</p>
-                    </div>
-
-                </div> */}
-
             </div>
 
              <div className='flex flex-col gap-[40px]'>
@@ -726,7 +695,7 @@ const Management = () => {
                 <div className='w-full'>
                     <Slider {...settings}>
                         {
-                            data?.map((item, index) => (
+                            stateData?.map((item, index) => (
                                 <div className='mx-5' key={item?.id}>
                                     <div className='flex flex-col gap-2 w-[279px] '>
                                         <img src={item?.pic} alt="State Director" className="h-[300px]" />
@@ -763,7 +732,7 @@ const Management = () => {
                     <img src={CallB} alt='CallB' className='w-[31px] h-[31px]'/>
                     <div className='flex flex-col items-center gap-[5px]'>
                         <p className='font-manja text-[#222222] font-bold text-[13px]'>Call on</p>
-                        <p className='text-[#757575] font-manja text-[11px]'>0703 738 3444</p>
+                        <p className='text-[#757575] font-manja text-[11px]'>0904 290 0024</p>
                     </div>
                 </div>
                 <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>
