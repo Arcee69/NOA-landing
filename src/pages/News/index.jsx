@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { IoChevronForwardOutline } from 'react-icons/io5'
-
-import Chain from "../../assets/png/chain.png"
-import Suggestion from "../../assets/png/suggestion.png"
-
-import CallB from "../../assets/svg/call.svg"
-import Time from "../../assets/svg/time.svg"
-import Mail from "../../assets/svg/mail.svg"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+
+import Chain from "../../assets/png/chain.png"
+
+import SuggestionAndComplaints from '../../components/SuggestionAndComplaints'
 
 
 const News = () => {
@@ -77,7 +74,7 @@ const News = () => {
                     {
                         newsData?.length > 0 ? newsData?.map((item, index) => (
                             <div key={index} className='flex flex-col cursor-pointer' onClick={() => navigate(`/news/${item?.id}`, { state: item})}>
-                                <img src={item?.image} alt='Poster' className='lg:w-[279px] lg:h-[200px]' />
+                                <img src={item?.image} alt='Poster' className='lg:w-[279px] object-fill lg:h-[200px]' />
                                 <div className='flex flex-col mt-4 w-64'>
                                     <p className='font-bold text-[#222222] '>{item?.title}</p>
                                     {/* <div className='flex items-center gap-1.5'>
@@ -100,7 +97,7 @@ const News = () => {
                 </div>
             }
 
-            <div className="flex justify-center items-center gap-4 mt-10">
+            <div className="flex justify-center items-center gap-4 my-10">
                 <button
                     onClick={handlePrevPage}
                     disabled={!prevPageUrl}
@@ -124,42 +121,7 @@ const News = () => {
 
         </div>
 
-        <div
-            style={{ background: `url(${Suggestion})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"  }}
-            className='lg:h-[512px] w-full flex py-10 lg:py-0 items-center gap-[20px] lg:gap-[45px] justify-center flex-col mt-[100px]'
-        >
-            <p className='font-manja font-bold text-[#222222] text-[27px]'>Suggestion and Complaints</p>
-            <p className='text-center font-medium font-mont_alt text-[11px] text-[#757575] w-[337px]'>
-                Don't hesitate to reach us because we believe that citizens 
-                should participate in driving change and development in Nigeria.
-            </p>
-
-            <div className='flex flex-col lg:flex-row items-center gap-6'>
-                <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>
-                    <img src={CallB} alt='CallB' className='w-[31px] h-[31px]'/>
-                    <div className='flex flex-col items-center gap-[5px]'>
-                        <p className='font-manja text-[#222222] font-bold text-[13px]'>Call on</p>
-                        <p className='text-[#757575] font-manja text-[11px]'>0904 290 0024</p>
-                    </div>
-                </div>
-                <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>
-                    <img src={Mail} alt='Mail' className='w-[31px] h-[31px]'/>
-                    <div className='flex flex-col items-center gap-[5px]'>
-                        <p className='font-manja text-[#222222] font-bold text-[13px]'>Mail at</p>
-                        <p className='text-[#757575] font-manja text-[11px]'>admin@noa.gov.ng</p>
-                    </div>
-                </div>
-                <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>
-                    <img src={Time} alt='Time' className='w-[31px] h-[31px]'/>
-                    <div className='flex flex-col items-center gap-[5px]'>
-                        <p className='font-manja text-[#222222] font-bold text-[13px]'>Open hrs</p>
-                        <p className='text-[#757575] font-manja text-[11px]'>8am to 4pm</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
+        <SuggestionAndComplaints />
 
     </div>
   )

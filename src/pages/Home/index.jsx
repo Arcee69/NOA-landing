@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import Vapi from '@vapi-ai/web';
 import { CgSpinner } from 'react-icons/cg';
+import axios from 'axios';
 
 import House from "../../assets/png/house.png"
 import Address from "../../assets/png/address.png"
@@ -19,7 +20,6 @@ import RightMic from "../../assets/png/right_mic.png"
 import Chain from "../../assets/png/chain.png"
 import User from "../../assets/png/user.png"
 import Info from "../../assets/png/info.png"
-import Suggestion from "../../assets/png/suggestion.png"
 import Industry from "../../assets/png/industry.png"
 import Call from "../../assets/png/call.png"
 import DG from "../../assets/png/dg.jpg"
@@ -27,12 +27,10 @@ import DG from "../../assets/png/dg.jpg"
 
 import NoaLogo from "../../assets/svg/noa_logo.svg"
 import Folder from "../../assets/svg/folder.svg"
-import CallB from "../../assets/svg/call.svg"
-import Time from "../../assets/svg/time.svg"
-import Mail from "../../assets/svg/mail.svg"
+
 
 import MediaChat from "../../assets/vid/media_chat.mp4"
-import axios from 'axios';
+import SuggestionAndComplaints from '../../components/SuggestionAndComplaints';
 
 
 
@@ -634,7 +632,7 @@ const Home = () => {
                             <a href='https://youthandsport.gov.ng/' target="_blank" className='text-[#fff] font-manja text-[13px] font-bold'>Youth and Nation</a>
                             <IoIosArrowRoundForward className='text-[#fff] ' />
                         </div>
-                        <div className='w-full gap-1 cursor-pointer border border-x-0 border-t-0 border-b-[#fff] py-[14px] cursor-pointer px-[21px] flex items-center'>
+                        <div className='w-full gap-1 cursor-pointer border border-x-0 border-t-0 border-b-[#fff] py-[14px] px-[21px] flex items-center'>
                             <a href="https://www.nassnig.org/" target='_blank' className='text-[#fff] font-manja text-[13px] font-bold'>Government Policies</a>
                             <IoIosArrowRoundForward className='text-[#fff] ' />
                         </div>
@@ -648,43 +646,8 @@ const Home = () => {
 
             </div>
 
-            <div
-                style={{ background: `url(${Suggestion})`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}
-                className='lg:h-[512px] w-full flex py-10 lg:py-0 items-center gap-[20px] lg:gap-[45px] justify-center flex-col mt-[100px]'
-            >
-                <p className='font-manja font-bold text-[#222222] text-[27px]'>Suggestion and Complaints</p>
-                <p className='text-center font-medium font-mont_alt text-[11px] text-[#757575] w-[337px]'>
-                    Don't hesitate to reach us because we believe that citizens
-                    should participate in driving change and development in Nigeria.
-                </p>
+            <SuggestionAndComplaints />
 
-                <div className='flex flex-col lg:flex-row items-center gap-6'>
-                    <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>
-                        <img src={CallB} alt='CallB' className='w-[31px] h-[31px]' />
-                        <div className='flex flex-col items-center gap-[5px]'>
-                            <p className='font-manja text-[#222222] font-bold text-[13px]'>Call on</p>
-                            <p className='text-[#757575] font-manja text-[11px]'>0904 290 0024</p>
-                        </div>
-                    </div>
-                    <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>
-                        <img src={Mail} alt='Mail' className='w-[31px] h-[31px]' />
-                        <div className='flex flex-col items-center gap-[5px]'>
-                            <p className='font-manja text-[#222222] font-bold text-[13px]'>Mail at</p>
-                            <p className='text-[#757575] font-manja text-[11px]'>admin@noa.gov.ng</p>
-                        </div>
-                    </div>
-                    <div className='bg-[#fff] w-[127px] h-[150px] flex flex-col gap-5 items-center justify-center'>
-                        <img src={Time} alt='Time' className='w-[31px] h-[31px]' />
-                        <div className='flex flex-col items-center gap-[5px]'>
-                            <p className='font-manja text-[#222222] font-bold text-[13px]'>Open hrs</p>
-                            <p className='text-[#757575] font-manja text-[11px]'>8am to 4pm</p>
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
 
         </div>
     )
