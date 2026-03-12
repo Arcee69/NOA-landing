@@ -169,7 +169,7 @@ const Management = () => {
     const stateTeams = teams?.filter(team => team.level === "state")
     const zonalTeams = teams?.filter(team => team.level === "zone")
 
-    const dgData = hqTeams?.find(team => team.position === "Director General") || {}
+    const dgData = hqTeams?.find(team => team.position === "Director General, National Orientation Agency") || {}
 
 
     // const stateData = [
@@ -593,22 +593,22 @@ const Management = () => {
             {
               breakpoint: 1024,
               settings: {
-                slidesToShow: 1,
+                slidesToShow: 2,
                 slidesToScroll: 1,
                 infinite: true,
                 dots: false,
               }
             },
-            // {
-            //   breakpoint: 600,
-            //   settings: {
-            //     slidesToShow: 2,
-            //     slidesToScroll: 2,
-            //     initialSlide: 2
-            //   }
-            // },
             {
-              breakpoint: 320,
+              breakpoint: 700,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                initialSlide: 2
+              }
+            },
+            {
+              breakpoint: 600,
               settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1,
@@ -640,7 +640,7 @@ const Management = () => {
                         className='flex flex-col h-[507px] lg:h-[590px] w-full'
                     >
                         <div className='lg:hidden flex-grow'></div>
-                        <div className='flex justify-end w-full'>
+                        <div className='hidden md:flex justify-end w-full'>
                             <div className='bg-[#014322] flex flex-col w-[326px] mt-4 gap-6 p-5 h-[234px]'>
                                 <div className='flex gap-3'>
                                     <IoLocationOutline className='text-[#fff] w-[32px] h-[32px]' />
@@ -665,7 +665,7 @@ const Management = () => {
                         </div>
                         <div className='hidden lg:flex flex-grow'></div> {/* This div will take up the remaining space */}
                         <div
-                            className='bg-[#01432233] w-full flex flex-col h-[92px] py-5 px-6'
+                            className='bg-[#01432233] w-full flex flex-col lg:h-[92px] py-5 px-6'
                         >
                             <p className='font-mont_alt font-bold text-[20px] text-[#fff]'>{dgData?.name || " "}</p>
                             <p className='font-mont_alt font-medium text-[18px] text-[#fff]'>{dgData?.position || " "}</p>
